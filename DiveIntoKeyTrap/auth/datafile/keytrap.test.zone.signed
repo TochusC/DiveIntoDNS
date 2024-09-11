@@ -1,0 +1,1538 @@
+; File written on Tue Sep 10 23:08:51 2024
+; dnssec_signzone version 9.18.28-0ubuntu0.22.04.1-Ubuntu
+keytrap.test.		86400	IN SOA	ns1.keytrap.test. t0chus.keytrap.test.keytrap.test. (
+					2024091001 ; serial
+					3600       ; refresh (1 hour)
+					1800       ; retry (30 minutes)
+					604800     ; expire (1 week)
+					86400      ; minimum (1 day)
+					)
+			86400	RRSIG	SOA 14 2 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					/F1uwKZSk7dhHgOXsrBqtLizKcQd5h2RRtjb
+					jzN2TRv9iiqzH7CL0PmXPGA74SeS3dMKYLuE
+					Ml3TTRPOF/XInw3G7Y1WkVDHGjVKn310zsG2
+					nQdE/4YGQ/pCjk+uE5LN )
+			86400	NS	ns1.keytrap.test.
+			86400	RRSIG	NS 14 2 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					fGD1/MCwMmGEnv1QzDgzernsZ6szsP6Wq/jR
+					TF2//sS+0PfwzbdszI4ADxoCOGDXPSWmc6V3
+					/Eyv6ZfzhyGnlJVnD6tI9w2RPKdfzoXDCOZS
+					5JSunezyWkW9dgYRGJMX )
+			86400	NSEC	answer.keytrap.test. NS SOA RRSIG NSEC DNSKEY
+			86400	RRSIG	NSEC 14 2 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					L81GvLaRe2k3kJeo/0oY7uyiKEZ2xwHFHsST
+					S5CTaY4/DbuZ1TyzmI0DfSJP+v5TSAe127LZ
+					rLQX9K0m9b121W8DWZL+kmwSZV9Q4UHxJ8qD
+					vNVyXI2B6UWGVp3DvzAo )
+			86400	DNSKEY	256 3 14 (
+					DcYreAh+USsK1mtv7bSR2iaQvShPUqCy7l/B
+					RQXttAFupXp6pUaQZS+kii+H2JJqd+rS4YgC
+					3KCd/by8yQi5j+WSy2yRprSuFuDyqZMFnDT/
+					Py+nGjmIa59+W1iMdEYb
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					EUCex5BxNR/cKQUYoHJD1Hj6TK+aMpntzC98
+					Nv+ZegTklzXAxMxC8nAc9VSywVHBjTrkCnVY
+					rY4Gu1YQfscREc+mjbyhUzEMZBHPIEAfuerZ
+					wu2wovC4mau3RVWHRhij
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					MjY4X0GT9jf00V9bZU7cMkceFGdUMgbeNK4a
+					fF6BB/VznyKXsZlTeX5IgrD/8BNWd1jMvvL5
+					RlbBXbmy5022d34VqReK5IRA6WKxp9uzDBEp
+					c6qoh2npdudDTsFMZKor
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					Mq9Ohq02Xq6D5GprEXuvkZFumkDNmUUEAmKt
+					GG/7FfVeeu3ZMQankbw0eID2p8MB4dcSDotv
+					4YHvx6Sx3t6zdjSFaCloAveMUnvtIQsXL8Kb
+					fm2G0ikVuXtbMSHmFM9w
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					NJAIrXpcToloZ5CnSwyPf/Y8qyL3aFlqFr8X
+					cw/m19dBcyoJQIak5ygffLTHGrQhZNGM8TrL
+					07v41sL1ZYuYjGBg7RBdMaeQr+JOUA4d5e/r
+					83fkT7uHNOcHzOAhI7Nu
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					Nd/hhlFfE9YcGAKn/DjwaRDo2x1shj8A59LM
+					XfNuxgPtRH1fT5k9EB1twCTEzqAQNLyx9a6t
+					+Kma/LBXtapxM78FXNaleSnF2fJ40+7rCBnn
+					1cFjvdHEPHkW4XUGToyO
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					UiTl5T9RdFXTul4Nw3rQ9/zlGCODylgcI9mr
+					z5SqpEkxw9+l+E00/JGxAj6If8yjE7Etexs/
+					KTCX7csAYQTLq864iYB+5sPigcMHAzluyPU9
+					fOUmALQbRtw3ZXPHBb7L
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					qz2ys56wu+rPHXp62eskqFa/lYw4xl7oDT5X
+					/wcj7fFapLq8zsOT3kM5E7IlKwa42cIqCcNc
+					b6hG8C8YKWUOgUTOiXPXj7k4SO4K3/+CfFp+
+					7J6ai8shKSFAMvhf2ajl
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					8y5y+PlI/MQAMADANSuw0UXq7WUGpGr+U+Y4
+					sl+dAu78T+rZ1NUE1TVg5fZU7j7bO+Ie7Mk6
+					DcquNT0zYX986pGJgXpx6jTDh3dztnt9Sc9S
+					BcUdBw0v/u1y72EfLQ2P
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	257 3 14 (
+					MzJsFTtAo0j8qGpDIhEMnK4ImTyYwMwDPU5g
+					t/FaXd6TOw6AvZDAj2hlhZvaxMXV6xCw1MU5
+					iPv5ZQrb3NDLUU+TW07imJ5GD9YKi0Qiiypo
+					+zhtL4aGaOG+870yHwuY
+					) ; KSK; alg = ECDSAP384SHA384 ; key id = 30130
+			86400	RRSIG	DNSKEY 14 2 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					1XlelbosIBfO7dqqXPUvR/gXRY/NaSfbcRKx
+					MlOwFVTHHSVKLGdCNUntoiSRPdPBBt1VXp02
+					r0CJGvhmreWrk4h0mzCcMT8UAOR1e110rCDb
+					dBczEcjxV0hxBTAzJzT9 )
+			86400	RRSIG	DNSKEY 14 2 86400 (
+					20241010140851 20240910140851 30130 keytrap.test.
+					HRgSCV02YvBkor6JzxxjXCqFn6WTOOQ+4WNj
+					j93voEki/P2vwOO3WKw68Ek6iPSsUjAbge7H
+					hrjsgnYdyyg2iTKlnW7bGULcb5ZttiM4CSzA
+					yJsyaImgncfMxJA4KJuQ )
+cname.keytrap.test.	86400	IN CNAME cname0.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					CNF4kE092ayysCz/Eg+MBjjl13ynkpbdSIvE
+					VqQXYLZ5SPp5lyN22t1HggWiZVZTeXcBEZBh
+					q43VEF1AxwKEkEIL3Km62bySxiZjo2K2qMGi
+					yD1mpiT9Unyhe+HaZVPV )
+			86400	NSEC	cname0.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					j63rT/Ldui36CXf/UJS0lB0u6sarm5GVir4f
+					dghX5NUnR5DqA8Thwbs3Ckv1jyJUAtG/bFLt
+					wMo5NkJ9Kjqc6B8oueH4wgI800oEwVPKwFV5
+					9UhTjMbg8K3UVUpk2iI1 )
+cname2.keytrap.test.	86400	IN CNAME cname3.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					dFnFWs/TdwYBl0tl5acN3O/XBq8STeskZvhO
+					CzWu+9Rhsnkj4mVg7W3xWtdQ6kzOUi1DYHlA
+					AbfKhpmf5nZvMc4fhqsf4n4mkOmVjhNz1Ywu
+					XpQ4L8gkQ8JK5uMoDbVw )
+			86400	NSEC	cname3.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					i+AllrgyaUP5jSMn9YQL/udVeQmLmf7qGqL6
+					mWI2n8Iqt9m/Wgq7h/DXKVuEdT8ChdujjgDQ
+					7PqFPJDYmGUH65jY6pbUd66fBL+ryEH5JUci
+					7fJoEBkYUf/i2/9fxgS5 )
+cmamez.keytrap.test.	86400	IN A	10.10.0.4
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					f/arky8Q2qldYTDVVmCJG+a5e5zVYVlcrrGO
+					XptaLFwp36mX5BZU28uYdOwoQn8Z3N9xxju7
+					ofjPKn1Vza1P/d9VTzbNKQoIIllnYe9NbJfL
+					gfzfJZsLVR0lp8llGI0b )
+			86400	NSEC	cname.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					zb5eKF7xsfk2tRAIlYVofG0JjodoaPAnx/yg
+					5Lw0nBo1z+EmfWbb4I7btopEpHpMgyWu2SPv
+					nMlgtYwVhQQ2nISNjLgf7oMvJBm9xKh/hu56
+					pE/vmLBh3OO/qTW58Elp )
+cname3.keytrap.test.	86400	IN CNAME cname4.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					WeutVOlpixx2Bhn0PxTFXXOg6dUnDXs4M30w
+					y7xLhU0xeZ9J6MSyePg++NGDmijfpZwFXIw6
+					FvmZw2z+YZhlgpmXcS4xR7j2kKh26wgX25JK
+					F5DyA1c2kYvX6id/DBGO )
+			86400	NSEC	cname4.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					owQ85XHivhJKHoApzSrx7mvhvFFBlogeEU0J
+					sAKShbAiqkti2R83Ndl7XXTA1LVvvVsdxW4v
+					hyI6esXTloeI0O/rPeEYU3gxegIxm7pDHdai
+					7ogRWgDPp3XavFmRP1qF )
+cname4.keytrap.test.	86400	IN CNAME cname5.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					Ab6Kgi/avXKTOYRcWP8bJyVhL2VTDJom+Uhk
+					bNiloDrUkmSyjQ2Wc9JkI1EjXETxfcU6WcIg
+					j10U/3vlwWmNn1EE2NhkEuwLIdJycJj4ff06
+					9NgxmN6wktkWeiM1mzi/ )
+			86400	NSEC	cname5.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					gT+YMPfCmlVy3aTBfjDorSt6fQ8gHTWy6Rud
+					pOPcrW/Xwe3/FpRV7CSuqX2myIlH13+26t5D
+					EjFvDG/wYQ15AD2cBSPLXsPWG35OvyODeN4h
+					1w7X12Nm1Sv4H4/7V0ES )
+cname1.keytrap.test.	86400	IN CNAME cname2.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					+XJ6wmIiInsmbC0XIoZ9ZqamKc/HzvRsn3QY
+					6flDHf5/pi5g87L1HorYq+2NaaZjMXIiTRY+
+					cn5LNkd2SHUhilFm567e+E5GLBATTGyY7X5W
+					9WSlVYabIJRwm8E4QqgK )
+			86400	NSEC	cname2.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					V2ja6TXM5bNhzmTRmB4HKC3cVH1TUrxcQLGU
+					L1BPoUWyNO9rbEBswUpxrO1deEQyonzaMRMr
+					l+5bNzp/QxkypeuGYkn4weyuRrPX8W2MZ8lW
+					IoXZLAfrDBHyWhDmEBu8 )
+answer.keytrap.test.	86400	IN A	10.10.0.0
+			86400	IN A	10.10.0.1
+			86400	IN A	10.10.0.2
+			86400	IN A	10.10.0.3
+			86400	IN A	10.10.0.4
+			86400	IN A	10.10.0.5
+			86400	IN A	10.10.0.6
+			86400	IN A	10.10.0.7
+			86400	IN A	10.10.0.8
+			86400	IN A	10.10.0.9
+			86400	IN A	10.10.0.10
+			86400	IN A	10.10.0.11
+			86400	IN A	10.10.0.12
+			86400	IN A	10.10.0.13
+			86400	IN A	10.10.0.14
+			86400	IN A	10.10.0.15
+			86400	IN A	10.10.0.16
+			86400	IN A	10.10.0.17
+			86400	IN A	10.10.0.18
+			86400	IN A	10.10.0.19
+			86400	IN A	10.10.0.20
+			86400	IN A	10.10.0.21
+			86400	IN A	10.10.0.22
+			86400	IN A	10.10.0.23
+			86400	IN A	10.10.0.24
+			86400	IN A	10.10.0.25
+			86400	IN A	10.10.0.26
+			86400	IN A	10.10.0.27
+			86400	IN A	10.10.0.28
+			86400	IN A	10.10.0.29
+			86400	IN A	10.10.0.30
+			86400	IN A	10.10.0.31
+			86400	IN A	10.10.0.32
+			86400	IN A	10.10.0.33
+			86400	IN A	10.10.0.34
+			86400	IN A	10.10.0.35
+			86400	IN A	10.10.0.36
+			86400	IN A	10.10.0.37
+			86400	IN A	10.10.0.38
+			86400	IN A	10.10.0.39
+			86400	IN A	10.10.0.40
+			86400	IN A	10.10.0.41
+			86400	IN A	10.10.0.42
+			86400	IN A	10.10.0.43
+			86400	IN A	10.10.0.44
+			86400	IN A	10.10.0.45
+			86400	IN A	10.10.0.46
+			86400	IN A	10.10.0.47
+			86400	IN A	10.10.0.48
+			86400	IN A	10.10.0.49
+			86400	IN A	10.10.0.50
+			86400	IN A	10.10.0.51
+			86400	IN A	10.10.0.52
+			86400	IN A	10.10.0.53
+			86400	IN A	10.10.0.54
+			86400	IN A	10.10.0.55
+			86400	IN A	10.10.0.56
+			86400	IN A	10.10.0.57
+			86400	IN A	10.10.0.58
+			86400	IN A	10.10.0.59
+			86400	IN A	10.10.0.60
+			86400	IN A	10.10.0.61
+			86400	IN A	10.10.0.62
+			86400	IN A	10.10.0.63
+			86400	IN A	10.10.0.64
+			86400	IN A	10.10.0.65
+			86400	IN A	10.10.0.66
+			86400	IN A	10.10.0.67
+			86400	IN A	10.10.0.68
+			86400	IN A	10.10.0.69
+			86400	IN A	10.10.0.70
+			86400	IN A	10.10.0.71
+			86400	IN A	10.10.0.72
+			86400	IN A	10.10.0.73
+			86400	IN A	10.10.0.74
+			86400	IN A	10.10.0.75
+			86400	IN A	10.10.0.76
+			86400	IN A	10.10.0.77
+			86400	IN A	10.10.0.78
+			86400	IN A	10.10.0.79
+			86400	IN A	10.10.0.80
+			86400	IN A	10.10.0.81
+			86400	IN A	10.10.0.82
+			86400	IN A	10.10.0.83
+			86400	IN A	10.10.0.84
+			86400	IN A	10.10.0.85
+			86400	IN A	10.10.0.86
+			86400	IN A	10.10.0.87
+			86400	IN A	10.10.0.88
+			86400	IN A	10.10.0.89
+			86400	IN A	10.10.0.90
+			86400	IN A	10.10.0.91
+			86400	IN A	10.10.0.92
+			86400	IN A	10.10.0.93
+			86400	IN A	10.10.0.94
+			86400	IN A	10.10.0.95
+			86400	IN A	10.10.0.96
+			86400	IN A	10.10.0.97
+			86400	IN A	10.10.0.98
+			86400	IN A	10.10.0.99
+			86400	IN A	10.10.0.100
+			86400	IN A	10.10.0.101
+			86400	IN A	10.10.0.102
+			86400	IN A	10.10.0.103
+			86400	IN A	10.10.0.104
+			86400	IN A	10.10.0.105
+			86400	IN A	10.10.0.106
+			86400	IN A	10.10.0.107
+			86400	IN A	10.10.0.108
+			86400	IN A	10.10.0.109
+			86400	IN A	10.10.0.110
+			86400	IN A	10.10.0.111
+			86400	IN A	10.10.0.112
+			86400	IN A	10.10.0.113
+			86400	IN A	10.10.0.114
+			86400	IN A	10.10.0.115
+			86400	IN A	10.10.0.116
+			86400	IN A	10.10.0.117
+			86400	IN A	10.10.0.118
+			86400	IN A	10.10.0.119
+			86400	IN A	10.10.0.120
+			86400	IN A	10.10.0.121
+			86400	IN A	10.10.0.122
+			86400	IN A	10.10.0.123
+			86400	IN A	10.10.0.124
+			86400	IN A	10.10.0.125
+			86400	IN A	10.10.0.126
+			86400	IN A	10.10.0.127
+			86400	IN A	10.10.0.128
+			86400	IN A	10.10.0.129
+			86400	IN A	10.10.0.130
+			86400	IN A	10.10.0.131
+			86400	IN A	10.10.0.132
+			86400	IN A	10.10.0.133
+			86400	IN A	10.10.0.134
+			86400	IN A	10.10.0.135
+			86400	IN A	10.10.0.136
+			86400	IN A	10.10.0.137
+			86400	IN A	10.10.0.138
+			86400	IN A	10.10.0.139
+			86400	IN A	10.10.0.140
+			86400	IN A	10.10.0.141
+			86400	IN A	10.10.0.142
+			86400	IN A	10.10.0.143
+			86400	IN A	10.10.0.144
+			86400	IN A	10.10.0.145
+			86400	IN A	10.10.0.146
+			86400	IN A	10.10.0.147
+			86400	IN A	10.10.0.148
+			86400	IN A	10.10.0.149
+			86400	IN A	10.10.0.150
+			86400	IN A	10.10.0.151
+			86400	IN A	10.10.0.152
+			86400	IN A	10.10.0.153
+			86400	IN A	10.10.0.154
+			86400	IN A	10.10.0.155
+			86400	IN A	10.10.0.156
+			86400	IN A	10.10.0.157
+			86400	IN A	10.10.0.158
+			86400	IN A	10.10.0.159
+			86400	IN A	10.10.0.160
+			86400	IN A	10.10.0.161
+			86400	IN A	10.10.0.162
+			86400	IN A	10.10.0.163
+			86400	IN A	10.10.0.164
+			86400	IN A	10.10.0.165
+			86400	IN A	10.10.0.166
+			86400	IN A	10.10.0.167
+			86400	IN A	10.10.0.168
+			86400	IN A	10.10.0.169
+			86400	IN A	10.10.0.170
+			86400	IN A	10.10.0.171
+			86400	IN A	10.10.0.172
+			86400	IN A	10.10.0.173
+			86400	IN A	10.10.0.174
+			86400	IN A	10.10.0.175
+			86400	IN A	10.10.0.176
+			86400	IN A	10.10.0.177
+			86400	IN A	10.10.0.178
+			86400	IN A	10.10.0.179
+			86400	IN A	10.10.0.180
+			86400	IN A	10.10.0.181
+			86400	IN A	10.10.0.182
+			86400	IN A	10.10.0.183
+			86400	IN A	10.10.0.184
+			86400	IN A	10.10.0.185
+			86400	IN A	10.10.0.186
+			86400	IN A	10.10.0.187
+			86400	IN A	10.10.0.188
+			86400	IN A	10.10.0.189
+			86400	IN A	10.10.0.190
+			86400	IN A	10.10.0.191
+			86400	IN A	10.10.0.192
+			86400	IN A	10.10.0.193
+			86400	IN A	10.10.0.194
+			86400	IN A	10.10.0.195
+			86400	IN A	10.10.0.196
+			86400	IN A	10.10.0.197
+			86400	IN A	10.10.0.198
+			86400	IN A	10.10.0.199
+			86400	IN A	10.10.0.200
+			86400	IN A	10.10.0.201
+			86400	IN A	10.10.0.202
+			86400	IN A	10.10.0.203
+			86400	IN A	10.10.0.204
+			86400	IN A	10.10.0.205
+			86400	IN A	10.10.0.206
+			86400	IN A	10.10.0.207
+			86400	IN A	10.10.0.208
+			86400	IN A	10.10.0.209
+			86400	IN A	10.10.0.210
+			86400	IN A	10.10.0.211
+			86400	IN A	10.10.0.212
+			86400	IN A	10.10.0.213
+			86400	IN A	10.10.0.214
+			86400	IN A	10.10.0.215
+			86400	IN A	10.10.0.216
+			86400	IN A	10.10.0.217
+			86400	IN A	10.10.0.218
+			86400	IN A	10.10.0.219
+			86400	IN A	10.10.0.220
+			86400	IN A	10.10.0.221
+			86400	IN A	10.10.0.222
+			86400	IN A	10.10.0.223
+			86400	IN A	10.10.0.224
+			86400	IN A	10.10.0.225
+			86400	IN A	10.10.0.226
+			86400	IN A	10.10.0.227
+			86400	IN A	10.10.0.228
+			86400	IN A	10.10.0.229
+			86400	IN A	10.10.0.230
+			86400	IN A	10.10.0.231
+			86400	IN A	10.10.0.232
+			86400	IN A	10.10.0.233
+			86400	IN A	10.10.0.234
+			86400	IN A	10.10.0.235
+			86400	IN A	10.10.0.236
+			86400	IN A	10.10.0.237
+			86400	IN A	10.10.0.238
+			86400	IN A	10.10.0.239
+			86400	IN A	10.10.0.240
+			86400	IN A	10.10.0.241
+			86400	IN A	10.10.0.242
+			86400	IN A	10.10.0.243
+			86400	IN A	10.10.0.244
+			86400	IN A	10.10.0.245
+			86400	IN A	10.10.0.246
+			86400	IN A	10.10.0.247
+			86400	IN A	10.10.0.248
+			86400	IN A	10.10.0.249
+			86400	IN A	10.10.0.250
+			86400	IN A	10.10.0.251
+			86400	IN A	10.10.0.252
+			86400	IN A	10.10.0.253
+			86400	IN A	10.10.0.254
+			86400	IN A	10.10.0.255
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					X+8nZAZ3HeG3zOnviABu7VLvaV1kR9sOZ/Um
+					8VbsKdU6+AIFlkXsI/lEFc0iYZlGZ4XcdDMM
+					2R3TPIBKL2ZcPCskhsiSGF/MmyyLoardja3g
+					fDn1XQIn0mQ4L8HTwc16 )
+			86400	NSEC	cmamez.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					vQ40kcmLlKkYvZoehiLdqAvkq0Xx9lHDWFHf
+					UK9mHTUHjouwpvEJtQrQb5P9y0IdzlDtYmJ2
+					B6uOHH7oNTDmGggNrfL5TM7WmRO/IIQHTlAS
+					Ff5oWt3oNOOqvNLCL4H8 )
+cname0.keytrap.test.	86400	IN CNAME cname1.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					FqC/nycm4DAGFd/2deTXlNsfAcQ40Vdg4wPL
+					PN+553RPz0142C8NP9nWIsIUQiGXFfbcp0dt
+					FXAcNc1VTZ/ErFyyL8OTB3uVSkz9ZGjVhuLP
+					cMh6TYzzMrYu7KYwy0mo )
+			86400	NSEC	cname1.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					erIt98442NqpZbsMLT8mcc0YxT+74FUl17WY
+					cZfCSfYUIAsVbyv7B6RTXdL/uZh0yFXQZNPs
+					1rPPLOAmcXR1IJ1zmKut57VXLgWTxv9lmPRt
+					lQC/3jYuf8wcXcmqoCac )
+cnameb.keytrap.test.	86400	IN CNAME cnamec.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					e10RmD5lGtf1NmU6ih5ULRKdl9Jy9LUkT+iR
+					GZFl4nGd0KwUymizLgTH6H+VioDsaVySd7J7
+					a4JW7u2sIQROMyTfjLpb38PLieMpUec+YV/I
+					zWK9K/dCiAsLBY+fgSHZ )
+			86400	NSEC	cnamec.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					KP2SxKRfhN3uY9jGG0GXPt+Yw37vcWIHYVVg
+					zIO2KnhQNPFq9ZvRKjuN2jvCG4WgoDMwxNN9
+					dhMUb++KbodiMjN36SXrYVdAfml94j6+eIEb
+					eIc5HCSBFlivb+xiAXlE )
+cname5.keytrap.test.	86400	IN CNAME cname6.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					PJ3gToI5gby22L0Jn2hbcnUQlZQHgaCTWBIZ
+					7wZzIANBeJ8Fy5RBYk1kKcJNaQnJd5KS7PzY
+					Ub0EMh1ccFFqwjLQaKkjsjjMJlFGWBADBkfu
+					DlJIIL5AcL+8ub7p5Est )
+			86400	NSEC	cname6.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					NgJU+u6eEwhnMGyBYftStrKxWPQ+GV7BCaUd
+					wQ2eUvbYZPMAkmeMkt9Nfybs0JbshHeKGI0t
+					3MykZCmXpZjVh9f9ZEbNnzNNcEXOieQ2prlC
+					PErbEMmQtNrCD9i3a0Za )
+cnameg.keytrap.test.	86400	IN CNAME cnameh.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					NmG1ivgnsTVRXOExF9B10qi2y2BF57whyM0M
+					Rvbtf9rFw/gIhv63bqxSHOIPPgt5k+tcjR75
+					O3yA7Uj0T0/tEHv0jqUSxN8a6Mu4cV/7itTG
+					9jy64RCp9pvGU6zA88UW )
+			86400	NSEC	cnameh.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					prcS8E2NAebJGAwhWsOwltDqzx7R+EwVCtuD
+					6zZUhZrrqFsnIdZbgZTQhlSQgA3wI2hlyauz
+					qtqOyDXdN9RLS4RC87ou1ahNJmA43MD2tZHI
+					bS74/mCu3OJW6DoeGKlo )
+cname7.keytrap.test.	86400	IN CNAME cname8.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					urgCxZvPNwx3Lv+W3RyMLARuTRLGndUsTYZk
+					PKEne30uJ4e+NwCggEbhaXapUPi2BsmfH32W
+					Gjj7j3nuKgBAaT/g8sdfW+FAMTdq1BxHuXvI
+					5jVvCn+ISnKxPxqRrhrb )
+			86400	NSEC	cname8.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					r1y7RFcIAm+CC5K5miSorKXNqDkc27JqF7ID
+					ynEBPucU6zNFfnK2R27IL3QlQj9rS/3cqbpT
+					6e9triwA7p3gprcGwmMAuVE3nQAbEygOMyl5
+					Qlepv93FAb642+oCNVT/ )
+cname8.keytrap.test.	86400	IN CNAME cname9.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					+lyX3vESmharJu682v1Lsb7T0dkWXD0QSHiu
+					8pLk/EqaYV11KdmhZqFatSBpUUhq1JSGyq/N
+					QazbeHll4g5Ti26wi9nuk731xVoVA1FiqD7y
+					soN3uFrcRokReSzIsXNr )
+			86400	NSEC	cname9.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					XTQdgWeqwoiYsO3wWtMP4YIcMQzeCM6QZQar
+					FK6SV0E+6VGdxQFgXU5u6KoyVIeFuHm1+Dzf
+					tZpRlWB6u3SMtEdJxLkLJwxEqCS9IYe/qfXI
+					6uWv17maHxwwRxbM0gql )
+cname9.keytrap.test.	86400	IN CNAME cnamea.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					LY27wxKpgRkkI5KiLb3XCMImvENkIHVGP5d8
+					OxynFaCRar8ug2wPBAuccGioKVlrctpzcRFq
+					F32aM3/hHzP88Ipo/1qNVyASmf95MBlk+M3V
+					PwxQ5Utm4TCW/Npr3XTl )
+			86400	NSEC	cnamea.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					pmiMlBmejXCd8Q+telLpe0T7oM/dwfZ9IGam
+					1USyL1V4CGtmVAhEByH4rbnz5rimNaMZKPAX
+					N+8pRHbvfbqyy44IVSqaHh+aUx/uP+QbNowD
+					1XuP4/HY/uJ00Z+MluZT )
+cnamec.keytrap.test.	86400	IN CNAME cnamed.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					q/6PfA4AS+twxFeNHlbURYVWdQhQ8v0+aTXs
+					gabLXISMnn9aNfDgNzwidXy/VMn/rR8Fnxeq
+					oIQkERiH3OLVGCQ/O4LBKYyFrNhvYGbOpmnQ
+					9475oOdkoOxcWc475D4m )
+			86400	NSEC	cnamed.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					xUV8eqQlS2ISfiOgsnefE2FXzHruybRTxQij
+					BF4VmstGVffHO5n6xPXOfOMUV5+V6RIbKwq+
+					HN8ZznbfYPteA8okFbuTv/P3cMJvS+qdw/R9
+					w8gxVna/w9/7cL+/Nsik )
+cnamed.keytrap.test.	86400	IN CNAME cnamee.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					wcJDv2bGLhEIlZiQe92yrInjXq52ZqQkqykh
+					wp3DvsU5Y6HRhgkK2GLe3/qOlzuBc1wTFW18
+					hmovYY5SiBnHdVN3HQdb9zWTFEYx9Q0hQbUM
+					ObxkhLKCSFg8F8wc14s9 )
+			86400	NSEC	cnamee.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					E/LP7Xx+peHoG8He4Rtq4q+Ww433il7Pm/tW
+					X2MN4JgdtZN9RvLo1U+jsvLfpy+c8f53OKZJ
+					AHoSRWfrx46fTgEukDGWCdE04p8FrJiF2ylK
+					d/TOjt+NlZRxYYUWqWOX )
+cname6.keytrap.test.	86400	IN CNAME cname7.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					JJfraMTFPoaciTzpzZ7SCwiazOmnTG1+gAN6
+					31qVfc3Pw7Hb3K2sPl0qEyrSySzdW58LIiL6
+					F/qKXZYRay8d88P2vkH5OIBgQYu86ezMu6fp
+					9qgxlbx+sR58Ph8yCbg0 )
+			86400	NSEC	cname7.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					8pvZ8tth2IR2CK2QB8c/d8vphGcGwzlg6eSy
+					McCzCYxt4f9xeLugLnBphWpRC6uBV2ZSs9NU
+					9gvE8/9dTQDJs78ami+j+u7wHhPpT7SV8mhW
+					UYbnj71s63uOVet6Ie03 )
+cnamea.keytrap.test.	86400	IN CNAME cnameb.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					fm+NlMmaGzXEXkKRG7NpjixL7TFjKvlI8Hqd
+					Bqat256OAa/n4zNzKMM5/eCAFOoZb38s3iKn
+					1LTMUGdYxqPS95qwmKItp8+lGVNFUOjCU8Si
+					ab/NwsQEPs/rZVuxmeDa )
+			86400	NSEC	cnameb.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					aeGg/Zi9dyW11TrODid6MVA/4nC4IGbslcCS
+					vm5MxsIKKDHhN0/oU893ZHbk/+ri/dOnchSV
+					AFdfSSYXn+EkjP8X1Z5ov/kno5rdds3eA1WQ
+					9cveAtY8uqt4upG+L2UJ )
+cnamee.keytrap.test.	86400	IN CNAME cnamef.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					l2618w/5uzjh+1d8OeRKnhHDClZI1T58qbdN
+					JbB7SymXu9v/LohyqNmHJe/DqKetYXqAIzJ7
+					M0rxN1aywYYehaT3uaifNgfcjaq9o0YCHMIE
+					tNTtB7uIIc7cxOZW1PpC )
+			86400	NSEC	cnamef.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					dL7DgPV4LzQFqBwewDQw3LTL8xkXj/N41pxy
+					wvJx6sOuu7U6+fax5ubW4MpAKCnx8evtywoq
+					UbH7COif+d+RAUWyz+uAB1aMnFDCG7HabK50
+					sBXCGS9E5HOfNh34tDiv )
+cnamel.keytrap.test.	86400	IN CNAME cnamem.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					z7knI3Vuz3gMiPNCubghwmxLEIHJyCKgy+kT
+					S56wkBxksKqCiT72MmW8D61smywbzL3M2zfE
+					IBTojFU3Co82vWnkQvzwRVu2JqRS2daO7p0e
+					oPPuN3OwkSM9sJXYbOYo )
+			86400	NSEC	cnamem.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					5niuT6JKv2wziYewNJJUQG2y3qYvhqyIMS2i
+					EY0JUbnR7qoAtaubFLNlaD4YIbwtnihqJgk3
+					UeXZP0ogXlkj35bwwtwc9O1eWrhBzN3J48mN
+					G6KbOCouztWgcI/FBh/M )
+cnamef.keytrap.test.	86400	IN CNAME cnameg.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					9pbnMYiODyZt7CFvjwTNY3B9MTcXSJUkmxZj
+					qLbotZzZ9RKuaWxmlhsEJjEn3Dt1taE7vsc3
+					iMZJ+KxgrJn8eXyHHXQtOEg9iExWmZSl0vHO
+					zjT6WxrdfpadE4sRlQWq )
+			86400	NSEC	cnameg.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					atfePKLzIoPuAg7GRm8r0KAnts1w2UDeUBJ4
+					8AfvUATirQzflYHkxl9On2lGofhsaVMiL/zC
+					8YN419Fcw8HMa2qEy9JJRjyMhIdFQ6ENnt/0
+					5Qayv7trzy1H6Fr4Srnl )
+cnamen.keytrap.test.	86400	IN CNAME cnameo.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					5yPrQs8zB9/Z77WM4fCutz0zw1FK+GebfrQk
+					AyDtbHmhBZVCCp7DdF/6+DaxLWgOZcvsgwbD
+					Tl8MK6nS6v08AUoix+EsNP/tGFslBxqAXlA+
+					7XCee5Y2NKqe730W/b12 )
+			86400	NSEC	cnameo.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					ZdPR/FxibfFtKwKHCslS87DRcxABByrGLbtw
+					X7rdd1Q+d0X2RyI58pU8GVp9f4Du9ogpwiX8
+					byLa79RdRQIebg2YPetvoycO9h1h0nmkOT81
+					HZjOHIfaoyxtAqzGa6lS )
+cnamer.keytrap.test.	86400	IN CNAME cnames.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					g0y345DHzn/8byKmZxzh3PzvLJgQSpugLwmV
+					DYLTeoEZt+dUnixjq46c+9xOu1L70EJbleyW
+					h/WGqasiiO7L86Ug/MIcWds/A+FlenKjvdAo
+					5WyYQoU3KShNEc7KLExo )
+			86400	NSEC	cnames.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					jSqpbH/OoPyZ/hYVgPpO62inhzaofOPxwC12
+					3/hvbyFIh+Hu3SY8Z0qcfA+bvByIND6V9OiL
+					8abfI3UEBDOA9E702SKROHD9DH3UDdGN1goA
+					fn8AGlIm4bxgAzTK1uep )
+cnameq.keytrap.test.	86400	IN CNAME cnamer.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					+3pbYwsvNJxQdAC9cl+Mf/dNBJdbKHrFiePP
+					gprAKtnmDyLZ/75dBzSIm50hTy+RgJ9fsmXe
+					eAetcQYXg/7+f7prF5UlF1ZLLwkeIXOzdN2Y
+					oPS5EH3DsDsJQ2gXydRu )
+			86400	NSEC	cnamer.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					9WAJswlz6XdIv6aMrXa1RzP5y9wcAQB5TjR7
+					J0GJueGvWwMffRo1mUS8UYfmccBmKR5nakCa
+					Oh8QKEtdKAZgaVptFUCm7/Lcmut+H4C4ELTL
+					xEM1ocrZJrxqVwQsNn9n )
+cnamei.keytrap.test.	86400	IN CNAME cnamej.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					Z34or+WZYI6BbA2J8n7xeA3jZGOL9tkm31gQ
+					AXQh18O7juZF+hGFuyAZJRQwVEwaXQpwRcKl
+					HMV3WAP8gyLJJGJ/Cmi93fSZf53RLvHUwgEI
+					+r0R6ZYPikUqNVuh45+j )
+			86400	NSEC	cnamej.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					91vr/Gpz2iI9x1XaqsRgOe/V34oxQfFxp02W
+					ebXLv1uGgQkdz5AmCxinDonNIUyGTYdt6kH+
+					M7FvKi9gjQCliktJ6E5nuQQhttnqBkVprXDH
+					aRtL85GN2DdGeAKbAaxU )
+cnamej.keytrap.test.	86400	IN CNAME cnamek.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					9UXnHC+VTUCWWhPTCmfmWT38oCJ0tbCII7A9
+					Nmq7SzylJm14yoU3DWmnc/6rAe+Or/x6iclB
+					/nQXlC8x4gtB3Xdwr2yuhGAmBPEU8viam+o8
+					qRQOLWkmikJ9x+aUJhRQ )
+			86400	NSEC	cnamek.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					sgBzujK+EJfjmcmnOTjAVpzkuhL6fF/is6OU
+					364jjrLPU2kPjqFp2u/jtDY98YWlG3m0UBYo
+					zQP5PT5IijEq5uBKixjoiH/W7ahwh8QM2T2P
+					GNo+3ZL8i1Ua8ew0NhO6 )
+cnamep.keytrap.test.	86400	IN CNAME cnameq.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					JGhe6kWDwlWSUw67wMFk0PEQfqQKY61GWFLV
+					jparaLuX57rwUKgLuA5i2KhdaoNxfJ/SwPO5
+					r/3LeoXmXMDmj8AmDFsA0ANEIddpvzqJ3yXB
+					4Lfo/m11O0Exjfa/S2hA )
+			86400	NSEC	cnameq.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					ZGrM3fgQh//CCu5Uu12eKHQ4oFVhgVVB6nj8
+					jxIrkhuHVRJ8B1OVQSMHYTKrCXl1QOr/Dm0g
+					iWniK3AAdsCuLEx8VA1ipsK/rm4Xqb2M/UV4
+					5++IpOJO69Z/0EHjzY6b )
+cnamek.keytrap.test.	86400	IN CNAME cnamel.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					FAvlNzhW0pWfqGOZ1GdDFvZm1U+h7UR7guBG
+					KC0WoTaerwjalis0MQT52FfX7B+o8QMdA6pg
+					EE7gL60tGjN4S/+jlksPpkV3rkaOy0gKh1mJ
+					RqjdzpWXNn2TdV4gx8J1 )
+			86400	NSEC	cnamel.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					aFGbFv9TErGXbYtOUlk4LbMEBjmk91J+jvOK
+					9QmoMxfaJoSpGj+Q0lLQBCetTarDCilMNlhj
+					fmaeSFOKms6KmwDqaTmtvXPj0X/IE0FkoKyl
+					lhjGb5DBRe1qq7GddAGM )
+cnamet.keytrap.test.	86400	IN CNAME cnameu.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					1dm1R3fd4a2UBdwRri2retdkXjy1SN2bPQVC
+					Uxe87VBLFstzNhrj+8sBiEGttYIySfpKe4cq
+					0mK5HSmgbU9vDb7YU8WRWEogy9PYzo2qn7+K
+					fKlKjesG+zwek6A2BWUZ )
+			86400	NSEC	cnameu.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					WZx41q0TXOsQwPIWwTRBbgpuGv++Y5aoLW67
+					fsjrHvKNLDc/6esG1IueqQP1QI1Y8Mwfx2f+
+					C9SBJuV2QgT1HYE4VVZx4HtmrHLM7xkuQaUP
+					Eafhutc2ZNtRMt+Rsvhc )
+cnamev.keytrap.test.	86400	IN CNAME cnamew.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					UyLv5VxlYN/kMsCuQvujsvARDKnWFUX5DiG1
+					HhKH1wl/AcSBVadeaOv7LQ7lYArhG9M6CkM/
+					J1ZPFLcr7SdZ4POoYSdVKcoGWXKeFhBVVXir
+					Lx3i+E0DR+0g/cvNqZ0o )
+			86400	NSEC	cnamew.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					zALwbQH2zoES9yxICaT9Dip0bdbwf9wQvhdy
+					RRKSz0tWOOu/Drd5NDQZXaJ4K+k9KXqhhEW4
+					ShO2tUmLu7BZeTNYAK7bId5iUKV+NWRqTyi/
+					gnwVXz2QFhinqbdClQDw )
+cnames.keytrap.test.	86400	IN CNAME cnamet.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					8gT9dkojvd/yaOU4XoLhSSYJ7JA8wIQhwoBA
+					P5FVQBvA5jY7yh6eJHUVp+njl/VAoiFf7jFE
+					/WeNJ4TZydfXwGP07fMD7oZyvFVdtUJRYT4E
+					qkIfWmEt/wzHsJhzVfwt )
+			86400	NSEC	cnamet.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					2X3IoPv6XHV4bgc9X6grDTalupW6WIVfvwJw
+					awmEan1f7K1W1Y6UtDI7PYK+9d7o9TP7wxOE
+					bB1X45gAXpj3N140K5jIEfgEH9SMCWFP4Hdk
+					2eueVvvuNVByGc2/Iia1 )
+redo.redo.redo.redo.redo.redo.redo.redo.delegation.keytrap.test. 86400 IN A 10.10.0.4
+			86400	RRSIG	A 14 11 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					58b0rrmWVADTVUhuaze0D8zWi0IEgf1Ulabs
+					fDkJuzAjvCzxJeMcv588arEuyAn4nDM/GDvT
+					4mVptk7MLrOxJFxDEwpm46uiG8nPavsA0Faw
+					jSKqlnQ+K+RCqypZCPFf )
+			86400	NSEC	redo.redo.redo.redo.redo.redo.redo.redo.redo.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 11 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					jFJHZB5J7Zk+JWBDxqydFvycDhLqTl1lnf2L
+					ZTDTU3GFIJEIijpRwLEnYz8qJui+FDnrszwU
+					57cgd09GjGWX38Pj5Dn+D7mKiSzxmjT6UI0Z
+					BIzkfEY7TGnpOqeiJEqU )
+delegation.keytrap.test. 86400	IN A	10.10.0.4
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					SVmTkq24VCFoeOuchi/X4dq1IJ01k7EuLeZA
+					RElGL9iZEsPdYTtQkCYK9/XnwSzlS5SHUrN3
+					v/brZ5/7OKC4vDOg5SPm2VC6oG/RXQPtEa+4
+					6v7hmMc7hZ8ErsC0LO27 )
+			86400	NSEC	redo.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					gDpcHGTSkdbwkHVuTEr2IjaSoAw6j33pY0GA
+					BvIB6/u8uBA7QYPHLtlOeNx6tdx3pNOB19aj
+					f9ekzWFmV18B+0lDxKTuJFSmMO71UmoNkPoY
+					dDGWo3SmYoDWso5oinfE )
+redo.redo.redo.redo.redo.redo.redo.redo.redo.delegation.keytrap.test. 86400 IN A 10.10.0.4
+			86400	RRSIG	A 14 12 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					0BoIM/c/vW4Ihlj0TLxejFSgoJVIfRYEaDJ3
+					Gxojis3gRGbeY0QuAzriO5OBeKcDd+DPllW6
+					tBJXK51xN8I7xonCGtDFMyVG4BoRWLBz8iId
+					Au7cH4Sa0EOlFUnB+3O/ )
+			86400	NSEC	redo.redo.redo.redo.redo.redo.redo.redo.redo.redo.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 12 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					RHOd2BwTRgFDbm/rLd9ZrecLji0lEqE27SYq
+					ldukjYws8DrDe+ZsHXh6eDoCMbfu9h3GwBNb
+					TuOhTRvp1xATmwIWU0syZjUvmM6YgiZYK5Sm
+					sApFT3jbOy42RtjXyP2s )
+cnameo.keytrap.test.	86400	IN CNAME cnamep.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					TTxS09yG12yIaDBjFV192HZuFKo7KIiV0Hia
+					dY2PeL7SX7eWeE409L9iu7K9s5SRGc1smdvW
+					kd0wXO9Y5Rpu0ca3lpVH1rmqpYdh43+6X0U9
+					jOBfW7+4ES7VN9NiSgHZ )
+			86400	NSEC	cnamep.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					v0PtPmReRmhECp7Os/wV/1VcW7FUyEDSMuHF
+					yMWgGDlrG0WW3GN02pnazgHiKwYW84uSiv6R
+					5EK/iLM7jVCIIM7r0CeSlbzMfWU0rMjy/FMH
+					48S4/rI8zbd3e3X/D/QM )
+cnameh.keytrap.test.	86400	IN CNAME cnamei.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					ZOYDcyoXE7vFTY7X8kRHe+pvZslFOFRUd7gd
+					uwC86bT3m/EBwpvjVkEbucpneO6BhABd7dlv
+					jInLDO5sANfs6a0ZuFUFzQI+TDChITwK3O2N
+					qtpohJ8IFq5i3TcRsG/U )
+			86400	NSEC	cnamei.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					S2gFIPGaaAgwsUbFtKjuYlhIJznijdB2JkKV
+					Iz3tMcXnSEYSZ1OziqHfxL+2k3uMBDlyj4s+
+					/wKXUKCqTtj02uGatwvHZ+0bprj1NO/XC09Q
+					sg+CGpdXXtttVFfTVPcY )
+ns1.keytrap.test.	86400	IN A	10.10.0.4
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					N0sGEXdR6I4KPHBDSQhfan8L+rl0FV2sLZhE
+					2RRx1OjvIOCIuAFKGLKZmkLOjNIX9sZoQo12
+					lmkdxjG9/MCX9EyfNJd6xYJMG1S4Ve9WAENL
+					ZeGgXvC0X8c6v9+rziWS )
+			86400	NSEC	nsa.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					0flsKQbpxWImKdh31jOuWMZ9UZopiJSZnLOx
+					79EPKNYiNfbfac3omjEhQgQE6Rkz10xhPiuh
+					8HBMaCDL/pYhQ6dboxoyaiu+njS9D7m5mMB1
+					ahpn0NBS7tOkIkXnQxhv )
+cnamew.keytrap.test.	86400	IN CNAME cnamex.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					cC8zKryATGlS9iUt4jGMhQX0G8iHjxHeLqVS
+					if3+l0klTn4bQrpHIMscGG4yzkOmJijUNXOp
+					l7OrlIq9r6bDwREP6XMlAmMThgbuPRpTk0So
+					Iw1fItsNeRmKIwPM7AT2 )
+			86400	NSEC	cnamex.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					7qEBJC0rsPnWt0gszQQ5eZzDbmyf9PjhSZTz
+					ygDYfG03x7Cn3SxXocgNM3TCqZ/xvyB/jJaa
+					eSaKT2s3MIUi1WKtMHIJN95k+rYPjaAZC/K8
+					TOzDQhNWBSA2hdmRwgcD )
+redo.redo.redo.redo.redo.redo.redo.redo.redo.redo.delegation.keytrap.test. 86400 IN A 10.10.0.4
+			86400	RRSIG	A 14 13 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					EAUevQVyAm9gpbeeyfrjHVlTXwmY2UBBIKWN
+					rAtwkvD0+bzROHZv6IU5TK/UG2FDbrd36Xke
+					3iPmkZ/3ID+gO98IOl68ug8bGRhf0ojcHVT2
+					NQ8sHqLAZ7bf+GtCFuj9 )
+			86400	NSEC	redo.redo.redo.redo.redo.redo.redo.redo.redo.redo.redo.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 13 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					B7cNdv5Ia7TwFqJHvQfZBsXD0CLSItuHqq1t
+					rBAfSJA23G3wPwz7rWTPiNnUP6LD7BQGf/n7
+					H69nRj/qbVMmhHCQkl62GtLqMVQxCrRMHCKB
+					+8NWHa/W478jYPy9YS2g )
+redo.redo.delegation.keytrap.test. 86400 IN A 10.10.0.4
+			86400	RRSIG	A 14 5 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					eb7XPU/95dG945QRcS7NHehx7dAPVwC/k33n
+					2trFl0rHX6oWNQo7Lnv8La/LGlXudW+te9hb
+					4UtqWlGVkIGHhVhudJ1/xrcB6S9WPjql4vHi
+					qVDBe5d1YNXFJ3S1edL8 )
+			86400	NSEC	redo.redo.redo.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 5 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					YTFR9ZicjkVSCDhmThZDqTzuSvnKDIa0i7nk
+					rIEA4GDqCTJXYUAMQDQXv7DSdQRsv5ptRwTf
+					4K3avDl23K9jTjP5bwKbrFv/2XpGBBc2O8WE
+					4VINT7qgsiBa1ytuc5iA )
+cnamey.keytrap.test.	86400	IN CNAME cnamez.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					n+IJDID7Lj+bSq1rQWuB6c0YThUQ8K2eUNPY
+					iENrrVU4xM5gITYrqe7bxsVvKQDMWi9wYKaS
+					4ypZc7yfJ2LABhIcz6gQK65isP7zvXJxA35S
+					VUm9t9k8qStDSqC+EahF )
+			86400	NSEC	delegation.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					1OD1CcxEXFD/1dLO8Zuy9BywSIfGgAE6c7mj
+					78idtg6Czzqx57FKo+xRno8gXfgRk3WiwmiW
+					M72ddH5jg+4WfKstTTd2DTfTju4FBbCkfg1F
+					WMh8do/+043gd9VQJEYL )
+redo.redo.redo.redo.redo.redo.delegation.keytrap.test. 86400 IN	A 10.10.0.4
+			86400	RRSIG	A 14 9 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					+JA1g6KWiw5z1ew6uTYLk9IBZ6rGd8eSwfj/
+					4yAhJNdgTZPLu58pXSh4C24I+QNQ/QbSd1Br
+					/pffKjUFzBhj0KioZuovuIslPoHhQDA2CBAJ
+					sg8QlFY+IZ3Zw6A0PxU9 )
+			86400	NSEC	redo.redo.redo.redo.redo.redo.redo.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 9 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					jjrpwedjxn8T/Puc2jbXTctFrtimt335/tio
+					W5dYwA8DiGHdyq8Fj0ddgH96TPINFORgpEl3
+					lJ2Jb/j5zK6FyZ8+OO+QCY17olg6s6wQQ1Bo
+					c2I68AYIXAxmKAq/rAOE )
+redo.redo.redo.redo.redo.delegation.keytrap.test. 86400	IN A 10.10.0.4
+			86400	RRSIG	A 14 8 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					KhabGl2C2AGFXlJXQ3QR44WAHEsFfQTZdOPD
+					lYMo8QQXGZUIi5pfIkG3QVonmabsoViMFkWb
+					lOSuiwPDQMOGcFejkrbR0lj+BTc/RoX9ZVPk
+					sJhxePxV37E3kOb9AyvB )
+			86400	NSEC	redo.redo.redo.redo.redo.redo.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 8 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					8RnV11IG+KLGmErIuSWjqSFth7rNivIcLBgn
+					pLBwjm3JqrdwcpR2NVSI3F1T6/CAarTPWdKA
+					lXumbNSJhntu4qq9c8LKBU31wZhrZjxVpwDK
+					IRO65b8rFqlql6pxvPQH )
+cnamem.keytrap.test.	86400	IN CNAME cnamen.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					3Z9yK88Bjz3zos53KDX3H3bsy0D1GVv+qZka
+					JYtIaZVrxLHv75vI/018lxnPJ6OHijgBMkzt
+					rwAbPUbEUHNVrxXNBXy3rvSCuCuzpXxsBGPW
+					ENpH5VWWKICHfefM0cYH )
+			86400	NSEC	cnamen.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					8+wI1XYFJilRdkfghOGk1r22oL0VUhKRCgsc
+					OTMSU6DYXcZVHSBu9ZMyO2aAPb7HTEdcsDWA
+					B4vVrQsO89w26knuz17jUXsauXmfTy4gRIJE
+					On2wZ01anoQCEYnSrwXG )
+cnameu.keytrap.test.	86400	IN CNAME cnamev.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					MnWQ6rtBOi1QbNOCYZtMGQ3c1Umr2boSv1t0
+					fbeH7WM63Xe0W2fvDkCXVS8KknmbDYcMhkyh
+					3nyRacsZyMSgNdlCsRAGkGsm6rMl5CqSBOga
+					6qIFMeqYiC6hipgalf4t )
+			86400	NSEC	cnamev.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					Ypbr799ZtebIDiOWoyeTYlsU97uJlySa/adC
+					OYZgZgh5SMzCw22/9cDklNxWJAExJs43cDBk
+					qiOoLtd5KpPY6dinpikummTZdeX0UBmv3n7e
+					Zxxp5oMCxkVcukqpl8nK )
+redo.redo.redo.redo.redo.redo.redo.redo.redo.redo.redo.redo.delegation.keytrap.test. 86400 IN A	10.10.0.4
+			86400	RRSIG	A 14 15 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					Og6Llg4ZQnrnFwq1kGB1FR13UPPIbP0zNyd+
+					l3+OlD6g9whNbs2iD98D+34BhboEak9y32c9
+					ID8dAfBGlZwNkYSOoT3FxBqCONTxpqW8mqt5
+					ktTtS2VkF4fYiPxw7Qqr )
+			86400	NSEC	ns1.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 15 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					ZpPkAua934X+ScvQAN8xiiDMfv/yM+KC88f8
+					Bkh5Nmtqxu5nbx9na/LFZ9X6DBAqKdiKKn0m
+					ymKeVyEtMzBGQ7iNZ6iGc5HUXRYwiCCjncHF
+					mG6LSPNWgyYOxev0Novu )
+redo.redo.redo.redo.redo.redo.redo.redo.redo.redo.redo.delegation.keytrap.test.	86400 IN A 10.10.0.4
+			86400	RRSIG	A 14 14 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					rUgFBWSBN0NriMkIIA8cC2otew0ifIJAv77V
+					Tfcnv1v+HAd6vpvgNKaUxxC/PICnqlv5WjzG
+					zvKH2pdCGkoVIySyvg9mlKm6aercPUaLE79M
+					qe3fGOLdHRr8pVXdkC8g )
+			86400	NSEC	redo.redo.redo.redo.redo.redo.redo.redo.redo.redo.redo.redo.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 14 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					e9D7aqgdNLem1nPjPsYZGd4LX5agvliYvxLE
+					7DXk043/r95onhLvDYQ0ZBbW6xrxj9cXN3M5
+					NsThFWgmzGQLyqQci2TaHDTuzdDGcHQ5i8YX
+					4s/DSwWG5yF5lTrqLqHW )
+redo.delegation.keytrap.test. 86400 IN A 10.10.0.4
+			86400	RRSIG	A 14 4 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					XmoqHrU58Ji+02CZIA4WJglI5iFKzHNsEGZ5
+					9T3BClABIiTmni4sy2VcZeYtiG4UF5bMfZku
+					TmlVT1Mn9l1qGEQ2d/6v4HJ5/t9zwqGekmTU
+					j8tuaeLJOPUTKeqKODnV )
+			86400	NSEC	redo.redo.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 4 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					bfEAaxzZcdhfSXHnjlgD183cR6CtgftjjtGk
+					FeFXPsjibyFh7dKjHeLIS2fQG2tfJWqx03aw
+					cIeixJBAiWJbfgDOgJ0X4KDI4u8ffikKntg/
+					HiQJoCF3mxNta8JMlTco )
+nsd.keytrap.test.	86400	IN A	10.10.1.3
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					AyWcKbDJb/3HB3nyjMtlgaNt4bM52EFVhy6J
+					h4ypFSfAqOoV+C6bgQxeM9vH3gMNgQzHGR08
+					tNV6j7AMqX/XpSNvCYk5ZrDtCxRuXZ6XGNT5
+					cV6GGS5AZKp2OkvSMnU+ )
+			86400	NSEC	nse.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					NyfcEgEppAsj7EwgyqEoMIFaWUixWR+oezdy
+					E9r1ezVzAqp6JbqUhRk6bm0wzUvmiH2xv4Xv
+					TmIcRvjrytL456VNUgVIZik3MYADsyCgyXf+
+					C26zlhXnpM2xFJ2JtwKK )
+cnamex.keytrap.test.	86400	IN CNAME cnamey.keytrap.test.
+			86400	RRSIG	CNAME 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					7rQWI427WKZQmN/IJ0YZ84ysQJ6UhloJ62Hr
+					tVRwGopdY5P+yAzFvNuHCkBaTcU2o9BPOg6P
+					UzXqJSrB4LLkXwnJs3CpSUSQJBpgofh8DT3I
+					4jAfqfhK1wflX+RYUt1U )
+			86400	NSEC	cnamey.keytrap.test. CNAME RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					3v93AIB08hdwk7jCRba5VJzFBq7XDEByzrUv
+					W48z38jMvTYsnl/iTGOuW6H2HjtDnUBwcAlz
+					qOEF8/2MoiL5nWTVtO+xPD+ZUdrvnb23s0ij
+					c08Ve4lV2Fs5Cuv8COHE )
+nsa.keytrap.test.	86400	IN A	10.10.1.0
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					/PM2TPvU7hQbZaZfm13skcoMh+KI6nnRdZ8/
+					0RG9Ninsda2M/fLTiZJMolm0PdqisxNGxp8v
+					8GT/VZQsknNIy/Mo0OxIORW1ZlF3SlWsGLjV
+					IsB8kfzMl1czPX6y8j2c )
+			86400	NSEC	nsb.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					QJMB9SHu82UPDW0YXLZizbn+1Oc3MrXKr0WM
+					y7f2PN68kHPzjoGrVtvW/o6jA/ClW7tjx1q1
+					0XSfHoJwGKEKDodKv0r1czl7XWjuCWK6ClST
+					oV7Fe0jBohGZtnpAJrJc )
+nsl.keytrap.test.	86400	IN A	10.10.1.11
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					xkmtfm/d1LWVxWil+YDL8VxS7AHOGLe5OfP3
+					pCb8tWxuiIK/g1hezWDOXEJyCyCv7kwak0aJ
+					tlqoenm4ttw3/adoLlWy64jEQ2OpDKB90gZo
+					k8unfChVsoYEci+U2ti9 )
+			86400	NSEC	nsm.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					9wgoVO1sSpqzA0VJiG/JokdNx8xDbTLaT+mE
+					9/MVYCdZ8iq22CNMp5qQ4D2cjDL9OFe9VxK1
+					w5Q+gLUXxeL5DUHaaIF1ib5gOLyl6+pOQaEu
+					yztBq4C2Qxye0wjly+jZ )
+redo.redo.redo.redo.redo.redo.redo.delegation.keytrap.test. 86400 IN A 10.10.0.4
+			86400	RRSIG	A 14 10 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					1ubtmDOMWpGtlhQanuEeiRWDWvV3tRnvd0DJ
+					bRMMoswYWvL7nfommjdDHZJ681U/ULe01+RZ
+					QqsuycBke9kVk3c+ZJviPoG578KRBT07sZHU
+					I9wb1yYdOgMr+xJHCum6 )
+			86400	NSEC	redo.redo.redo.redo.redo.redo.redo.redo.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 10 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					Smvg9R8j9sXsbVhCk+ROyTWsvYLmcYNqz3Bk
+					wfH2B7vLzXtZOY0Xc5JiOoRxFvES0CVlTOH2
+					UU79v0Og1gTY/03EauQKZQNiVDZ7QGRqvDo4
+					eEwfC2589GhX9O89mnfq )
+nsj.keytrap.test.	86400	IN A	10.10.1.9
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					CuTJ5R5BuJp2kuPXHOincugmNpOAbM2YMnxM
+					G6LzaKVFubidwlT/EGJXwW88St1UDHn5UtVo
+					ewpCbz5mHEsMyg3MqB0/U1e/uartURmgFHk0
+					jUbIbWjX/47Iw7fJz914 )
+			86400	NSEC	nsk.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					fb1iL3fg4FdGDqJAvHreWzw7wZI3lz0g9BlH
+					cMZ7lFSfP52TGIEPyE2hftWa7S4EfpzgmmhO
+					PjHqQtOVhX1ji2ru2NrL1Ey6GCWmBwG9icg1
+					6BdRJk9P9sQOh9HmmVPC )
+redo.redo.redo.redo.delegation.keytrap.test. 86400 IN A	10.10.0.4
+			86400	RRSIG	A 14 7 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					S8zCa+ADxRyvl4Lj1x4dde3RLM2X/SQbf1AB
+					GRFj7Qkm2tYuNQBBgD+N9CrEVHZcfYaX6xEs
+					Cbjx6pFPGXipCTVbdmxn4ZN84h8uwqNI7bFT
+					UxM65aodFT+Cttkb0WYt )
+			86400	NSEC	redo.redo.redo.redo.redo.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 7 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					RLukzyBm6sXO8b6rJ3I8VPegadEVLb72pSKt
+					dtP5855dTtMobx2TOtT6KeXka1U4puaKrH1o
+					i4Y6ZgCPlgrD0ZZl67jUfnQPuAXVEdKmqW0p
+					DinVeFxD7BYlMSUB4S5p )
+nsf.keytrap.test.	86400	IN A	10.10.1.5
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					zl8Ox7xOaCq5S6sgA8oIURdzIVB1febdno2a
+					xHLieNzXjIthYC9MdoavZ1dZU2TQ31yJYv/T
+					SKmy8dgnixIl6OpcXzish++xP95og0dN2r+U
+					5WGR/DlDOgMZ2eAJyMG3 )
+			86400	NSEC	nsg.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					glAIG++S/xW5u0x+sis9MnBKm/4i01iwDLth
+					VGMHAHTqBoGAnNMSbxT14pIpUjzly167p3li
+					3GsfPsZ1ExWIfHskRcXuoxp7YRtgE42tt41w
+					UOv5oMXiHdOYMXZ9UumI )
+nss.keytrap.test.	86400	IN A	10.10.1.18
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					OY99Pg1R+eLOeOYlLVroYgrNDpbXzsCHDc4m
+					4S5bLfwFemjRAeGgOmnjsDYu5OekUBzdkFQv
+					nOAcGm230Gr9kbUC0thmi2IvnAI7yxp5VS9F
+					Rl36lZQkJx+rQA3oJOK4 )
+			86400	NSEC	nst.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					Q4bU2T/NK0odhlvRwqv0NxNaHDcCXyUtiix9
+					+4zDig3l64ii3Fqsi1yv3DUpbghvLy0G1m/T
+					5/Q/pGFxW0L5eugh9+uaYUsuPKz0Pupy0Fhu
+					aXOYebGfDJgPbL9No5z7 )
+nst.keytrap.test.	86400	IN A	10.10.1.19
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					0nDEAXcnUyFsIafPErl4eoPt3ymRdfoNq8Pe
+					r5Cwi4JjKVZg5b8B4BjyOgBsG3NyAsGvA2K4
+					VQSH9tEK0mwihPHSIUAXQAAKPEvrSBpZ9iBy
+					3NM2aSD7b+OwJNEUAwup )
+			86400	NSEC	nsu.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					MbTldcFgGRrfCQIU9tGitGrdrAgi9+HJyy6D
+					55/F8grrKzmZn56uE5MECKSbNRCfyZT/Jki7
+					WDZIixX6QH69M00zeFvsLy20jWtkMZ3Qt+XO
+					aILNLDWtChnpGGHh4ZJo )
+nsp.keytrap.test.	86400	IN A	10.10.1.15
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					SUl6MqXzP15n5Yl6/y9YR/l8+PZMwj8+YMNe
+					VEBE0kVoFesF08KdRASCeR31PpJqnDSnjeZs
+					yU0AcsSvIFZumigCt69cJzE7I4EMgK7ybVtU
+					Sn1MiwB3f6U/6dhH/MK8 )
+			86400	NSEC	nsq.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					gtMkahrdh7wdQLzCI6MMEF5jMmJiKVSOK8Gc
+					QoGCkXH+6W0KhvN8+8fWGRbmP4o1PXPwBmCm
+					4j5gXDgCX9U8f/L8+i4BSTnXtuk6d3QadIGt
+					xEcshk6b4JlcIxoNcpQ2 )
+nso.keytrap.test.	86400	IN A	10.10.1.14
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					VRcAW+E0Ilx5ZfFvkh7vkZlyz0Coo75cjk33
+					pdjE4N5wpbzwRaY5dwxiGp8OOCN76kER4VEO
+					Eu8RzZWqOdUTbDrJ2IQbNQbJS9dRLS8vX6Q8
+					zWGe/3vj8vjtweNUjX7H )
+			86400	NSEC	nsp.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					ZsESp1LNZOeDV5CfqhrZspMI9N1qjUm7kK7Q
+					qEqQe8kEGXILovhoZyHVNhHyBWNg9tnw3MZf
+					C5pGOUiTC3RGJrjrSAygFrxMwYDPf9Y5wMtD
+					GQf2t+9vkdDTBJTXzHFI )
+nsk.keytrap.test.	86400	IN A	10.10.1.10
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					5QPggHrf412zBkXRNgZC0hQqyNFxaGhmrU2t
+					kQk54NIe2PtgQa4ONeF343DMqZoPbYk13lEZ
+					MvtKaAYjobgpJbl4G1bbkTl746GFqF24+rF2
+					9O1/ShSOTwTTBVazLmvF )
+			86400	NSEC	nsl.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					q4Yo+SwAoLMoh30kukOD588lumJdAqSKYJv9
+					SbYpKe5ekVPlspOAMjAHV7weICdk6cqcdBy7
+					D+PzpC2mBy9gfThbDLp/VtmY49jNiKTNIXQ7
+					ujiCxgBlPN3XaI8EcXku )
+nsr.keytrap.test.	86400	IN A	10.10.1.17
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					6I6Uisfx+OFF6+WS1VL8bquXakoOFfahAekJ
+					FUYn61eTh9HYjUSVbwHo5SGgPdnr1x1vDM00
+					7UQ9Q+a7L4N3lWGskMqRhwbR3PzF78BQD07d
+					XLU4O+rHsSiBQWkllw3C )
+			86400	NSEC	nss.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					CKuD2JCXel4BrC80RJ1bcAUPoJZuyg7oKnxq
+					+4DnX8AYx5meWrfjZ4JKTlZaOD5qhWmHKCxr
+					Zg8nBwFr/d+Jwvw0JbIK4+4HAn1tXOwle402
+					IMUNP73TF+lwRm0Cfj6U )
+nsw.keytrap.test.	86400	IN A	10.10.1.22
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					BcWn2gO49+38xyMBwq/20hDidTj6SnsOD9e6
+					UuWYVTD/SK6mGX4PwnFq8bAZ9F96Fb+96in2
+					flDtOJQnJf2EXw/4V8Zx+lMb4ob2TT8EJcjh
+					UVpva8sNVF4oExKQvQ0J )
+			86400	NSEC	nsx.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					CGwtBUZRsshPctgec/XcErTqOH0gbUDo28HK
+					WVrtCWpoMNGOkhOl4yQ618NDKJhDNr4HnCQv
+					XcOOXvXf1Teu+/QbawQD789LIoVhERRP5UFW
+					JMm8q9L8TBfNbe67PaIs )
+redo.redo.redo.delegation.keytrap.test.	86400 IN A 10.10.0.4
+			86400	RRSIG	A 14 6 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					NBAPE40FsC3idaMwSRUo/c6scd/MbSK+DqOA
+					LlnRpjKzTlyMXYTKcIWDIZKuULV5YrmfzTa3
+					0pDNxg1gbIQg9KOS2AOKpln3EG3cnUgcFdSx
+					9NKxPQ6b5IF6UlKgIlS2 )
+			86400	NSEC	redo.redo.redo.redo.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 6 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					DEEpDIMBvGKyl7wSgiGZBhSS62NEJA8NUKIW
+					KEhyQObIpADf+QUU+mPgbVqGzaiZCw0cO24P
+					nfx1t6q/sBgqXMJ2YLEvbn8tCj2g4Ky/yd/J
+					sp+WE/dDI+s8Od5f1UNN )
+nsg.keytrap.test.	86400	IN A	10.10.1.6
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					wu9esCbZFSJGVriCU0qeZm/sJiJNi/ukkstr
+					CiZtxJ9brHX82JWxr8GOJu0m62uwS7OmgGq7
+					JliepwfAzTiQLt3VRJpGkBmc2mH6Sj/8s4Pc
+					jrQrjz/2E1ujM48MogNl )
+			86400	NSEC	nsh.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					lvSWkQRqtWbeZsoTkqzntTeGPEcIshzK6ZiV
+					3DHWDdHc+weOd/hBkwIbzatezVJVihEhJ6rO
+					+5GMj40l0vaVCTidkA8bI8XqjjgRsWk+Y/X2
+					fp3XZI8KSH6RQ23DOp+l )
+nsb.keytrap.test.	86400	IN A	10.10.1.1
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					GziVq7C6hZ3cu+p2QDnU2Mfg7AjexwnKAuJv
+					ipuFgDXWcQdyqHVuH5DLiBenkfm3YT1msQo4
+					OQwuWfSW0jsCwrsyptU8EYHlDbQINBKO0rv5
+					m1myb/4RRpBrkmoqS0ti )
+			86400	NSEC	nsc.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					pLKL2vByyVPTL1m+dtLc2nGjBaFmzHlwZRxU
+					k5N/1vBPxMmU3lzXQNcwSEfUpl3EKKWuRihr
+					67HYgwp8iT0/7W1Xja+X/AoQMGnEXGyy6Dsy
+					s7BXamtOvdEkF/EjQcNF )
+nsv.keytrap.test.	86400	IN A	10.10.1.21
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					B/oBLt8VmTLW9j21gmN8z2RIlLGdb3UPqsuL
+					gDJ0hgdEynbstVrQMcbRfwA2e+OKofX3gUgl
+					k6IsF+VozbQlmxknSekHdE9FORl+buf05bqH
+					I7woUvBg1/aAA6B7/97T )
+			86400	NSEC	nsw.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					jD8udBTMQVOVKrNexNK/jLQsv3daot3Ij6hJ
+					F0SpzhS7LvxgA2IEHmgyHshXNReCujpqe1rT
+					4SutjLXL4p6dQdzRuIcIvYJbcMYyL01CvMgj
+					0s3X9iz9Y3YAUGVQpOKj )
+nsu.keytrap.test.	86400	IN A	10.10.1.20
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					oz4C+n2kTXGB8TJORVqw/J040AKCFce2GP9e
+					sSNgYUgxEbFXdeuIuGzutXRPcDdpQnRcnxIE
+					uk55Dw89LbqClGsOqHzB+xV25YuuhVGe60Br
+					s/jC13LeZx8hlNY98irE )
+			86400	NSEC	nsv.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					YmjDTuTOqLw1pmFmcv4zEKzO9Y940N0zlDA/
+					knuhj56MfMqrpcLp9vu1IEn1uVSI6MkY/3im
+					+LVEBm468wDSYdq043u/czzbvcwMv+i14U0b
+					Y8jsr05mm9mHqQ5NPs8e )
+nsc.keytrap.test.	86400	IN A	10.10.1.2
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					C84v2jA4/VV6Dz1xZUPjQLwqMox9DheFyRb4
+					fm7UDBSVaesI5mRNjZPwB0GUqvH2MOE/MtLM
+					KsH5xpt3MoQGfJtKwURiFtfcTHGOWTMQZbqY
+					xeOR/uGlS5I0T4HlTDDK )
+			86400	NSEC	nsd.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					qDTSoMF2djGWmNN6V9AzCBt6NxG3qd+fXogn
+					MUOxJdPhTNw79xhFTVwmcL7AeYGt6aM9q7yK
+					Q5AQEyStcgnVVX6sHKjC8ri50JDWGIlHy3/m
+					fmmb7X8Yy9s+OJUAdABc )
+nse.keytrap.test.	86400	IN A	10.10.1.4
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					SkqTZFShxdc6lNaCSruflt091/LjCUjCmZNc
+					aUfdBOkUZBmEJIWmqjgIE1cTnUhEZ7pjFcgL
+					kzRgP5hl/qrGzDTAcP0iRDrFq3WN5JPVOoO4
+					01t6uPXl3sh87t55FcvO )
+			86400	NSEC	nsf.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					el5Nf0utVl6mBwqdIVePgMBPBDr8tLLExYS4
+					nvyxrXa04qjOAwVLeu/GRDGmrXNvPSOy8xWH
+					4eqylcB9bqL4nw68Pfi7Uj1n5vpmay2R81qg
+					B15JkuJFvFT0HluztlQ5 )
+nsy.keytrap.test.	86400	IN A	10.10.1.24
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					u7G3YwN//zS4uL+NVhNkyHablEwGTXHBu4O8
+					6Ky5+7lDQqSr67ClZAhcGX9wZpaeugNM1QWS
+					ldgqcLf3NzX0Q779dJEMxy8zsptAwD3vb3ih
+					+WlcCxc/x2/qgw8TvXq8 )
+			86400	NSEC	nsz.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					T57Y+UxfJKqAObSLYv6A2jWZxElXUrQjUlfc
+					TcSUemmZB6nhV9wb8RnA2qaJqLgaSWMMxhG2
+					Vf86K3Mxf5ia29JW0lxrUY52RHv7biqnb5RT
+					LAwhOYOAKzPZlrHx3Ltv )
+nsn.keytrap.test.	86400	IN A	10.10.1.13
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					VTXbBy0Bp/DcVAuVKa24JXkt1mVOWhnI/C17
+					rFAgM1TlRiq+MAWK5QN6/D8alidF9Do2Z+ie
+					JHPc0857vOZkQi/WEMU4eq9areQA9zesVVLq
+					E1NlN3K4EV5Lo21JcS7L )
+			86400	NSEC	nso.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					8UYiV2ik4h5A30nOfyFXEvckE9CqqsL3+d5n
+					o0iGac9Im+9y8dAz4XSFmKmZAhUaCc2Q06cS
+					2fsxjGyOBKHV+eUjmfzjlauvp3vkf+q5fd4e
+					d+fbbUEy6Nbpq68XRtTL )
+nsx.keytrap.test.	86400	IN A	10.10.1.23
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					omx26ekpluQkgfxWAUncT/3eQL4ACFbf44bM
+					w8mxGdKAhua6/HEOXKndMAqpA2JS/gmksR1k
+					jxYXAighHVhyyAuga9qeSTuIihxsucUpP1By
+					xOOMj0iptAZCGbqY4fHe )
+			86400	NSEC	nsy.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					d7tfUmB3792UswF4I4GfrtjDk9sezwH0NlUv
+					0zzgy6cZnm+Z2pXgFvsA4LprCtwUEDlD4D/N
+					rttGh50IqIbMeAKlyuEK7bX05M/tZZmYYrO/
+					xhUSY/O3sYlezbI7PhWx )
+nsh.keytrap.test.	86400	IN A	10.10.1.7
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					2XvXXs4965K/dyDp7EfO6HpuL9u2Hk2ZBGLP
+					p9EaXRkFOEF4SmTpJK9waX69bx02D3A9b60/
+					Lgf9sU/R+oobs8CCe0jvDVZ3Ji5my4dbLEUC
+					iEPmzI6CCXKjznAiOhXw )
+			86400	NSEC	nsi.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					GqDMiCDpqPWSWurTJKAIHvdmTAYjvAt1ifDL
+					vyXfT/yd+mEHO1FyYwbzGMBXu99b21UfGFIi
+					yal1DskwiJ5ZC6sVaFO95y2Le8Bkx4vNKAEP
+					nO5Hm9HxRJtTbgPuqUS5 )
+nsi.keytrap.test.	86400	IN A	10.10.1.8
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					61lOcXJrO7bCgNWKmOc7xkElKEISMNXQrrP8
+					DpWvUEHW1l2pdBjjKQEQkBUJU3yNQ4nTKExx
+					rUJH7mWKdV+z2vCRdKdAnC45mfXrSEDmB54a
+					34g00wxVqvRIBrQ6+v/O )
+			86400	NSEC	nsj.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					a92K5FyMHbvMccBm7YLV+dPeDPVamwwAjejI
+					1yey9UEA7ITC3wGHL8gaHtLAQdekmCM1BXrz
+					Hgkn10weqGi05ZYqoe65wbWAItjWtYqBqMbd
+					do/T43rzEHHKeM8IYjvr )
+nsq.keytrap.test.	86400	IN A	10.10.1.16
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					XDrPilgUj7OSQH7cxafhgsw/9IFKbkOF8kHj
+					eVmz+LGFYmvOBivtkZNVSEmlQb1wocLAvhIN
+					BxKUwAwFi6sneejFKdIPd4oSixb+sKpT+Wim
+					ofJPB9UmEWunJ2qt8WN/ )
+			86400	NSEC	nsr.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					NUsga1v1taM/F3Fxz+YHsSBK15Ltp3Htx3nj
+					kZydMe3mcshxuL0d9k/e8qZ4D6frTDunN7of
+					SycTjW4HHVZJ4xTxuGiWreVQhCmMcooZLfsu
+					NxkUQxzuAsJIiAs0LuM4 )
+nsm.keytrap.test.	86400	IN A	10.10.1.12
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					vsIrDhcqsjKpoAxKlUREAZ5COekT6hb8dfN+
+					rWpZdCWYkNVLAvx74maiRlrkWQC3pVga5QkS
+					viMdMkwheJWmTwHY5MryK83WEDyFZXXnMCr0
+					dOj+rjCQdJId4IovqegA )
+			86400	NSEC	nsn.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					HKcAlbjrhbB1zxHaXiuq+BX8ZptpnzPH10tm
+					pwcGH2KPBbSu6VOjD4sKfZ01Bm+TR2+eK6Vm
+					/yXADPAspgX9Tld9O56x95PjgD9t5Kl9aNw9
+					Kv0zR56oJW+GsAuCR1RD )
+nxns.keytrap.test.	86400	IN NS	ns1.faken0.test.
+			86400	IN NS	ns1.faken1.test.
+			86400	IN NS	ns1.faken2.test.
+			86400	IN NS	ns1.faken3.test.
+			86400	IN NS	ns1.faken4.test.
+			86400	IN NS	ns1.faken5.test.
+			86400	IN NS	ns1.faken6.test.
+			86400	IN NS	ns1.faken7.test.
+			86400	IN NS	ns1.faken8.test.
+			86400	IN NS	ns1.faken9.test.
+			86400	IN NS	ns1.fakena.test.
+			86400	IN NS	ns1.fakenb.test.
+			86400	IN NS	ns1.fakenc.test.
+			86400	IN NS	ns1.fakend.test.
+			86400	IN NS	ns1.fakene.test.
+			86400	IN NS	ns1.fakenf.test.
+			86400	IN NS	ns1.fakeng.test.
+			86400	IN NS	ns1.fakenh.test.
+			86400	IN NS	ns1.fakeni.test.
+			86400	IN NS	ns1.fakenj.test.
+			86400	IN NS	ns1.fakenk.test.
+			86400	IN NS	ns1.fakenl.test.
+			86400	IN NS	ns1.fakenm.test.
+			86400	IN NS	ns1.fakenn.test.
+			86400	IN NS	ns1.fakeno.test.
+			86400	IN NS	ns1.fakenp.test.
+			86400	IN NS	ns1.fakenq.test.
+			86400	IN NS	ns1.fakenr.test.
+			86400	IN NS	ns1.fakens.test.
+			86400	IN NS	ns1.fakent.test.
+			86400	IN NS	ns1.fakenu.test.
+			86400	IN NS	ns1.fakenv.test.
+			86400	IN NS	ns1.fakenw.test.
+			86400	IN NS	ns1.fakenx.test.
+			86400	IN NS	ns1.fakeny.test.
+			86400	IN NS	ns1.fakenz.test.
+			86400	NSEC	restart.keytrap.test. NS RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					TY+rhb7463bWIolUqcK9pNiF0t9sX2ThOxNx
+					sWXPxHkmZ72Z64u0CNa6QlO3ltbPvJL5vPIl
+					Vsn2miWA4s3+x5tBxKTE1AZKdi7SI9dEnvPY
+					xXZQDoTS5PHrtsw6UKB8 )
+restart.keytrap.test.	86400	IN NS	nsa.keytrap.test.
+			86400	IN NS	nsb.keytrap.test.
+			86400	IN NS	nsc.keytrap.test.
+			86400	IN NS	nsd.keytrap.test.
+			86400	IN NS	nse.keytrap.test.
+			86400	IN NS	nsf.keytrap.test.
+			86400	IN NS	nsg.keytrap.test.
+			86400	IN NS	nsh.keytrap.test.
+			86400	IN NS	nsi.keytrap.test.
+			86400	IN NS	nsj.keytrap.test.
+			86400	IN NS	nsk.keytrap.test.
+			86400	IN NS	nsl.keytrap.test.
+			86400	IN NS	nsm.keytrap.test.
+			86400	IN NS	nsn.keytrap.test.
+			86400	IN NS	nso.keytrap.test.
+			86400	IN NS	nsp.keytrap.test.
+			86400	IN NS	nsq.keytrap.test.
+			86400	IN NS	nsr.keytrap.test.
+			86400	IN NS	nss.keytrap.test.
+			86400	IN NS	nst.keytrap.test.
+			86400	IN NS	nsu.keytrap.test.
+			86400	IN NS	nsv.keytrap.test.
+			86400	IN NS	nsw.keytrap.test.
+			86400	IN NS	nsx.keytrap.test.
+			86400	IN NS	nsy.keytrap.test.
+			86400	IN NS	nsz.keytrap.test.
+			86400	NSEC	www.keytrap.test. NS RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					Z2g4QrrQswPj5dIbxa+5jFaAylegy/pc70GI
+					KOOROBCedK8E+yx64qK4AZenZhxG2Mhk7jCK
+					hPaj9XZImKy3timdAll/0IeDiZdS9hXuR0Iq
+					rN+x2Ic+lAlCsXZXCNx9 )
+nsz.keytrap.test.	86400	IN A	10.10.1.25
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					PrxZUg+8W/1JRcoeKxkdLI9joAJJcvRrRyx8
+					ifmc0ZEPDQ9G2zDZByfxOn+V31I5Iges+TjL
+					rWyYI//L8ZaH/ZwcFjaY0k2u3zfxdwHq1jfU
+					g+YfRdQTYP5J0o3Di7Ry )
+			86400	NSEC	nxns.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					XhTIJfaGLWKKCSalnn8oM9VDOKcq5TIWKuYX
+					7rrt8kSja6om4x66AeZURz/Tm0TlxPl2LLya
+					pKePKNBU7saSvOa2HC/7+PxuL6AxNvS0maVP
+					i+KWLee9ZpBVobMOl4XO )
+www.keytrap.test.	86400	IN A	10.10.0.4
+			86400	RRSIG	A 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					gLBVc51AizdVqxPr+jiY1wu5vl9zOYvgNFW2
+					WZS1205mrDHteBtsISbjeh5UV0iHlcK/wC0S
+					scj/+tnW7fQKzqKf9TVT8YjpWHuXktubc67C
+					IG0dwuWcpB+KTG89ciOH )
+			86400	NSEC	keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010140851 20240910140851 6350 keytrap.test.
+					vhB/Scag33j55us2mgAMINqU2rCA9EyXHmU7
+					H/TP2lymSUE5k4cWXiQQWM0JrtTAtyqAbrgG
+					Z/kNay2OI/fGRT66ldM8jgGVzjD25qsXdkil
+					EQVMrZfLZcbeVfLRglcR )

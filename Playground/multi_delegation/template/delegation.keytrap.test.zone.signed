@@ -1,0 +1,143 @@
+; File written on Wed Sep 11 08:56:54 2024
+; dnssec_signzone version 9.18.28-0ubuntu0.22.04.1-Ubuntu
+delegation.keytrap.test. 86400	IN SOA	ns1.delegation.keytrap.test. t0chus.keytrap.test.delegation.keytrap.test. (
+					2024091001 ; serial
+					3600       ; refresh (1 hour)
+					1800       ; retry (30 minutes)
+					604800     ; expire (1 week)
+					86400      ; minimum (1 day)
+					)
+			86400	RRSIG	SOA 14 3 86400 (
+					20241010235654 20240910235654 6350 delegation.keytrap.test.
+					h/OD3BO2naMq9SeOU/c7dg1MCZWyWMcqNeuY
+					OWqoRnQjGGJ5Xw4yCiw1NNxv9Wlox1z8DWso
+					36OlKFpf9oaEL/cJQZVsvHuyy1Lys+iGSSC+
+					AVQZcPoSz2YoSalFt/kX )
+			86400	NS	ns1.delegation.keytrap.test.
+			86400	RRSIG	NS 14 3 86400 (
+					20241010235654 20240910235654 6350 delegation.keytrap.test.
+					5szpr5+mPKkL45VaYUTQfEGuhRfRylNE5k9f
+					DbauZq0nQp47tJwxzoglO4EYrn8eQ+pVkn/I
+					POsecuDTgHT9tVxnyTBi201/7+DBAyoR15WE
+					kYi7eEb6rMVbfGYPI9L3 )
+			86400	NSEC	ns1.delegation.keytrap.test. NS SOA RRSIG NSEC DNSKEY
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241010235654 20240910235654 6350 delegation.keytrap.test.
+					+D5bT9QXUCfECthjgVliCJ0Wg9GU6xfeI1qg
+					4W8DmA1gaQU9w04AzecZozWPTMnox/wOanlr
+					M0UooNR/aMECX2dthFBWZHe+B7AoaM0Ofwv0
+					eswt/zhlh4y0oVWczvA7 )
+			86400	DNSKEY	256 3 14 (
+					DcYreAh+USsK1mtv7bSR2iaQvShPUqCy7l/B
+					RQXttAFupXp6pUaQZS+kii+H2JJqd+rS4YgC
+					3KCd/by8yQi5j+WSy2yRprSuFuDyqZMFnDT/
+					Py+nGjmIa59+W1iMdEYb
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					EUCex5BxNR/cKQUYoHJD1Hj6TK+aMpntzC98
+					Nv+ZegTklzXAxMxC8nAc9VSywVHBjTrkCnVY
+					rY4Gu1YQfscREc+mjbyhUzEMZBHPIEAfuerZ
+					wu2wovC4mau3RVWHRhij
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					MjY4X0GT9jf00V9bZU7cMkceFGdUMgbeNK4a
+					fF6BB/VznyKXsZlTeX5IgrD/8BNWd1jMvvL5
+					RlbBXbmy5022d34VqReK5IRA6WKxp9uzDBEp
+					c6qoh2npdudDTsFMZKor
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					Mq9Ohq02Xq6D5GprEXuvkZFumkDNmUUEAmKt
+					GG/7FfVeeu3ZMQankbw0eID2p8MB4dcSDotv
+					4YHvx6Sx3t6zdjSFaCloAveMUnvtIQsXL8Kb
+					fm2G0ikVuXtbMSHmFM9w
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					NJAIrXpcToloZ5CnSwyPf/Y8qyL3aFlqFr8X
+					cw/m19dBcyoJQIak5ygffLTHGrQhZNGM8TrL
+					07v41sL1ZYuYjGBg7RBdMaeQr+JOUA4d5e/r
+					83fkT7uHNOcHzOAhI7Nu
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					Nd/hhlFfE9YcGAKn/DjwaRDo2x1shj8A59LM
+					XfNuxgPtRH1fT5k9EB1twCTEzqAQNLyx9a6t
+					+Kma/LBXtapxM78FXNaleSnF2fJ40+7rCBnn
+					1cFjvdHEPHkW4XUGToyO
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					UiTl5T9RdFXTul4Nw3rQ9/zlGCODylgcI9mr
+					z5SqpEkxw9+l+E00/JGxAj6If8yjE7Etexs/
+					KTCX7csAYQTLq864iYB+5sPigcMHAzluyPU9
+					fOUmALQbRtw3ZXPHBb7L
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					qz2ys56wu+rPHXp62eskqFa/lYw4xl7oDT5X
+					/wcj7fFapLq8zsOT3kM5E7IlKwa42cIqCcNc
+					b6hG8C8YKWUOgUTOiXPXj7k4SO4K3/+CfFp+
+					7J6ai8shKSFAMvhf2ajl
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					8y5y+PlI/MQAMADANSuw0UXq7WUGpGr+U+Y4
+					sl+dAu78T+rZ1NUE1TVg5fZU7j7bO+Ie7Mk6
+					DcquNT0zYX986pGJgXpx6jTDh3dztnt9Sc9S
+					BcUdBw0v/u1y72EfLQ2P
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	257 3 14 (
+					MzJsFTtAo0j8qGpDIhEMnK4ImTyYwMwDPU5g
+					t/FaXd6TOw6AvZDAj2hlhZvaxMXV6xCw1MU5
+					iPv5ZQrb3NDLUU+TW07imJ5GD9YKi0Qiiypo
+					+zhtL4aGaOG+870yHwuY
+					) ; KSK; alg = ECDSAP384SHA384 ; key id = 30130
+			86400	RRSIG	DNSKEY 14 3 86400 (
+					20241010235654 20240910235654 6350 delegation.keytrap.test.
+					/Tz5uPN0JM4bYskS3a7Fnuw0jSqJFb+BCF2v
+					YbnyZR+DA2uOZdrvnu4h/1BxhIePiOsiQJor
+					muCHNGlRMq795Qagypqzndx2BE2IqAXOJbRd
+					RXVZ3/tf67aNnS3v24HI )
+			86400	RRSIG	DNSKEY 14 3 86400 (
+					20241010235654 20240910235654 30130 delegation.keytrap.test.
+					yheiW82As59Az/ywHqA79cFCTfcTRRqt4OF8
+					LC0+7K/bS2uLA/FEHoTP/nu8odAvAi9i15zT
+					9l9CC2V5fctX9a3MAx5HfwnJpEUtIhvUQgs6
+					5JkLWdciquPaFvlnIT/R )
+www.delegation.keytrap.test. 86400 IN A	10.10.0.5
+			86400	RRSIG	A 14 4 86400 (
+					20241010235654 20240910235654 6350 delegation.keytrap.test.
+					5b9VNJlZR7nWVP1KVy8m5wpGgOB5rv9H+hx0
+					y3LNAD39iLuAG1Z7PK+Ke0iIr9km5VDxMwbA
+					agIr9ANDBDSQHaQO0UxyP1TlUp6OBIoTZAzr
+					lnYCgSe7yyVrbdklnqbB )
+			86400	NSEC	delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 4 86400 (
+					20241010235654 20240910235654 6350 delegation.keytrap.test.
+					HwI7poKMVlhFFRj8Ats4TO4zrj0jal1E2PXE
+					rmXc73+XnFbLXOcd1xX7ZFwyzko8zfcXUd2K
+					SWXx+oO5c+Wa8+I9SBxJoLpSv2cHt/7YMLP3
+					jsKXRT42iKjcu6Hy2tH2 )
+ns1.delegation.keytrap.test. 86400 IN A	10.10.0.5
+			86400	RRSIG	A 14 4 86400 (
+					20241010235654 20240910235654 6350 delegation.keytrap.test.
+					nl21hY7P34/bwwU68nM7l5YRrPyXQiGLOiGv
+					OZJIo3jpUNxa4zyAlc1HSdoc29QzxUt/F8sT
+					5wY3B74FaKnIGjVatksl0nfYcaoGaB9evlUz
+					UOtwuM/mRCeQ4hTsHbMQ )
+			86400	NSEC	redo.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 4 86400 (
+					20241010235654 20240910235654 6350 delegation.keytrap.test.
+					X0QhBSdqqF7akFEUMDdMWLC7QoXmnI3g1oQC
+					vsiuCoBcgEPqvtNOon8WIWW4bFxf+xXHJjFF
+					lGzAVwBlZk6WBrjOl1fB7rhslaXQ72ezZyL8
+					2T84dGQNcBsfB6JipZrO )
+redo.delegation.keytrap.test. 86400 IN A 10.10.0.6
+			86400	RRSIG	A 14 4 86400 (
+					20241010235654 20240910235654 6350 delegation.keytrap.test.
+					otrUnkClJVJeW3+md/nvCqY5X5Qtv1UJwbHo
+					fDfVUDMqHYcWWK82fRmlDwLStVvLpy30qHyy
+					MkCjQmg87TXLXJsi6SDJLKx+rXc5xfQErTRt
+					762TYJ2v51qi3xaej06p )
+			86400	NSEC	www.delegation.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 4 86400 (
+					20241010235654 20240910235654 6350 delegation.keytrap.test.
+					xahkgZp0mZquzm3G5l3ctTsxJT6A9s6IEafV
+					FcvXV5XICILhOPoDsCIXqRzXVoNXGg8Ofgze
+					zbgk1JObl+qhgQe0n0633gSoByzfb5JbDp98
+					0/AbBAX1g6rZjjpDKF7v )
