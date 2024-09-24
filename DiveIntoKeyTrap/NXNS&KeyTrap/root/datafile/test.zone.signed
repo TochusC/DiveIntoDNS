@@ -1,0 +1,165 @@
+; File written on Mon Sep 23 15:22:21 2024
+; dnssec_signzone version 9.18.28-0ubuntu0.22.04.1-Ubuntu
+test.			86400	IN SOA	ns1.test. t0chus.keytrap.test.test. (
+					2024091001 ; serial
+					3600       ; refresh (1 hour)
+					1800       ; retry (30 minutes)
+					604800     ; expire (1 week)
+					86400      ; minimum (1 day)
+					)
+			86400	RRSIG	SOA 14 1 86400 (
+					20241023062221 20240923062221 6350 test.
+					G43M1i0zsRdcbPVJ9nnkR4KsoUS6MGAAvwlZ
+					NfbXI4BJX6it1qpc3XTEGckHpLvPa0uJcWZn
+					S8DmKK5V9HHMtwuQj+1rYg33whhFwBQQszk6
+					PPIY5GD3T4quhygTJY90 )
+			86400	NS	ns1.test.
+			86400	RRSIG	NS 14 1 86400 (
+					20241023062221 20240923062221 6350 test.
+					r+3B7Y6U7bboSet2s9LAor4LYgNiJu6Zql9e
+					EkQnzcAQaE8mU5Y7xOGTeKTPTvCO40OuhMb4
+					fx7AxcbbjL5SXSUKaZPZ/Arn910cGjNVFsB0
+					naTNFlnxiwWu5YzWAWGB )
+			86400	NSEC	keytrap.test. NS SOA RRSIG NSEC DNSKEY
+			86400	RRSIG	NSEC 14 1 86400 (
+					20241023062221 20240923062221 6350 test.
+					G6ca5c0g2ZUxbJdNsIjuvWiygM5ppDIkj4DH
+					rx3jLDiZYDR3OORPV+MBGI6W5XUwz7IE8kSd
+					icdFtvbcHHyF6E+Y2Nox8R1Zz9eVZXNRDMGL
+					ITT65K7lMgwtaPLkrhFr )
+			86400	DNSKEY	256 3 14 (
+					DcYreAh+USsK1mtv7bSR2iaQvShPUqCy7l/B
+					RQXttAFupXp6pUaQZS+kii+H2JJqd+rS4YgC
+					3KCd/by8yQi5j+WSy2yRprSuFuDyqZMFnDT/
+					Py+nGjmIa59+W1iMdEYb
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					EUCex5BxNR/cKQUYoHJD1Hj6TK+aMpntzC98
+					Nv+ZegTklzXAxMxC8nAc9VSywVHBjTrkCnVY
+					rY4Gu1YQfscREc+mjbyhUzEMZBHPIEAfuerZ
+					wu2wovC4mau3RVWHRhij
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					MjY4X0GT9jf00V9bZU7cMkceFGdUMgbeNK4a
+					fF6BB/VznyKXsZlTeX5IgrD/8BNWd1jMvvL5
+					RlbBXbmy5022d34VqReK5IRA6WKxp9uzDBEp
+					c6qoh2npdudDTsFMZKor
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					Mq9Ohq02Xq6D5GprEXuvkZFumkDNmUUEAmKt
+					GG/7FfVeeu3ZMQankbw0eID2p8MB4dcSDotv
+					4YHvx6Sx3t6zdjSFaCloAveMUnvtIQsXL8Kb
+					fm2G0ikVuXtbMSHmFM9w
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					NJAIrXpcToloZ5CnSwyPf/Y8qyL3aFlqFr8X
+					cw/m19dBcyoJQIak5ygffLTHGrQhZNGM8TrL
+					07v41sL1ZYuYjGBg7RBdMaeQr+JOUA4d5e/r
+					83fkT7uHNOcHzOAhI7Nu
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					Nd/hhlFfE9YcGAKn/DjwaRDo2x1shj8A59LM
+					XfNuxgPtRH1fT5k9EB1twCTEzqAQNLyx9a6t
+					+Kma/LBXtapxM78FXNaleSnF2fJ40+7rCBnn
+					1cFjvdHEPHkW4XUGToyO
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					UiTl5T9RdFXTul4Nw3rQ9/zlGCODylgcI9mr
+					z5SqpEkxw9+l+E00/JGxAj6If8yjE7Etexs/
+					KTCX7csAYQTLq864iYB+5sPigcMHAzluyPU9
+					fOUmALQbRtw3ZXPHBb7L
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					qz2ys56wu+rPHXp62eskqFa/lYw4xl7oDT5X
+					/wcj7fFapLq8zsOT3kM5E7IlKwa42cIqCcNc
+					b6hG8C8YKWUOgUTOiXPXj7k4SO4K3/+CfFp+
+					7J6ai8shKSFAMvhf2ajl
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					8y5y+PlI/MQAMADANSuw0UXq7WUGpGr+U+Y4
+					sl+dAu78T+rZ1NUE1TVg5fZU7j7bO+Ie7Mk6
+					DcquNT0zYX986pGJgXpx6jTDh3dztnt9Sc9S
+					BcUdBw0v/u1y72EfLQ2P
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	257 3 14 (
+					MzJsFTtAo0j8qGpDIhEMnK4ImTyYwMwDPU5g
+					t/FaXd6TOw6AvZDAj2hlhZvaxMXV6xCw1MU5
+					iPv5ZQrb3NDLUU+TW07imJ5GD9YKi0Qiiypo
+					+zhtL4aGaOG+870yHwuY
+					) ; KSK; alg = ECDSAP384SHA384 ; key id = 30130
+			86400	RRSIG	DNSKEY 14 1 86400 (
+					20241023062221 20240923062221 6350 test.
+					CFoj20xeOFE/darkbfG/k/R2kPUxE7ua352+
+					D4W8NyW59L4Uxhz6GrdeyhBh2dCHmPuDRGfW
+					iA6FlLDKQtPldY3MaFV/JkEOMFt5KNEQfo7n
+					GIymFWI0wb3qdsbUEpCV )
+			86400	RRSIG	DNSKEY 14 1 86400 (
+					20241023062221 20240923062221 30130 test.
+					zzuHIAwTMYlus1UtCIbImN+cwujivAWhj1Dj
+					Qjbh5cCdcB0dbLO3XC9oHpSS1l1/bNzPmRtJ
+					yyY6b/gj7NyplJ5ARden4u5qUUx4MwU7ML5c
+					lorpG7rG7pPx0mjYxSZ+ )
+ns1.keytrap.test.	86400	IN A	10.10.0.5
+ns1.nxns.test.		86400	IN A	10.10.0.6
+keytrap.test.		86400	IN NS	ns1.keytrap.test.
+			86400	DS	30130 14 2 (
+					E59EB78A4A334F54EB8BFC54762B4D20E6ED
+					52E6E45AB49515F6FA8D47A09BAB )
+			86400	RRSIG	DS 14 2 86400 (
+					20241023062221 20240923062221 6350 test.
+					58ZhfsHfXDfDVCeaN8eLxmpmDvvS7u9QYxr6
+					uYIEZO1pTgY6ILKNRqfV79OkzwSDEi/+BGiX
+					sR9tj4Xfggt7H9jfa7tr92epCiej5sMBwcGy
+					l0ieriu97DSsNdw6GBsT )
+			86400	NSEC	ns1.test. NS DS RRSIG NSEC
+			86400	RRSIG	NSEC 14 2 86400 (
+					20241023062221 20240923062221 6350 test.
+					zxpXgsrUhTi20dW4lPCkP9JVlDwFrFJRNJ2a
+					0F+EGeUi+ZbVUtc3a+oKQCm674byJHkwsQ01
+					95sHFhGtsNhmZ27ptsnBQESDkeY+Z/Xnu8w0
+					UV120kq4ONOR6zZTIQSP )
+ns1.test.		86400	IN A	10.10.0.4
+			86400	RRSIG	A 14 2 86400 (
+					20241023062221 20240923062221 6350 test.
+					MWD30GNWzAZoeX80tl5GcQqFXG8Z5eAyy1k0
+					LfYfUeJMzb5dYLfwC4HbLs0pS2U9nOClrPlU
+					LbLIi3VgDoQ1MLPbNd8GnZhUfr+1hu4pXcLt
+					ABWtLP3lC/woSWdxkDRb )
+			86400	NSEC	nxns.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 2 86400 (
+					20241023062221 20240923062221 6350 test.
+					5mlV48pOhZytzJ6hrgBD/CxByKIJ7TQBPF4Q
+					HKPfq7mJS7TUPVUuWipUGNShwVX19meiGxP+
+					mGikGho9lpGFUW2ECqCibIKdVhTj5cODTxDV
+					D5pjMsTtaXzqOXJYKe48 )
+www.test.		86400	IN A	10.10.0.4
+			86400	RRSIG	A 14 2 86400 (
+					20241023062221 20240923062221 6350 test.
+					den8GV0LSiTPI88tEaQTYew15t3l57gi31ik
+					faVjekmIe2gRNvL20PQF0Lb4jbILhFI+t+TW
+					9d7l0fPkP9OQo/Dubiyi/rG8J4gYX83ARlYj
+					CwYrcPmQEWAaF1o5izd2 )
+			86400	NSEC	test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 2 86400 (
+					20241023062221 20240923062221 6350 test.
+					+QFtJkIMK7dBvENgl04uBNcsptYfqrHF+m0N
+					7Jm5V988CWnLj7ghyoFftABwUXAdg4E18Xr6
+					eXLaB+e7CAHU34VWMK5D6PWkwlnU8nJzeHIV
+					f4hrZdEH8GNp3hAd6+Uo )
+nxns.test.		86400	IN NS	ns1.nxns.test.
+			86400	DS	30130 14 2 (
+					D73D9BE991767493576B4DCB1B535A284812
+					8FB4D672CC930D4376E6D6C121CC )
+			86400	RRSIG	DS 14 2 86400 (
+					20241023062221 20240923062221 6350 test.
+					1WAOBgQVCNM4nUEBhzVv1CX0B8qePc0kxsl6
+					69TRQjhLorpfhLGcrpwZD8kWOFiz0ANF7Cq6
+					Kx3noe+rXPiICJBrNMDsqHNVo+Tl0aLhm9ZL
+					P00K2kf8E5hq4yAPY8YE )
+			86400	NSEC	www.test. NS DS RRSIG NSEC
+			86400	RRSIG	NSEC 14 2 86400 (
+					20241023062221 20240923062221 6350 test.
+					uwBbHSvGcfz33wXASfh9iEdH8Q9l83EGkmel
+					JuT4icHIvR9s6yzneY1b6SL6IauAvf0D8Pcb
+					AB/r1+adz1jm/b1S1dcjqAAe0FBxaIPW58Bg
+					Pp7zXM/6PsbblT+uQdJl )
