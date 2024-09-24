@@ -1,0 +1,198 @@
+; File written on Mon Sep 23 15:27:11 2024
+; dnssec_signzone version 9.18.28-0ubuntu0.22.04.1-Ubuntu
+keytrap.test.		86400	IN SOA	ns1.keytrap.test. t0chus.keytrap.test.keytrap.test. (
+					2024091001 ; serial
+					3600       ; refresh (1 hour)
+					1800       ; retry (30 minutes)
+					604800     ; expire (1 week)
+					86400      ; minimum (1 day)
+					)
+			86400	RRSIG	SOA 14 2 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					RfqilXZaP09UBwj/HT+7JOg2EdBUun8CDzmj
+					71VjvwLoekASKIJ/620FP+XnB5+jSenqmrJw
+					KQWAZPnFxG4lyJSh45tDal7k1wRawSIP2QAV
+					nrybwQV22lkEvXK4j5Ff )
+			86400	NS	ns0.keytrap.test.
+			86400	NS	ns1.keytrap.test.
+			86400	NS	ns2.keytrap.test.
+			86400	NS	ns3.keytrap.test.
+			86400	NS	ns4.keytrap.test.
+			86400	RRSIG	NS 14 2 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					FsYpiw/btQ0B5Uw0WwYPoAvbDO3LP6d+34jz
+					iIafMDArlblLle2N0+USdREzlMksS7Bay6ck
+					CXhkBudSKa3ESbQQkrGxpVIp+4KItcCA4UJY
+					bAEO0+O0WyyrTQ6JtZpA )
+			86400	NSEC	ns0.keytrap.test. NS SOA RRSIG NSEC DNSKEY
+			86400	RRSIG	NSEC 14 2 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					GGfGYHGgijhtRftwd+8nxj8jpIJenFNIt8W5
+					qKV5fLSLH8zoeH88ZzZclWDSEIAkejJKjEqK
+					W03woa3ZG+4ctz+252TZxL4vYR76yoebpGJQ
+					8hkyODh00GsAjJz0Zyzi )
+			86400	DNSKEY	256 3 14 (
+					DcYreAh+USsK1mtv7bSR2iaQvShPUqCy7l/B
+					RQXttAFupXp6pUaQZS+kii+H2JJqd+rS4YgC
+					3KCd/by8yQi5j+WSy2yRprSuFuDyqZMFnDT/
+					Py+nGjmIa59+W1iMdEYb
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					EUCex5BxNR/cKQUYoHJD1Hj6TK+aMpntzC98
+					Nv+ZegTklzXAxMxC8nAc9VSywVHBjTrkCnVY
+					rY4Gu1YQfscREc+mjbyhUzEMZBHPIEAfuerZ
+					wu2wovC4mau3RVWHRhij
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					MjY4X0GT9jf00V9bZU7cMkceFGdUMgbeNK4a
+					fF6BB/VznyKXsZlTeX5IgrD/8BNWd1jMvvL5
+					RlbBXbmy5022d34VqReK5IRA6WKxp9uzDBEp
+					c6qoh2npdudDTsFMZKor
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					Mq9Ohq02Xq6D5GprEXuvkZFumkDNmUUEAmKt
+					GG/7FfVeeu3ZMQankbw0eID2p8MB4dcSDotv
+					4YHvx6Sx3t6zdjSFaCloAveMUnvtIQsXL8Kb
+					fm2G0ikVuXtbMSHmFM9w
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					NJAIrXpcToloZ5CnSwyPf/Y8qyL3aFlqFr8X
+					cw/m19dBcyoJQIak5ygffLTHGrQhZNGM8TrL
+					07v41sL1ZYuYjGBg7RBdMaeQr+JOUA4d5e/r
+					83fkT7uHNOcHzOAhI7Nu
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					Nd/hhlFfE9YcGAKn/DjwaRDo2x1shj8A59LM
+					XfNuxgPtRH1fT5k9EB1twCTEzqAQNLyx9a6t
+					+Kma/LBXtapxM78FXNaleSnF2fJ40+7rCBnn
+					1cFjvdHEPHkW4XUGToyO
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					UiTl5T9RdFXTul4Nw3rQ9/zlGCODylgcI9mr
+					z5SqpEkxw9+l+E00/JGxAj6If8yjE7Etexs/
+					KTCX7csAYQTLq864iYB+5sPigcMHAzluyPU9
+					fOUmALQbRtw3ZXPHBb7L
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					qz2ys56wu+rPHXp62eskqFa/lYw4xl7oDT5X
+					/wcj7fFapLq8zsOT3kM5E7IlKwa42cIqCcNc
+					b6hG8C8YKWUOgUTOiXPXj7k4SO4K3/+CfFp+
+					7J6ai8shKSFAMvhf2ajl
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	256 3 14 (
+					8y5y+PlI/MQAMADANSuw0UXq7WUGpGr+U+Y4
+					sl+dAu78T+rZ1NUE1TVg5fZU7j7bO+Ie7Mk6
+					DcquNT0zYX986pGJgXpx6jTDh3dztnt9Sc9S
+					BcUdBw0v/u1y72EfLQ2P
+					) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+			86400	DNSKEY	257 3 14 (
+					MzJsFTtAo0j8qGpDIhEMnK4ImTyYwMwDPU5g
+					t/FaXd6TOw6AvZDAj2hlhZvaxMXV6xCw1MU5
+					iPv5ZQrb3NDLUU+TW07imJ5GD9YKi0Qiiypo
+					+zhtL4aGaOG+870yHwuY
+					) ; KSK; alg = ECDSAP384SHA384 ; key id = 30130
+			86400	RRSIG	DNSKEY 14 2 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					cUa+N2bbnQWkfDCu0mzAuGC3VHFVUo8QR5SN
+					DNlzcuwC/BU5mNketffxrlQFvpCCayu6r/Ft
+					FNnA4bADpdz7xOBIkvk22J6OsunI9z8+LQON
+					LUjhzJp0atqqB4w6AHBb )
+			86400	RRSIG	DNSKEY 14 2 86400 (
+					20241023062711 20240923062711 30130 keytrap.test.
+					6y8PuTuNgxG/812rWfGJgKNjGlVxqRx+eyJC
+					Ip8xaE7mbuzT3Vs/iMFiiC3GEQ0gVj8L0W8E
+					Qny28ws/fnS84AGnBEm9ATviOtDKTKHBYMYs
+					CsX0VoQLrNBGqcP/fnsG )
+nxdomain.keytrap.test.	86400	IN NS	nx0.nxns.test.
+			86400	IN NS	nx1.nxns.test.
+			86400	NSEC	www.keytrap.test. NS RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					iaYg5tPAkvyV06ESrs+YKov2sZyRTWPbqRRU
+					s6fPg6x/40BFNGdQEFAsamNjFqftjCJdHdWD
+					OpJWShWfQZPWhW9ybAClACVji1o5xwxMMSOC
+					CFZpvp6hrGKlLUIhEhsb )
+www.keytrap.test.	86400	IN A	10.10.0.5
+			86400	RRSIG	A 14 3 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					qBiuC7Zc8U3gRbT05Ry264LVQ3M4rSd08D9m
+					KGCQFN86/T3kAmWbWEb+HCGgcK5EcnBAjeP4
+					IVvFeJ2dRHtSklf+2I+Awli/0BvGSsXO+89/
+					0E+eePhmRIHLFRifpw22 )
+			86400	NSEC	keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					EY5Q8MSNLn8vELbugM+/DkBO2K7WFql7EmdQ
+					4+II/k+rgJf9DwmHBfMuo870sh000GjAlAS6
+					5AiJPNywSWv1px55Gmi3zDD6n7RSJsMZWhN2
+					AjN9nCtMFuMMJYN1gSTP )
+ns3.keytrap.test.	86400	IN A	10.10.0.5
+			86400	RRSIG	A 14 3 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					S9dpEwL9EosgKykuznwKRnrmoRwkxL1+sI33
+					CT9z91nkzxqwCTkDwKGNJOhHlLWy3obyKqtY
+					Io91+CDQeNBV8nPDn+QpBxRMBLQifp5WjYa1
+					dUEmjBjFGcUrCwUP9knh )
+			86400	NSEC	ns4.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					JevXD5SBrAt77VOdDYiASTpfWDRpfCzSWqGd
+					Do9vHqfF07ciSOPCv4GT371245rt6PofclKy
+					hdQ66G3z7p0FsPF54HsTklGtYvqU6J2vNLdF
+					a7NZvaLSaGvM5HZR9jnE )
+ns1.keytrap.test.	86400	IN A	10.10.0.5
+			86400	RRSIG	A 14 3 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					S1MkVP2Zm3mKIvElBzcKtQpTeBme1c/2sf48
+					x4TWu1d9M3OaYwUS+CQoZpM3fBGO8cBCD7rl
+					EgE34v+jef0lA8QYDJXGh6BJ58hGlxeX3crr
+					oHnVrxeIktk/AZTt3N6b )
+			86400	NSEC	ns2.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					DswpiDUwiH3vV1VfYL020tfCR/LhTEB7WE2T
+					c8+DdP4XCsi9ZFyluYpVdiQ+Fc2xuoKWPEST
+					VSymf8ju3G5IA0q0eXPGtNy8RjWb6jR5kL4l
+					RZGofuZj3CjYtzB/YfVu )
+ns0.keytrap.test.	86400	IN A	10.10.0.5
+			86400	RRSIG	A 14 3 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					l2ESo9ZmalhlFwmvsOImq2VcjXPDiFVm6mVY
+					/9Dibgvl5suEtP9vCZzq4LuqjoN4hY2PpkdU
+					cZ3jYzxoQ/YesnQtzT9J/KNAtmrs+k5Q09bZ
+					QXUHfyf1tQKXQVYyn2vq )
+			86400	NSEC	ns1.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					ZtKHig7OPz9gJr06H5SX1hkcunVddkd/U7TA
+					P5jCEOKnNhqjDl5/FZ18oA2iQeypOFFt5X20
+					eU1JrKIxE6XM9im1cmb+MMjtDKHFJWdCPeqv
+					UVT88ocR/0hAJfPMJ6tQ )
+ns2.keytrap.test.	86400	IN A	10.10.0.5
+			86400	RRSIG	A 14 3 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					NSYybI7S50ydNEFzvFbhrIf3hVFVxATTOGDU
+					aE/Rqtl2V1hXmRzWx3VX7DKgu544403OX3pz
+					IvZiHw14gDuM+VeHcwn9ZKa++P1yZ8/JYWnh
+					ck3L767ippVHrK8ZppNE )
+			86400	NSEC	ns3.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					dsZOcb57zws9Yc1OYgprqrLjAYGCb1ZNAxbS
+					TmUqtJ8brP1NF3l//hDy48ZZVVvSLdqbRUja
+					tKyQpn+J4rsr/NigPE9CAqHRXOFjrjG8HDO7
+					d8DDcjF23ZJKhgP9oUYm )
+ns4.keytrap.test.	86400	IN A	10.10.0.5
+			86400	RRSIG	A 14 3 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					5FWZF93SgKajMlf1xmksiQIBrYW37/dup9fd
+					iCHNp/YgKJKhNYhIpJw2QBpleUedfCX42VwL
+					spGhGid19BZnKUAEeJw03BXgpUlL7SOLmPy/
+					Kl0fD+/kyP6aECqv4pBV )
+			86400	NSEC	nxdomain.keytrap.test. A RRSIG NSEC
+			86400	RRSIG	NSEC 14 3 86400 (
+					20241023062711 20240923062711 6350 keytrap.test.
+					2mnhXzl52JBN94Y9d4VGquIqThVwA6wmOhhr
+					wEvtDYOHfZaqz9wsdzw4MWiEBZoc5jB1dKoG
+					3uUgLfbHXzkpc4BtOhcj+DfbnjN/fK9km0i9
+					0Yeldbl12JvMGhKxSETk )

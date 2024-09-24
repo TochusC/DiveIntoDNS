@@ -13,6 +13,7 @@ services:
     volumes:
       - ./resolver/unbound.conf:/usr/local/etc/unbound/unbound.conf
       - ./resolver/keytrap.test.key:/usr/local/etc/unbound/keytrap.test.key
+      - ./resolver/nxns.test.key:/usr/local/etc/unbound/nxns.test.key
     networks:
       app_net:
         ipv4_address: 10.10.0.3
