@@ -1,0 +1,56 @@
+version: '3'
+
+services:
+  attacker:
+    build: ../attacker
+    command: tail -f /dev/null
+    networks:
+      app_net:
+        ipv4_address: 10.10.0.2
+
+  unbound:
+    build: ../resolver
+    volumes:
+      - ../resolver/unbound.conf:/usr/local/etc/unbound/unbound.conf
+      - ../resolver/keytrap.test.key:/usr/local/etc/unbound/keytrap.test.key
+    networks:
+      app_net:
+        ipv4_address: 10.10.0.3
+
+  auth:
+    build: auth
+    volumes:
+      - ./auth/conf/named:/etc/default/named
+      - ./auth/conf/named.conf:/var/named/chroot/etc/named.conf
+      - ./auth/datafile/keytrap.test.zone.signed:/var/named/chroot/var/named/keytrap.test.zone.signed
+    networks:
+      app_net:
+        ipv4_address: 10.10.0.4
+
+  redo1:
+    build: redo/redo1
+    volumes:
+      - ./redo/redo1/conf/named:/etc/default/named
+      - ./redo/redo1/conf/named.conf:/var/named/chroot/etc/named.conf
+      - ./redo/redo1/datafile/redo.delegation.keytrap.test.zone.signed:/var/named/chroot/var/named/redo.delegation.keytrap.test.zone.signed
+    networks:
+      app_net:
+        ipv4_address: 10.10.0.5
+
+  redo2:
+    build: redo/redo2
+    volumes:
+      - ./redo/redo2/conf/named:/etc/default/named
+      - ./redo/redo2/conf/named.conf:/var/named/chroot/etc/named.conf
+      - ./redo/redo2/datafile/redo.redo.delegation.keytrap.test.zone.signed:/var/named/chroot/var/named/redo.redo.delegation.keytrap.test.zone.signed
+    networks:
+      app_net:
+        ipv4_address: 10.10.0.6
+
+
+networks:
+  app_net:
+    ipam:
+      config:
+        - subnet: 10.10.0.0/24
+

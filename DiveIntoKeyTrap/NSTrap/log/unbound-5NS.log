@@ -1,0 +1,413 @@
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: start
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator[module 0] operate: extstate:module_state_initial event:module_event_new
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validator operate: query www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator: pass to next module
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: validator module exit state is module_wait_module
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iterator[module 1] operate: extstate:module_state_initial event:module_event_pass
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: process_request: new external request event
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: resolving www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: request has dependency depth of 0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: use stub keytrap.test. NS IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: cache delegation returns delegpt
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: DelegationPoint<keytrap.test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug:    ip4 10.10.0.4 port 53 (len 16)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 2)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: resolving (init part 2):  www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: use stub keytrap.test. NS IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 3)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: resolving (init part 3):  www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: processQueryTargets: www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: DelegationPoint<keytrap.test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug:    ip4 10.10.0.4 port 53 (len 16)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: attempt to get extra 3 targets
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: selrtt 376
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: sending query: www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: sending to target: <keytrap.test.> 10.10.0.4#53
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: dnssec status: expected
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: mesh_run: end 1 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: 0RDd mod1 rep www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: cache memory msg=66104 rrset=66104 infra=8224 val=66384
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: serviced send timer
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: EDNS lookup known=0 vs=0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: serviced query UDP timeout=376 msec
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: inserted new pending reply id=fca0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: opened UDP if=0 port=22342
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: comm point start listening 7 (-1 msec)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: answer cb
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: Incoming reply id = fca0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: Incoming reply addr = ip4 10.10.0.4 port 53 (len 16)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: lookup size is 1 entries
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: received udp reply.
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: udp message[1211:0] FCA08490000100020006000F03777777076B65797472617004746573740000010001C00C000100010001518000040A0A0004C00C002E000100015180008000010E0300015180671A014466F2744418CE076B657974726170047465737400D9F1617B1B97625B9AEB37A2013D448C4ED0B33A4ED8237A957910CEA97E73BC700DA895A78DB6A1CF05721E9364FC23AA8052DE82EC87279EAAC887B929FD0D9A87535B8F753581AD4924F47F85871D9330A82F8D2B11D94E34416BCC640894C05000020001000151800006036E7331C050C05000020001000151800006036E7330C050C05000020001000151800006036E7334C050C05000020001000151800006
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: udp message[1211:256] 036E7333C050C05000020001000151800006036E7332C050C050002E000100015180008000020E0200015180671A014466F2744418CE076B657974726170047465737400A47EB9911389D85394088087FE7E6EEE24DD75DB922C568A16BA4405ECBB143430AAAC2F19FB4823D53ACC8A17A28CCA8FEFADEDA97FFCA6B4F51E3E5644C3B8B0B9DCC78CBBFC1AE152CB9F38AB00088045466A9AD8AF577B7BFBCFD93C4544C0DC000100010001518000040A0A0004C0CA000100010001518000040A0A0004C112000100010001518000040A0A0004C100000100010001518000040A0A0004C0EE000100010001518000040A0A0004C0DC001C0001000151800010
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: udp message[1211:512] 20010DB8000000000000000000000004C0CA001C000100015180001020010DB8000000000000000000000004C112001C000100015180001020010DB8000000000000000000000004C100001C000100015180001020010DB8000000000000000000000004C0EE001C000100015180001020010DB8000000000000000000000004C0DC002E000100015180008000010E0300015180671A014466F2744418CE076B6579747261700474657374003C2FA28A4DCD10A4D27C52D4BD17F9A79EF9EDAC21C95F28C7AFD2A1FB2F4F2143465FD78B4692791CB561F13DED566B95ABBCAEBBBCEAD18C55FDFC4DB0B21B3C5663DE7F345EB950274DAC07344BDFB7C47BA8
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: udp message[1211:768] E724A2DC1269638357723DD6C0DC002E0001000151800080001C0E0300015180671A014466F2744418CE076B657974726170047465737400621311217AB431E47D2032637022326EB86DAD8DFB158FAC252DBAFD50777DA0BDB1EB847A890D64324F4D9BDE7CFA4F45851C3502BAF5F00869E5027C5F31F16FF974CC2561537F21B9B08C3CC4188E6C75292E8522391AC0DA7D3A70E52080C0CA002E000100015180008000010E0300015180671A014466F2744418CE076B6579747261700474657374003F81DDD4F70502E1203246004B2581208D7AA241BA8407913202AA50B0644B006695C0B04EFE0DDA385E56561A6E6B08FBC2BBFB415E2013600F4A1A
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: udp message[1211:1024] 3091818A76393412663672C276F6150209F1A0F75DA3D4F4939E41B901E1B5FA0FB0A3FAC0CA002E0001000151800080001C0E0300015180671A014466F2744418CE076B65797472617004746573740089F8C0AB2A667661FA6F912CC39101104909EF2233E7ED9470F19C88F2D472FF12886454B73B81AB1087578B224F83DBF90F37264A6F9A8E55C4097D93E656E86CA50F358F33B0D6F430B2FD9435460D255417A7E7AE3E44B5015481552196DE00002904D0000080000000
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: outnet handle udp reply
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: serviced query: EDNS works for ip4 10.10.0.4 port 53 (len 16)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: measured roundtrip at 1 msec
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: svcd callbacks start
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: worker svcd callback for qstate 0x55a69d1b8240
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: start
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: iterator operate: query www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: process_response: new external response event
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: scrub for keytrap.test. NS IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: response for www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: reply from <keytrap.test.> 10.10.0.4#53
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+2024-09-24 17:15:26 ;; flags: qr aa ra ; QUERY: 1, ANSWER: 2, AUTHORITY: 6, ADDITIONAL: 14 
+2024-09-24 17:15:26 ;; QUESTION SECTION:
+2024-09-24 17:15:26 www.keytrap.test.INA
+2024-09-24 17:15:26 
+2024-09-24 17:15:26 ;; ANSWER SECTION:
+2024-09-24 17:15:26 www.keytrap.test.86400INA10.10.0.4
+2024-09-24 17:15:26 www.keytrap.test.86400INRRSIGA 14 3 86400 20241024081148 20240924081148 6350 keytrap.test. 2fFhexuXYlua6zeiAT1EjE7QszpO2CN6lXkQzql+c7xwDaiVp422oc8Fch6TZPwjqoBS3oLshyeeqsiHuSn9DZqHU1uPdTWBrUkk9H+Fhx2TMKgvjSsR2U40QWvMZAiU ;{id = 6350}
+2024-09-24 17:15:26 
+2024-09-24 17:15:26 ;; AUTHORITY SECTION:
+2024-09-24 17:15:26 keytrap.test.86400INNSns0.keytrap.test.
+2024-09-24 17:15:26 keytrap.test.86400INNSns4.keytrap.test.
+2024-09-24 17:15:26 keytrap.test.86400INNSns3.keytrap.test.
+2024-09-24 17:15:26 keytrap.test.86400INNSns2.keytrap.test.
+2024-09-24 17:15:26 keytrap.test.86400INNSns1.keytrap.test.
+2024-09-24 17:15:26 keytrap.test.86400INRRSIGNS 14 2 86400 20241024081148 20240924081148 6350 keytrap.test. pH65kROJ2FOUCICH/n5u7iTddduSLFaKFrpEBey7FDQwqqwvGftII9U6zIoXoozKj++t7al//Ka09R4+VkTDuLC53MeMu/wa4VLLnzirAAiARUZqmtivV3t7+8/ZPEVE ;{id = 6350}
+2024-09-24 17:15:26 
+2024-09-24 17:15:26 ;; ADDITIONAL SECTION:
+2024-09-24 17:15:26 ns0.keytrap.test.86400INA10.10.0.4
+2024-09-24 17:15:26 ns1.keytrap.test.86400INA10.10.0.4
+2024-09-24 17:15:26 ns2.keytrap.test.86400INA10.10.0.4
+2024-09-24 17:15:26 ns3.keytrap.test.86400INA10.10.0.4
+2024-09-24 17:15:26 ns4.keytrap.test.86400INA10.10.0.4
+2024-09-24 17:15:26 ns0.keytrap.test.86400INAAAA2001:db8::4
+2024-09-24 17:15:26 ns1.keytrap.test.86400INAAAA2001:db8::4
+2024-09-24 17:15:26 ns2.keytrap.test.86400INAAAA2001:db8::4
+2024-09-24 17:15:26 ns3.keytrap.test.86400INAAAA2001:db8::4
+2024-09-24 17:15:26 ns4.keytrap.test.86400INAAAA2001:db8::4
+2024-09-24 17:15:26 ns0.keytrap.test.86400INRRSIGA 14 3 86400 20241024081148 20240924081148 6350 keytrap.test. PC+iik3NEKTSfFLUvRf5p5757awhyV8ox6/SofsvTyFDRl/Xi0aSeRy1YfE97VZrlau8rru86tGMVf38TbCyGzxWY95/NF65UCdNrAc0S9+3xHuo5ySi3BJpY4NXcj3W ;{id = 6350}
+2024-09-24 17:15:26 ns1.keytrap.test.86400INRRSIGA 14 3 86400 20241024081148 20240924081148 6350 keytrap.test. P4Hd1PcFAuEgMkYASyWBII16okG6hAeRMgKqULBkSwBmlcCwTv4N2jheVlYabmsI+8K7+0FeIBNgD0oaMJGBinY5NBJmNnLCdvYVAgnxoPddo9T0k55BuQHhtfoPsKP6 ;{id = 6350}
+2024-09-24 17:15:26 ns0.keytrap.test.86400INRRSIGAAAA 14 3 86400 20241024081148 20240924081148 6350 keytrap.test. YhMRIXq0MeR9IDJjcCIybrhtrY37FY+sJS26/VB3faC9seuEeokNZDJPTZvefPpPRYUcNQK69fAIaeUCfF8x8W/5dMwlYVN/IbmwjDzEGI5sdSkuhSI5GsDafTpw5SCA ;{id = 6350}
+2024-09-24 17:15:26 ns1.keytrap.test.86400INRRSIGAAAA 14 3 86400 20241024081148 20240924081148 6350 keytrap.test. ifjAqypmdmH6b5Esw5EBEEkJ7yIz5+2UcPGciPLUcv8SiGRUtzuBqxCHV4siT4Pb+Q83Jkpvmo5VxAl9k+ZW6GylDzWPM7DW9DCy/ZQ1Rg0lVBen564+RLUBVIFVIZbe ;{id = 6350}
+2024-09-24 17:15:26 ;; MSG SIZE  rcvd: 1200
+2024-09-24 17:15:26 
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: query response was ANSWER
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state FINISHED RESPONSE STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: finishing processing for www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: iterator module exit state is module_finished
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator[module 0] operate: extstate:module_wait_module event:module_event_moddone
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validator operate: query www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator: nextmodule returned
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: val handle processing q with state VAL_INIT_STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator classification positive
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: signer is keytrap.test. TYPE0 CLASS0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: prime trust anchor
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: generate request keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: generate keytag query _ta-75b2.keytrap.test. NULL IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: generate request _ta-75b2.keytrap.test. NULL IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: validator module exit state is module_wait_subquery
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator[module 0] operate: extstate:module_state_initial event:module_event_pass
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validator operate: query keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator: pass to next module
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: validator module exit state is module_wait_module
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iterator[module 1] operate: extstate:module_state_initial event:module_event_pass
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: process_request: new external request event
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: resolving keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: request has dependency depth of 0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: cache delegation returns delegpt
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: DelegationPoint<keytrap.test.>: 5 names (0 missing), 2 addrs (0 result, 2 avail) cacheNS
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info:   ns2.keytrap.test. * A AAAA
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info:   ns3.keytrap.test. * A AAAA
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info:   ns4.keytrap.test. * A AAAA
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info:   ns0.keytrap.test. * A AAAA
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info:   ns1.keytrap.test. * A AAAA
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug:    ip6 2001:db8::4 port 53 (len 28)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug:    ip4 10.10.0.4 port 53 (len 16)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 2)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: resolving (init part 2):  keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: use stub keytrap.test. NS IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 3)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: resolving (init part 3):  keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: processQueryTargets: keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: DelegationPoint<keytrap.test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug:    ip4 10.10.0.4 port 53 (len 16)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: attempt to get extra 3 targets
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: servselect ip4 10.10.0.4 port 53 (len 16)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug:    rtt=284
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: selrtt 284
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: sending query: keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: sending to target: <keytrap.test.> 10.10.0.4#53
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: dnssec status: expected
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator[module 0] operate: extstate:module_state_initial event:module_event_pass
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validator operate: query _ta-75b2.keytrap.test. NULL IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator: pass to next module
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: validator module exit state is module_wait_module
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iterator[module 1] operate: extstate:module_state_initial event:module_event_pass
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: process_request: new external request event
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: resolving _ta-75b2.keytrap.test. NULL IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: request has dependency depth of 0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: cache delegation returns delegpt
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: DelegationPoint<keytrap.test.>: 5 names (0 missing), 2 addrs (0 result, 2 avail) cacheNS
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info:   ns2.keytrap.test. * A AAAA
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info:   ns3.keytrap.test. * A AAAA
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info:   ns4.keytrap.test. * A AAAA
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info:   ns0.keytrap.test. * A AAAA
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info:   ns1.keytrap.test. * A AAAA
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug:    ip6 2001:db8::4 port 53 (len 28)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug:    ip4 10.10.0.4 port 53 (len 16)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 2)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: resolving (init part 2):  _ta-75b2.keytrap.test. NULL IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: use stub keytrap.test. NS IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 3)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: resolving (init part 3):  _ta-75b2.keytrap.test. NULL IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: processQueryTargets: _ta-75b2.keytrap.test. NULL IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: DelegationPoint<keytrap.test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug:    ip4 10.10.0.4 port 53 (len 16)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: attempt to get extra 3 targets
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: servselect ip4 10.10.0.4 port 53 (len 16)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug:    rtt=284
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: selrtt 284
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: sending query: _ta-75b2.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: sending to target: <keytrap.test.> 10.10.0.4#53
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: dnssec status: expected
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: mesh_run: end 3 recursion states (1 with reply, 1 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: 0vRDCD mod1  keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: 1vRDd mod1  _ta-75b2.keytrap.test. NULL IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: 2RDdc mod0 rep www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: cache memory msg=66634 rrset=70250 infra=8534 val=66384
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: svcd callbacks end
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: close of port 22342
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: close fd 7
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: serviced send timer
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: EDNS lookup known=1 vs=0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: serviced query UDP timeout=284 msec
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: inserted new pending reply id=1ae8
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: opened UDP if=0 port=56024
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: comm point start listening 7 (-1 msec)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: serviced send timer
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: EDNS lookup known=1 vs=0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: serviced query UDP timeout=284 msec
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: inserted new pending reply id=880c
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: opened UDP if=0 port=48130
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: comm point start listening 8 (-1 msec)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: answer cb
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: Incoming reply id = 1ae8
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: Incoming reply addr = ip4 10.10.0.4 port 53 (len 16)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: lookup size is 2 entries
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: received udp reply.
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: udp message[41:0] 1AE886900001000000000001076B6579747261700474657374000030000100002904D0000080000000
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: outnet handle udp reply
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: measured roundtrip at 1 msec
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: initiate TCP query EDNS
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: comm point start listening 9 (-1 msec)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: close of port 56024
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: close fd 7
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: comm point stop listening 9
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: outnettcp cb
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: outnet tcp pkt was written event
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: outnet tcp writes done, wait
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: comm point stop listening 9
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: comm point start listening 9 (60000 msec)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: answer cb
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: Incoming reply id = 880c
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: Incoming reply addr = ip4 10.10.0.4 port 53 (len 16)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: lookup size is 1 entries
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: received udp reply.
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: udp message[441:0] 880C84930001000000040001085F74612D37356232076B65797472617004746573740000010001C0150006000100015180003C036E7331C01506743063687573076B6579747261700474657374076B65797472617004746573740078A52D7900000E100000070800093A8000015180C015002E000100015180008000060E0200015180671A014466F2744418CE076B6579747261700474657374000939E02D00344C9D8593CA92CCD6A67975DECD1247D8F4221156484966704BD470E532D3AF82F1D5BEDD946F3161D0CD2580831B1A3F8F9D42CEDE8F627E6700DACCB4AF5A236BFCFAA7992AF6435E4F654E94BAE53945EF6DE336775C55228BC08D002F00
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: udp message[441:256] 0100015180001B036E7330076B657974726170047465737400000722000000000380C10B002E0001000151800080002F0E0200015180671A014466F2744418CE076B6579747261700474657374008464677B9E00E18D0DB0E6CA58CFB21ED9E50CA2986B379EF892248C2711905CC15BD2F18EDE2E3A4794B5D0032E656B1E1B7F370D43D21B65614616D7A1CAB7FDB21A63E7F305441AB5396850A1C23DF9238B6488862454841D711C1803056D00002904D0000080000000
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: outnet handle udp reply
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: measured roundtrip at 1 msec
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: svcd callbacks start
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: worker svcd callback for qstate 0x55a69d1ac210
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: start
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: iterator operate: query _ta-75b2.keytrap.test. NULL IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: process_response: new external response event
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: scrub for keytrap.test. NS IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: response for _ta-75b2.keytrap.test. NULL IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: reply from <keytrap.test.> 10.10.0.4#53
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NXDOMAIN, id: 0
+2024-09-24 17:15:26 ;; flags: qr aa ra ; QUERY: 1, ANSWER: 0, AUTHORITY: 4, ADDITIONAL: 0 
+2024-09-24 17:15:26 ;; QUESTION SECTION:
+2024-09-24 17:15:26 _ta-75b2.keytrap.test.INA
+2024-09-24 17:15:26 
+2024-09-24 17:15:26 ;; ANSWER SECTION:
+2024-09-24 17:15:26 
+2024-09-24 17:15:26 ;; AUTHORITY SECTION:
+2024-09-24 17:15:26 keytrap.test.3600INSOAns1.keytrap.test. t0chus.keytrap.test.keytrap.test. 2024091001 3600 1800 604800 86400
+2024-09-24 17:15:26 keytrap.test.86400INRRSIGSOA 14 2 86400 20241024081148 20240924081148 6350 keytrap.test. CTngLQA0TJ2Fk8qSzNameXXezRJH2PQiEVZISWZwS9Rw5TLTr4Lx1b7dlG8xYdDNJYCDGxo/j51Czt6PYn5nANrMtK9aI2v8+qeZKvZDXk9lTpS65TlF723jNndcVSKL ;{id = 6350}
+2024-09-24 17:15:26 keytrap.test.86400INNSECns0.keytrap.test. NS SOA RRSIG NSEC DNSKEY
+2024-09-24 17:15:26 keytrap.test.86400INRRSIGNSEC 14 2 86400 20241024081148 20240924081148 6350 keytrap.test. hGRne54A4Y0NsObKWM+yHtnlDKKYazee+JIkjCcRkFzBW9Lxjt4uOkeUtdADLmVrHht/Nw1D0htlYUYW16HKt/2yGmPn8wVEGrU5aFChwj35I4tkiIYkVIQdcRwYAwVt ;{id = 6350}
+2024-09-24 17:15:26 
+2024-09-24 17:15:26 ;; ADDITIONAL SECTION:
+2024-09-24 17:15:26 ;; MSG SIZE  rcvd: 418
+2024-09-24 17:15:26 
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: query response was NXDOMAIN ANSWER
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state FINISHED RESPONSE STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: finishing processing for _ta-75b2.keytrap.test. NULL IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: iterator module exit state is module_finished
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator[module 0] operate: extstate:module_wait_module event:module_event_moddone
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validator operate: query _ta-75b2.keytrap.test. NULL IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator: nextmodule returned
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: not validating response, is valrec(validation recursion lookup)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: validator module exit state is module_finished
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: mesh_run: end 2 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: 0vRDCD mod1  keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: 1RDdc mod0 rep www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: cache memory msg=66634 rrset=71137 infra=8534 val=66384
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: svcd callbacks end
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: close of port 48130
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: close fd 8
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: Reading tcp query of length 1441
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: comm point stop listening 9
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: outnettcp cb
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: svcd callbacks start
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: worker svcd callback for qstate 0x55a69d1b0220
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: start
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: iterator operate: query keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: process_response: new external response event
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: scrub for keytrap.test. NS IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: response for keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: reply from <keytrap.test.> 10.10.0.4#53
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+2024-09-24 17:15:26 ;; flags: qr aa ra ; QUERY: 1, ANSWER: 12, AUTHORITY: 0, ADDITIONAL: 0 
+2024-09-24 17:15:26 ;; QUESTION SECTION:
+2024-09-24 17:15:26 keytrap.test.INDNSKEY
+2024-09-24 17:15:26 
+2024-09-24 17:15:26 ;; ANSWER SECTION:
+2024-09-24 17:15:26 keytrap.test.86400INDNSKEY256 3 14 Nd/hhlFfE9YcGAKn/DjwaRDo2x1shj8A59LMXfNuxgPtRH1fT5k9EB1twCTEzqAQNLyx9a6t+Kma/LBXtapxM78FXNaleSnF2fJ40+7rCBnn1cFjvdHEPHkW4XUGToyO ;{id = 6350 (zsk), size = 384b}
+2024-09-24 17:15:26 keytrap.test.86400INDNSKEY256 3 14 UiTl5T9RdFXTul4Nw3rQ9/zlGCODylgcI9mrz5SqpEkxw9+l+E00/JGxAj6If8yjE7Etexs/KTCX7csAYQTLq864iYB+5sPigcMHAzluyPU9fOUmALQbRtw3ZXPHBb7L ;{id = 6350 (zsk), size = 384b}
+2024-09-24 17:15:26 keytrap.test.86400INDNSKEY256 3 14 qz2ys56wu+rPHXp62eskqFa/lYw4xl7oDT5X/wcj7fFapLq8zsOT3kM5E7IlKwa42cIqCcNcb6hG8C8YKWUOgUTOiXPXj7k4SO4K3/+CfFp+7J6ai8shKSFAMvhf2ajl ;{id = 6350 (zsk), size = 384b}
+2024-09-24 17:15:26 keytrap.test.86400INDNSKEY257 3 14 MzJsFTtAo0j8qGpDIhEMnK4ImTyYwMwDPU5gt/FaXd6TOw6AvZDAj2hlhZvaxMXV6xCw1MU5iPv5ZQrb3NDLUU+TW07imJ5GD9YKi0Qiiypo+zhtL4aGaOG+870yHwuY ;{id = 30130 (ksk), size = 384b}
+2024-09-24 17:15:26 keytrap.test.86400INDNSKEY256 3 14 8y5y+PlI/MQAMADANSuw0UXq7WUGpGr+U+Y4sl+dAu78T+rZ1NUE1TVg5fZU7j7bO+Ie7Mk6DcquNT0zYX986pGJgXpx6jTDh3dztnt9Sc9SBcUdBw0v/u1y72EfLQ2P ;{id = 6350 (zsk), size = 384b}
+2024-09-24 17:15:26 keytrap.test.86400INDNSKEY256 3 14 MjY4X0GT9jf00V9bZU7cMkceFGdUMgbeNK4afF6BB/VznyKXsZlTeX5IgrD/8BNWd1jMvvL5RlbBXbmy5022d34VqReK5IRA6WKxp9uzDBEpc6qoh2npdudDTsFMZKor ;{id = 6350 (zsk), size = 384b}
+2024-09-24 17:15:26 keytrap.test.86400INDNSKEY256 3 14 NJAIrXpcToloZ5CnSwyPf/Y8qyL3aFlqFr8Xcw/m19dBcyoJQIak5ygffLTHGrQhZNGM8TrL07v41sL1ZYuYjGBg7RBdMaeQr+JOUA4d5e/r83fkT7uHNOcHzOAhI7Nu ;{id = 6350 (zsk), size = 384b}
+2024-09-24 17:15:26 keytrap.test.86400INDNSKEY256 3 14 Mq9Ohq02Xq6D5GprEXuvkZFumkDNmUUEAmKtGG/7FfVeeu3ZMQankbw0eID2p8MB4dcSDotv4YHvx6Sx3t6zdjSFaCloAveMUnvtIQsXL8Kbfm2G0ikVuXtbMSHmFM9w ;{id = 6350 (zsk), size = 384b}
+2024-09-24 17:15:26 keytrap.test.86400INDNSKEY256 3 14 DcYreAh+USsK1mtv7bSR2iaQvShPUqCy7l/BRQXttAFupXp6pUaQZS+kii+H2JJqd+rS4YgC3KCd/by8yQi5j+WSy2yRprSuFuDyqZMFnDT/Py+nGjmIa59+W1iMdEYb ;{id = 6350 (zsk), size = 384b}
+2024-09-24 17:15:26 keytrap.test.86400INDNSKEY256 3 14 EUCex5BxNR/cKQUYoHJD1Hj6TK+aMpntzC98Nv+ZegTklzXAxMxC8nAc9VSywVHBjTrkCnVYrY4Gu1YQfscREc+mjbyhUzEMZBHPIEAfuerZwu2wovC4mau3RVWHRhij ;{id = 6350 (zsk), size = 384b}
+2024-09-24 17:15:26 keytrap.test.86400INRRSIGDNSKEY 14 2 86400 20241024081148 20240924081148 6350 keytrap.test. dE2ldnh/iYajWTLl5aJkry1iUPoHFPue6y21MdwOwF99GawNUU8smB4W5AfFgpY9Oyc2tn8pCzFHqY4oQAG5l6rJyR2+B8cVCZM7d50B9xaVqJGUoYYgkQIdxf/wZ2xJ ;{id = 6350}
+2024-09-24 17:15:26 keytrap.test.86400INRRSIGDNSKEY 14 2 86400 20241024081148 20240924081148 30130 keytrap.test. zdu0UUKjUbyo4fI3mHPk8cw4UdGP49z03aPe+jDLA6OXuzH9AKotCWAR6dtzfi2dMdoaq8cHM1au9nSlmNe67PTl0gmpW7YNXlRN3xn2IULpskYNy4WmiE4PdCf96OJB ;{id = 30130}
+2024-09-24 17:15:26 
+2024-09-24 17:15:26 ;; AUTHORITY SECTION:
+2024-09-24 17:15:26 
+2024-09-24 17:15:26 ;; ADDITIONAL SECTION:
+2024-09-24 17:15:26 ;; MSG SIZE  rcvd: 1430
+2024-09-24 17:15:26 
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: query response was ANSWER
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: iter_handle processing q with state FINISHED RESPONSE STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: finishing processing for keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: iterator module exit state is module_finished
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator[module 0] operate: extstate:module_wait_module event:module_event_moddone
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validator operate: query keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator: nextmodule returned
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: not validating response, is valrec(validation recursion lookup)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: validator module exit state is module_finished
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validator: inform_super, sub is keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: super is www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: anchor matched DNSKEY.
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validate keys with anchor(DS): sec_status_secure
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: Successfully primed trust anchor keytrap.test. DNSKEY IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator[module 0] operate: extstate:module_wait_subquery event:module_event_pass
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validator operate: query www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: val handle processing q with state VAL_FINDKEY_STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validator: FindKey www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: val handle processing q with state VAL_VALIDATE_STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: verify rrset www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify sig 6350 14
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify result: sec_status_secure
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: verify rrset keytrap.test. NS IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify sig 6350 14
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify result: sec_status_secure
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: verify rrset ns0.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify sig 6350 14
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify result: sec_status_secure
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: msg signature validation suspended
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validate_suspend timer, set for suspend
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: validator module exit state is module_wait_reply
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: mesh_run: end 1 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: 0RDd mod0 rep www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: cache memory msg=66896 rrset=72919 infra=8534 val=68206
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: svcd callbacks end
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: comm point stop listening 9
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: comm point start listening 9 (60000 msec)
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validate_suspend timer, continue
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: start
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator[module 0] operate: extstate:module_wait_reply event:module_event_pass
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validator operate: query www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: val handle processing q with state VAL_VALIDATE_STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: verify rrset ns1.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify sig 6350 14
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify result: sec_status_secure
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: verify rrset ns0.keytrap.test. AAAA IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify sig 6350 14
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify result: sec_status_secure
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: msg signature validation suspended
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validate_suspend timer, set for suspend
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: validator module exit state is module_wait_reply
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: mesh_run: end 1 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: 0RDd mod0 rep www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validate_suspend timer, continue
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: start
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: validator[module 0] operate: extstate:module_wait_reply event:module_event_pass
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validator operate: query www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: val handle processing q with state VAL_VALIDATE_STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: verify rrset ns1.keytrap.test. AAAA IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify sig 6350 14
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify: signature mismatch
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: verify result: sec_status_secure
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: Validating a positive response
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: Successfully validated positive response
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validate(positive): sec_status_secure
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: val handle processing q with state VAL_FINISHED_STATE
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: validation success www.keytrap.test. A IN
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: mesh_run: validator module exit state is module_finished
+2024-09-24 17:15:26 [1727169326] unbound[1:0] debug: query took 0.184970 sec
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: mesh_run: end 0 recursion states (0 with reply, 0 detached), 0 waiting replies, 1 recursion replies sent, 0 replies dropped, 0 states jostled out
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: average recursion processing time 0.184970 sec
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: histogram of recursion processing times
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: [25%]=0 median[50%]=0 [75%]=0
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info: lower(secs) upper(secs) recursions
+2024-09-24 17:15:26 [1727169326] unbound[1:0] info:    0.131072    0.262144 1
+2024-09-24 17:15:56 [1727169356] unbound[1:0] debug: close fd 9
+2024-09-24 17:15:56 [1727169356] unbound[1:0] debug: outnettcp cb
+2024-09-24 17:15:56 [1727169356] unbound[1:0] debug: outnettcp got tcp error -1

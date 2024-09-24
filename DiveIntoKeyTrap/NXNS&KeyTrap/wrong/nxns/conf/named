@@ -1,3 +1,0 @@
-ROOTDIR=/var/named/chroot
-OPTIONS=-4
-NXNRAttack
