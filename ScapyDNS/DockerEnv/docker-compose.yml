@@ -3,7 +3,7 @@ services:
     build: client
     command: tail -f /dev/null
     volumes:
-      - ./client/dns_client.py:/usr/local/ScapyDNS/dns_client.py
+      - ./client/dns_client.py:/usr/local/ScapyClient/dns_client.py
     networks:
       test_net:
         ipv4_address: 10.10.8.2
@@ -11,7 +11,7 @@ services:
   authority:
     build: authority
     volumes:
-      - ./authority/dns_authority.py:/usr/local/ScapyDNS/dns_authority.py
+      - ./authority/dns_authority.py:/usr/local/ScapyAuth/dns_authority.py
     command: tail -f /dev/null
     networks:
       test_net:

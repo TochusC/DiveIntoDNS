@@ -1,9 +1,10 @@
-FROM alpine:3.19
-
-RUN apk add --update bash python3 py3-pip && \
-    python3 -m venv /opt/venv && \
-    . /opt/venv/bin/activate && \
-    pip install scapy
+FROM python:3.9-alpine
 
 # Make sure scripts in the virtualenv are available in the PATH
 ENV PATH="/opt/venv/bin:$PATH"
+
+# 安装Scapy和pcapy
+RUN pip install scapy pcapy
+
+# 设置工作目录
+WORKDIR /usr/local/ScapyClient
