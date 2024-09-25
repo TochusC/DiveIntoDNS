@@ -1,25 +1,2 @@
-services:
-  client:
-    build: client
-    command: tail -f /dev/null
-    volumes:
-      - ./client/dns_client.py:/usr/local/ScapyClient/dns_client.py
-    networks:
-      test_net:
-        ipv4_address: 10.10.8.2
-
-  authority:
-    build: authority
-    volumes:
-      - ./authority/dns_authority.py:/usr/local/ScapyAuth/dns_authority.py
-    command: tail -f /dev/null
-    networks:
-      test_net:
-        ipv4_address: 10.10.8.3
-        
-networks:
-  test_net:
-    ipam:
-      config:
-        - subnet: 10.10.8.0/24
-
+ports:
+  - "53:53"
