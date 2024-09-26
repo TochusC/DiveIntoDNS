@@ -53,12 +53,12 @@ def craft_dns_response(pkt):
     
     # 查询A记录
     if qtype == 1:
-        spf_resp /= handle_A_query(pkt)
+        reply_pkt /= handle_A_query(pkt)
     # 查询DNSKEY记录
     elif qtype == 48:
-        spf_resp /= handle_DNSKEY_query(pkt)
+        reply_pkt /= handle_DNSKEY_query(pkt)
 
-    return spf_resp
+    return reply_pkt
 
 # 处理DNS查询请求
 def dns_response(pkt):
