@@ -12,8 +12,8 @@ DOMAIN_NAME = "keytrap.test"
 BPF_FILTER = "udp port " + PORT_OF_SERVER 
 
 RRSIG={
-    "www.keytrap.test."
-    "keytrap.test.": "u3i18XgPPsVN7bQlmWvSqPx0wtzNgsmEGW8FQ21Qiot67v4/MjkY8H27la+5eJIjo+eYIo1FpuUa2wxZ0eHA8dWck7ek0KFH/oibMSzvDWPkVBMwLFpjiOiiJVN5sOtw",
+    "www.keytrap.test.": "u3i18XgPPsVN7bQlmWvSqPx0wtzNgsmEGW8FQ21Qiot67v4/MjkY8H27la+5eJIjo+eYIo1FpuUa2wxZ0eHA8dWck7ek0KFH/oibMSzvDWPkVBMwLFpjiOiiJVN5sOtw",
+    "keytrap.test.": "+XtSv7DeD9ASuujWbst5v73eq+pDGM0Qs27E9FahFTvJNVi6gOTQMoxnpCs0U8Way2Af8iP6OoKOfZY8RMrvsMI3k9JtGl1SKaztWA5vz9nVS/MhN1sOTIpkLU6Hvnfa",
     "ns1.keytrap.test.": "/iNOASO1o0PtfxvlLIkrq/hb+jJqhbJeAstiNmjj/Ck7jYvBg+0xUL/rAaN9+RpA/vqa7uxX8zaI2xutux1avqQvHYngyU9ETjJNu6G6sLCqLTOrDPhrjbiV1OyVWdu2",
 }
 
