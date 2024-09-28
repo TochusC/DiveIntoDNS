@@ -1,8 +1,14 @@
-FROM python:3.9-alpine
+FROM debian:latest
 
-# 安装依赖包
-RUN apk update && \
-    apk add --no-cache libpcap libpcap-dev build-base iptables
+LABEL maintainer=t0chus
+
+USER root
+# Update and install required system packages
+RUN apt-get update
+RUN apt-get -y upgrade
+RUN apt-get -y install libcap-dev\
+    python3 python3-pip python3-venv
+RUN apt-get -y install libuv1-dev
 
 # 安装Scapy和pcapy
 RUN pip install --upgrade pip && \
@@ -14,5 +20,6 @@ EXPOSE 53
 # 设置工作目录
 WORKDIR /usr/local/ScapyAuth
 
-# 运行脚本
-CMD ["python3", "dns_authority.py"]
+# 关闭ICMP
+
+RUN iptables -A OUTPUT -p icmp --icmp-type 3 -j DROP
