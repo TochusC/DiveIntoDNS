@@ -1,6 +1,6 @@
 from scapy.all import *
 from scapy.layers.dns import DNS, DNSQR, DNSRR, DNSRRRSIG, DNSRRDNSKEY
-from scapy.layers.inet import IP, UDP, TCP
+from scapy.layers.inet import IP, UDP
 from datetime import datetime
 import base64
 
@@ -12,15 +12,15 @@ GLOBAL_TTL = 86400
 INCEPTION = datetime.strptime("20240928033159", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
 EXPIRATION = datetime.strptime("20241028033159", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
 
-BPF_FILTER = "udp port "  + str(PORT_OF_SERVER) + " or tcp port " + str(PORT_OF_SERVER)
+BPF_FILTER = "udp port " + PORT_OF_SERVER 
 
-# 每次签名都需要更新以下条目：INCEPTION, EXPIRATION, RRSIG
-INCEPTION = datetime.strptime("20240928101351", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
-EXPIRATION = datetime.strptime("20241028101351", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
 RRSIG={
+    # Need to change
     "www.keytrap.test." : base64.b64decode("KgVnod8gSnLvzOYVSQGZafGTPRowJp/okxRFIYCCN3ez7fefodhefbPbPVQmFjRYBZ9jxjhcE00aOcLX1GGHYpxPSplasDvuHPwLNwJdb4qjIeYW1dmP+xoVMIcHjBZU"),
     "keytrap.test."     : base64.b64decode("s0ZmWQHEJoZ51gzJMG0ZyGXWs5oRPnhi7+peKM3pKxTYyVHPHy1dV5ERkDncxQT8ayLrseDLSKeC+Sx46cbFigs+LHKBcdCcTg+W8oFn8L0GnzTtIuLaEf0Dvbn3d37/"),
     "ns1.keytrap.test." : base64.b64decode("f+pnEtvtuV+/6gd1SmBttrPQ5IT6z4H90G26kCe03n3fnPlDzvTCorNCdrgy3P331b+r19+yn6Jc0uOx92Z7TnmfOXWDmLWR8uEGcZf9CWjbRYo8F+ckvoQIFH6JTPfF"),
+
+    # Persistent
     "KSK": base64.b64decode("YAqwWzt0bBSz/eyX9oQmAcMEKKDD7J+OHymxi3hnzXjZ0fcIUMLrVGqznYdcbaHbW+X6RoERwCrXdOQru//lCU/UhcHjJj/bjalWYWxiQyGmzfb0bpZ/NGxngzrFaGW1"),
     "ZSK": base64.b64decode("9wVtsq9/vpBWxGRjlvRDjHJyqsvrmsMwc3w1yaNNL4dRE3Od+wRSriJX6+utEU45jy1tZmvi7DfN4vF6VcN37ElQDREmOoD0wXDldIVR/o2Z40rWmheLBffdLCSfD8+n"),
 }
@@ -35,10 +35,7 @@ DNSKEY={
 
 # 构造DNS响应
 def craft_dns_response(pkt, qname, qtype):
-    if TCP in pkt:
-        reply_pkt = IP(src=pkt[IP].dst, dst=pkt[IP].src) / TCP(sport=int(PORT_OF_SERVER), dport=pkt[TCP].sport)
-    else:
-        reply_pkt = IP(src=pkt[IP].dst, dst=pkt[IP].src) / UDP(sport=int(PORT_OF_SERVER), dport=pkt[UDP].sport)
+    reply_pkt = IP(src=pkt[IP].dst, dst=pkt[IP].src) / UDP(sport=int(PORT_OF_SERVER), dport=pkt[UDP].sport)
     
     # 查询A记录
     if qtype == 1:

