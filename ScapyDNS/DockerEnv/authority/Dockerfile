@@ -7,7 +7,7 @@ LABEL maintainer=t0chus
 # 安装依赖
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get -y install libcap-dev iptables\
+RUN apt-get -y install libpcap0.8 libcap-dev iptables\
     python3 python3-pip python3-venv
 
 RUN python3 -m venv ${VENV}

@@ -110,6 +110,7 @@ def run():
     while True:
         ready_to_read, _, _ = select(s_input, [], [])
         for s in ready_to_read:
+            print(s)
             if s == s_tcp:
                 c, addr = s.accept()
                 c.setblocking(False)

@@ -1,6 +1,8 @@
 FROM python:3.9-alpine
 
-# Make sure scripts in the virtualenv are available in the PATH
+RUN apk add bind-tools
+
+# 切换至虚拟环境
 ENV PATH="/opt/venv/bin:$PATH"
 
 # 安装Scapy和pcapy

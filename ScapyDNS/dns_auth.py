@@ -8,13 +8,11 @@ import base64
 IFACE_LAN = "eth0"
 PORT_OF_SERVER = "53"
 DOMAIN_NAME = ["www.keytrap.test.", "keytrap.test.", "ns1.keytrap.test.", "_ta-75b2.keytrap.test."]
-GLOBAL_TTL = 86400
-INCEPTION = datetime.strptime("20240928033159", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
-EXPIRATION = datetime.strptime("20241028033159", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
 
 BPF_FILTER = "udp port "  + str(PORT_OF_SERVER) + " or tcp port " + str(PORT_OF_SERVER)
 
-# 每次签名都需要更新以下条目：INCEPTION, EXPIRATION, RRSIG
+# 每次签名都必须更新以下条目：INCEPTION, EXPIRATION, RRSIG
+GLOBAL_TTL = 86400
 INCEPTION = datetime.strptime("20240928101351", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
 EXPIRATION = datetime.strptime("20241028101351", "%Y%m%d%H%M%S").timestamp() + 3600 * 8
 RRSIG={
