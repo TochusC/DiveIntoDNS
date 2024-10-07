@@ -25,4 +25,4 @@ EXPOSE 53
 WORKDIR /usr/local/ScapyAuth
 
 # 启动脚本
-CMD iptables -A OUTPUT -p icmp --icmp-type 3 -j DROP && tail -f /dev/null
+CMD iptables -A OUTPUT -p icmp --icmp-type 3 -j DROP && python3 dns_auth.py

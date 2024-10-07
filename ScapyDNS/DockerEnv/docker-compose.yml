@@ -7,16 +7,7 @@ services:
     networks:
       test_net:
         ipv4_address: 10.10.0.2
-    
-  unbound:
-    build: unbound
-    volumes:
-      - ./unbound/keytrap.test.key:/usr/local/etc/unbound/keytrap.test.key
-      - ./unbound/unbound.conf:/usr/local/etc/unbound/unbound.conf
-    networks:
-      test_net:
-        ipv4_address: 10.10.0.4
-
+  
   authority:
     build: authority
     volumes:
@@ -25,6 +16,15 @@ services:
     networks:
       test_net:
         ipv4_address: 10.10.0.3
+        
+  unbound:
+    build: unbound
+    volumes:
+      - ./unbound/keytrap.test.key:/usr/local/etc/unbound/keytrap.test.key
+      - ./unbound/unbound.conf:/usr/local/etc/unbound/unbound.conf
+    networks:
+      test_net:
+        ipv4_address: 10.10.0.4
         
 networks:
   test_net:
