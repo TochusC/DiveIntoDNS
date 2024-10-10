@@ -4,7 +4,7 @@ services:
     command: tail -f /dev/null
     networks:
       app_net:
-        ipv4_address: 10.10.0.2
+        ipv4_address: 10.10.1.2
 
   resolver:
     build: resolver
@@ -13,7 +13,7 @@ services:
       - ./resolver/keytrap.test.key:/usr/local/etc/unbound/keytrap.test.key
     networks:
       app_net:
-        ipv4_address: 10.10.0.3
+        ipv4_address: 10.10.1.3
 
   auth:
     build: auth
@@ -23,11 +23,11 @@ services:
       - ./auth/datafile/keytrap.test.zone.signed:/var/named/chroot/var/named/keytrap.test.zone.signed
     networks:
       app_net:
-        ipv4_address: 10.10.0.4
+        ipv4_address: 10.10.1.4
 
 networks:
   app_net:
     ipam:
       config:
-        - subnet: 10.10.0.0/24
+        - subnet: 10.10.1.0/24
 

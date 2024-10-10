@@ -1,0 +1,444 @@
+[1728298573] unbound[1:0] debug: mesh_run: start
+[1728298573] unbound[1:0] debug: validator[module 0] operate: extstate:module_state_initial event:module_event_new
+[1728298573] unbound[1:0] info: validator operate: query www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: validator: pass to next module
+[1728298573] unbound[1:0] debug: mesh_run: validator module exit state is module_wait_module
+[1728298573] unbound[1:0] debug: iterator[module 1] operate: extstate:module_state_initial event:module_event_pass
+[1728298573] unbound[1:0] debug: process_request: new external request event
+[1728298573] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE
+[1728298573] unbound[1:0] info: resolving www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: request has dependency depth of 0
+[1728298573] unbound[1:0] info: use stub keytrap.test. NS IN
+[1728298573] unbound[1:0] debug: cache delegation returns delegpt
+[1728298573] unbound[1:0] info: DelegationPoint<keytrap.test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+[1728298573] unbound[1:0] debug:    ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 2)
+[1728298573] unbound[1:0] info: resolving (init part 2):  www.keytrap.test. A IN
+[1728298573] unbound[1:0] info: use stub keytrap.test. NS IN
+[1728298573] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 3)
+[1728298573] unbound[1:0] info: resolving (init part 3):  www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1728298573] unbound[1:0] info: processQueryTargets: www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 0
+[1728298573] unbound[1:0] info: DelegationPoint<keytrap.test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+[1728298573] unbound[1:0] debug:    ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug: attempt to get extra 3 targets
+[1728298573] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1728298573] unbound[1:0] debug: selrtt 376
+[1728298573] unbound[1:0] info: sending query: www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: sending to target: <keytrap.test.> 10.10.0.3#53
+[1728298573] unbound[1:0] debug: dnssec status: expected
+[1728298573] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1728298573] unbound[1:0] info: mesh_run: end 1 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1728298573] unbound[1:0] info: 0RDd mod1 rep www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: cache memory msg=66104 rrset=66104 infra=8224 val=66384
+[1728298573] unbound[1:0] debug: serviced send timer
+[1728298573] unbound[1:0] debug: EDNS lookup known=0 vs=0
+[1728298573] unbound[1:0] debug: serviced query UDP timeout=376 msec
+[1728298573] unbound[1:0] debug: inserted new pending reply id=17e0
+[1728298573] unbound[1:0] debug: opened UDP if=0 port=14952
+[1728298573] unbound[1:0] debug: comm point start listening 7 (-1 msec)
+[1728298573] unbound[1:0] debug: answer cb
+[1728298573] unbound[1:0] debug: Incoming reply id = 17e0
+[1728298573] unbound[1:0] debug: Incoming reply addr = ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug: lookup size is 1 entries
+[1728298573] unbound[1:0] debug: received udp reply.
+[1728298573] unbound[1:0] debug: udp message[604:0] 17E08520000100020002000203777777076B6579747261700474657374000001000103777777076B657974726170047465737400000100010001518000040A0A000303777777076B657974726170047465737400002E000100015180008000010E0300015180672B36EE6703A9EE18CE076B6579747261700474657374005C11CE9658C3E25045A561666DEDAC5CD8446E70DA0CF04C9F67B53EFC34008B77356F63F76CCFE061C6095237212D446B7B86AB49C17141D57ADE61C6C5E6864A1E2F322E0ED53C55AE0ED8BC8521D5F92A6D65A5D9EDC1CAF438E200980379076B65797472617004746573740000020001000151800012036E7331076B65797472
+[1728298573] unbound[1:0] debug: udp message[604:256] 6170047465737400076B657974726170047465737400002E000100015180008000020E0200015180672B36EE6703A9EE18CE076B65797472617004746573740029BDCD124124781BB172922C453AC1C7B40F464F8B40DEF913144ACF2882024829CF893BFB494230AC9170458643A3B0DBC2052BE155FA591D46BE2E571B23A5599CE59B532631447CD56FDD40B21EE7EB5F896F9DE21461F96CEB34D1E5106A036E7331076B657974726170047465737400000100010001518000040A0A0003036E7331076B657974726170047465737400002E000100015180008000010E0300015180672B36EE6703A9EE18CE076B657974726170047465737400D782394A
+[1728298573] unbound[1:0] debug: udp message[604:512] DE4F573CCBE2E71BDB24D6AB70523860177C908B1F8FC37B61CC9B7B0ACE715FF91080B6FDE51757E92722C3B178B875BF1C7FDEA79F644F85034CF53EA9DC71484D226CE0FE4645390698926569F32508720EA352DFBF568B11FE61
+[1728298573] unbound[1:0] debug: outnet handle udp reply
+[1728298573] unbound[1:0] debug: serviced query: EDNS works for ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug: measured roundtrip at 153 msec
+[1728298573] unbound[1:0] debug: svcd callbacks start
+[1728298573] unbound[1:0] debug: worker svcd callback for qstate 0x557e95e5f240
+[1728298573] unbound[1:0] debug: mesh_run: start
+[1728298573] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1728298573] unbound[1:0] info: iterator operate: query www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: process_response: new external response event
+[1728298573] unbound[1:0] info: scrub for keytrap.test. NS IN
+[1728298573] unbound[1:0] info: response for www.keytrap.test. A IN
+[1728298573] unbound[1:0] info: reply from <keytrap.test.> 10.10.0.3#53
+[1728298573] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+;; flags: qr aa rd ; QUERY: 1, ANSWER: 2, AUTHORITY: 2, ADDITIONAL: 2 
+;; QUESTION SECTION:
+www.keytrap.test.INA
+
+;; ANSWER SECTION:
+www.keytrap.test.86400INA10.10.0.3
+www.keytrap.test.86400INRRSIGA 14 3 86400 20241106092918 20241007092918 6350 keytrap.test. XBHOlljD4lBFpWFmbe2sXNhEbnDaDPBMn2e1Pvw0AIt3NW9j92zP4GHGCVI3IS1Ea3uGq0nBcUHVet5hxsXmhkoeLzIuDtU8Va4O2LyFIdX5Km1lpdntwcr0OOIAmAN5 ;{id = 6350}
+
+;; AUTHORITY SECTION:
+keytrap.test.86400INNSns1.keytrap.test.
+keytrap.test.86400INRRSIGNS 14 2 86400 20241106092918 20241007092918 6350 keytrap.test. Kb3NEkEkeBuxcpIsRTrBx7QPRk+LQN75ExRKzyiCAkgpz4k7+0lCMKyRcEWGQ6Ow28IFK+FV+lkdRr4uVxsjpVmc5ZtTJjFEfNVv3UCyHufrX4lvneIUYfls6zTR5RBq ;{id = 6350}
+
+;; ADDITIONAL SECTION:
+ns1.keytrap.test.86400INA10.10.0.3
+ns1.keytrap.test.86400INRRSIGA 14 3 86400 20241106092918 20241007092918 6350 keytrap.test. 14I5St5PVzzL4ucb2yTWq3BSOGAXfJCLH4/De2HMm3sKznFf+RCAtv3lF1fpJyLDsXi4db8cf96nn2RPhQNM9T6p3HFITSJs4P5GRTkGmJJlafMlCHIOo1Lfv1aLEf5h ;{id = 6350}
+;; MSG SIZE  rcvd: 504
+
+[1728298573] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1728298573] unbound[1:0] info: query response was ANSWER
+[1728298573] unbound[1:0] debug: iter_handle processing q with state FINISHED RESPONSE STATE
+[1728298573] unbound[1:0] info: finishing processing for www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: mesh_run: iterator module exit state is module_finished
+[1728298573] unbound[1:0] debug: validator[module 0] operate: extstate:module_wait_module event:module_event_moddone
+[1728298573] unbound[1:0] info: validator operate: query www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: validator: nextmodule returned
+[1728298573] unbound[1:0] debug: val handle processing q with state VAL_INIT_STATE
+[1728298573] unbound[1:0] debug: validator classification positive
+[1728298573] unbound[1:0] info: signer is keytrap.test. TYPE0 CLASS0
+[1728298573] unbound[1:0] info: prime trust anchor
+[1728298573] unbound[1:0] info: generate request keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] info: generate keytag query _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] info: generate request _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: mesh_run: validator module exit state is module_wait_subquery
+[1728298573] unbound[1:0] debug: validator[module 0] operate: extstate:module_state_initial event:module_event_pass
+[1728298573] unbound[1:0] info: validator operate: query keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] debug: validator: pass to next module
+[1728298573] unbound[1:0] debug: mesh_run: validator module exit state is module_wait_module
+[1728298573] unbound[1:0] debug: iterator[module 1] operate: extstate:module_state_initial event:module_event_pass
+[1728298573] unbound[1:0] debug: process_request: new external request event
+[1728298573] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE
+[1728298573] unbound[1:0] info: resolving keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] debug: request has dependency depth of 0
+[1728298573] unbound[1:0] debug: cache delegation returns delegpt
+[1728298573] unbound[1:0] info: DelegationPoint<keytrap.test.>: 1 names (1 missing), 1 addrs (0 result, 1 avail) cacheNS
+[1728298573] unbound[1:0] info:   ns1.keytrap.test.  A
+[1728298573] unbound[1:0] debug:    ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 2)
+[1728298573] unbound[1:0] info: resolving (init part 2):  keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] info: use stub keytrap.test. NS IN
+[1728298573] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 3)
+[1728298573] unbound[1:0] info: resolving (init part 3):  keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1728298573] unbound[1:0] info: processQueryTargets: keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 0
+[1728298573] unbound[1:0] info: DelegationPoint<keytrap.test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+[1728298573] unbound[1:0] debug:    ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug: attempt to get extra 3 targets
+[1728298573] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1728298573] unbound[1:0] debug: servselect ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug:    rtt=451
+[1728298573] unbound[1:0] debug: selrtt 451
+[1728298573] unbound[1:0] info: sending query: keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] debug: sending to target: <keytrap.test.> 10.10.0.3#53
+[1728298573] unbound[1:0] debug: dnssec status: expected
+[1728298573] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1728298573] unbound[1:0] debug: validator[module 0] operate: extstate:module_state_initial event:module_event_pass
+[1728298573] unbound[1:0] info: validator operate: query _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: validator: pass to next module
+[1728298573] unbound[1:0] debug: mesh_run: validator module exit state is module_wait_module
+[1728298573] unbound[1:0] debug: iterator[module 1] operate: extstate:module_state_initial event:module_event_pass
+[1728298573] unbound[1:0] debug: process_request: new external request event
+[1728298573] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE
+[1728298573] unbound[1:0] info: resolving _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: request has dependency depth of 0
+[1728298573] unbound[1:0] debug: cache delegation returns delegpt
+[1728298573] unbound[1:0] info: DelegationPoint<keytrap.test.>: 1 names (1 missing), 1 addrs (0 result, 1 avail) cacheNS
+[1728298573] unbound[1:0] info:   ns1.keytrap.test.  A
+[1728298573] unbound[1:0] debug:    ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 2)
+[1728298573] unbound[1:0] info: resolving (init part 2):  _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] info: use stub keytrap.test. NS IN
+[1728298573] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 3)
+[1728298573] unbound[1:0] info: resolving (init part 3):  _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1728298573] unbound[1:0] info: processQueryTargets: _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 0
+[1728298573] unbound[1:0] info: DelegationPoint<keytrap.test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+[1728298573] unbound[1:0] debug:    ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug: attempt to get extra 3 targets
+[1728298573] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1728298573] unbound[1:0] debug: servselect ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug:    rtt=451
+[1728298573] unbound[1:0] debug: selrtt 451
+[1728298573] unbound[1:0] info: sending query: _ta-75b2.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: sending to target: <keytrap.test.> 10.10.0.3#53
+[1728298573] unbound[1:0] debug: dnssec status: expected
+[1728298573] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1728298573] unbound[1:0] info: mesh_run: end 3 recursion states (1 with reply, 1 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1728298573] unbound[1:0] info: 0vRDCD mod1  keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] info: 1vRDd mod1  _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] info: 2RDdc mod0 rep www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: cache memory msg=66418 rrset=67320 infra=8534 val=66384
+[1728298573] unbound[1:0] debug: svcd callbacks end
+[1728298573] unbound[1:0] debug: close of port 14952
+[1728298573] unbound[1:0] debug: close fd 7
+[1728298573] unbound[1:0] debug: serviced send timer
+[1728298573] unbound[1:0] debug: EDNS lookup known=1 vs=0
+[1728298573] unbound[1:0] debug: serviced query UDP timeout=451 msec
+[1728298573] unbound[1:0] debug: inserted new pending reply id=edf5
+[1728298573] unbound[1:0] debug: opened UDP if=0 port=60659
+[1728298573] unbound[1:0] debug: comm point start listening 7 (-1 msec)
+[1728298573] unbound[1:0] debug: serviced send timer
+[1728298573] unbound[1:0] debug: EDNS lookup known=1 vs=0
+[1728298573] unbound[1:0] debug: serviced query UDP timeout=451 msec
+[1728298573] unbound[1:0] debug: inserted new pending reply id=3b2d
+[1728298573] unbound[1:0] debug: opened UDP if=0 port=10524
+[1728298573] unbound[1:0] debug: comm point start listening 8 (-1 msec)
+[1728298573] unbound[1:0] debug: answer cb
+[1728298573] unbound[1:0] debug: Incoming reply id = edf5
+[1728298573] unbound[1:0] debug: Incoming reply addr = ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug: lookup size is 2 entries
+[1728298573] unbound[1:0] debug: received udp reply.
+[1728298573] unbound[1:0] debug: udp message[582:0] EDF585200001000400000000076B65797472617004746573740000300001076B657974726170047465737400003000010001518000640100030E0DC62B78087E512B0AD66B6FEDB491DA2690BD284F52A0B2EE5FC14505EDB4016EA57A7AA54690652FA48A2F87D8926A77EAD2E18802DCA09DFDBCBCC908B98FE592CB6C91A6B4AE16E0F2A993059C34FF3F2FA71A39886B9F7E5B588C74461B076B657974726170047465737400003000010001518000640101030E33326C153B40A348FCA86A4322110C9CAE08993C98C0CC033D4E60B7F15A5DDE933B0E80BD90C08F6865859BDAC4C5D5EB10B0D4C53988FBF9650ADBDCD0CB514F935B4EE2989E460FD6
+[1728298573] unbound[1:0] debug: udp message[582:256] 0A8B44228B2A68FB386D2F868668E1BEF3BD321F0B98076B657974726170047465737400002E000100015180008000300E0200015180672B36EE6703A9EE18CE076B657974726170047465737400A259668179ECAED736195C791DB5D5E17696C728175FDD050F46AF02B48820FB861EACF32C9E92F65A15B70B1D67F086749A389F3227F294D742E6E8CF61EFF0645FECDD8515FC91726CFCC0743E7DA2ECAD92F430F340A73C9B7C924C7A9B7A076B657974726170047465737400002E000100015180008000300E0200015180672B36EE6703A9EE75B2076B6579747261700474657374005A32900841F1F7AD907C0FF188993B94BE338A2CFF72FE22F4B6
+[1728298573] unbound[1:0] debug: udp message[582:512] 6DD8A13A97F4A7F1225F3E71146850BAAAC4D35E4116A41414FA58A84B02FAC3318A0E74987FE50166AD8219D36B224C4AA212A90DB280AA1DACC0BFC30BC9632E9B8D7F7205
+[1728298573] unbound[1:0] debug: outnet handle udp reply
+[1728298573] unbound[1:0] debug: measured roundtrip at 121 msec
+[1728298573] unbound[1:0] debug: svcd callbacks start
+[1728298573] unbound[1:0] debug: worker svcd callback for qstate 0x557e95e57220
+[1728298573] unbound[1:0] debug: mesh_run: start
+[1728298573] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1728298573] unbound[1:0] info: iterator operate: query keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] debug: process_response: new external response event
+[1728298573] unbound[1:0] info: scrub for keytrap.test. NS IN
+[1728298573] unbound[1:0] info: response for keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] info: reply from <keytrap.test.> 10.10.0.3#53
+[1728298573] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+;; flags: qr aa rd ; QUERY: 1, ANSWER: 4, AUTHORITY: 0, ADDITIONAL: 0 
+;; QUESTION SECTION:
+keytrap.test.INDNSKEY
+
+;; ANSWER SECTION:
+keytrap.test.86400INDNSKEY257 3 14 MzJsFTtAo0j8qGpDIhEMnK4ImTyYwMwDPU5gt/FaXd6TOw6AvZDAj2hlhZvaxMXV6xCw1MU5iPv5ZQrb3NDLUU+TW07imJ5GD9YKi0Qiiypo+zhtL4aGaOG+870yHwuY ;{id = 30130 (ksk), size = 384b}
+keytrap.test.86400INDNSKEY256 3 14 DcYreAh+USsK1mtv7bSR2iaQvShPUqCy7l/BRQXttAFupXp6pUaQZS+kii+H2JJqd+rS4YgC3KCd/by8yQi5j+WSy2yRprSuFuDyqZMFnDT/Py+nGjmIa59+W1iMdEYb ;{id = 6350 (zsk), size = 384b}
+keytrap.test.86400INRRSIGDNSKEY 14 2 86400 20241106092918 20241007092918 6350 keytrap.test. ollmgXnsrtc2GVx5HbXV4XaWxygXX90FD0avArSIIPuGHqzzLJ6S9loVtwsdZ/CGdJo4nzIn8pTXQuboz2Hv8GRf7N2FFfyRcmz8wHQ+faLsrZL0MPNApzybfJJMept6 ;{id = 6350}
+keytrap.test.86400INRRSIGDNSKEY 14 2 86400 20241106092918 20241007092918 30130 keytrap.test. WjKQCEHx962QfA/xiJk7lL4ziiz/cv4i9LZt2KE6l/Sn8SJfPnEUaFC6qsTTXkEWpBQU+lioSwL6wzGKDnSYf+UBZq2CGdNrIkxKohKpDbKAqh2swL/DC8ljLpuNf3IF ;{id = 30130}
+
+;; AUTHORITY SECTION:
+
+;; ADDITIONAL SECTION:
+;; MSG SIZE  rcvd: 534
+
+[1728298573] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1728298573] unbound[1:0] info: query response was ANSWER
+[1728298573] unbound[1:0] debug: iter_handle processing q with state FINISHED RESPONSE STATE
+[1728298573] unbound[1:0] info: finishing processing for keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] debug: mesh_run: iterator module exit state is module_finished
+[1728298573] unbound[1:0] debug: validator[module 0] operate: extstate:module_wait_module event:module_event_moddone
+[1728298573] unbound[1:0] info: validator operate: query keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] debug: validator: nextmodule returned
+[1728298573] unbound[1:0] debug: not validating response, is valrec(validation recursion lookup)
+[1728298573] unbound[1:0] debug: mesh_run: validator module exit state is module_finished
+[1728298573] unbound[1:0] info: validator: inform_super, sub is keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] info: super is www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: anchor matched DNSKEY.
+[1728298573] unbound[1:0] info: validate keys with anchor(DS): sec_status_secure
+[1728298573] unbound[1:0] info: Successfully primed trust anchor keytrap.test. DNSKEY IN
+[1728298573] unbound[1:0] debug: validator[module 0] operate: extstate:module_wait_subquery event:module_event_pass
+[1728298573] unbound[1:0] info: validator operate: query www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: val handle processing q with state VAL_FINDKEY_STATE
+[1728298573] unbound[1:0] info: validator: FindKey www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: val handle processing q with state VAL_VALIDATE_STATE
+[1728298573] unbound[1:0] info: verify rrset www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: verify sig 6350 14
+[1728298573] unbound[1:0] debug: verify result: sec_status_secure
+[1728298573] unbound[1:0] info: verify rrset keytrap.test. NS IN
+[1728298573] unbound[1:0] debug: verify sig 6350 14
+[1728298573] unbound[1:0] debug: verify result: sec_status_secure
+[1728298573] unbound[1:0] info: verify rrset ns1.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: verify sig 6350 14
+[1728298573] unbound[1:0] debug: verify result: sec_status_secure
+[1728298573] unbound[1:0] debug: Validating a positive response
+[1728298573] unbound[1:0] debug: Successfully validated positive response
+[1728298573] unbound[1:0] info: validate(positive): sec_status_secure
+[1728298573] unbound[1:0] debug: val handle processing q with state VAL_FINISHED_STATE
+[1728298573] unbound[1:0] info: validation success www.keytrap.test. A IN
+[1728298573] unbound[1:0] debug: mesh_run: validator module exit state is module_finished
+[1728298573] unbound[1:0] debug: query took 0.275077 sec
+[1728298573] unbound[1:0] info: mesh_run: end 1 recursion states (0 with reply, 1 detached), 0 waiting replies, 1 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1728298573] unbound[1:0] info: average recursion processing time 0.275077 sec
+[1728298573] unbound[1:0] info: histogram of recursion processing times
+[1728298573] unbound[1:0] info: [25%]=0 median[50%]=0 [75%]=0
+[1728298573] unbound[1:0] info: lower(secs) upper(secs) recursions
+[1728298573] unbound[1:0] info:    0.262144    0.524288 1
+[1728298573] unbound[1:0] info: 0vRDd mod1  _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: cache memory msg=66680 rrset=68094 infra=8534 val=67198
+[1728298573] unbound[1:0] debug: svcd callbacks end
+[1728298573] unbound[1:0] debug: close of port 60659
+[1728298573] unbound[1:0] debug: close fd 7
+[1728298573] unbound[1:0] debug: answer cb
+[1728298573] unbound[1:0] debug: Incoming reply id = 3b2d
+[1728298573] unbound[1:0] debug: Incoming reply addr = ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug: lookup size is 1 entries
+[1728298573] unbound[1:0] debug: received udp reply.
+[1728298573] unbound[1:0] debug: udp message[619:0] 3B2D85200001000200020002085F74612D37356232076B65797472617004746573740000010001085F74612D37356232076B657974726170047465737400000100010001518000040A0A0003085F74612D37356232076B657974726170047465737400002E000100015180008000010E0300015180672B36EE6703A9EE18CE076B6579747261700474657374005C11CE9658C3E25045A561666DEDAC5CD8446E70DA0CF04C9F67B53EFC34008B77356F63F76CCFE061C6095237212D446B7B86AB49C17141D57ADE61C6C5E6864A1E2F322E0ED53C55AE0ED8BC8521D5F92A6D65A5D9EDC1CAF438E200980379076B6579747261700474657374000002000100
+[1728298573] unbound[1:0] debug: udp message[619:256] 0151800012036E7331076B657974726170047465737400076B657974726170047465737400002E000100015180008000020E0200015180672B36EE6703A9EE18CE076B65797472617004746573740029BDCD124124781BB172922C453AC1C7B40F464F8B40DEF913144ACF2882024829CF893BFB494230AC9170458643A3B0DBC2052BE155FA591D46BE2E571B23A5599CE59B532631447CD56FDD40B21EE7EB5F896F9DE21461F96CEB34D1E5106A036E7331076B657974726170047465737400000100010001518000040A0A0003036E7331076B657974726170047465737400002E000100015180008000010E0300015180672B36EE6703A9EE18CE076B65
+[1728298573] unbound[1:0] debug: udp message[619:512] 7974726170047465737400D782394ADE4F573CCBE2E71BDB24D6AB70523860177C908B1F8FC37B61CC9B7B0ACE715FF91080B6FDE51757E92722C3B178B875BF1C7FDEA79F644F85034CF53EA9DC71484D226CE0FE4645390698926569F32508720EA352DFBF568B11FE61
+[1728298573] unbound[1:0] debug: outnet handle udp reply
+[1728298573] unbound[1:0] debug: measured roundtrip at 261 msec
+[1728298573] unbound[1:0] debug: svcd callbacks start
+[1728298573] unbound[1:0] debug: worker svcd callback for qstate 0x557e95e53210
+[1728298573] unbound[1:0] debug: mesh_run: start
+[1728298573] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1728298573] unbound[1:0] info: iterator operate: query _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: process_response: new external response event
+[1728298573] unbound[1:0] info: scrub for keytrap.test. NS IN
+[1728298573] unbound[1:0] info: response for _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] info: reply from <keytrap.test.> 10.10.0.3#53
+[1728298573] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+;; flags: qr aa rd ; QUERY: 1, ANSWER: 2, AUTHORITY: 2, ADDITIONAL: 2 
+;; QUESTION SECTION:
+_ta-75b2.keytrap.test.INA
+
+;; ANSWER SECTION:
+_ta-75b2.keytrap.test.86400INA10.10.0.3
+_ta-75b2.keytrap.test.86400INRRSIGA 14 3 86400 20241106092918 20241007092918 6350 keytrap.test. XBHOlljD4lBFpWFmbe2sXNhEbnDaDPBMn2e1Pvw0AIt3NW9j92zP4GHGCVI3IS1Ea3uGq0nBcUHVet5hxsXmhkoeLzIuDtU8Va4O2LyFIdX5Km1lpdntwcr0OOIAmAN5 ;{id = 6350}
+
+;; AUTHORITY SECTION:
+keytrap.test.86400INNSns1.keytrap.test.
+keytrap.test.86400INRRSIGNS 14 2 86400 20241106092918 20241007092918 6350 keytrap.test. Kb3NEkEkeBuxcpIsRTrBx7QPRk+LQN75ExRKzyiCAkgpz4k7+0lCMKyRcEWGQ6Ow28IFK+FV+lkdRr4uVxsjpVmc5ZtTJjFEfNVv3UCyHufrX4lvneIUYfls6zTR5RBq ;{id = 6350}
+
+;; ADDITIONAL SECTION:
+ns1.keytrap.test.86400INA10.10.0.3
+ns1.keytrap.test.86400INRRSIGA 14 3 86400 20241106092918 20241007092918 6350 keytrap.test. 14I5St5PVzzL4ucb2yTWq3BSOGAXfJCLH4/De2HMm3sKznFf+RCAtv3lF1fpJyLDsXi4db8cf96nn2RPhQNM9T6p3HFITSJs4P5GRTkGmJJlafMlCHIOo1Lfv1aLEf5h ;{id = 6350}
+;; MSG SIZE  rcvd: 509
+
+[1728298573] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1728298573] unbound[1:0] info: query response was ANSWER
+[1728298573] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1728298573] unbound[1:0] info: processQueryTargets: _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 1
+[1728298573] unbound[1:0] info: DelegationPoint<keytrap.test.>: 0 names (0 missing), 1 addrs (1 result, 0 avail) parentNS
+[1728298573] unbound[1:0] debug:    ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug: attempt to get extra 3 targets
+[1728298573] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1728298573] unbound[1:0] debug: servselect ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug:    rtt=607
+[1728298573] unbound[1:0] debug: selrtt 607
+[1728298573] unbound[1:0] info: sending query: _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: sending to target: <keytrap.test.> 10.10.0.3#53
+[1728298573] unbound[1:0] debug: dnssec status: expected
+[1728298573] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1728298573] unbound[1:0] info: mesh_run: end 1 recursion states (0 with reply, 1 detached), 0 waiting replies, 1 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1728298573] unbound[1:0] info: average recursion processing time 0.275077 sec
+[1728298573] unbound[1:0] info: histogram of recursion processing times
+[1728298573] unbound[1:0] info: [25%]=0 median[50%]=0 [75%]=0
+[1728298573] unbound[1:0] info: lower(secs) upper(secs) recursions
+[1728298573] unbound[1:0] info:    0.262144    0.524288 1
+[1728298573] unbound[1:0] info: 0vRDd mod1  _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: cache memory msg=66680 rrset=68501 infra=8534 val=67198
+[1728298573] unbound[1:0] debug: svcd callbacks end
+[1728298573] unbound[1:0] debug: close of port 10524
+[1728298573] unbound[1:0] debug: close fd 8
+[1728298573] unbound[1:0] debug: serviced send timer
+[1728298573] unbound[1:0] debug: EDNS lookup known=1 vs=0
+[1728298573] unbound[1:0] debug: serviced query UDP timeout=607 msec
+[1728298573] unbound[1:0] debug: inserted new pending reply id=ec2a
+[1728298573] unbound[1:0] debug: opened UDP if=0 port=35226
+[1728298573] unbound[1:0] debug: comm point start listening 7 (-1 msec)
+[1728298573] unbound[1:0] debug: answer cb
+[1728298573] unbound[1:0] debug: Incoming reply id = ec2a
+[1728298573] unbound[1:0] debug: Incoming reply addr = ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug: lookup size is 1 entries
+[1728298573] unbound[1:0] debug: received udp reply.
+[1728298573] unbound[1:0] debug: udp message[233:0] EC2A85230001000000020000085F74612D37356232076B657974726170047465737400000A0001076B65797472617004746573740000020001000151800012036E7331076B657974726170047465737400076B657974726170047465737400002E000100015180008000020E0200015180672B36EE6703A9EE18CE076B65797472617004746573740029BDCD124124781BB172922C453AC1C7B40F464F8B40DEF913144ACF2882024829CF893BFB494230AC9170458643A3B0DBC2052BE155FA591D46BE2E571B23A5599CE59B532631447CD56FDD40B21EE7EB5F896F9DE21461F96CEB34D1E5106A
+[1728298573] unbound[1:0] debug: outnet handle udp reply
+[1728298573] unbound[1:0] debug: measured roundtrip at 108 msec
+[1728298573] unbound[1:0] debug: svcd callbacks start
+[1728298573] unbound[1:0] debug: worker svcd callback for qstate 0x557e95e53210
+[1728298573] unbound[1:0] debug: mesh_run: start
+[1728298573] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1728298573] unbound[1:0] info: iterator operate: query _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: process_response: new external response event
+[1728298573] unbound[1:0] info: scrub for keytrap.test. NS IN
+[1728298573] unbound[1:0] info: normalize: removing irrelevant RRset: keytrap.test. NS IN
+[1728298573] unbound[1:0] info: response for _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] info: reply from <keytrap.test.> 10.10.0.3#53
+[1728298573] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NXDOMAIN, id: 0
+;; flags: qr aa rd ; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0 
+;; QUESTION SECTION:
+_ta-75b2.keytrap.test.INNULL
+
+;; ANSWER SECTION:
+
+;; AUTHORITY SECTION:
+
+;; ADDITIONAL SECTION:
+;; MSG SIZE  rcvd: 39
+
+[1728298573] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1728298573] unbound[1:0] info: query response was DNSSEC LAME
+[1728298573] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1728298573] unbound[1:0] info: processQueryTargets: _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 2
+[1728298573] unbound[1:0] info: DelegationPoint<keytrap.test.>: 0 names (0 missing), 1 addrs (1 result, 0 avail) parentNS
+[1728298573] unbound[1:0] debug:    ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug: attempt to get extra 3 targets
+[1728298573] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1728298573] unbound[1:0] debug: servselect ip4 10.10.0.3 port 53 (len 16)
+[1728298573] unbound[1:0] debug:    rtt=525 ADDR_DNSSEC_LAME
+[1728298573] unbound[1:0] debug: selrtt 240525
+[1728298573] unbound[1:0] debug: chase to dnssec lame server
+[1728298573] unbound[1:0] info: sending query: _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: sending to target: <keytrap.test.> 10.10.0.3#53
+[1728298573] unbound[1:0] debug: dnssec status: expected but lame_query anyway
+[1728298573] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1728298573] unbound[1:0] info: mesh_run: end 1 recursion states (0 with reply, 1 detached), 0 waiting replies, 1 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1728298573] unbound[1:0] info: average recursion processing time 0.275077 sec
+[1728298573] unbound[1:0] info: histogram of recursion processing times
+[1728298573] unbound[1:0] info: [25%]=0 median[50%]=0 [75%]=0
+[1728298573] unbound[1:0] info: lower(secs) upper(secs) recursions
+[1728298573] unbound[1:0] info:    0.262144    0.524288 1
+[1728298573] unbound[1:0] info: 0vRDd mod1  _ta-75b2.keytrap.test. NULL IN
+[1728298573] unbound[1:0] debug: cache memory msg=66680 rrset=68501 infra=8534 val=67198
+[1728298573] unbound[1:0] debug: svcd callbacks end
+[1728298573] unbound[1:0] debug: close of port 35226
+[1728298573] unbound[1:0] debug: close fd 7
+[1728298573] unbound[1:0] debug: serviced send timer
+[1728298573] unbound[1:0] debug: EDNS lookup known=1 vs=0
+[1728298573] unbound[1:0] debug: serviced query UDP timeout=525 msec
+[1728298573] unbound[1:0] debug: inserted new pending reply id=0aac
+[1728298573] unbound[1:0] debug: opened UDP if=0 port=24784
+[1728298573] unbound[1:0] debug: comm point start listening 7 (-1 msec)
+[1728298574] unbound[1:0] debug: answer cb
+[1728298574] unbound[1:0] debug: Incoming reply id = 0aac
+[1728298574] unbound[1:0] debug: Incoming reply addr = ip4 10.10.0.3 port 53 (len 16)
+[1728298574] unbound[1:0] debug: lookup size is 1 entries
+[1728298574] unbound[1:0] debug: received udp reply.
+[1728298574] unbound[1:0] debug: udp message[233:0] 0AAC85230001000000020000085F74612D37356232076B657974726170047465737400000A0001076B65797472617004746573740000020001000151800012036E7331076B657974726170047465737400076B657974726170047465737400002E000100015180008000020E0200015180672B36EE6703A9EE18CE076B65797472617004746573740029BDCD124124781BB172922C453AC1C7B40F464F8B40DEF913144ACF2882024829CF893BFB494230AC9170458643A3B0DBC2052BE155FA591D46BE2E571B23A5599CE59B532631447CD56FDD40B21EE7EB5F896F9DE21461F96CEB34D1E5106A
+[1728298574] unbound[1:0] debug: outnet handle udp reply
+[1728298574] unbound[1:0] debug: measured roundtrip at 140 msec
+[1728298574] unbound[1:0] debug: svcd callbacks start
+[1728298574] unbound[1:0] debug: worker svcd callback for qstate 0x557e95e53210
+[1728298574] unbound[1:0] debug: mesh_run: start
+[1728298574] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1728298574] unbound[1:0] info: iterator operate: query _ta-75b2.keytrap.test. NULL IN
+[1728298574] unbound[1:0] debug: process_response: new external response event
+[1728298574] unbound[1:0] info: scrub for keytrap.test. NS IN
+[1728298574] unbound[1:0] info: normalize: removing irrelevant RRset: keytrap.test. NS IN
+[1728298574] unbound[1:0] info: response for _ta-75b2.keytrap.test. NULL IN
+[1728298574] unbound[1:0] info: reply from <keytrap.test.> 10.10.0.3#53
+[1728298574] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NXDOMAIN, id: 0
+;; flags: qr aa rd ; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0 
+;; QUESTION SECTION:
+_ta-75b2.keytrap.test.INNULL
+
+;; ANSWER SECTION:
+
+;; AUTHORITY SECTION:
+
+;; ADDITIONAL SECTION:
+;; MSG SIZE  rcvd: 39
+
+[1728298574] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1728298574] unbound[1:0] info: query response was NXDOMAIN ANSWER
+[1728298574] unbound[1:0] debug: iter_handle processing q with state FINISHED RESPONSE STATE
+[1728298574] unbound[1:0] info: finishing processing for _ta-75b2.keytrap.test. NULL IN
+[1728298574] unbound[1:0] debug: mesh_run: iterator module exit state is module_finished
+[1728298574] unbound[1:0] debug: validator[module 0] operate: extstate:module_wait_module event:module_event_moddone
+[1728298574] unbound[1:0] info: validator operate: query _ta-75b2.keytrap.test. NULL IN
+[1728298574] unbound[1:0] debug: validator: nextmodule returned
+[1728298574] unbound[1:0] debug: not validating response, is valrec(validation recursion lookup)
+[1728298574] unbound[1:0] debug: mesh_run: validator module exit state is module_finished
+[1728298574] unbound[1:0] info: mesh_run: end 0 recursion states (0 with reply, 0 detached), 0 waiting replies, 1 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1728298574] unbound[1:0] info: average recursion processing time 0.275077 sec
+[1728298574] unbound[1:0] info: histogram of recursion processing times
+[1728298574] unbound[1:0] info: [25%]=0 median[50%]=0 [75%]=0
+[1728298574] unbound[1:0] info: lower(secs) upper(secs) recursions
+[1728298574] unbound[1:0] info:    0.262144    0.524288 1
+[1728298574] unbound[1:0] debug: cache memory msg=66927 rrset=68501 infra=8534 val=67198
+[1728298574] unbound[1:0] debug: svcd callbacks end
+[1728298574] unbound[1:0] debug: close of port 24784
+[1728298574] unbound[1:0] debug: close fd 7
