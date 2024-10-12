@@ -5,17 +5,19 @@ services:
     volumes:
       - ./client/dns_client.py:/usr/local/ScapyClient/dns_client.py
     networks:
-      test_net:
-        ipv4_address: 10.10.0.2
+      go_dns_net:
+        ipv4_address: 10.10.3.2
   
   authority:
     build: authority
     volumes:
-      - ./authority/dns_auth.py:/usr/local/ScapyAuth/dns_auth.py
+      - ./authority/dns_auth.go:/usr/local/GoDNS/dns_auth.z
+      - ./authority/go.mod:/usr/local/GoDNS/go.mod
+      - ./authority/go.sum:/usr/local/GoDNS/go.sum
     privileged: true
     networks:
-      test_net:
-        ipv4_address: 10.10.0.3
+      go_dns_net:
+        ipv4_address: 10.10.3.3
         
   unbound:
     build: unbound
@@ -23,12 +25,12 @@ services:
       - ./unbound/keytrap.test.key:/usr/local/etc/unbound/keytrap.test.key
       - ./unbound/unbound.conf:/usr/local/etc/unbound/unbound.conf
     networks:
-      test_net:
-        ipv4_address: 10.10.0.4
+      go_dns_net:
+        ipv4_address: 10.10.3.4
         
 networks:
-  test_net:
+  go_dns_net:
     ipam:
       config:
-        - subnet: 10.10.0.0/24
+        - subnet: 10.10.3.0/24
 
