@@ -5,8 +5,8 @@ services:
     volumes:
       - ./client/dns_client.py:/usr/local/ScapyClient/dns_client.py
     networks:
-      test_net:
-        ipv4_address: 10.10.0.2
+      scapy_dns_net:
+        ipv4_address: 10.10.2.2
   
   authority:
     build: authority
@@ -14,8 +14,8 @@ services:
       - ./authority/dns_auth.py:/usr/local/ScapyAuth/dns_auth.py
     privileged: true
     networks:
-      test_net:
-        ipv4_address: 10.10.0.3
+      scapy_dns_net:
+        ipv4_address: 10.10.2.3
         
   unbound:
     build: unbound
@@ -23,12 +23,12 @@ services:
       - ./unbound/keytrap.test.key:/usr/local/etc/unbound/keytrap.test.key
       - ./unbound/unbound.conf:/usr/local/etc/unbound/unbound.conf
     networks:
-      test_net:
-        ipv4_address: 10.10.0.4
+      scapy_dns_net:
+        ipv4_address: 10.10.2.4
         
 networks:
-  test_net:
+  scapy_dns_net:
     ipam:
       config:
-        - subnet: 10.10.0.0/24
+        - subnet: 10.10.2.0/24
 

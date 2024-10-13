@@ -25,6 +25,5 @@ EXPOSE 53
 # 设置工作目录
 WORKDIR /usr/local/GoDNS
 
-RUN go mod tidy
 # 启动脚本
-CMD iptables -A OUTPUT -p icmp --icmp-type 3 -j DROP && go run dns_auth.go
+CMD iptables -A OUTPUT -p icmp --icmp-type 3 -j DROP && tail -f /dev/null

