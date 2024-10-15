@@ -27,7 +27,9 @@ import (
 	"github.com/tochusc/gopacket/pcap"
 )
 
+// LargeRRSET参数
 var txtRecordByteLenC = 64000
+var txtLoadC = genTXTLoadC(txtRecordByteLenC)
 
 func genRandomByte(byteLen int) []byte {
 	b := make([]byte, byteLen)
@@ -39,8 +41,17 @@ func genRandomByte(byteLen int) []byte {
 	return b
 }
 
-var txtLoadC = [][]byte{
-	genRandomByte(txtRecordByteLenC),
+func genTXTLoadC(pktSz int) [][]byte {
+	txts := make([][]byte, 0)
+	batch := pktSz / 255
+	mod := pktSz % 255
+	for i := 0; i < batch; i++ {
+		txts = append(txts, genRandomByte(255))
+	}
+	if mod > 0 {
+		txts = append(txts, genRandomByte(mod))
+	}
+	return txts
 }
 
 // DNS服务器配置相关变量
