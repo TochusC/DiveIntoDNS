@@ -1,14 +1,16 @@
 /**
  * @Project :   ExploitDNSSEC
- * @File    :   dns_auth_frag.go
+ * @File    :   LargeRRSET_A.go
  * @Contact :	tochus@163.com
  * @License :   (C)Copyright 2024
+ * @Description: A DNS server that responds to A queries with large RRSETs.
  *
  * @Modify Time        @Author     @Version    @Description
  * ----------------    --------    --------    -----------
  * 4/8/23 5:34 PM      idealeer    0.0         None
  * 14/10/24 16:28	   4stra       0.1.0       Enable DNSSEC
  * 15/10/24 11:10      4stra       0.2.0       Ethnet Fragmentation
+ * 15/10/24 18:48      4stra       0.3.0       Large A RRSET
  */
 
 package main

@@ -3,7 +3,6 @@
  * @File    :   dns_auth_frag.go
  * @Contact :	tochus@163.com
  * @License :   (C)Copyright 2024
- * @Description: A DNS server that responds to DNS queries with DNSSEC and Ethernet fragmentation.
  *
  * @Modify Time        @Author     @Version    @Description
  * ----------------    --------    --------    -----------
