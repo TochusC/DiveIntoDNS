@@ -14,6 +14,7 @@
  * 18/10/24 11:53      4stra       1.0.1	   Optimizations
  * 19/10/24 11:33	   4stra	   2.0.0       Automatic RRSIG Generation
  * 20/10/24 11:47	   4stra	   2.1.0       Generate RRSET RRSIG
+ * 20/10/24 12:00	   4stra	   2.1.1       Optimize
  */
 
 package main
@@ -260,126 +261,6 @@ var rrsigrr = map[string]layers.DNSResourceRecord{
 		signerName,
 		privKey["KSK"],
 	),
-}
-
-func GenZSKRRSIG1() layers.DNSResourceRecord {
-	// 准备数据
-	data := make([]byte, 65536)
-	offset := 0
-
-	rrsig := layers.DNSRRSIG{
-		TypeCovered: rr["ZSK"].Type,
-		Algorithm:   layers.DNSSECAlgorithmECDSAP384SHA384,
-		Labels:      uint8(strings.Count(string(rr["ZSK"].Name), ".") + 1),
-		OriginalTTL: rr["ZSK"].TTL,
-		Expiration:  uint32(timeStampC) + rr["ZSK"].TTL*1000,
-		Inception:   uint32(timeStampC),
-		KeyTag:      uint16(kskKeyTagC),
-		SignerName:  encodeDomainName(string(signerName)),
-		Signature:   nil,
-	}
-
-	// signature = sign(RRSIG_RDATA | RR(1) | RR(2) | ...)
-	// RRSIG_RDATA
-	binary.BigEndian.PutUint16(data[offset:], uint16(rrsig.TypeCovered))
-	data[offset+2] = uint8(rrsig.Algorithm)
-	data[offset+3] = rrsig.Labels
-	binary.BigEndian.PutUint32(data[offset+4:], rrsig.OriginalTTL)
-	binary.BigEndian.PutUint32(data[offset+8:], rrsig.Expiration)
-	binary.BigEndian.PutUint32(data[offset+12:], rrsig.Inception)
-	binary.BigEndian.PutUint16(data[offset+16:], rrsig.KeyTag)
-	offset += 18
-	offset += copy(data[offset:], rrsig.SignerName)
-
-	fmt.Println("RRSIG_RDATA Length: ", offset)
-
-	// RR = owner | type | class | TTL | RDATA length | RDATA
-	// RR(1) = ZSK Flag 256
-	// owner
-	owner := encodeDomainName(string(rr["ZSK"].Name))
-	offset += copy(data[offset:], owner)
-	binary.BigEndian.PutUint16(data[offset:], uint16(rr["ZSK"].Type))
-	binary.BigEndian.PutUint16(data[offset+2:], uint16(rr["ZSK"].Class))
-	binary.BigEndian.PutUint32(data[offset+4:], uint32(rr["ZSK"].TTL))
-	offset += 8
-	// RDATA length
-	rdlen := 4 + len(rr["ZSK"].DNSKEY.PublicKey)
-
-	fmt.Println("RR(1) RDATA Length: ", rdlen)
-
-	binary.BigEndian.PutUint16(data[offset:], uint16(rdlen))
-	offset += 2
-
-	// RDATA
-	rdata := make([]byte, 65536)
-	rdataOffset := 0
-	binary.BigEndian.PutUint16(rdata[rdataOffset:], uint16(rr["ZSK"].DNSKEY.Flags))
-	rdata[rdataOffset+2] = uint8(rr["ZSK"].DNSKEY.Protocol)
-	rdata[rdataOffset+3] = uint8(rr["ZSK"].DNSKEY.Algorithm)
-	rdataOffset += 4
-	rdataOffset += copy(rdata[rdataOffset:], rr["ZSK"].DNSKEY.PublicKey)
-
-	rdata = rdata[:rdataOffset]
-	fmt.Println("RR(1) RDATA Length: ", rdataOffset)
-
-	offset += copy(data[offset:], rdata)
-
-	fmt.Println("To RR(1) Length: ", offset)
-
-	// RR(2) = KSK Flag 257
-	// owner
-	owner = encodeDomainName(string(rr["KSK"].Name))
-	offset += copy(data[offset:], owner)
-	binary.BigEndian.PutUint16(data[offset:], uint16(rr["KSK"].Type))
-	binary.BigEndian.PutUint16(data[offset+2:], uint16(rr["KSK"].Class))
-	binary.BigEndian.PutUint32(data[offset+4:], uint32(rr["KSK"].TTL))
-	offset += 8
-	// RDATA length
-	rdlen = 4 + len(rr["KSK"].DNSKEY.PublicKey)
-	binary.BigEndian.PutUint16(data[offset:], uint16(rdlen))
-	offset += 2
-	fmt.Println("RR(2) RDATA Length: ", rdlen)
-	// RDATA
-	rdata = make([]byte, 65536)
-	rdataOffset = 0
-	binary.BigEndian.PutUint16(rdata[rdataOffset:], uint16(rr["KSK"].DNSKEY.Flags))
-	rdata[rdataOffset+2] = uint8(rr["KSK"].DNSKEY.Protocol)
-	rdata[rdataOffset+3] = uint8(rr["KSK"].DNSKEY.Algorithm)
-	rdataOffset += 4
-	rdataOffset += copy(rdata[rdataOffset:], rr["KSK"].DNSKEY.PublicKey)
-
-	rdata = rdata[:rdataOffset]
-	fmt.Println("RR(2) RDATA Length: ", rdataOffset)
-
-	offset += copy(data[offset:], rdata)
-	fmt.Println("To RR(2) Length: ", offset)
-
-	// FIN
-	data = data[:offset]
-	fmt.Println("Sign Data Length: ", offset)
-
-	// 计算哈希摘要
-	hashed := sha512.Sum384(data)
-
-	// 解析私钥
-	privKey, _ := parsePrivateKey(privKey["KSK"])
-
-	// 签名哈希摘要
-	r, s, _ := ecdsa.Sign(crand.Reader, privKey, hashed[:])
-
-	// 将签名结果转换为字节数组
-	signature := append(r.Bytes(), s.Bytes()...)
-
-	// 准备 RRSIG
-	rrsig.Signature = signature
-	rrsigRR := layers.DNSResourceRecord{
-		Name:  rr["ZSK"].Name,
-		Type:  layers.DNSTypeRRSIG,
-		Class: layers.DNSClassIN,
-		TTL:   rr["ZSK"].TTL,
-		RRSIG: rrsig,
-	}
-	return rrsigRR
 }
 
 var dnskeys = map[string]layers.DNSKEY{

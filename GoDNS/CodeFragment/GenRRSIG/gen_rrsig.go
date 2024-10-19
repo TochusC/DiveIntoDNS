@@ -1,4 +1,4 @@
-package main
+package codefragment
 
 import (
 	"crypto/ecdsa"
@@ -6,7 +6,6 @@ import (
 	"crypto/rand"
 	"crypto/sha512"
 	"encoding/binary"
-	"fmt"
 	"math/big"
 	"strings"
 	"time"
@@ -14,81 +13,28 @@ import (
 	"github.com/tochusc/gopacket/layers"
 )
 
-func GenRRSIG(rr layers.DNSResourceRecord, keytag int, signerName, privKeyRawData []byte) layers.DNSResourceRecord {
+var timeStampC = time.Now().UTC().Unix()
+
+// GenRRSIG 生成 RRSIG 记录
+func GenRRSIG(rrset []*layers.DNSResourceRecord, keytag int, signerName, privKeyRawData []byte) layers.DNSResourceRecord {
 	// 准备数据
 	data := make([]byte, 65536)
+	offset := 0
+
 	rrsig := layers.DNSRRSIG{
-		TypeCovered: layers.DNSTypeA,
+		TypeCovered: rrset[0].Type,
 		Algorithm:   layers.DNSSECAlgorithmECDSAP384SHA384,
-		Labels:      uint8(strings.Count(string(rr.Name), ".") + 1),
-		OriginalTTL: rr.TTL,
-		Expiration:  uint32(time.Now().UTC().Unix()) + rr.TTL,
-		Inception:   uint32(time.Now().UTC().Unix()),
-		KeyTag:      keytag,
-		SignerName:  encodeSignerName(signerName),
+		Labels:      uint8(strings.Count(string(rrset[0].Name), ".") + 1),
+		OriginalTTL: rrset[0].TTL,
+		Expiration:  uint32(timeStampC) + rrset[0].TTL*10,
+		Inception:   uint32(timeStampC),
+		KeyTag:      uint16(keytag),
+		SignerName:  encodeDomainName(string(signerName)),
 		Signature:   nil,
 	}
-	encodeRRSIG(rrsig, data, 0)
 
-	offset := 18 + len(rrsig.SignerName) + len(rrsig.Signature)
-	offset, _ = encodeRR(&rr, data, offset)
-	data = data[:offset]
-
-	// 计算哈希摘要
-	hashed := sha512.Sum384(data)
-
-	// 解析私钥
-	privKey, err := parsePrivateKey(privKeyRawData)
-	if err != nil {
-		return layers.DNSResourceRecord{}
-	}
-
-	// 签名哈希摘要
-	r, s, err := ecdsa.Sign(rand.Reader, privKey, hashed[:])
-	if err != nil {
-		return layers.DNSResourceRecord{}
-	}
-
-	// 将签名结果转换为字节数组
-	signature := append(r.Bytes(), s.Bytes()...)
-
-	// 准备 RRSIG
-	rrsig.Signature = signature
-	rrsigRR := layers.DNSResourceRecord{
-		Name:  rr.Name,
-		Type:  layers.DNSTypeRRSIG,
-		Class: layers.DNSClassIN,
-		TTL:   rr.TTL,
-		RRSIG: rrsig,
-	}
-	return rrsigRR
-}
-
-func encodeName(name []byte, data []byte, offset int) int {
-	l := 0
-	for i := range name {
-		if name[i] == '.' {
-			data[offset+i-l] = byte(l)
-			l = 0
-		} else {
-			// skip one to write the length
-			data[offset+i+1] = name[i]
-			l++
-		}
-	}
-
-	if len(name) == 0 {
-		data[offset] = 0x00 // terminal
-		return offset + 1
-	}
-
-	// length for final portion
-	data[offset+len(name)-l] = byte(l)
-	data[offset+len(name)+1] = 0x00 // terminal
-	return offset + len(name) + 2
-}
-
-func encodeRRSIG(rrsig layers.DNSRRSIG, data []byte, offset int) {
+	// signature = sign(RRSIG_RDATA | RR(1) | RR(2) | ...)
+	// RRSIG_RDATA
 	binary.BigEndian.PutUint16(data[offset:], uint16(rrsig.TypeCovered))
 	data[offset+2] = uint8(rrsig.Algorithm)
 	data[offset+3] = rrsig.Labels
@@ -98,85 +44,119 @@ func encodeRRSIG(rrsig layers.DNSRRSIG, data []byte, offset int) {
 	binary.BigEndian.PutUint16(data[offset+16:], rrsig.KeyTag)
 	offset += 18
 	offset += copy(data[offset:], rrsig.SignerName)
-	copy(data[offset:], rrsig.Signature)
-}
 
-func encodeRR(rr *layers.DNSResourceRecord, data []byte, offset int) (int, error) {
-
-	noff := encodeName(rr.Name, data, offset)
-	nSz := noff - offset
-
-	binary.BigEndian.PutUint16(data[noff:], uint16(rr.Type))
-	binary.BigEndian.PutUint16(data[noff+2:], uint16(rr.Class))
-	binary.BigEndian.PutUint32(data[noff+4:], uint32(rr.TTL))
-
-	switch rr.Type {
-	case layers.DNSTypeA:
-		copy(data[noff+10:], rr.IP.To4())
-	case layers.DNSTypeAAAA:
-		copy(data[noff+10:], rr.IP)
-	case layers.DNSTypeNS:
-		encodeName(rr.NS, data, noff+10)
-	case layers.DNSTypeCNAME:
-		encodeName(rr.CNAME, data, noff+10)
-	case layers.DNSTypePTR:
-		encodeName(rr.PTR, data, noff+10)
-	case layers.DNSTypeSOA:
-		noff2 := encodeName(rr.SOA.MName, data, noff+10)
-		noff2 = encodeName(rr.SOA.RName, data, noff2)
-		binary.BigEndian.PutUint32(data[noff2:], rr.SOA.Serial)
-		binary.BigEndian.PutUint32(data[noff2+4:], rr.SOA.Refresh)
-		binary.BigEndian.PutUint32(data[noff2+8:], rr.SOA.Retry)
-		binary.BigEndian.PutUint32(data[noff2+12:], rr.SOA.Expire)
-		binary.BigEndian.PutUint32(data[noff2+16:], rr.SOA.Minimum)
-	case layers.DNSTypeMX:
-		binary.BigEndian.PutUint16(data[noff+10:], rr.MX.Preference)
-		encodeName(rr.MX.Name, data, noff+12)
-	case layers.DNSTypeTXT:
-		noff2 := noff + 10
-		for _, txt := range rr.TXTs {
-			data[noff2] = byte(len(txt))
-			copy(data[noff2+1:], txt)
-			noff2 += 1 + len(txt)
-		}
-	case layers.DNSTypeSRV:
-		binary.BigEndian.PutUint16(data[noff+10:], rr.SRV.Priority)
-		binary.BigEndian.PutUint16(data[noff+12:], rr.SRV.Weight)
-		binary.BigEndian.PutUint16(data[noff+14:], rr.SRV.Port)
-		encodeName(rr.SRV.Name, data, noff+16)
-	case layers.DNSTypeURI:
-		binary.BigEndian.PutUint16(data[noff+10:], rr.URI.Priority)
-		binary.BigEndian.PutUint16(data[noff+12:], rr.URI.Weight)
-		copy(data[noff+14:], rr.URI.Target)
-	case layers.DNSTypeOPT:
-		noff2 := noff + 10
-		for _, opt := range rr.OPT {
-			binary.BigEndian.PutUint16(data[noff2:], uint16(opt.Code))
-			binary.BigEndian.PutUint16(data[noff2+2:], uint16(len(opt.Data)))
-			copy(data[noff2+4:], opt.Data)
-			noff2 += 4 + len(opt.Data)
-		}
-	case layers.DNSTypeRRSIG:
-		encodeRRSIG(rr.RRSIG, data, noff)
-	case layers.DNSTypeDNSKEY:
-		binary.BigEndian.PutUint16(data[offset:], uint16(rr.DNSKEY.Flags))
-		data[offset+2] = uint8(rr.DNSKEY.Protocol)
-		data[offset+3] = uint8(rr.DNSKEY.Algorithm)
-		copy(data[offset+4:], rr.DNSKEY.PublicKey)
-	default:
-		if rr.Data != nil {
-			noff2 := noff + 10
-			copy(data[noff2:], rr.Data)
-		} else {
-			return 0, fmt.Errorf("serializing resource record of type %v not supported wihout providing RDATA", rr.Type)
-		}
+	// RR = owner | type | class | TTL | RDATA length | RDATA
+	for _, rr := range rrset {
+		// owner
+		owner := encodeDomainName(string(rr.Name))
+		offset += copy(data[offset:], owner)
+		binary.BigEndian.PutUint16(data[offset:], uint16(rr.Type))
+		binary.BigEndian.PutUint16(data[offset+2:], uint16(rr.Class))
+		binary.BigEndian.PutUint32(data[offset+4:], uint32(rr.TTL))
+		offset += 8
+		// RDATA length
+		rdlen := recSize(rr)
+		binary.BigEndian.PutUint16(data[offset:], uint16(rdlen))
+		offset += 2
+		// RDATA
+		rdata := serializeRDATA(rr)
+		offset += copy(data[offset:], rdata)
 	}
 
-	// DataLength
-	dSz := recSize(rr)
-	binary.BigEndian.PutUint16(data[noff+8:], uint16(dSz))
+	// FIN
+	data = data[:offset]
 
-	return offset + nSz + 10 + dSz, nil
+	// 计算哈希摘要
+	hashed := sha512.Sum384(data)
+
+	// 解析私钥
+	privKey, _ := parsePrivateKey(privKeyRawData)
+
+	// 签名哈希摘要
+	r, s, _ := ecdsa.Sign(rand.Reader, privKey, hashed[:])
+
+	// 将签名结果转换为字节数组
+	signature := append(r.Bytes(), s.Bytes()...)
+
+	// 准备 RRSIG
+	rrsig.Signature = signature
+	rrsigRR := layers.DNSResourceRecord{
+		Name:  rrset[0].Name,
+		Type:  layers.DNSTypeRRSIG,
+		Class: layers.DNSClassIN,
+		TTL:   rrset[0].TTL,
+		RRSIG: rrsig,
+	}
+	return rrsigRR
+}
+
+func encodeDomainName(domainName string) []byte {
+	var domainNameBytes []byte
+	for _, label := range strings.Split(domainName, ".") {
+		domainNameBytes = append(domainNameBytes, byte(len(label)))
+		domainNameBytes = append(domainNameBytes, []byte(label)...)
+	}
+	domainNameBytes = append(domainNameBytes, 0)
+	return domainNameBytes
+}
+
+func serializeRDATA(rr *layers.DNSResourceRecord) []byte {
+	rdata := make([]byte, 65536)
+	offset := 0
+	switch rr.Type {
+	case layers.DNSTypeA:
+		offset = copy(rdata[:], rr.IP.To4())
+	case layers.DNSTypeAAAA:
+		offset = copy(rdata[:], rr.IP)
+	case layers.DNSTypeNS:
+		domainName := encodeDomainName(string(rr.NS))
+		offset += copy(rdata[offset:], domainName)
+	case layers.DNSTypeCNAME:
+		domainName := encodeDomainName(string(rr.CNAME))
+		offset += copy(rdata[offset:], domainName)
+	case layers.DNSTypeTXT:
+		for _, txt := range rr.TXTs {
+			rdata[offset] = byte(len(txt))
+			copy(rdata[offset+1:], txt)
+			offset += 1 + len(txt)
+		}
+	case layers.DNSTypeURI:
+		binary.BigEndian.PutUint16(rdata[offset:], rr.URI.Priority)
+		binary.BigEndian.PutUint16(rdata[offset+2:], rr.URI.Weight)
+		offset += 4
+		offset += copy(rdata[offset:], rr.URI.Target)
+	case layers.DNSTypeOPT:
+		for _, opt := range rr.OPT {
+			binary.BigEndian.PutUint16(rdata[offset:], uint16(opt.Code))
+			binary.BigEndian.PutUint16(rdata[offset:], uint16(len(opt.Data)))
+			offset += 4
+			offset += copy(rdata[offset:], opt.Data)
+		}
+	case layers.DNSTypeRRSIG:
+		binary.BigEndian.PutUint16(rdata[offset:], uint16(rr.RRSIG.TypeCovered))
+		rdata[offset+2] = uint8(rr.RRSIG.Algorithm)
+		rdata[offset+3] = rr.RRSIG.Labels
+		binary.BigEndian.PutUint32(rdata[offset+4:], rr.RRSIG.OriginalTTL)
+		binary.BigEndian.PutUint32(rdata[offset+8:], rr.RRSIG.Expiration)
+		binary.BigEndian.PutUint32(rdata[offset+12:], rr.RRSIG.Inception)
+		binary.BigEndian.PutUint16(rdata[offset+16:], rr.RRSIG.KeyTag)
+		offset += 18
+		offset += copy(rdata[offset:], rr.RRSIG.SignerName)
+		offset += copy(rdata[offset:], rr.RRSIG.Signature)
+	case layers.DNSTypeDNSKEY:
+		binary.BigEndian.PutUint16(rdata[offset:], uint16(rr.DNSKEY.Flags))
+		rdata[offset+2] = uint8(rr.DNSKEY.Protocol)
+		rdata[offset+3] = uint8(rr.DNSKEY.Algorithm)
+		offset += 4
+		offset += copy(rdata[offset:], rr.DNSKEY.PublicKey)
+	default:
+		if rr.Data != nil {
+			copy(rdata[offset:], rr.Data)
+		} else {
+			return nil
+		}
+	}
+	return rdata[:offset]
 }
 
 func recSize(rr *layers.DNSResourceRecord) int {
@@ -223,6 +203,7 @@ func recSize(rr *layers.DNSResourceRecord) int {
 		}
 	}
 }
+
 func parsePrivateKey(privKeyBytes []byte) (*ecdsa.PrivateKey, error) {
 	curve := elliptic.P384()
 	privKey := new(ecdsa.PrivateKey)
@@ -230,20 +211,4 @@ func parsePrivateKey(privKeyBytes []byte) (*ecdsa.PrivateKey, error) {
 	privKey.D = new(big.Int).SetBytes(privKeyBytes)
 	privKey.PublicKey.X, privKey.PublicKey.Y = curve.ScalarBaseMult(privKeyBytes)
 	return privKey, nil
-}
-
-func encodeSignerName(signerName []byte) []byte {
-	domain := make([]byte, 255)
-	offset := 0
-	for i := 0; i < len(signerName); i++ {
-		if signerName[i] == '.' {
-			domain[offset] = byte(i - offset)
-			offset = i + 1
-		} else {
-			domain[i+1] = signerName[i]
-		}
-	}
-	domain[offset] = byte(len(signerName) - offset)
-	domain[len(signerName)+1] = 0x00
-	return domain[:len(signerName)+2]
 }
