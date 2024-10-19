@@ -1,9 +1,9 @@
 /**
  * @Project :   ExploitDNSSEC
- * @File    :   automatic_rrsig.go
+ * @File    :   dns_auth.go
  * @Contact :	tochus@163.com
  * @License :   (C)Copyright 2024
- * @Description: A Test DNS server that responds to DNS queries with automatic generated RRSIG records.
+ * @Description: A DNS server that responds to DNS queries with DNSSEC and Ethernet fragmentation.
  *
  * @Modify Time        @Author     @Version    @Description
  * ----------------    --------    --------    -----------
@@ -12,23 +12,14 @@
  * 15/10/24 11:10      4stra       0.2.0       Ethnet Fragmentation
  * 17/10/24 20:12 	   4stra       1.0.0       Switch to using gopacket/gopacet
  * 18/10/24 11:53      4stra       1.0.1	   Optimizations
- * 19/10/24 11:33	   4stra	   2.0.0       Automatic RRSIG Generation
- * 20/10/24 11:47	   4stra	   2.1.0       Generate RRSET RRSIG
- * 20/10/24 12:00	   4stra	   2.1.1       Optimize
  */
 
 package main
 
 import (
-	"crypto/ecdsa"
-	"crypto/elliptic"
-	crand "crypto/rand"
-	"crypto/sha512"
 	"encoding/base64"
-	"encoding/binary"
 	"fmt"
-	"math/big"
-	mrand "math/rand"
+	"math/rand"
 	"net"
 	"os"
 	"strings"
@@ -40,228 +31,138 @@ import (
 	"github.com/tochusc/gopacket/pcap"
 )
 
+// DNS服务器配置相关变量
+var (
+	serverIPC = "10.10.3.3"
+	srcPortC  = 53
+	deviceC   = "eth0"
+
+	// 以太网最大传输单元：发送方所能接受的最大载荷大小
+	mtuC = 1500
+	// 以太网帧最大长度：mtuC + ethHeaderLenC = 1514字节
+	ethHeaderLenC = 14
+	ipHeaderLenC  = 20
+
+	// 需要替换为本机MAC地址
+	serverMACC = net.HardwareAddr{0x02, 0x42, 0x0a, 0x0a, 0x03, 0x03}
+	handleSend *pcap.Handle
+	err        error
+	// 所管辖的域名
+	domainNameC = map[string]struct{}{
+		"www.keytrap.test": {},
+		"keytrap.test":     {},
+		"ns1.keytrap.test": {},
+	}
+)
+
 // DNSSEC验证相关变量（每次签名都需修改其中值）
 var (
-	timeStampCT, _ = time.Parse("20060102150405", "20241018000000")
-	timeStampC     = timeStampCT.UTC().Unix()
-
 	globalTTLC = 86400
 
-	// Keytag 16bit
-	// ZSK keytag: 06350
-	// KSK keytag: 30130
+	expirationC = "20241112125051"
+	inceptionC  = "20241013125051"
+
 	zskKeyTagC = 6350
 	kskKeyTagC = 30130
 
 	// algorithmC = 14
-	signerNameC = "keytrap.test"
 
+	signerNameC = "keytrap.test"
+	signaturesC = map[string]string{
+		"www.keytrap.test": "YsPPs2WpuC0h7+eYanDr3NZ+boDSkUAUHjhKVGzMlHpkpyjTMpJYsHk/M9Hm2isq5loXKpCS43ILkb/9+kBUpyjS+kMQwN+V7v+4fPECpaA+B+sh1S0E2zT0l24JBbBw",
+		"keytrap.test":     "2g+7jwHGSajuBtOYYM1O+/AC64CdwRaM4lNUryxYdz+Vn/ZqUL/Rxp/RHEFja5a+SwDzME6VwzY47BFLpoQC04afzaxwKSTpn1mw2tRxS+ZLvI/s0XhRLLGbVk0vf9pb",
+		"ns1.keytrap.test": "efiWRospV7iPUMpT6T81FbZ2x10HvEbgS+L/8TvINibNZfi0OLaVm/AQ//tCQjx86Aak8lg2IGH9EmqaeQwdgVG34bLdWbcsin+JvuXOPrB5K5hePxX59LS0svFMWy8P",
+		"ZSK":              "1T2zwLEXVvY8ZAKRCKxYGp6jiaAK9/es6nSQbOBS5vgVLaBi/8UX5hVjdBpgmGxJqPVYzwl20L04fPDtAIMAcRXCpzb8NfznEYFRfBIMA53fBHs5IYQGUPBGrH5nPMGr",
+		"KSK":              "tYfcl8gWb1OqrPUGoM34X5u0jX6/DxKajsQLXAECLruClEwF/QzSW37JEIAuGvGgkmJNejinukrG+Z6buAl0bFkCfEbyUT+NEcr3a3TrY+0HEXyPxdKyQIHXNiQZLD/6",
+	}
 	dnskeyC = map[string]string{
 		"ZSK": "DcYreAh+USsK1mtv7bSR2iaQvShPUqCy7l/BRQXttAFupXp6pUaQZS+kii+H2JJqd+rS4YgC3KCd/by8yQi5j+WSy2yRprSuFuDyqZMFnDT/Py+nGjmIa59+W1iMdEYb",
 		"KSK": "MzJsFTtAo0j8qGpDIhEMnK4ImTyYwMwDPU5gt/FaXd6TOw6AvZDAj2hlhZvaxMXV6xCw1MU5iPv5ZQrb3NDLUU+TW07imJ5GD9YKi0Qiiypo+zhtL4aGaOG+870yHwuY",
-	}
-
-	privateKeyC = map[string]string{
-		"ZSK": "hj22bHPVtSrK+hVbwBKRyEUsPzZuzWRLodxoP3U0r6CvGjF3/vaWtJ4qiSpMi5AY",
-		"KSK": "ppaXHmb7u1jOxEzrLzuGKzbjmSLIK4gEhQOvws+cpBQyJbCwIM1Nrk4j5k94CP9e",
 	}
 )
 
 var (
 	globalTTL = uint32(globalTTLC)
 
+	expirationTimestamp, _ = time.Parse("20060102150405", expirationC)
+	expiration             = uint32(expirationTimestamp.UTC().Unix())
+
+	inceptionTimestamp, _ = time.Parse("20060102150405", inceptionC)
+	inception             = uint32(inceptionTimestamp.UTC().Unix())
+
 	zskKeyTag = uint16(zskKeyTagC)
 	kskKeyTag = uint16(kskKeyTagC)
 
-	signerName = []byte(signerNameC)
-
+	signerName = encodeDomainName(signerNameC)
+	signatures = map[string][]byte{
+		"www.keytrap.test": base64Decode(signaturesC["www.keytrap.test"]),
+		"keytrap.test":     base64Decode(signaturesC["keytrap.test"]),
+		"ns1.keytrap.test": base64Decode(signaturesC["ns1.keytrap.test"]),
+		"ZSK":              base64Decode(signaturesC["ZSK"]),
+		"KSK":              base64Decode(signaturesC["KSK"]),
+	}
 	dnskey = map[string][]byte{
 		"ZSK": base64Decode(dnskeyC["ZSK"]),
 		"KSK": base64Decode(dnskeyC["KSK"]),
 	}
-	privKey = map[string][]byte{
-		"ZSK": base64Decode(privateKeyC["ZSK"]),
-		"KSK": base64Decode(privateKeyC["KSK"]),
-	}
 )
 
-var rr = map[string]layers.DNSResourceRecord{
+var rrsig = map[string]layers.DNSRRSIG{
 	"www.keytrap.test": {
-		Name:  []byte("www.keytrap.test"),
-		Type:  layers.DNSTypeA,
-		Class: layers.DNSClassIN,
-		TTL:   uint32(globalTTLC),
-		IP:    net.ParseIP(serverIPC),
+		TypeCovered: layers.DNSTypeA,
+		Algorithm:   layers.DNSSECAlgorithmECDSAP384SHA384,
+		Labels:      3,
+		OriginalTTL: globalTTL,
+		Expiration:  expiration,
+		Inception:   inception,
+		KeyTag:      zskKeyTag,
+		SignerName:  signerName,
+		Signature:   signatures["www.keytrap.test"],
 	},
 	"keytrap.test": {
-		Name:  []byte("keytrap.test"),
-		Type:  layers.DNSTypeNS,
-		Class: layers.DNSClassIN,
-		TTL:   uint32(globalTTLC),
-		NS:    []byte("ns1.keytrap.test"),
+		TypeCovered: layers.DNSTypeNS,
+		Algorithm:   layers.DNSSECAlgorithmECDSAP384SHA384,
+		Labels:      2,
+		OriginalTTL: globalTTL,
+		Expiration:  expiration,
+		Inception:   inception,
+		KeyTag:      zskKeyTag,
+		SignerName:  signerName,
+		Signature:   signatures["keytrap.test"],
 	},
 	"ns1.keytrap.test": {
-		Name:  []byte("ns1.keytrap.test"),
-		Type:  layers.DNSTypeA,
-		Class: layers.DNSClassIN,
-		TTL:   uint32(globalTTLC),
-		IP:    net.ParseIP(serverIPC),
+		TypeCovered: layers.DNSTypeA,
+		Algorithm:   layers.DNSSECAlgorithmECDSAP384SHA384,
+		Labels:      3,
+		OriginalTTL: globalTTL,
+		Expiration:  expiration,
+		Inception:   inception,
+		KeyTag:      zskKeyTag,
+		SignerName:  signerName,
+		Signature:   signatures["ns1.keytrap.test"],
 	},
 	"ZSK": {
-		Name:   []byte("keytrap.test"),
-		Type:   layers.DNSTypeDNSKEY,
-		Class:  layers.DNSClassIN,
-		TTL:    uint32(globalTTLC),
-		DNSKEY: dnskeys["ZSK"],
+		TypeCovered: layers.DNSTypeDNSKEY,
+		Algorithm:   layers.DNSSECAlgorithmECDSAP384SHA384,
+		Labels:      2,
+		OriginalTTL: globalTTL,
+		Expiration:  expiration,
+		Inception:   inception,
+		KeyTag:      zskKeyTag,
+		SignerName:  signerName,
+		Signature:   signatures["ZSK"],
 	},
 	"KSK": {
-		Name:   []byte("keytrap.test"),
-		Type:   layers.DNSTypeDNSKEY,
-		Class:  layers.DNSClassIN,
-		TTL:    uint32(globalTTL),
-		DNSKEY: dnskeys["KSK"],
-	},
-}
-
-// GenRRSIG 生成RRSIG记录
-func GenRRSIG(rrset []*layers.DNSResourceRecord, keytag int, signerName, privKeyRawData []byte) layers.DNSResourceRecord {
-	// 准备数据
-	data := make([]byte, 65536)
-	offset := 0
-
-	rrsig := layers.DNSRRSIG{
-		TypeCovered: rrset[0].Type,
+		TypeCovered: layers.DNSTypeDNSKEY,
 		Algorithm:   layers.DNSSECAlgorithmECDSAP384SHA384,
-		Labels:      uint8(strings.Count(string(rrset[0].Name), ".") + 1),
-		OriginalTTL: rrset[0].TTL,
-		Expiration:  uint32(timeStampC) + rrset[0].TTL*10,
-		Inception:   uint32(timeStampC),
-		KeyTag:      uint16(keytag),
-		SignerName:  encodeDomainName(string(signerName)),
-		Signature:   nil,
-	}
-
-	// signature = sign(RRSIG_RDATA | RR(1) | RR(2) | ...)
-	// RRSIG_RDATA
-	binary.BigEndian.PutUint16(data[offset:], uint16(rrsig.TypeCovered))
-	data[offset+2] = uint8(rrsig.Algorithm)
-	data[offset+3] = rrsig.Labels
-	binary.BigEndian.PutUint32(data[offset+4:], rrsig.OriginalTTL)
-	binary.BigEndian.PutUint32(data[offset+8:], rrsig.Expiration)
-	binary.BigEndian.PutUint32(data[offset+12:], rrsig.Inception)
-	binary.BigEndian.PutUint16(data[offset+16:], rrsig.KeyTag)
-	offset += 18
-	offset += copy(data[offset:], rrsig.SignerName)
-
-	// RR = owner | type | class | TTL | RDATA length | RDATA
-	for _, rr := range rrset {
-		// owner
-		owner := encodeDomainName(string(rr.Name))
-		offset += copy(data[offset:], owner)
-		binary.BigEndian.PutUint16(data[offset:], uint16(rr.Type))
-		binary.BigEndian.PutUint16(data[offset+2:], uint16(rr.Class))
-		binary.BigEndian.PutUint32(data[offset+4:], uint32(rr.TTL))
-		offset += 8
-		// RDATA length
-		rdlen := recSize(rr)
-		binary.BigEndian.PutUint16(data[offset:], uint16(rdlen))
-		offset += 2
-		// RDATA
-		rdata := serializeRDATA(rr)
-		offset += copy(data[offset:], rdata)
-	}
-
-	// FIN
-	data = data[:offset]
-
-	// 计算哈希摘要
-	hashed := sha512.Sum384(data)
-
-	// 解析私钥
-	privKey, _ := parsePrivateKey(privKeyRawData)
-
-	// 签名哈希摘要
-	r, s, _ := ecdsa.Sign(crand.Reader, privKey, hashed[:])
-
-	// 将签名结果转换为字节数组
-	signature := append(r.Bytes(), s.Bytes()...)
-
-	// 准备 RRSIG
-	rrsig.Signature = signature
-	rrsigRR := layers.DNSResourceRecord{
-		Name:  rrset[0].Name,
-		Type:  layers.DNSTypeRRSIG,
-		Class: layers.DNSClassIN,
-		TTL:   rrset[0].TTL,
-		RRSIG: rrsig,
-	}
-	return rrsigRR
-}
-
-var rrsigrr = map[string]layers.DNSResourceRecord{
-	"www.keytrap.test": GenRRSIG(
-		[]*layers.DNSResourceRecord{
-			{
-				Name:  []byte("www.keytrap.test"),
-				Type:  layers.DNSTypeA,
-				Class: layers.DNSClassIN,
-				TTL:   uint32(globalTTLC),
-				IP:    net.ParseIP(serverIPC),
-			},
-		},
-		zskKeyTagC,
-		signerName,
-		privKey["ZSK"],
-	),
-	"keytrap.test": GenRRSIG(
-		[]*layers.DNSResourceRecord{
-			{
-				Name:  []byte("keytrap.test"),
-				Type:  layers.DNSTypeNS,
-				Class: layers.DNSClassIN,
-				TTL:   uint32(globalTTLC),
-				NS:    []byte("ns1.keytrap.test"),
-			},
-		},
-		zskKeyTagC,
-		signerName,
-		privKey["ZSK"],
-	),
-	"ns1.keytrap.test": GenRRSIG(
-		[]*layers.DNSResourceRecord{
-			{
-				Name:  []byte("ns1.keytrap.test"),
-				Type:  layers.DNSTypeA,
-				Class: layers.DNSClassIN,
-				TTL:   uint32(globalTTLC),
-				IP:    net.ParseIP(serverIPC),
-			},
-		},
-		zskKeyTagC,
-		signerName,
-		privKey["ZSK"],
-	),
-	"DNSKEY": GenRRSIG(
-		[]*layers.DNSResourceRecord{
-			{
-				Name:   []byte("keytrap.test"),
-				Type:   layers.DNSTypeDNSKEY,
-				Class:  layers.DNSClassIN,
-				TTL:    uint32(globalTTLC),
-				DNSKEY: dnskeys["ZSK"],
-			},
-			{
-				Name:   []byte("keytrap.test"),
-				Type:   layers.DNSTypeDNSKEY,
-				Class:  layers.DNSClassIN,
-				TTL:    uint32(globalTTL),
-				DNSKEY: dnskeys["KSK"],
-			},
-		},
-		kskKeyTagC,
-		signerName,
-		privKey["KSK"],
-	),
+		Labels:      2,
+		OriginalTTL: globalTTL,
+		Expiration:  expiration,
+		Inception:   inception,
+		KeyTag:      kskKeyTag,
+		SignerName:  signerName,
+		Signature:   signatures["KSK"],
+	},
 }
 
 var dnskeys = map[string]layers.DNSKEY{
@@ -279,135 +180,12 @@ var dnskeys = map[string]layers.DNSKEY{
 	},
 }
 
-func encodeDomainName(domainName string) []byte {
-	var domainNameBytes []byte
-	for _, label := range strings.Split(domainName, ".") {
-		domainNameBytes = append(domainNameBytes, byte(len(label)))
-		domainNameBytes = append(domainNameBytes, []byte(label)...)
-	}
-	domainNameBytes = append(domainNameBytes, 0)
-	return domainNameBytes
-}
-
-func serializeRDATA(rr *layers.DNSResourceRecord) []byte {
-	rdata := make([]byte, 65536)
-	offset := 0
-	switch rr.Type {
-	case layers.DNSTypeA:
-		offset = copy(rdata[:], rr.IP.To4())
-	case layers.DNSTypeAAAA:
-		offset = copy(rdata[:], rr.IP)
-	case layers.DNSTypeNS:
-		domainName := encodeDomainName(string(rr.NS))
-		offset += copy(rdata[offset:], domainName)
-	case layers.DNSTypeCNAME:
-		domainName := encodeDomainName(string(rr.CNAME))
-		offset += copy(rdata[offset:], domainName)
-	case layers.DNSTypeTXT:
-		for _, txt := range rr.TXTs {
-			rdata[offset] = byte(len(txt))
-			copy(rdata[offset+1:], txt)
-			offset += 1 + len(txt)
-		}
-	case layers.DNSTypeURI:
-		binary.BigEndian.PutUint16(rdata[offset:], rr.URI.Priority)
-		binary.BigEndian.PutUint16(rdata[offset+2:], rr.URI.Weight)
-		offset += 4
-		offset += copy(rdata[offset:], rr.URI.Target)
-	case layers.DNSTypeOPT:
-		for _, opt := range rr.OPT {
-			binary.BigEndian.PutUint16(rdata[offset:], uint16(opt.Code))
-			binary.BigEndian.PutUint16(rdata[offset:], uint16(len(opt.Data)))
-			offset += 4
-			offset += copy(rdata[offset:], opt.Data)
-		}
-	case layers.DNSTypeRRSIG:
-		binary.BigEndian.PutUint16(rdata[offset:], uint16(rr.RRSIG.TypeCovered))
-		rdata[offset+2] = uint8(rr.RRSIG.Algorithm)
-		rdata[offset+3] = rr.RRSIG.Labels
-		binary.BigEndian.PutUint32(rdata[offset+4:], rr.RRSIG.OriginalTTL)
-		binary.BigEndian.PutUint32(rdata[offset+8:], rr.RRSIG.Expiration)
-		binary.BigEndian.PutUint32(rdata[offset+12:], rr.RRSIG.Inception)
-		binary.BigEndian.PutUint16(rdata[offset+16:], rr.RRSIG.KeyTag)
-		offset += 18
-		offset += copy(rdata[offset:], rr.RRSIG.SignerName)
-		offset += copy(rdata[offset:], rr.RRSIG.Signature)
-	case layers.DNSTypeDNSKEY:
-		binary.BigEndian.PutUint16(rdata[offset:], uint16(rr.DNSKEY.Flags))
-		rdata[offset+2] = uint8(rr.DNSKEY.Protocol)
-		rdata[offset+3] = uint8(rr.DNSKEY.Algorithm)
-		offset += 4
-		offset += copy(rdata[offset:], rr.DNSKEY.PublicKey)
-	default:
-		if rr.Data != nil {
-			copy(rdata[offset:], rr.Data)
-		} else {
-			return nil
-		}
-	}
-	return rdata[:offset]
-}
-
-func recSize(rr *layers.DNSResourceRecord) int {
-	switch rr.Type {
-	case layers.DNSTypeA:
-		return 4
-	case layers.DNSTypeAAAA:
-		return 16
-	case layers.DNSTypeNS:
-		return len(rr.NS) + 2
-	case layers.DNSTypeCNAME:
-		return len(rr.CNAME) + 2
-	case layers.DNSTypePTR:
-		return len(rr.PTR) + 2
-	case layers.DNSTypeSOA:
-		return len(rr.SOA.MName) + 2 + len(rr.SOA.RName) + 2 + 20
-	case layers.DNSTypeMX:
-		return 2 + len(rr.MX.Name) + 2
-	case layers.DNSTypeTXT:
-		l := len(rr.TXTs)
-		for _, txt := range rr.TXTs {
-			l += len(txt)
-		}
-		return l
-	case layers.DNSTypeSRV:
-		return 6 + len(rr.SRV.Name) + 2
-	case layers.DNSTypeURI:
-		return 4 + len(rr.URI.Target)
-	case layers.DNSTypeOPT:
-		l := len(rr.OPT) * 4
-		for _, opt := range rr.OPT {
-			l += len(opt.Data)
-		}
-		return l
-	case layers.DNSTypeRRSIG:
-		return 18 + len(rr.RRSIG.SignerName) + len(rr.RRSIG.Signature)
-	case layers.DNSTypeDNSKEY:
-		return 4 + len(rr.DNSKEY.PublicKey)
-	default:
-		if rr.Data != nil {
-			return int(rr.DataLength)
-		} else {
-			return 0
-		}
-	}
-}
-
-func parsePrivateKey(privKeyBytes []byte) (*ecdsa.PrivateKey, error) {
-	curve := elliptic.P384()
-	privKey := new(ecdsa.PrivateKey)
-	privKey.PublicKey.Curve = curve
-	privKey.D = new(big.Int).SetBytes(privKeyBytes)
-	privKey.PublicKey.X, privKey.PublicKey.Y = curve.ScalarBaseMult(privKeyBytes)
-	return privKey, nil
-}
-
 // dnsResponseC响应DNS请求，生成DNS回复并发送。
 func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort, qname string, qtype layers.DNSType, txid uint16) {
 	fmt.Printf("%s : fm %s query %s %s\n", time.Now().Format(time.ANSIC), dstIP, qname, qtype.String())
 
 	// Generate a random IPID value for all fragments
-	ipID := uint16(mrand.Intn(65536)) // Generate a random number between 0 and 65535
+	ipID := uint16(rand.Intn(65536)) // Generate a random number between 0 and 65535
 
 	ethernetLayer := &layers.Ethernet{
 		BaseLayer:    layers.BaseLayer{},
@@ -505,7 +283,14 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 						TTL:   uint32(globalTTLC),
 						IP:    net.ParseIP(serverIPC),
 					},
-					rrsigrr[qname],
+					// RRSIG
+					{
+						Name:  []byte(qname),
+						Type:  layers.DNSTypeRRSIG,
+						Class: layers.DNSClassIN,
+						TTL:   uint32(globalTTLC),
+						RRSIG: rrsig[qname],
+					},
 				},
 				Authorities: []layers.DNSResourceRecord{
 					{
@@ -515,7 +300,14 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 						TTL:   uint32(globalTTLC),
 						NS:    []byte("ns1.keytrap.test"),
 					},
-					rrsigrr["keytrap.test"],
+					// RRSIG
+					{
+						Name:  []byte("keytrap.test"),
+						Type:  layers.DNSTypeRRSIG,
+						Class: layers.DNSClassIN,
+						TTL:   uint32(globalTTLC),
+						RRSIG: rrsig["keytrap.test"],
+					},
 				},
 				Additionals: []layers.DNSResourceRecord{
 					{
@@ -525,7 +317,14 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 						TTL:   uint32(globalTTLC),
 						IP:    net.ParseIP(serverIPC),
 					},
-					rrsigrr["ns1.keytrap.test"],
+					// RRSIG
+					{
+						Name:  []byte("ns1.keytrap.test"),
+						Type:  layers.DNSTypeRRSIG,
+						Class: layers.DNSClassIN,
+						TTL:   uint32(globalTTLC),
+						RRSIG: rrsig["ns1.keytrap.test"],
+					},
 				},
 			}
 		}
@@ -568,7 +367,21 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 					TTL:    globalTTL,
 					DNSKEY: dnskeys["KSK"],
 				},
-				rrsigrr["DNSKEY"],
+				// RRSIG
+				{
+					Name:  []byte(qname),
+					Type:  layers.DNSTypeRRSIG,
+					Class: layers.DNSClassIN,
+					TTL:   globalTTL,
+					RRSIG: rrsig["ZSK"],
+				},
+				{
+					Name:  []byte(qname),
+					Type:  layers.DNSTypeRRSIG,
+					Class: layers.DNSClassIN,
+					TTL:   globalTTL,
+					RRSIG: rrsig["KSK"],
+				},
 			},
 		}
 	default:
@@ -776,26 +589,12 @@ func base64Decode(s string) []byte {
 	return data
 }
 
-// DNS服务器配置相关变量
-var (
-	serverIPC = "10.10.3.3"
-	srcPortC  = 53
-	deviceC   = "eth0"
-
-	// 以太网最大传输单元：发送方所能接受的最大载荷大小
-	mtuC = 1500
-	// 以太网帧最大长度：mtuC + ethHeaderLenC = 1514字节
-	ethHeaderLenC = 14
-	ipHeaderLenC  = 20
-
-	// 需要替换为本机MAC地址
-	serverMACC = net.HardwareAddr{0x02, 0x42, 0x0a, 0x0a, 0x03, 0x03}
-	handleSend *pcap.Handle
-	err        error
-	// 所管辖的域名
-	domainNameC = map[string]struct{}{
-		"www.keytrap.test": {},
-		"keytrap.test":     {},
-		"ns1.keytrap.test": {},
+func encodeDomainName(domainName string) []byte {
+	var domainNameBytes []byte
+	for _, label := range strings.Split(domainName, ".") {
+		domainNameBytes = append(domainNameBytes, byte(len(label)))
+		domainNameBytes = append(domainNameBytes, []byte(label)...)
 	}
-)
+	domainNameBytes = append(domainNameBytes, 0)
+	return domainNameBytes
+}

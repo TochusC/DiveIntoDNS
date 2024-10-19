@@ -217,7 +217,6 @@ func calculateKeyTag(key []byte) uint16 {
 	}
 	ac += ac >> 16 & 0xFFFF
 	return uint16(ac & 0xFFFF)
-
 }
 
 func keyTagTest() {

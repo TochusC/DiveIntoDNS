@@ -220,3 +220,16 @@ func encodeDomainName(domainName string) []byte {
 	domainNameBytes = append(domainNameBytes, 0)
 	return domainNameBytes
 }
+
+func calculateKeyTag(key []byte) uint16 {
+	var ac uint32
+	for i := 0; i < len(key); i++ {
+		if i&1 == 1 {
+			ac += uint32(key[i])
+		} else {
+			ac += uint32(key[i]) << 8
+		}
+	}
+	ac += ac >> 16 & 0xFFFF
+	return uint16(ac & 0xFFFF)
+}
