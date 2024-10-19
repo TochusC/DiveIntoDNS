@@ -141,7 +141,10 @@ func encodeRR(rr *layers.DNSResourceRecord, data []byte, offset int) (int, error
 	case layers.DNSTypeRRSIG:
 		encodeRRSIG(rr.RRSIG, data, noff)
 	case layers.DNSTypeDNSKEY:
-		encodeDNSKEY(rr.DNSKEY, data, noff)
+		binary.BigEndian.PutUint16(data[offset:], uint16(rr.DNSKEY.Flags))
+		data[offset+2] = uint8(rr.DNSKEY.Protocol)
+		data[offset+3] = uint8(rr.DNSKEY.Algorithm)
+		copy(data[offset+4:], rr.DNSKEY.PublicKey)
 	default:
 		if rr.Data != nil {
 			noff2 := noff + 10
@@ -191,9 +194,9 @@ func recSize(rr *layers.DNSResourceRecord) int {
 		}
 		return l
 	case layers.DNSTypeRRSIG:
-		return sizeRRSIG(rr.RRSIG)
+		return 18 + len(rr.RRSIG.SignerName) + len(rr.RRSIG.Signature)
 	case layers.DNSTypeDNSKEY:
-		return sizeDNSKEY(rr.DNSKEY)
+		return 4 + len(rr.DNSKEY.PublicKey)
 	default:
 		if rr.Data != nil {
 			return int(rr.DataLength)
@@ -201,21 +204,6 @@ func recSize(rr *layers.DNSResourceRecord) int {
 			return 0
 		}
 	}
-}
-
-func sizeRRSIG(rrsig layers.DNSRRSIG) int {
-	return 18 + len(rrsig.SignerName) + len(rrsig.Signature)
-}
-
-func sizeDNSKEY(dnskey layers.DNSKEY) int {
-	return 4 + len(dnskey.PublicKey)
-}
-
-func encodeDNSKEY(dnskey layers.DNSKEY, data []byte, offset int) {
-	binary.BigEndian.PutUint16(data[offset:], uint16(dnskey.Flags))
-	data[offset+2] = uint8(dnskey.Protocol)
-	data[offset+3] = uint8(dnskey.Algorithm)
-	copy(data[offset+4:], dnskey.PublicKey)
 }
 
 func calculateKeyTag(key []byte) uint16 {
@@ -242,8 +230,15 @@ func keyTagTest() {
 		PublicKey: key,
 	}
 	rdata := make([]byte, 65536)
-	encodeDNSKEY(dnskey, rdata, 0)
-	rdata = rdata[:sizeDNSKEY(dnskey)]
+
+	dnskeySize := 4 + len(dnskey.PublicKey)
+
+	binary.BigEndian.PutUint16(rdata[0:], uint16(dnskey.Flags))
+	rdata[2] = uint8(dnskey.Protocol)
+	rdata[3] = uint8(dnskey.Algorithm)
+	copy(rdata[4:], dnskey.PublicKey)
+
+	rdata = rdata[:dnskeySize]
 	keyTag := calculateKeyTag(rdata)
 
 	fmt.Println("KeyTag:", keyTag)
