@@ -27,6 +27,16 @@ services:
     networks:
       go_dns_net:
         ipv4_address: 10.10.3.4
+
+  bind:
+    build: bind
+    volumes:
+      - ./bind/conf/named:/etc/default/named
+      - ./bind/conf/named.conf:/var/named/chroot/etc/named.conf
+      - ./bind/conf/named.log:/etc/named.log
+    networks:
+      go_dns_net:
+        ipv4_address: 10.10.3.5
         
 networks:
   go_dns_net:

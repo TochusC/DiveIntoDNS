@@ -1,5 +1,5 @@
-github.com/tochusc/gopacket v0.1.2 h1:esuSvYOvIf82Ty01j42K7FBDDDIWCgpzYNscbMlw5T0=
-github.com/tochusc/gopacket v0.1.2/go.mod h1:x1ZnTDaL+gx+HTSeI1xBWzDSn43NYo0Id0YeEV2dWA0=
+github.com/tochusc/gopacket v1.0.0 h1:IvhXQ4XzgJJ4MlPnsdDZs98iYf7CpUTI33z45ZCUW58=
+github.com/tochusc/gopacket v1.0.0/go.mod h1:x1ZnTDaL+gx+HTSeI1xBWzDSn43NYo0Id0YeEV2dWA0=
 github.com/vishvananda/netlink v1.1.0/go.mod h1:cTgwzPIzzgDAYoQrMm0EdrjRUBkTqKYppBueQtXaqoE=
 github.com/vishvananda/netns v0.0.0-20191106174202-0a2b9b5464df/go.mod h1:JP3t17pCcGlemwknint6hfoeCVQrEMVwxRLRjXpq+BU=
 github.com/vishvananda/netns v0.0.0-20210104183010-2eb08e3e575f/go.mod h1:DD4vA1DwXk04H54A1oHXtwZmA0grkVMdPxx/VGLCah0=

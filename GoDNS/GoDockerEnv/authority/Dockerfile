@@ -26,4 +26,5 @@ EXPOSE 53
 WORKDIR /usr/local/GoDNS
 
 # 启动脚本
+# CMD iptables -A OUTPUT -p icmp --icmp-type 3 -j DROP && go run dns_auth.go
 CMD iptables -A OUTPUT -p icmp --icmp-type 3 -j DROP && tail -f /dev/null
