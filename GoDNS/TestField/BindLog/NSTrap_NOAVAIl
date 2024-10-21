@@ -1,0 +1,1114 @@
+2024-10-21T01:30:15.043+00:00 client @0x7fba980022f0 (no-peer): allocate new client
+2024-10-21T01:30:15.043+00:00 client @0x7fba980022f0 127.0.0.1#49981: UDP request
+2024-10-21T01:30:15.043+00:00 client @0x7fba980022f0 127.0.0.1#49981: using view '_default'
+2024-10-21T01:30:15.043+00:00 client @0x7fba980022f0 127.0.0.1#49981: request is not signed
+2024-10-21T01:30:15.043+00:00 client @0x7fba980022f0 127.0.0.1#49981: recursion available
+2024-10-21T01:30:15.043+00:00 client @0x7fba980022f0 127.0.0.1#49981 (www.keytrap.test): query: www.keytrap.test IN A +E(0)K (127.0.0.1)
+2024-10-21T01:30:15.043+00:00 client @0x7fba980022f0 127.0.0.1#49981 (www.keytrap.test): query 'www.keytrap.test/A/IN' approved
+2024-10-21T01:30:15.043+00:00 client @0x7fba980022f0 127.0.0.1#49981 (www.keytrap.test): rrl=(nil), HAVECOOKIE=0, result=DNS_R_DELEGATION, fname=0x7fba98094970(1), is_zone=1, RECURSIONOK=1, query.rpz_st=(nil)(0), RRL_CHECKED=0
+2024-10-21T01:30:15.043+00:00 client @0x7fba980022f0 127.0.0.1#49981 (www.keytrap.test): rrl=(nil), HAVECOOKIE=0, result=ISC_R_NOTFOUND, fname=0x7fba98094730(0), is_zone=0, RECURSIONOK=1, query.rpz_st=(nil)(0), RRL_CHECKED=0
+2024-10-21T01:30:15.043+00:00 fetch: www.keytrap.test/A
+2024-10-21T01:30:15.043+00:00 fctx 0x7fba980bd1f0(www.keytrap.test/A): created counter 0x55b63004ddf0
+2024-10-21T01:30:15.043+00:00 log_ns_ttl: fctx 0x7fba980bd1f0: fctx_create: www.keytrap.test (in 'keytrap.test'?): 1 86400
+2024-10-21T01:30:15.043+00:00 QNAME minimization - not minimized, qmintype 1 qminname www.keytrap.test
+2024-10-21T01:30:15.043+00:00 fetch: keytrap/A
+2024-10-21T01:30:15.043+00:00 fctx 0x7fba980bf300(keytrap/A): attached to counter 0x55b63004ddf0 (0)
+2024-10-21T01:30:15.043+00:00 log_ns_ttl: fctx 0x7fba980bf300: fctx_create: keytrap (in '.'?): 1 518400
+2024-10-21T01:30:15.043+00:00 QNAME minimization - not minimized, qmintype 1 qminname keytrap
+2024-10-21T01:30:15.043+00:00 dns_adb_createfind: started A fetch for name keytrap (0x7fba980beef0)
+2024-10-21T01:30:15.043+00:00 fetch: keytrap/AAAA
+2024-10-21T01:30:15.043+00:00 fctx 0x7fba980c1020(keytrap/AAAA): attached to counter 0x55b63004ddf0 (0)
+2024-10-21T01:30:15.043+00:00 log_ns_ttl: fctx 0x7fba980c1020: fctx_create: keytrap (in '.'?): 1 518400
+2024-10-21T01:30:15.043+00:00 QNAME minimization - not minimized, qmintype 28 qminname keytrap
+2024-10-21T01:30:15.043+00:00 dns_adb_createfind: started AAAA fetch for name keytrap (0x7fba980beef0)
+2024-10-21T01:30:15.043+00:00 createfind: attaching find 0x7fba980bee10 to adbname 0x7fba980beef0 1
+2024-10-21T01:30:15.043+00:00 fctx 0x7fba980bd1f0(www.keytrap.test/A): createfind for 127.0.0.1#49981 - success
+2024-10-21T01:30:15.043+00:00 expire_v4 set to 1729560615 import_rdataset
+2024-10-21T01:30:15.043+00:00 dns_adb_createfind: found A for name keytrap.test (0x7fba980c2d70) in db
+2024-10-21T01:30:15.043+00:00 fctx 0x7fba980bd1f0(www.keytrap.test/A): createfind for 127.0.0.1#49981 - success
+2024-10-21T01:30:15.043+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba980c3d50: connected: success
+2024-10-21T01:30:15.043+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba980c3d50: attaching handle 0x7fba980c43f0 to 0x7fba980c3d78
+2024-10-21T01:30:15.043+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba980c3d50: reading
+2024-10-21T01:30:15.043+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba980c3d50: connect callback: success
+2024-10-21T01:30:15.043+00:00 sending packet to 10.10.3.3#53
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  65265
+;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 1232
+; COOKIE: d73e512673cdd524
+;; QUESTION SECTION:
+;www.keytrap.test.INA
+
+
+2024-10-21T01:30:15.043+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba980c3d50: sending
+2024-10-21T01:30:15.053+00:00 fetch: ./NS
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): created counter 0x7fba9817e150
+2024-10-21T01:30:15.053+00:00 log_ns_ttl: fctx 0x7fba9817d080: fctx_create: . (in '.'?): 1 518400
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name A.ROOT-SERVERS.NET (0x7fba9817cc80) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name A.ROOT-SERVERS.NET (0x7fba9817cc80)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980bf300(keytrap/A): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name B.ROOT-SERVERS.NET (0x7fba9817f220) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name B.ROOT-SERVERS.NET (0x7fba9817f220)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980bf300(keytrap/A): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name C.ROOT-SERVERS.NET (0x7fba9817fa60) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name C.ROOT-SERVERS.NET (0x7fba9817fa60)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980bf300(keytrap/A): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name D.ROOT-SERVERS.NET (0x7fba981802a0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name D.ROOT-SERVERS.NET (0x7fba981802a0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980bf300(keytrap/A): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name E.ROOT-SERVERS.NET (0x7fba98180ae0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name E.ROOT-SERVERS.NET (0x7fba98180ae0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980bf300(keytrap/A): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name F.ROOT-SERVERS.NET (0x7fba98181320) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name F.ROOT-SERVERS.NET (0x7fba98181320)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980bf300(keytrap/A): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name G.ROOT-SERVERS.NET (0x7fba98181b60) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name G.ROOT-SERVERS.NET (0x7fba98181b60)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980bf300(keytrap/A): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name H.ROOT-SERVERS.NET (0x7fba981823a0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name H.ROOT-SERVERS.NET (0x7fba981823a0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980bf300(keytrap/A): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name I.ROOT-SERVERS.NET (0x7fba98182be0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name I.ROOT-SERVERS.NET (0x7fba98182be0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980bf300(keytrap/A): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name J.ROOT-SERVERS.NET (0x7fba98183420) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name J.ROOT-SERVERS.NET (0x7fba98183420)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980bf300(keytrap/A): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name K.ROOT-SERVERS.NET (0x7fba98183c60) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name K.ROOT-SERVERS.NET (0x7fba98183c60)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980bf300(keytrap/A): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name L.ROOT-SERVERS.NET (0x7fba981844a0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name L.ROOT-SERVERS.NET (0x7fba981844a0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980bf300(keytrap/A): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name M.ROOT-SERVERS.NET (0x7fba98184ce0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name M.ROOT-SERVERS.NET (0x7fba98184ce0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980bf300(keytrap/A): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba9817cc80
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba9817cc80
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name A.ROOT-SERVERS.NET (0x7fba9817cc80) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name A.ROOT-SERVERS.NET (0x7fba9817cc80)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980c1020(keytrap/AAAA): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba9817f220
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba9817f220
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name B.ROOT-SERVERS.NET (0x7fba9817f220) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name B.ROOT-SERVERS.NET (0x7fba9817f220)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980c1020(keytrap/AAAA): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba9817fa60
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba9817fa60
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name C.ROOT-SERVERS.NET (0x7fba9817fa60) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name C.ROOT-SERVERS.NET (0x7fba9817fa60)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980c1020(keytrap/AAAA): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba981802a0
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba981802a0
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name D.ROOT-SERVERS.NET (0x7fba981802a0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name D.ROOT-SERVERS.NET (0x7fba981802a0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980c1020(keytrap/AAAA): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98180ae0
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98180ae0
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name E.ROOT-SERVERS.NET (0x7fba98180ae0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name E.ROOT-SERVERS.NET (0x7fba98180ae0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980c1020(keytrap/AAAA): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98181320
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98181320
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name F.ROOT-SERVERS.NET (0x7fba98181320) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name F.ROOT-SERVERS.NET (0x7fba98181320)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980c1020(keytrap/AAAA): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98181b60
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98181b60
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name G.ROOT-SERVERS.NET (0x7fba98181b60) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name G.ROOT-SERVERS.NET (0x7fba98181b60)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980c1020(keytrap/AAAA): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba981823a0
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba981823a0
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name H.ROOT-SERVERS.NET (0x7fba981823a0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name H.ROOT-SERVERS.NET (0x7fba981823a0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980c1020(keytrap/AAAA): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98182be0
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98182be0
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name I.ROOT-SERVERS.NET (0x7fba98182be0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name I.ROOT-SERVERS.NET (0x7fba98182be0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980c1020(keytrap/AAAA): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98183420
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98183420
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name J.ROOT-SERVERS.NET (0x7fba98183420) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name J.ROOT-SERVERS.NET (0x7fba98183420)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980c1020(keytrap/AAAA): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98183c60
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98183c60
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name K.ROOT-SERVERS.NET (0x7fba98183c60) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name K.ROOT-SERVERS.NET (0x7fba98183c60)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980c1020(keytrap/AAAA): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba981844a0
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba981844a0
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name L.ROOT-SERVERS.NET (0x7fba981844a0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name L.ROOT-SERVERS.NET (0x7fba981844a0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980c1020(keytrap/AAAA): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98184ce0
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98184ce0
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name M.ROOT-SERVERS.NET (0x7fba98184ce0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name M.ROOT-SERVERS.NET (0x7fba98184ce0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba980c1020(keytrap/AAAA): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba980c3d50: sent: success
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98185ec0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98185ec0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/A/IN': 2001:500:2::c#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98185ec0: canceling response: operation canceled, none/not reading (none/not reading), requests 2
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98185ec0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98185ec0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98188af0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98188af0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/AAAA/IN': 2001:500:2::c#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98188af0: canceling response: operation canceled, none/not reading (none/not reading), requests 2
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98188af0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98188af0: destroying
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba9817cc80
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba9817cc80
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name A.ROOT-SERVERS.NET (0x7fba9817cc80) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name A.ROOT-SERVERS.NET (0x7fba9817cc80)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba9817f220
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba9817f220
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name B.ROOT-SERVERS.NET (0x7fba9817f220) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name B.ROOT-SERVERS.NET (0x7fba9817f220)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba9817fa60
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba9817fa60
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name C.ROOT-SERVERS.NET (0x7fba9817fa60) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name C.ROOT-SERVERS.NET (0x7fba9817fa60)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba981802a0
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba981802a0
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name D.ROOT-SERVERS.NET (0x7fba981802a0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name D.ROOT-SERVERS.NET (0x7fba981802a0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98180ae0
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98180ae0
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name E.ROOT-SERVERS.NET (0x7fba98180ae0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name E.ROOT-SERVERS.NET (0x7fba98180ae0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98181320
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98181320
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name F.ROOT-SERVERS.NET (0x7fba98181320) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name F.ROOT-SERVERS.NET (0x7fba98181320)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98181b60
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98181b60
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name G.ROOT-SERVERS.NET (0x7fba98181b60) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name G.ROOT-SERVERS.NET (0x7fba98181b60)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba981823a0
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba981823a0
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name H.ROOT-SERVERS.NET (0x7fba981823a0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name H.ROOT-SERVERS.NET (0x7fba981823a0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98182be0
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98182be0
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name I.ROOT-SERVERS.NET (0x7fba98182be0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name I.ROOT-SERVERS.NET (0x7fba98182be0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98183420
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98183420
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name J.ROOT-SERVERS.NET (0x7fba98183420) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name J.ROOT-SERVERS.NET (0x7fba98183420)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98183c60
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98183c60
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name K.ROOT-SERVERS.NET (0x7fba98183c60) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name K.ROOT-SERVERS.NET (0x7fba98183c60)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba981844a0
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba981844a0
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name L.ROOT-SERVERS.NET (0x7fba981844a0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name L.ROOT-SERVERS.NET (0x7fba981844a0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 expiring v4 for name 0x7fba98184ce0
+2024-10-21T01:30:15.053+00:00 expiring v6 for name 0x7fba98184ce0
+2024-10-21T01:30:15.053+00:00 expire_v4 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found A for name M.ROOT-SERVERS.NET (0x7fba98184ce0) in db
+2024-10-21T01:30:15.053+00:00 expire_v6 set to 2147483647 import_rdataset
+2024-10-21T01:30:15.053+00:00 dns_adb_createfind: found AAAA for name M.ROOT-SERVERS.NET (0x7fba98184ce0)
+2024-10-21T01:30:15.053+00:00 fctx 0x7fba9817d080(./NS): createfind for <unknown> - success
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189fe0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189fe0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/A/IN': 2801:1b8:10::b#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189fe0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189fe0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189fe0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98185bc0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98185bc0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/AAAA/IN': 2801:1b8:10::b#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98185bc0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98185bc0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98185bc0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c580: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c580: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving './NS/IN': 2801:1b8:10::b#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c580: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c580: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c580: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818d1c0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818d1c0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/A/IN': 2001:500:2d::d#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818d1c0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818d1c0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818d1c0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189b00: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189b00: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/AAAA/IN': 2001:500:2d::d#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189b00: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189b00: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189b00: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189cc0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189cc0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving './NS/IN': 2001:500:2d::d#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189cc0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189cc0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189cc0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189e80: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189e80: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/A/IN': 2001:503:ba3e::2:30#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189e80: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189e80: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba98189e80: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818cce0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818cce0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/AAAA/IN': 2001:503:ba3e::2:30#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818cce0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818cce0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818cce0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818cea0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818cea0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving './NS/IN': 2001:503:ba3e::2:30#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818cea0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818cea0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818cea0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818d060: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818d060: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/A/IN': 2001:500:1::53#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818d060: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818d060: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818d060: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c0a0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c0a0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/AAAA/IN': 2001:500:1::53#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c0a0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c0a0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c0a0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c260: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c260: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving './NS/IN': 2001:500:1::53#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c260: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c260: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c260: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c420: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c420: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/A/IN': 2001:dc3::35#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c420: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c420: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818c420: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818a7f0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818a7f0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/AAAA/IN': 2001:dc3::35#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818a7f0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818a7f0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818a7f0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818a9b0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818a9b0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving './NS/IN': 2001:dc3::35#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818a9b0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818a9b0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818a9b0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ab70: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ab70: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/A/IN': 2001:500:2f::f#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ab70: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ab70: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ab70: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818dc30: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818dc30: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/AAAA/IN': 2001:500:2f::f#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818dc30: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818dc30: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818dc30: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ddf0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ddf0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving './NS/IN': 2001:500:2f::f#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ddf0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ddf0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ddf0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818dfb0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818dfb0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/A/IN': 2001:7fe::53#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818dfb0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818dfb0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818dfb0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e170: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e170: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/AAAA/IN': 2001:7fe::53#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e170: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e170: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e170: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e330: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e330: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving './NS/IN': 2001:7fe::53#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e330: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e330: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e330: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e4f0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e4f0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/A/IN': 2001:500:a8::e#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e4f0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e4f0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e4f0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e6b0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e6b0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/AAAA/IN': 2001:500:a8::e#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e6b0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e6b0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e6b0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e870: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e870: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving './NS/IN': 2001:500:a8::e#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e870: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e870: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818e870: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ea30: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ea30: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/A/IN': 2001:7fd::1#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ea30: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ea30: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ea30: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ebf0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ebf0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/AAAA/IN': 2001:7fd::1#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ebf0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ebf0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ebf0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818edb0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818edb0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving './NS/IN': 2001:7fd::1#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818edb0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818edb0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818edb0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ef70: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ef70: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/A/IN': 2001:500:12::d0d#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ef70: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ef70: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818ef70: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f130: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f130: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/AAAA/IN': 2001:500:12::d0d#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f130: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f130: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f130: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f2f0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f2f0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving './NS/IN': 2001:500:12::d0d#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f2f0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f2f0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f2f0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f4b0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f4b0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/A/IN': 2001:503:c27::2:30#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f4b0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f4b0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f4b0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f670: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f670: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/AAAA/IN': 2001:503:c27::2:30#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f670: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f670: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f670: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f830: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f830: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving './NS/IN': 2001:503:c27::2:30#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f830: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f830: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f830: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f9f0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f9f0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/A/IN': 2001:500:9f::42#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f9f0: canceling response: operation canceled, none/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f9f0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818f9f0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818fbb0: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818fbb0: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving 'keytrap/AAAA/IN': 2001:500:9f::42#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818fbb0: canceling response: operation canceled, none/not reading (none/not reading), requests 2
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818fbb0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 2
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818fbb0: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818fd70: connected: network unreachable
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818fd70: connect callback: network unreachable
+2024-10-21T01:30:15.053+00:00 network unreachable resolving './NS/IN': 2001:500:9f::42#53
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818fd70: canceling response: operation canceled, none/not reading (none/not reading), requests 1
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818fd70: canceling response: operation canceled, canceled/not reading (none/not reading), requests 1
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ac350: UDP response 0x7fba9818fd70: destroying
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba9818ff30: connected: success
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba9818ff30: attaching handle 0x7fba9818a680 to 0x7fba9818ff58
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba9818ff30: reading
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba9818ff30: connect callback: success
+2024-10-21T01:30:15.053+00:00 sending packet to 192.33.4.12#53
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:   3824
+;; flags: cd; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 1232
+; COOKIE: 392a339e7a93388d
+;; QUESTION SECTION:
+;keytrap.INA
+
+
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba9818ff30: sending
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981900f0: connected: success
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981900f0: attaching handle 0x7fba98186560 to 0x7fba98190118
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981900f0: reading
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981900f0: connect callback: success
+2024-10-21T01:30:15.053+00:00 sending packet to 192.33.4.12#53
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:   1053
+;; flags: cd; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 1232
+; COOKIE: 392a339e7a93388d
+;; QUESTION SECTION:
+;keytrap.INAAAA
+
+
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981900f0: sending
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981902b0: connected: success
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981902b0: attaching handle 0x7fba981893f0 to 0x7fba981902d8
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981902b0: reading
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981902b0: connect callback: success
+2024-10-21T01:30:15.053+00:00 sending packet to 192.33.4.12#53
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  44081
+;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 1232
+; COOKIE: 392a339e7a93388d
+;; QUESTION SECTION:
+;.INNS
+
+
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981902b0: sending
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba9818ff30: sent: success
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981900f0: sent: success
+2024-10-21T01:30:15.053+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981902b0: sent: success
+2024-10-21T01:30:15.063+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba980c3d50: read callback:success, requests 4
+2024-10-21T01:30:15.063+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba980c3d50: got valid DNS message header, /QR 1, id 65265
+2024-10-21T01:30:15.063+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba980c3d50: UDP read callback on 0x7fba980c43f0: success
+2024-10-21T01:30:15.063+00:00 received packet from 10.10.3.3#53
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  65265
+;; flags: qr aa; QUESTION: 1, ANSWER: 2, AUTHORITY: 12, ADDITIONAL: 22
+;; QUESTION SECTION:
+;www.keytrap.test.INA
+
+;; ANSWER SECTION:
+;www.keytrap.test.86400INA10.10.3.3
+;www.keytrap.test.86400INRRSIGA 14 3 86400 (
+;20241117000000 20241018000000 6350 keytrap.test.
+;ysdS2Cshx5IoCdvsG9GrtG3l4Glz
+;SS53TDbXyb2rl3IXQlpdO9zlTTSj
+;patDfHHCM2T/6WpeoaU7l9A6wofw
+;4iAvC4j+QJfqgL+SY4gpzr1cBMOi
+;1al9jNF45OJUXVEZ )
+
+;; AUTHORITY SECTION:
+;keytrap.test.86400INNSns0.keytrap.test.
+;keytrap.test.86400INNSns1.keytrap.test.
+;keytrap.test.86400INNSns2.keytrap.test.
+;keytrap.test.86400INNSns3.keytrap.test.
+;keytrap.test.86400INNSns4.keytrap.test.
+;keytrap.test.86400INNSns5.keytrap.test.
+;keytrap.test.86400INNSns6.keytrap.test.
+;keytrap.test.86400INNSns7.keytrap.test.
+;keytrap.test.86400INNSns8.keytrap.test.
+;keytrap.test.86400INNSns9.keytrap.test.
+;keytrap.test.86400INNSns10.keytrap.test.
+;keytrap.test.86400INRRSIGNS 14 2 86400 (
+;20241117000000 20241018000000 6350 keytrap.test.
+;G6ziBQSDER+9s7NcLGzxIFQ7E/aQ
+;tfyCobykzfYHUFTASyhyWVwWZ51G
+;DwlnrE0WYtS+o6tXp4w3PaYwNZWZ
+;DcbgU7Bd5RE3raEGmasKiM9R3HYA
+;V2y1oeR6owsOOTVD )
+
+;; ADDITIONAL SECTION:
+;ns0.keytrap.test.86400INA10.10.3.3
+;ns0.keytrap.test.86400INRRSIGA 14 3 86400 (
+;20241117000000 20241018000000 6350 keytrap.test.
+;5xzsIDn3sXjwwKodCmum2NJUQpf2
+;ln39KKlBvYp8JW34mpYNp9IaZxX4
+;P1utZBw65SdRU4aC2qmMYRf+kccL
+;j1tGKVjzG/QaV+fqdID7nBsvfRmw
+;Ivspw5khYH/TY3BJ )
+;ns1.keytrap.test.86400INA10.10.3.3
+;ns1.keytrap.test.86400INRRSIGA 14 3 86400 (
+;20241117000000 20241018000000 6350 keytrap.test.
+;z296fIAX8Eno3hsfrt9xJ8JnohgR
+;kmRtMKN4IUf9lFLhKB9OPayfNNgx
+;Q4cJnYghNop2su5uqp2EnVvvVP6E
+;CMB5B9Uhu8eEWxEl0QpdwjIzycqz
+;uekO+04sqGzreaeO )
+;ns2.keytrap.test.86400INA10.10.3.3
+;ns2.keytrap.test.86400INRRSIGA 14 3 86400 (
+;20241117000000 20241018000000 6350 keytrap.test.
+;zoVjpakBLO/1O2jXNaZH47VKVbOt
+;P10LP1HGR5U/GFQzu9AoLVZtfSC3
+;GdNfCiQcz28GU1SVN/xEHCGCZb8n
+;yDasD51+SI7v0+w9TdL4e6isUbRa
+;kSsYbK3OksOot2a0 )
+;ns3.keytrap.test.86400INA10.10.3.3
+;ns3.keytrap.test.86400INRRSIGA 14 3 86400 (
+;20241117000000 20241018000000 6350 keytrap.test.
+;CrGq0KgqwMKI7RJtAVVDo+9btCLD
+;J0KhVrrINmp2Bw2J1S+zCP7AH2/l
+;5JElpnfeAsWXRz2m9DSuTHfCGBI7
+;N3I0ES0KN8/tKdA1VSqRPypwwd5R
+;AdYZyx62OclAhmFl )
+;ns4.keytrap.test.86400INA10.10.3.3
+;ns4.keytrap.test.86400INRRSIGA 14 3 86400 (
+;20241117000000 20241018000000 6350 keytrap.test.
+;YILMseNtB9Amq/8o4tBN7huUmKga
+;wyJ8Ck6CGr8a3P5vsTCDGJUb1Te1
+;hm9emEHoocjnQ5ZPtztG07s06y6u
+;u9d2zGGmqeejFW5/B05a8RS0RkdX
+;fst9QwxWAKkPAlQs )
+;ns5.keytrap.test.86400INA10.10.3.3
+;ns5.keytrap.test.86400INRRSIGA 14 3 86400 (
+;20241117000000 20241018000000 6350 keytrap.test.
+;UiuE5Ae+bFuajH/36AGcmNkUmHqW
+;MQ+59k1v/1oZQ4Z7sSpYXl+MU5P9
+;o3OgJoworcnewqjnoKMmoq1RdAfz
+;a2ZnrgBcUEDuEQa9ZKK0m2XodkjZ
+;g6ZTQcVirfF2HMY= )
+;ns6.keytrap.test.86400INA10.10.3.3
+;ns6.keytrap.test.86400INRRSIGA 14 3 86400 (
+;20241117000000 20241018000000 6350 keytrap.test.
+;jpKvae7awU/J2PUmJAAWhpRPCttL
+;YsIlmMV3lsvfCGVSu5faD4nfCG9U
+;h6BWVmM/Fc+Nn6Mtz3SbcCn1NbSn
+;D3c+zRb35BgUBFhXXMnCTvo4NeSr
+;ywW1vRMXrTF1PSqa )
+;ns7.keytrap.test.86400INA10.10.3.3
+;ns7.keytrap.test.86400INRRSIGA 14 3 86400 (
+;20241117000000 20241018000000 6350 keytrap.test.
+;WwK6fSsS+6DkLPN2ir9ra03Z0xnX
+;96SLZgC9rZ85IM75XU4S7Dr/ShZ1
+;1z4LY+W+ZBqljibLW1flOIF/TeJb
+;CzUzIq9GQBLpEvT+jFx4pF3R01DY
+;9oqNRwahpb3XOkqv )
+;ns8.keytrap.test.86400INA10.10.3.3
+;ns8.keytrap.test.86400INRRSIGA 14 3 86400 (
+;20241117000000 20241018000000 6350 keytrap.test.
+;ybgsyopM42JofxqIq2YdIWNE1rG6
+;QdRsVvaPsyZ/P4cHvHAS+0/a9eS/
+;OzsCAFOqo9sPeoAErsMAOJ2E8aYO
+;cmxG+9JRzLTYXIP3G62fbA8AcHjf
+;zznnu+bQcoun6WtA )
+;ns9.keytrap.test.86400INA10.10.3.3
+;ns9.keytrap.test.86400INRRSIGA 14 3 86400 (
+;20241117000000 20241018000000 6350 keytrap.test.
+;nJbv5OVNTx43nJ1nrgEFmCYLvws4
+;7fXkDOPPo1VjoHcAEykv9+yCMQKp
+;/8Xu4hHj9xU+Uluv3jYZwKx4PjUu
+;bgcJHRjA4jpqPDvHCQLMtCmFMqKh
+;DLsHmCoBaWKSJdU5 )
+;ns10.keytrap.test.86400INA10.10.3.3
+;ns10.keytrap.test.86400INRRSIGA 14 3 86400 (
+;20241117000000 20241018000000 6350 keytrap.test.
+;bFhLvSf1G7ENWHNamnusI4NQictY
+;jQjBSX/R31/TimLq9dGXic/Vh7pv
+;bkB4CRRvftYeYWo4Rv2dIqqIynQ6
+;JMQZgdC1f/DBmCU0zQe9yJnu7HxO
+;t2zlCfBFHwqZnRqA )
+
+
+2024-10-21T01:30:15.063+00:00 received packet (no opt) from 10.10.3.3#53
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  65265
+;; flags: qr aa; QUESTION: 1, ANSWER: 2, AUTHORITY: 12, ADDITIONAL: 22
+;; QUESTION SECTION:
+;www.keytrap.test.INA
+
+;; ANSWER SECTION:
+www.keytrap.test.86400INA10.10.3.3
+www.keytrap.test.86400INRRSIGA 14 3 86400 20241117000000 20241018000000 6350 keytrap.test. ysdS2Cshx5IoCdvsG9GrtG3l4GlzSS53TDbXyb2rl3IXQlpdO9zlTTSj patDfHHCM2T/6WpeoaU7l9A6wofw4iAvC4j+QJfqgL+SY4gpzr1cBMOi 1al9jNF45OJUXVEZ
+
+;; AUTHORITY SECTION:
+keytrap.test.86400INNSns0.keytrap.test.
+keytrap.test.86400INNSns1.keytrap.test.
+keytrap.test.86400INNSns2.keytrap.test.
+keytrap.test.86400INNSns3.keytrap.test.
+keytrap.test.86400INNSns4.keytrap.test.
+keytrap.test.86400INNSns5.keytrap.test.
+keytrap.test.86400INNSns6.keytrap.test.
+keytrap.test.86400INNSns7.keytrap.test.
+keytrap.test.86400INNSns8.keytrap.test.
+keytrap.test.86400INNSns9.keytrap.test.
+keytrap.test.86400INNSns10.keytrap.test.
+keytrap.test.86400INRRSIGNS 14 2 86400 20241117000000 20241018000000 6350 keytrap.test. G6ziBQSDER+9s7NcLGzxIFQ7E/aQtfyCobykzfYHUFTASyhyWVwWZ51G DwlnrE0WYtS+o6tXp4w3PaYwNZWZDcbgU7Bd5RE3raEGmasKiM9R3HYA V2y1oeR6owsOOTVD
+
+;; ADDITIONAL SECTION:
+ns0.keytrap.test.86400INA10.10.3.3
+ns0.keytrap.test.86400INRRSIGA 14 3 86400 20241117000000 20241018000000 6350 keytrap.test. 5xzsIDn3sXjwwKodCmum2NJUQpf2ln39KKlBvYp8JW34mpYNp9IaZxX4 P1utZBw65SdRU4aC2qmMYRf+kccLj1tGKVjzG/QaV+fqdID7nBsvfRmw Ivspw5khYH/TY3BJ
+ns1.keytrap.test.86400INA10.10.3.3
+ns1.keytrap.test.86400INRRSIGA 14 3 86400 20241117000000 20241018000000 6350 keytrap.test. z296fIAX8Eno3hsfrt9xJ8JnohgRkmRtMKN4IUf9lFLhKB9OPayfNNgx Q4cJnYghNop2su5uqp2EnVvvVP6ECMB5B9Uhu8eEWxEl0QpdwjIzycqz uekO+04sqGzreaeO
+ns2.keytrap.test.86400INA10.10.3.3
+ns2.keytrap.test.86400INRRSIGA 14 3 86400 20241117000000 20241018000000 6350 keytrap.test. zoVjpakBLO/1O2jXNaZH47VKVbOtP10LP1HGR5U/GFQzu9AoLVZtfSC3 GdNfCiQcz28GU1SVN/xEHCGCZb8nyDasD51+SI7v0+w9TdL4e6isUbRa kSsYbK3OksOot2a0
+ns3.keytrap.test.86400INA10.10.3.3
+ns3.keytrap.test.86400INRRSIGA 14 3 86400 20241117000000 20241018000000 6350 keytrap.test. CrGq0KgqwMKI7RJtAVVDo+9btCLDJ0KhVrrINmp2Bw2J1S+zCP7AH2/l 5JElpnfeAsWXRz2m9DSuTHfCGBI7N3I0ES0KN8/tKdA1VSqRPypwwd5R AdYZyx62OclAhmFl
+ns4.keytrap.test.86400INA10.10.3.3
+ns4.keytrap.test.86400INRRSIGA 14 3 86400 20241117000000 20241018000000 6350 keytrap.test. YILMseNtB9Amq/8o4tBN7huUmKgawyJ8Ck6CGr8a3P5vsTCDGJUb1Te1 hm9emEHoocjnQ5ZPtztG07s06y6uu9d2zGGmqeejFW5/B05a8RS0RkdX fst9QwxWAKkPAlQs
+ns5.keytrap.test.86400INA10.10.3.3
+ns5.keytrap.test.86400INRRSIGA 14 3 86400 20241117000000 20241018000000 6350 keytrap.test. UiuE5Ae+bFuajH/36AGcmNkUmHqWMQ+59k1v/1oZQ4Z7sSpYXl+MU5P9 o3OgJoworcnewqjnoKMmoq1RdAfza2ZnrgBcUEDuEQa9ZKK0m2XodkjZ g6ZTQcVirfF2HMY=
+ns6.keytrap.test.86400INA10.10.3.3
+ns6.keytrap.test.86400INRRSIGA 14 3 86400 20241117000000 20241018000000 6350 keytrap.test. jpKvae7awU/J2PUmJAAWhpRPCttLYsIlmMV3lsvfCGVSu5faD4nfCG9U h6BWVmM/Fc+Nn6Mtz3SbcCn1NbSnD3c+zRb35BgUBFhXXMnCTvo4NeSr ywW1vRMXrTF1PSqa
+ns7.keytrap.test.86400INA10.10.3.3
+ns7.keytrap.test.86400INRRSIGA 14 3 86400 20241117000000 20241018000000 6350 keytrap.test. WwK6fSsS+6DkLPN2ir9ra03Z0xnX96SLZgC9rZ85IM75XU4S7Dr/ShZ1 1z4LY+W+ZBqljibLW1flOIF/TeJbCzUzIq9GQBLpEvT+jFx4pF3R01DY 9oqNRwahpb3XOkqv
+ns8.keytrap.test.86400INA10.10.3.3
+ns8.keytrap.test.86400INRRSIGA 14 3 86400 20241117000000 20241018000000 6350 keytrap.test. ybgsyopM42JofxqIq2YdIWNE1rG6QdRsVvaPsyZ/P4cHvHAS+0/a9eS/ OzsCAFOqo9sPeoAErsMAOJ2E8aYOcmxG+9JRzLTYXIP3G62fbA8AcHjf zznnu+bQcoun6WtA
+ns9.keytrap.test.86400INA10.10.3.3
+ns9.keytrap.test.86400INRRSIGA 14 3 86400 20241117000000 20241018000000 6350 keytrap.test. nJbv5OVNTx43nJ1nrgEFmCYLvws47fXkDOPPo1VjoHcAEykv9+yCMQKp /8Xu4hHj9xU+Uluv3jYZwKx4PjUubgcJHRjA4jpqPDvHCQLMtCmFMqKh DLsHmCoBaWKSJdU5
+ns10.keytrap.test.86400INA10.10.3.3
+ns10.keytrap.test.86400INRRSIGA 14 3 86400 20241117000000 20241018000000 6350 keytrap.test. bFhLvSf1G7ENWHNamnusI4NQictYjQjBSX/R31/TimLq9dGXic/Vh7pv bkB4CRRvftYeYWo4Rv2dIqqIynQ6JMQZgdC1f/DBmCU0zQe9yJnu7HxO t2zlCfBFHwqZnRqA
+
+
+2024-10-21T01:30:15.063+00:00 log_ns_ttl: fctx 0x7fba980bd1f0: rctx_answer: www.keytrap.test (in 'keytrap.test'?): 1 86400
+2024-10-21T01:30:15.063+00:00 delete_node(): 0x7fba9818c100 www.keytrap.test (bucket 1)
+2024-10-21T01:30:15.063+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba980c3d50: canceling response: operation canceled, connected/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.063+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba980c3d50: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.063+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba980c3d50: destroying
+2024-10-21T01:30:15.063+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba980c3d50: detaching handle 0x7fba980c43f0 from 0x7fba980c3d78
+2024-10-21T01:30:15.063+00:00 validating www.keytrap.test/A: starting
+2024-10-21T01:30:15.063+00:00 validating www.keytrap.test/A: attempting positive response validation
+2024-10-21T01:30:15.063+00:00 validating www.keytrap.test/A: seek_dnskey: creating fetch for keytrap.test DNSKEY
+2024-10-21T01:30:15.063+00:00 fetch: keytrap.test/DNSKEY
+2024-10-21T01:30:15.063+00:00 fctx 0x7fba981ab210(keytrap.test/DNSKEY): created counter 0x7fba98011390
+2024-10-21T01:30:15.063+00:00 log_ns_ttl: fctx 0x7fba981ab210: fctx_create: keytrap.test (in 'keytrap.test'?): 1 86400
+2024-10-21T01:30:15.063+00:00 createfind: attaching find 0x7fba981acbe0 to adbname 0x7fba980beef0 0
+2024-10-21T01:30:15.063+00:00 fctx 0x7fba981ab210(keytrap.test/DNSKEY): createfind for <unknown> - success
+2024-10-21T01:30:15.063+00:00 expire_v4 set to 1729560615 import_rdataset
+2024-10-21T01:30:15.063+00:00 dns_adb_createfind: found A for name keytrap.test (0x7fba981acda0) in db
+2024-10-21T01:30:15.063+00:00 fctx 0x7fba981ab210(keytrap.test/DNSKEY): createfind for <unknown> - success
+2024-10-21T01:30:15.063+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981ad890: connected: success
+2024-10-21T01:30:15.063+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981ad890: attaching handle 0x7fba980c43f0 to 0x7fba981ad8b8
+2024-10-21T01:30:15.063+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981ad890: reading
+2024-10-21T01:30:15.063+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981ad890: connect callback: success
+2024-10-21T01:30:15.063+00:00 sending packet to 10.10.3.3#53
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  49157
+;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+;; QUESTION SECTION:
+;keytrap.test.INDNSKEY
+
+
+2024-10-21T01:30:15.063+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981ad890: sending
+2024-10-21T01:30:15.063+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981ad890: sent: success
+2024-10-21T01:30:15.083+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981ad890: read callback:success, requests 4
+2024-10-21T01:30:15.083+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981ad890: got valid DNS message header, /QR 1, id 49157
+2024-10-21T01:30:15.083+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981ad890: UDP read callback on 0x7fba980c43f0: success
+2024-10-21T01:30:15.083+00:00 received packet from 10.10.3.3#53
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  49157
+;; flags: qr aa; QUESTION: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 0
+;; QUESTION SECTION:
+;keytrap.test.INDNSKEY
+
+;; ANSWER SECTION:
+;keytrap.test.86400INDNSKEY256 3 14 (
+;DcYreAh+USsK1mtv7bSR2iaQvShP
+;UqCy7l/BRQXttAFupXp6pUaQZS+k
+;ii+H2JJqd+rS4YgC3KCd/by8yQi5
+;j+WSy2yRprSuFuDyqZMFnDT/Py+n
+;GjmIa59+W1iMdEYb
+;) ; ZSK; alg = ECDSAP384SHA384 ; key id = 6350
+;keytrap.test.86400INDNSKEY257 3 14 (
+;MzJsFTtAo0j8qGpDIhEMnK4ImTyY
+;wMwDPU5gt/FaXd6TOw6AvZDAj2hl
+;hZvaxMXV6xCw1MU5iPv5ZQrb3NDL
+;UU+TW07imJ5GD9YKi0Qiiypo+zht
+;L4aGaOG+870yHwuY
+;) ; KSK; alg = ECDSAP384SHA384 ; key id = 30130
+;keytrap.test.86400INRRSIGDNSKEY 14 2 86400 (
+;20241117000000 20241018000000 30130 keytrap.test.
+;f1jVToo1yMt2n2/REF/4rICXrWyj
+;06gxl/oJQ2cZO6Mwd6pkic3T2Vyw
+;Jr5Ho3v3DRnM/8vBJ6DhHzBNHeuT
+;32EknqMsqQL2YpbqUBIumL5Qub6v
+;wlwcWPfWFwxBbZNB )
+
+
+2024-10-21T01:30:15.083+00:00 log_ns_ttl: fctx 0x7fba981ab210: rctx_answer: keytrap.test (in 'keytrap.test'?): 1 86400
+2024-10-21T01:30:15.083+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981ad890: canceling response: operation canceled, connected/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.083+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981ad890: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-10-21T01:30:15.083+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981ad890: destroying
+2024-10-21T01:30:15.083+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981ad890: detaching handle 0x7fba980c43f0 from 0x7fba981ad8b8
+2024-10-21T01:30:15.083+00:00 validating keytrap.test/DNSKEY: starting
+2024-10-21T01:30:15.083+00:00 validating keytrap.test/DNSKEY: attempting positive response validation
+2024-10-21T01:30:15.083+00:00 validating keytrap.test/DNSKEY: verify rdataset (keyid=30130): success
+2024-10-21T01:30:15.083+00:00 validating keytrap.test/DNSKEY: marking as secure (DS)
+2024-10-21T01:30:15.083+00:00 dns_adb_destroyfind on find 0x7fba981accc0
+2024-10-21T01:30:15.083+00:00 validating keytrap.test/DNSKEY: dns_validator_shutdown
+2024-10-21T01:30:15.083+00:00 validating www.keytrap.test/A: in fetch_callback_dnskey
+2024-10-21T01:30:15.083+00:00 validating www.keytrap.test/A: keyset with trust secure
+2024-10-21T01:30:15.083+00:00 validating www.keytrap.test/A: resuming validate
+2024-10-21T01:30:15.083+00:00 validating www.keytrap.test/A: verify rdataset (keyid=6350): success
+2024-10-21T01:30:15.083+00:00 validating www.keytrap.test/A: marking as secure, noqname proof not needed
+2024-10-21T01:30:15.083+00:00 dns_adb_destroyfind on find 0x7fba980c2c90
+2024-10-21T01:30:15.083+00:00 validating www.keytrap.test/A: dns_validator_shutdown
+2024-10-21T01:30:15.083+00:00 client @0x7fba980022f0 127.0.0.1#49981 (www.keytrap.test): rrl=(nil), HAVECOOKIE=0, result=ISC_R_SUCCESS, fname=0x7fba98094970(1), is_zone=0, RECURSIONOK=1, query.rpz_st=(nil)(0), RRL_CHECKED=0
+2024-10-21T01:30:15.083+00:00 client @0x7fba980022f0 127.0.0.1#49981 (www.keytrap.test): reset client
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba9818ff30: read callback:success, requests 3
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba9818ff30: got valid DNS message header, /QR 1, id 3824
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba9818ff30: UDP read callback on 0x7fba9818a680: success
+2024-10-21T01:30:15.253+00:00 received packet from 192.33.4.12#53
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id:   3824
+;; flags: qr aa cd; QUESTION: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 1232
+; COOKIE: 392a339e7a93388d010000006715aeae4b6b1ec445884aaf
+;; QUESTION SECTION:
+;keytrap.INA
+
+;; AUTHORITY SECTION:
+;.86400INSOAa.root-servers.net. nstld.verisign-grs.com. (
+;2024102001 ; serial
+;1800       ; refresh (30 minutes)
+;900        ; retry (15 minutes)
+;604800     ; expire (1 week)
+;86400      ; minimum (1 day)
+;)
+;.86400INRRSIGSOA 8 0 86400 (
+;20241102170000 20241020160000 61050 .
+;vAb6qxzezhI4/TKxVp15+4lf5PIS
+;0cyLrZbEn4W1BBKkzJ84BWw2LBdA
+;2WAmK/9keuMMBtk7yMZZ+Rx0/MDE
+;pon2cP2z0Wama07MH75Homah87ZY
+;dtcFLKE0mhsLiRtQObZ0n7WL+I+I
+;U735RSeHnvS5d9yJNoZE0vt2gXae
+;5VLnewcuLJ1/cLrV8olv8sie+etN
+;AaTIpRJIfdS8Ql4tffc0OBZNTbeU
+;gZ0jaQAys63hM+dGeMv6D40Mbhgc
+;EA/vTMjxy87MHGDQkblAHJo6V9nt
+;ldlMNk12/37R1kX8Sx/5IaztNNHo
+;ESVNR9R5Sbl0dU/e8cEiTg4ae67x
+;rSufEw== )
+;.86400INNSECaaa. NS SOA RRSIG NSEC DNSKEY ZONEMD
+;.86400INRRSIGNSEC 8 0 86400 (
+;20241102170000 20241020160000 61050 .
+;HfH9vDznkUd9uUB/qyjUdggUpUwx
+;0pevf3/yZm6/48tiFPXSQvhcn5dq
+;iwok2Cppyd9pZ6NZL5C0wykYCP/P
+;SLEzCkoDV5s3ZlXLEZhy9/M006U+
+;yyYfOWnZJw2xEaVqKu5w05PqjKAn
+;c4EYVv8Dm/eRVtg+gY9SVz+gWnl5
+;jLCYaB8DcMoC9k7U6C4/z/I9PCnW
+;dwVKGyVoGk10zDd2ZjMAsb/xv8Z5
+;VQPVpB5mMjU6y39PqQn5/apyanSn
+;40t5GHqTbNDQVEI9V2wZxm15rvAK
+;la+Mxs2oTogn6dgXyVI+xazVIy6Q
+;T969p1lqFodrf+P7B4EZ4s8M4zUc
+;kEiRtA== )
+;kerryproperties.86400INNSECkfh. NS DS RRSIG NSEC
+;kerryproperties.86400INRRSIGNSEC 8 1 86400 (
+;20241102170000 20241020160000 61050 .
+;qPY1TQB6mwPahfDkYUrRAhUSrCqE
+;ZLxbL4mQ/VW/YRZBexjhipMfSAnP
+;Q/0NZYATrWXcMuKBde/Vu6zj6rqt
+;QYqU0fif+2dovycl8S0eKqLgTlN0
+;+PZzbpF9K9ITFaULGjirkE3iYQ1I
+;Vl4MLEDQN+P6d2SC8GbrA+cU9T8+
+;yENgeAEOmMC3hRHz1BSFAMk1xlcw
+;IsW2bHCodeYGzq36y4aDLtBC/PYB
+;Tn+NiZEGnJix2lGcTAc9YWK58p8t
+;IO42wnZHeKQ2UGM7j6OcarO0IG5s
+;IsgDXOcy/Yp+kzfCvYqJQP9ylwCK
+;1xDqP98vCGbXb03iYfY5nc+x4Vd1
+;JvaZ9w== )
+
+
+2024-10-21T01:30:15.253+00:00 log_ns_ttl: fctx 0x7fba980bf300: rctx_answer_none: keytrap (in '.'?): 1 518400
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba9818ff30: canceling response: operation canceled, connected/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba9817f980
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba9817f140
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba981801c0
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba9817cba0
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba981822c0
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98184c00
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98181240
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98182b00
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98180a00
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98183b80
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98181a80
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98183340
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba981843c0
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba9818ff30: canceling response: operation canceled, canceled/not reading (none/not reading), requests 3
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba9818ff30: destroying
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba9818ff30: detaching handle 0x7fba9818a680 from 0x7fba9818ff58
+2024-10-21T01:30:15.253+00:00 adb fetch name 0x7fba980beef0: caching negative entry for A (ttl 1729485015)
+2024-10-21T01:30:15.253+00:00 ENTER clean_finds_at_name, name 0x7fba980beef0, astat 00000002, addrs 00000001
+2024-10-21T01:30:15.253+00:00 no more addresses
+2024-10-21T01:30:15.253+00:00 cfan: skipping find 0x7fba980bee10
+2024-10-21T01:30:15.253+00:00 no more addresses
+2024-10-21T01:30:15.253+00:00 cfan: skipping find 0x7fba981acbe0
+2024-10-21T01:30:15.253+00:00 EXIT clean_finds_at_name, name 0x7fba980beef0
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981900f0: read callback:success, requests 2
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981900f0: got valid DNS message header, /QR 1, id 1053
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981900f0: UDP read callback on 0x7fba98186560: success
+2024-10-21T01:30:15.253+00:00 received packet from 192.33.4.12#53
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id:   1053
+;; flags: qr aa cd; QUESTION: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 1
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 1232
+; COOKIE: 392a339e7a93388d010000006715aeae3e442180787e1f63
+;; QUESTION SECTION:
+;keytrap.INAAAA
+
+;; AUTHORITY SECTION:
+;.86400INSOAa.root-servers.net. nstld.verisign-grs.com. (
+;2024102001 ; serial
+;1800       ; refresh (30 minutes)
+;900        ; retry (15 minutes)
+;604800     ; expire (1 week)
+;86400      ; minimum (1 day)
+;)
+;.86400INRRSIGSOA 8 0 86400 (
+;20241102170000 20241020160000 61050 .
+;vAb6qxzezhI4/TKxVp15+4lf5PIS
+;0cyLrZbEn4W1BBKkzJ84BWw2LBdA
+;2WAmK/9keuMMBtk7yMZZ+Rx0/MDE
+;pon2cP2z0Wama07MH75Homah87ZY
+;dtcFLKE0mhsLiRtQObZ0n7WL+I+I
+;U735RSeHnvS5d9yJNoZE0vt2gXae
+;5VLnewcuLJ1/cLrV8olv8sie+etN
+;AaTIpRJIfdS8Ql4tffc0OBZNTbeU
+;gZ0jaQAys63hM+dGeMv6D40Mbhgc
+;EA/vTMjxy87MHGDQkblAHJo6V9nt
+;ldlMNk12/37R1kX8Sx/5IaztNNHo
+;ESVNR9R5Sbl0dU/e8cEiTg4ae67x
+;rSufEw== )
+;.86400INNSECaaa. NS SOA RRSIG NSEC DNSKEY ZONEMD
+;.86400INRRSIGNSEC 8 0 86400 (
+;20241102170000 20241020160000 61050 .
+;HfH9vDznkUd9uUB/qyjUdggUpUwx
+;0pevf3/yZm6/48tiFPXSQvhcn5dq
+;iwok2Cppyd9pZ6NZL5C0wykYCP/P
+;SLEzCkoDV5s3ZlXLEZhy9/M006U+
+;yyYfOWnZJw2xEaVqKu5w05PqjKAn
+;c4EYVv8Dm/eRVtg+gY9SVz+gWnl5
+;jLCYaB8DcMoC9k7U6C4/z/I9PCnW
+;dwVKGyVoGk10zDd2ZjMAsb/xv8Z5
+;VQPVpB5mMjU6y39PqQn5/apyanSn
+;40t5GHqTbNDQVEI9V2wZxm15rvAK
+;la+Mxs2oTogn6dgXyVI+xazVIy6Q
+;T969p1lqFodrf+P7B4EZ4s8M4zUc
+;kEiRtA== )
+;kerryproperties.86400INNSECkfh. NS DS RRSIG NSEC
+;kerryproperties.86400INRRSIGNSEC 8 1 86400 (
+;20241102170000 20241020160000 61050 .
+;qPY1TQB6mwPahfDkYUrRAhUSrCqE
+;ZLxbL4mQ/VW/YRZBexjhipMfSAnP
+;Q/0NZYATrWXcMuKBde/Vu6zj6rqt
+;QYqU0fif+2dovycl8S0eKqLgTlN0
+;+PZzbpF9K9ITFaULGjirkE3iYQ1I
+;Vl4MLEDQN+P6d2SC8GbrA+cU9T8+
+;yENgeAEOmMC3hRHz1BSFAMk1xlcw
+;IsW2bHCodeYGzq36y4aDLtBC/PYB
+;Tn+NiZEGnJix2lGcTAc9YWK58p8t
+;IO42wnZHeKQ2UGM7j6OcarO0IG5s
+;IsgDXOcy/Yp+kzfCvYqJQP9ylwCK
+;1xDqP98vCGbXb03iYfY5nc+x4Vd1
+;JvaZ9w== )
+
+
+2024-10-21T01:30:15.253+00:00 log_ns_ttl: fctx 0x7fba980c1020: rctx_answer_none: keytrap (in '.'?): 1 518400
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981900f0: canceling response: operation canceled, connected/not reading (none/not reading), requests 2
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98186a70
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98186870
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98186c70
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98186670
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98187470
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98187e70
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98187070
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98187670
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98186e70
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98187a70
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98187270
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98187870
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98187c70
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981900f0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 2
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981900f0: destroying
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981900f0: detaching handle 0x7fba98186560 from 0x7fba98190118
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981902b0: read callback:success, requests 1
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981902b0: got valid DNS message header, /QR 1, id 44081
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981902b0: UDP read callback on 0x7fba981893f0: success
+2024-10-21T01:30:15.253+00:00 received packet from 192.33.4.12#53
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  44081
+;; flags: qr aa; QUESTION: 1, ANSWER: 14, AUTHORITY: 0, ADDITIONAL: 27
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags: do; udp: 1232
+; COOKIE: 392a339e7a93388d010000006715aeae4b6b1ec445884aaf
+;; QUESTION SECTION:
+;.INNS
+
+;; ANSWER SECTION:
+;.518400INNSb.root-servers.net.
+;.518400INNSd.root-servers.net.
+;.518400INNSi.root-servers.net.
+;.518400INNSf.root-servers.net.
+;.518400INNSm.root-servers.net.
+;.518400INNSl.root-servers.net.
+;.518400INNSc.root-servers.net.
+;.518400INNSj.root-servers.net.
+;.518400INNSk.root-servers.net.
+;.518400INNSa.root-servers.net.
+;.518400INNSe.root-servers.net.
+;.518400INNSh.root-servers.net.
+;.518400INNSg.root-servers.net.
+;.518400INRRSIGNS 8 0 518400 (
+;20241102170000 20241020160000 61050 .
+;JRCdkpS4PrsEaflwSfYZ5OANhyiH
+;Go1R/6sMTfX2DbXqrFf0pFkFiQ8L
+;jzF3qSxA3KQQ+eqU2ElurH5+dEq7
+;yLvcALPuxh8qUif+PGRnzL1bR6YI
+;SGVCEKDaeoQZWvAqyFNOt78Xpckr
+;m1FgFIDyx52ZWgkX5eWxvzIgHU1R
+;XVTO69Cz/bcmiY1k2RNHPRTLWmLL
+;IKSrIM4l+sx+kzkx65B5pzx+sKwQ
+;Ovzn9C+LD8ASPw5PBbx9zAbSYZBY
+;3g+DZBFIF4JXGO+RVBwpaGfaRWU0
+;XyBvPbyL2JYmeBMNx05rXIfuXxmo
+;I8TG8rEVIarkbuU/2uQmNgX2fCep
+;3VMq/g== )
+
+;; ADDITIONAL SECTION:
+;m.root-servers.net.518400INA202.12.27.33
+;m.root-servers.net.518400INAAAA2001:dc3::35
+;l.root-servers.net.518400INA199.7.83.42
+;l.root-servers.net.518400INAAAA2001:500:9f::42
+;k.root-servers.net.518400INA193.0.14.129
+;k.root-servers.net.518400INAAAA2001:7fd::1
+;j.root-servers.net.518400INA192.58.128.30
+;j.root-servers.net.518400INAAAA2001:503:c27::2:30
+;i.root-servers.net.518400INA192.36.148.17
+;i.root-servers.net.518400INAAAA2001:7fe::53
+;h.root-servers.net.518400INA198.97.190.53
+;h.root-servers.net.518400INAAAA2001:500:1::53
+;g.root-servers.net.518400INA192.112.36.4
+;g.root-servers.net.518400INAAAA2001:500:12::d0d
+;f.root-servers.net.518400INA192.5.5.241
+;f.root-servers.net.518400INAAAA2001:500:2f::f
+;e.root-servers.net.518400INA192.203.230.10
+;e.root-servers.net.518400INAAAA2001:500:a8::e
+;d.root-servers.net.518400INA199.7.91.13
+;d.root-servers.net.518400INAAAA2001:500:2d::d
+;c.root-servers.net.518400INA192.33.4.12
+;c.root-servers.net.518400INAAAA2001:500:2::c
+;b.root-servers.net.518400INA170.247.170.2
+;b.root-servers.net.518400INAAAA2801:1b8:10::b
+;a.root-servers.net.518400INA198.41.0.4
+;a.root-servers.net.518400INAAAA2001:503:ba3e::2:30
+
+
+2024-10-21T01:30:15.253+00:00 log_ns_ttl: fctx 0x7fba9817d080: rctx_answer: . (in '.'?): 1 518400
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981902b0: canceling response: operation canceled, connected/not reading (none/not reading), requests 1
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98188640
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba9818acd0
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98185d20
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba9818b440
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba9818be40
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba9818b040
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba9818b640
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba9818ae40
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba9818ba40
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba9818b240
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba9818b840
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba9818bc40
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba98188840
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981902b0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 1
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981902b0: destroying
+2024-10-21T01:30:15.253+00:00 dispatch 0x55b6302ab180: UDP response 0x7fba981902b0: detaching handle 0x7fba981893f0 from 0x7fba981902d8
+2024-10-21T01:30:15.253+00:00 adb fetch name 0x7fba980beef0: caching negative entry for AAAA (ttl 1729485015)
+2024-10-21T01:30:15.253+00:00 ENTER clean_finds_at_name, name 0x7fba980beef0, astat 00000002, addrs 00000002
+2024-10-21T01:30:15.253+00:00 no more addresses
+2024-10-21T01:30:15.253+00:00 cfan: processing find 0x7fba980bee10
+2024-10-21T01:30:15.253+00:00 cfan: sending find 0x7fba980bee10 to caller
+2024-10-21T01:30:15.253+00:00 no more addresses
+2024-10-21T01:30:15.253+00:00 cfan: processing find 0x7fba981acbe0
+2024-10-21T01:30:15.253+00:00 cfan: sending find 0x7fba981acbe0 to caller
+2024-10-21T01:30:15.253+00:00 EXIT clean_finds_at_name, name 0x7fba980beef0
+2024-10-21T01:30:15.253+00:00 resolver priming query complete: success
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba980bee10
+2024-10-21T01:30:15.253+00:00 dns_adb_destroyfind on find 0x7fba981acbe0

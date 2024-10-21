@@ -1,9 +1,9 @@
 /**
  * @Project :   ExploitDNSSEC
- * @File    :   automatic_rrsig.go
+ * @File    :   altogether_cname.go
  * @Contact :	tochus@163.com
  * @License :   (C)Copyright 2024
- * @Description: A Test DNS server that responds to DNS queries with automatic generated RRSIG records.
+ * @Description: A Test DNS server that responds to DNS queries with CNAME chain altogether.
  *
  * @Modify Time        @Author     @Version    @Description
  * ----------------    --------    --------    -----------

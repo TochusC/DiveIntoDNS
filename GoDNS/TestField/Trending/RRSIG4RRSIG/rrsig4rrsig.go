@@ -1,9 +1,9 @@
 /**
  * @Project :   ExploitDNSSEC
- * @File    :   onebyone_cname.go
+ * @File    :   automatic_rrsig.go
  * @Contact :	tochus@163.com
  * @License :   (C)Copyright 2024
- * @Description: A Test DNS server that responds to DNS queries with CNAME chains one by one.
+ * @Description: A Test DNS server that responds to DNS queries with automatic generated RRSIG records.
  *
  * @Modify Time        @Author     @Version    @Description
  * ----------------    --------    --------    -----------
@@ -16,8 +16,6 @@
  * 19/10/24 11:47	   4stra	   2.1.0       Generate RRSET RRSIG
  * 19/10/24 12:00	   4stra	   2.1.1       Optimize
  * 19/10/24 16:47      4stra       2.2.0       Go GoDNS!
- * 19/10/24 17:00      4stra       2.3.0  	   CNAME DNSSEC Test.
- * 19/10/24 21:25      4stra       2.4.0       One by one CNAME chain
  */
 
 package main
@@ -43,267 +41,6 @@ import (
 	"github.com/tochusc/gopacket/pcap"
 )
 
-var cnameChainLength = 9
-var answerSection = craftAnswerSection()
-var rrsigSignatureByteLenC = 96
-var txtCount = 10
-var randomSigCount = 0
-var validSigCount = 1
-
-func craftAnswerSection() map[string][]layers.DNSResourceRecord {
-	var answerSection = map[string][]layers.DNSResourceRecord{
-		"keytrap.test": {
-			{
-				Name:  []byte("keytrap.test"),
-				Type:  layers.DNSTypeNS,
-				Class: layers.DNSClassIN,
-				TTL:   uint32(globalTTLC),
-				NS:    []byte("ns1.keytrap.test"),
-			},
-			GenRRSIG(
-				[]layers.DNSResourceRecord{
-					{
-						Name:  []byte("keytrap.test"),
-						Type:  layers.DNSTypeNS,
-						Class: layers.DNSClassIN,
-						TTL:   uint32(globalTTLC),
-						NS:    []byte("ns1.keytrap.test"),
-					},
-				},
-				keytagC["ZSK"],
-				timestampC,
-				signerNameC,
-				privateKeyC["ZSK"],
-			),
-		},
-		"cname.keytrap.test": {
-			{
-				Name:  []byte("cname.keytrap.test"),
-				Type:  layers.DNSTypeCNAME,
-				Class: layers.DNSClassIN,
-				TTL:   uint32(globalTTLC),
-				CNAME: []byte("cname0.keytrap.test"),
-			},
-			GenRRSIG(
-				[]layers.DNSResourceRecord{
-					{
-						Name:  []byte("cname.keytrap.test"),
-						Type:  layers.DNSTypeCNAME,
-						Class: layers.DNSClassIN,
-						TTL:   uint32(globalTTLC),
-						CNAME: []byte("cname0.keytrap.test"),
-					},
-				},
-				keytagC["ZSK"],
-				timestampC,
-				signerNameC,
-				privateKeyC["ZSK"],
-			),
-		},
-		"www.keytrap.test": {
-			{
-				Name:  []byte("www.keytrap.test"),
-				Type:  layers.DNSTypeA,
-				Class: layers.DNSClassIN,
-				TTL:   uint32(globalTTLC),
-				IP:    net.ParseIP("10.10.3.3"),
-			},
-			GenRRSIG(
-				[]layers.DNSResourceRecord{
-					{
-						Name:  []byte("www.keytrap.test"),
-						Type:  layers.DNSTypeA,
-						Class: layers.DNSClassIN,
-						TTL:   uint32(globalTTLC),
-						IP:    net.ParseIP("10.10.3.3"),
-					},
-				},
-				keytagC["ZSK"],
-				timestampC,
-				signerNameC,
-				privateKeyC["ZSK"],
-			),
-		},
-	}
-	for i := 0; i < cnameChainLength; i++ {
-		answerSection[fmt.Sprintf("cname%d.keytrap.test", i)] =
-			[]layers.DNSResourceRecord{
-				{
-					Name:  []byte(fmt.Sprintf("cname%d.keytrap.test", i)),
-					Type:  layers.DNSTypeCNAME,
-					Class: layers.DNSClassIN,
-					TTL:   uint32(globalTTLC),
-					CNAME: []byte(fmt.Sprintf("cname%d.keytrap.test", i+1)),
-				},
-				GenRRSIG(
-					[]layers.DNSResourceRecord{
-						{
-							Name:  []byte(fmt.Sprintf("cname%d.keytrap.test", i)),
-							Type:  layers.DNSTypeCNAME,
-							Class: layers.DNSClassIN,
-							TTL:   uint32(globalTTLC),
-							CNAME: []byte(fmt.Sprintf("cname%d.keytrap.test", i+1)),
-						},
-					},
-					keytagC["ZSK"],
-					timestampC,
-					signerNameC,
-					privateKeyC["ZSK"],
-				),
-			}
-	}
-	answerSection[fmt.Sprintf("cname%d.keytrap.test", cnameChainLength)] =
-		[]layers.DNSResourceRecord{
-			{
-				Name:  []byte(fmt.Sprintf("cname%d.keytrap.test", cnameChainLength)),
-				Type:  layers.DNSTypeCNAME,
-				Class: layers.DNSClassIN,
-				TTL:   uint32(globalTTLC),
-				CNAME: []byte("www.keytrap.test"),
-			},
-			GenRRSIG(
-				[]layers.DNSResourceRecord{
-					{
-						Name:  []byte(fmt.Sprintf("cname%d.keytrap.test", cnameChainLength)),
-						Type:  layers.DNSTypeCNAME,
-						Class: layers.DNSClassIN,
-						TTL:   uint32(globalTTLC),
-						CNAME: []byte("www.keytrap.test"),
-					},
-				},
-				keytagC["ZSK"],
-				timestampC,
-				signerNameC,
-				privateKeyC["ZSK"],
-			),
-		}
-	return answerSection
-}
-
-var totalCount = 0
-var additonalSection = func() map[string][]layers.DNSResourceRecord {
-	additional := make(map[string][]layers.DNSResourceRecord, 0)
-	for name := range answerSection {
-		section := make([]layers.DNSResourceRecord, 0)
-		for i := 0; i < txtCount; i++ {
-			section = append(
-				section,
-				layers.DNSResourceRecord{
-					Name:  []byte(fmt.Sprintf("txt%d.keytrap.test", totalCount+i)),
-					Type:  layers.DNSTypeTXT,
-					Class: layers.DNSClassIN,
-					TTL:   uint32(globalTTLC),
-					TXTs:  [][]byte{[]byte("!")},
-				},
-			)
-			for j := 0; j < randomSigCount; j++ {
-				section = append(
-					section,
-					GenRandomRRSIG(
-						[]layers.DNSResourceRecord{
-							{
-								Name:  []byte(fmt.Sprintf("txt%d.keytrap.test", totalCount+i)),
-								Type:  layers.DNSTypeTXT,
-								Class: layers.DNSClassIN,
-								TTL:   uint32(globalTTLC),
-								TXTs:  [][]byte{[]byte("!")},
-							},
-						},
-						keytagC["ZSK"],
-						timestampC,
-						signerNameC,
-					),
-				)
-			}
-			for j := 0; j < validSigCount; j++ {
-				section = append(
-					section,
-					GenRRSIG(
-						[]layers.DNSResourceRecord{
-							{
-								Name:  []byte(fmt.Sprintf("txt%d.keytrap.test", totalCount+i)),
-								Type:  layers.DNSTypeTXT,
-								Class: layers.DNSClassIN,
-								TTL:   uint32(globalTTLC),
-								TXTs:  [][]byte{[]byte("!")},
-							},
-						},
-						keytagC["ZSK"],
-						timestampC,
-						signerNameC,
-						privateKeyC["ZSK"],
-					),
-				)
-			}
-		}
-		totalCount += txtCount
-		additional[name] = section
-
-	}
-
-	//  additional = append(
-	// 	 additional,
-	// 	 layers.DNSResourceRecord{
-	// 		 Name:  []byte("ns1.keytrap.test"),
-	// 		 Type:  layers.DNSTypeA,
-	// 		 Class: layers.DNSClassIN,
-	// 		 TTL:   uint32(globalTTLC),
-	// 		 IP:    net.ParseIP("10.10.3.3"),
-	// 	 })
-	// for j := 0; j < randomSigCount; j++ {
-	// 	additional = append(
-	// 		additional,
-	// 		GenRandomRRSIG(
-	// 			[]layers.DNSResourceRecord{
-	// 			   {
-	// 				   Name:  []byte("ns1.keytrap.test"),
-	// 				   Type:  layers.DNSTypeA,
-	// 				   Class: layers.DNSClassIN,
-	// 				   TTL:   uint32(globalTTLC),
-	// 				   IP:    net.ParseIP("10.10.3.3"),
-	// 			   },
-	// 			},
-	// 			keytagC["ZSK"],
-	// 			timestampC,
-	// 			signerNameC,
-	// 		),
-	// 	)
-	// }
-
-	return additional
-}()
-
-func genRandomByte(byteLen int) []byte {
-	b := make([]byte, byteLen)
-	_, err := rand.Read(b)
-	if err != nil {
-		fmt.Println("Error: ", err)
-		os.Exit(1)
-	}
-	return b
-}
-
-// GenRandomRRSIG 生成随机RRSIG记录
-func GenRandomRRSIG(rrset []layers.DNSResourceRecord, keytag uint16, timestamp uint32, signerName []byte) layers.DNSResourceRecord {
-	return layers.DNSResourceRecord{
-		Name:  rrset[0].Name,
-		Type:  layers.DNSTypeRRSIG,
-		Class: layers.DNSClassIN,
-		TTL:   rrset[0].TTL,
-		RRSIG: layers.DNSRRSIG{
-			TypeCovered: rrset[0].Type,
-			Algorithm:   layers.DNSSECAlgorithmECDSAP384SHA384,
-			Labels:      uint8(strings.Count(string(rrset[0].Name), ".") + 1),
-			OriginalTTL: uint32(globalTTLC),
-			Expiration:  uint32(timestampC) + 86400*30,
-			Inception:   uint32(timestampC),
-			KeyTag:      keytag,
-			SignerName:  encodeDomainName(string(signerName)),
-			Signature:   genRandomByte(98),
-		},
-	}
-}
-
 // DNS服务器配置相关变量
 var (
 	serverIPC = "10.10.3.3"
@@ -323,11 +60,9 @@ var (
 
 	// 所管辖的域名
 	domainNameC = map[string]struct{}{
-		"www.keytrap.test":    {},
-		"keytrap.test":        {},
-		"ns1.keytrap.test":    {},
-		"cname.keytrap.test":  {},
-		"cname0.keytrap.test": {},
+		"www.keytrap.test": {},
+		"keytrap.test":     {},
+		"ns1.keytrap.test": {},
 	}
 )
 
@@ -435,6 +170,23 @@ var rrsigC = map[string]layers.DNSResourceRecord{
 		signerNameC,
 		privateKeyC["ZSK"],
 	),
+	"rrsig": GenRRSIG(
+		[]layers.DNSResourceRecord{
+			GenRRSIG(
+				[]layers.DNSResourceRecord{
+					rrC["www.keytrap.test"],
+				},
+				keytagC["ZSK"],
+				timestampC,
+				signerNameC,
+				privateKeyC["ZSK"],
+			),
+		},
+		keytagC["ZSK"],
+		timestampC,
+		signerNameC,
+		privateKeyC["ZSK"],
+	),
 	"keytrap.test": GenRRSIG(
 		[]layers.DNSResourceRecord{
 			rrC["keytrap.test"],
@@ -515,34 +267,65 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 	var dnsLayer *layers.DNS
 	switch qtype {
 	case layers.DNSTypeA:
-		dnsLayer = &layers.DNS{
-			BaseLayer:    layers.BaseLayer{},
-			ID:           txid,
-			QR:           true,
-			OpCode:       0,
-			AA:           true,
-			TC:           false,
-			RD:           false,
-			RA:           false,
-			Z:            0,
-			ResponseCode: 0,
-			QDCount:      1,
-			ANCount:      2,
-			NSCount:      2,
-			ARCount:      2,
-			Questions: []layers.DNSQuestion{
-				{
-					Name:  []byte(qname),
-					Type:  layers.DNSTypeA,
-					Class: layers.DNSClassIN,
+		if _, ok := domainNameC[qname]; !ok {
+			// 未配置的域名，返回NXDOMAIN
+			dnsLayer = &layers.DNS{
+				BaseLayer:    layers.BaseLayer{},
+				ID:           txid,
+				QR:           true,
+				OpCode:       0,
+				AA:           true,
+				TC:           false,
+				RD:           false,
+				RA:           false,
+				Z:            0,
+				ResponseCode: 3, // NXDOMAIN
+				QDCount:      1,
+				Questions: []layers.DNSQuestion{
+					{
+						Name:  []byte(qname),
+						Type:  layers.DNSTypeA,
+						Class: layers.DNSClassIN,
+					},
 				},
-			},
-			Answers: answerSection[qname],
-			Authorities: []layers.DNSResourceRecord{
-				rrC["keytrap.test"],
-				rrsigC["keytrap.test"],
-			},
-			Additionals: additonalSection[qname],
+			}
+		} else {
+			dnsLayer = &layers.DNS{
+				BaseLayer:    layers.BaseLayer{},
+				ID:           txid,
+				QR:           true,
+				OpCode:       0,
+				AA:           true,
+				TC:           false,
+				RD:           false,
+				RA:           false,
+				Z:            0,
+				ResponseCode: 0,
+				QDCount:      1,
+				ANCount:      2,
+				NSCount:      2,
+				ARCount:      2,
+				Questions: []layers.DNSQuestion{
+					{
+						Name:  []byte(qname),
+						Type:  layers.DNSTypeA,
+						Class: layers.DNSClassIN,
+					},
+				},
+				Answers: []layers.DNSResourceRecord{
+					rrC[qname],
+					rrsigC[qname],
+					rrsigC["rrsig"],
+				},
+				Authorities: []layers.DNSResourceRecord{
+					rrC["keytrap.test"],
+					rrsigC["keytrap.test"],
+				},
+				Additionals: []layers.DNSResourceRecord{
+					rrC["ns1.keytrap.test"],
+					rrsigC["ns1.keytrap.test"],
+				},
+			}
 		}
 	case layers.DNSTypeDNSKEY:
 		dnsLayer = &layers.DNS{
@@ -694,6 +477,10 @@ func dnsResponseC(dstMAC net.HardwareAddr, dstIP string, dstPort layers.UDPPort,
 			fmt.Println("Error sending packet: ", err)
 			os.Exit(1)
 		}
+
+		fmt.Printf(
+			"%s : frag#%d with size %d\n", time.Now().Format(time.ANSIC), i+1, len(fragment),
+		)
 	}
 
 	fmt.Printf(
