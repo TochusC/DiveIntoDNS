@@ -1,0 +1,791 @@
+[1730273426] unbound[1:0] debug: mesh_run: start
+[1730273426] unbound[1:0] debug: validator[module 0] operate: extstate:module_state_initial event:module_event_new
+[1730273426] unbound[1:0] info: validator operate: query www.4stra.test. A IN
+[1730273426] unbound[1:0] debug: validator: pass to next module
+[1730273426] unbound[1:0] debug: mesh_run: validator module exit state is module_wait_module
+[1730273426] unbound[1:0] debug: iterator[module 1] operate: extstate:module_state_initial event:module_event_pass
+[1730273426] unbound[1:0] debug: process_request: new external request event
+[1730273426] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE
+[1730273426] unbound[1:0] info: resolving www.4stra.test. A IN
+[1730273426] unbound[1:0] debug: request has dependency depth of 0
+[1730273426] unbound[1:0] info: use stub test. NS IN
+[1730273426] unbound[1:0] debug: cache delegation returns delegpt
+[1730273426] unbound[1:0] info: DelegationPoint<test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+[1730273426] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 2)
+[1730273426] unbound[1:0] info: resolving (init part 2):  www.4stra.test. A IN
+[1730273426] unbound[1:0] info: use stub test. NS IN
+[1730273426] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 3)
+[1730273426] unbound[1:0] info: resolving (init part 3):  www.4stra.test. A IN
+[1730273426] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1730273426] unbound[1:0] info: processQueryTargets: www.4stra.test. A IN
+[1730273426] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 0
+[1730273426] unbound[1:0] info: DelegationPoint<test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+[1730273426] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug: removing 1 labels
+[1730273426] unbound[1:0] debug: attempt to get extra 3 targets
+[1730273426] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1730273426] unbound[1:0] debug: selrtt 376
+[1730273426] unbound[1:0] info: sending query: 4stra.test. A IN
+[1730273426] unbound[1:0] debug: sending to target: <test.> 10.10.3.3#53
+[1730273426] unbound[1:0] debug: dnssec status: not expected
+[1730273426] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1730273426] unbound[1:0] info: mesh_run: end 1 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1730273426] unbound[1:0] info: 0RDd mod1 rep www.4stra.test. A IN
+[1730273426] unbound[1:0] debug: cache memory msg=66104 rrset=66104 infra=8224 val=66384
+[1730273426] unbound[1:0] debug: serviced send timer
+[1730273426] unbound[1:0] debug: EDNS lookup known=0 vs=0
+[1730273426] unbound[1:0] debug: serviced query UDP timeout=376 msec
+[1730273426] unbound[1:0] debug: inserted new pending reply id=517c
+[1730273426] unbound[1:0] debug: opened UDP if=0 port=56698
+[1730273426] unbound[1:0] debug: comm point start listening 7 (-1 msec)
+[1730273426] unbound[1:0] debug: answer cb
+[1730273426] unbound[1:0] debug: Incoming reply id = 517c
+[1730273426] unbound[1:0] debug: Incoming reply addr = ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug: lookup size is 1 entries
+[1730273426] unbound[1:0] debug: received udp reply.
+[1730273426] unbound[1:0] debug: udp message[54:0] 517C8400000100010000000005347374726104746573740000010001053473747261047465737400000100010001518000040A0A0303
+[1730273426] unbound[1:0] debug: outnet handle udp reply
+[1730273426] unbound[1:0] debug: serviced query: EDNS works for ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug: measured roundtrip at 12 msec
+[1730273426] unbound[1:0] debug: svcd callbacks start
+[1730273426] unbound[1:0] debug: worker svcd callback for qstate 0x556b2b5cdbf0
+[1730273426] unbound[1:0] debug: mesh_run: start
+[1730273426] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1730273426] unbound[1:0] info: iterator operate: query www.4stra.test. A IN
+[1730273426] unbound[1:0] debug: process_response: new external response event
+[1730273426] unbound[1:0] info: scrub for test. NS IN
+[1730273426] unbound[1:0] info: response for www.4stra.test. A IN
+[1730273426] unbound[1:0] info: reply from <test.> 10.10.3.3#53
+[1730273426] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+;; flags: qr aa ; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0 
+;; QUESTION SECTION:
+4stra.test.INA
+
+;; ANSWER SECTION:
+4stra.test.86400INA10.10.3.3
+
+;; AUTHORITY SECTION:
+
+;; ADDITIONAL SECTION:
+;; MSG SIZE  rcvd: 44
+
+[1730273426] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1730273426] unbound[1:0] info: query response was ANSWER
+[1730273426] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1730273426] unbound[1:0] info: processQueryTargets: www.4stra.test. A IN
+[1730273426] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 1
+[1730273426] unbound[1:0] info: DelegationPoint<test.>: 0 names (0 missing), 1 addrs (1 result, 0 avail) parentNS
+[1730273426] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug: attempt to get extra 3 targets
+[1730273426] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1730273426] unbound[1:0] debug: servselect ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug:    rtt=297
+[1730273426] unbound[1:0] debug: selrtt 297
+[1730273426] unbound[1:0] info: sending query: www.4stra.test. A IN
+[1730273426] unbound[1:0] debug: sending to target: <test.> 10.10.3.3#53
+[1730273426] unbound[1:0] debug: dnssec status: not expected
+[1730273426] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1730273426] unbound[1:0] info: mesh_run: end 1 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1730273426] unbound[1:0] info: 0RDd mod1 rep www.4stra.test. A IN
+[1730273426] unbound[1:0] debug: cache memory msg=66364 rrset=66346 infra=8526 val=66384
+[1730273426] unbound[1:0] debug: svcd callbacks end
+[1730273426] unbound[1:0] debug: close of port 56698
+[1730273426] unbound[1:0] debug: close fd 7
+[1730273426] unbound[1:0] debug: serviced send timer
+[1730273426] unbound[1:0] debug: EDNS lookup known=1 vs=0
+[1730273426] unbound[1:0] debug: serviced query UDP timeout=297 msec
+[1730273426] unbound[1:0] debug: inserted new pending reply id=a65c
+[1730273426] unbound[1:0] debug: opened UDP if=0 port=42743
+[1730273426] unbound[1:0] debug: comm point start listening 7 (-1 msec)
+[1730273426] unbound[1:0] debug: answer cb
+[1730273426] unbound[1:0] debug: Incoming reply id = a65c
+[1730273426] unbound[1:0] debug: Incoming reply addr = ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug: lookup size is 1 entries
+[1730273426] unbound[1:0] debug: received udp reply.
+[1730273426] unbound[1:0] debug: udp message[484:0] A65C840000010000000A00000377777705347374726104746573740000010001037777770534737472610474657374000002000100015180000F026E73056E786E7330047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7331047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7332047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7333047465737400037777770534737472610474657374000002000100015180000F026E73056E786E733404746573740003777777053473747261047465737400000200
+[1730273426] unbound[1:0] debug: udp message[484:256] 0100015180000F026E73056E786E7335047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7336047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7337047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7338047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7339047465737400026E73066E786E73313004746573740000020001000151800010026E73066E786E733130047465737400
+[1730273426] unbound[1:0] debug: outnet handle udp reply
+[1730273426] unbound[1:0] debug: measured roundtrip at 19 msec
+[1730273426] unbound[1:0] debug: svcd callbacks start
+[1730273426] unbound[1:0] debug: worker svcd callback for qstate 0x556b2b5cdbf0
+[1730273426] unbound[1:0] debug: mesh_run: start
+[1730273426] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1730273426] unbound[1:0] info: iterator operate: query www.4stra.test. A IN
+[1730273426] unbound[1:0] debug: process_response: new external response event
+[1730273426] unbound[1:0] info: scrub for test. NS IN
+[1730273426] unbound[1:0] info: response for www.4stra.test. A IN
+[1730273426] unbound[1:0] info: reply from <test.> 10.10.3.3#53
+[1730273426] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+;; flags: qr aa ; QUERY: 1, ANSWER: 0, AUTHORITY: 10, ADDITIONAL: 0 
+;; QUESTION SECTION:
+www.4stra.test.INA
+
+;; ANSWER SECTION:
+
+;; AUTHORITY SECTION:
+www.4stra.test.86400INNSns.nxns6.test.
+www.4stra.test.86400INNSns.nxns7.test.
+www.4stra.test.86400INNSns.nxns8.test.
+www.4stra.test.86400INNSns.nxns9.test.
+www.4stra.test.86400INNSns.nxns0.test.
+www.4stra.test.86400INNSns.nxns1.test.
+www.4stra.test.86400INNSns.nxns2.test.
+www.4stra.test.86400INNSns.nxns3.test.
+www.4stra.test.86400INNSns.nxns4.test.
+www.4stra.test.86400INNSns.nxns5.test.
+
+;; ADDITIONAL SECTION:
+;; MSG SIZE  rcvd: 262
+
+[1730273426] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1730273426] unbound[1:0] info: query response was REFERRAL
+[1730273426] unbound[1:0] info: DelegationPoint<www.4stra.test.>: 10 names (10 missing), 0 addrs (0 result, 0 avail) parentNS
+[1730273426] unbound[1:0] info:   ns.nxns9.test. 
+[1730273426] unbound[1:0] info:   ns.nxns8.test. 
+[1730273426] unbound[1:0] info:   ns.nxns7.test. 
+[1730273426] unbound[1:0] info:   ns.nxns6.test. 
+[1730273426] unbound[1:0] info:   ns.nxns5.test. 
+[1730273426] unbound[1:0] info:   ns.nxns4.test. 
+[1730273426] unbound[1:0] info:   ns.nxns3.test. 
+[1730273426] unbound[1:0] info:   ns.nxns2.test. 
+[1730273426] unbound[1:0] info:   ns.nxns1.test. 
+[1730273426] unbound[1:0] info:   ns.nxns0.test. 
+[1730273426] unbound[1:0] debug: cleared outbound list for next round
+[1730273426] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1730273426] unbound[1:0] info: processQueryTargets: www.4stra.test. A IN
+[1730273426] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 0
+[1730273426] unbound[1:0] info: DelegationPoint<www.4stra.test.>: 10 names (10 missing), 0 addrs (0 result, 0 avail) parentNS
+[1730273426] unbound[1:0] info:   ns.nxns9.test. 
+[1730273426] unbound[1:0] info:   ns.nxns8.test. 
+[1730273426] unbound[1:0] info:   ns.nxns7.test. 
+[1730273426] unbound[1:0] info:   ns.nxns6.test. 
+[1730273426] unbound[1:0] info:   ns.nxns5.test. 
+[1730273426] unbound[1:0] info:   ns.nxns4.test. 
+[1730273426] unbound[1:0] info:   ns.nxns3.test. 
+[1730273426] unbound[1:0] info:   ns.nxns2.test. 
+[1730273426] unbound[1:0] info:   ns.nxns1.test. 
+[1730273426] unbound[1:0] info:   ns.nxns0.test. 
+[1730273426] unbound[1:0] debug: attempt to get extra 3 targets
+[1730273426] unbound[1:0] info: new target ns.nxns9.test. A IN
+[1730273426] unbound[1:0] info: new target ns.nxns5.test. A IN
+[1730273426] unbound[1:0] info: new target ns.nxns4.test. A IN
+[1730273426] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1730273426] unbound[1:0] debug: no current targets
+[1730273426] unbound[1:0] debug: waiting for 3 targets to resolve
+[1730273426] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_subquery
+[1730273426] unbound[1:0] debug: iterator[module 1] operate: extstate:module_state_initial event:module_event_pass
+[1730273426] unbound[1:0] info: iterator operate: query ns.nxns5.test. A IN
+[1730273426] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE
+[1730273426] unbound[1:0] info: resolving ns.nxns5.test. A IN
+[1730273426] unbound[1:0] debug: request has dependency depth of 1
+[1730273426] unbound[1:0] info: use stub test. NS IN
+[1730273426] unbound[1:0] debug: cache delegation returns delegpt
+[1730273426] unbound[1:0] info: DelegationPoint<test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+[1730273426] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 2)
+[1730273426] unbound[1:0] info: resolving (init part 2):  ns.nxns5.test. A IN
+[1730273426] unbound[1:0] info: use stub test. NS IN
+[1730273426] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 3)
+[1730273426] unbound[1:0] info: resolving (init part 3):  ns.nxns5.test. A IN
+[1730273426] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1730273426] unbound[1:0] info: processQueryTargets: ns.nxns5.test. A IN
+[1730273426] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 0
+[1730273426] unbound[1:0] info: DelegationPoint<test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+[1730273426] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug: removing 1 labels
+[1730273426] unbound[1:0] debug: attempt to get extra 2 targets
+[1730273426] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1730273426] unbound[1:0] debug: servselect ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug:    rtt=243
+[1730273426] unbound[1:0] debug: selrtt 243
+[1730273426] unbound[1:0] info: sending query: nxns5.test. A IN
+[1730273426] unbound[1:0] debug: sending to target: <test.> 10.10.3.3#53
+[1730273426] unbound[1:0] debug: dnssec status: not expected
+[1730273426] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1730273426] unbound[1:0] debug: iterator[module 1] operate: extstate:module_state_initial event:module_event_pass
+[1730273426] unbound[1:0] info: iterator operate: query ns.nxns9.test. A IN
+[1730273426] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE
+[1730273426] unbound[1:0] info: resolving ns.nxns9.test. A IN
+[1730273426] unbound[1:0] debug: request has dependency depth of 1
+[1730273426] unbound[1:0] info: use stub test. NS IN
+[1730273426] unbound[1:0] debug: cache delegation returns delegpt
+[1730273426] unbound[1:0] info: DelegationPoint<test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+[1730273426] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 2)
+[1730273426] unbound[1:0] info: resolving (init part 2):  ns.nxns9.test. A IN
+[1730273426] unbound[1:0] info: use stub test. NS IN
+[1730273426] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 3)
+[1730273426] unbound[1:0] info: resolving (init part 3):  ns.nxns9.test. A IN
+[1730273426] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1730273426] unbound[1:0] info: processQueryTargets: ns.nxns9.test. A IN
+[1730273426] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 0
+[1730273426] unbound[1:0] info: DelegationPoint<test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+[1730273426] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug: removing 1 labels
+[1730273426] unbound[1:0] debug: attempt to get extra 2 targets
+[1730273426] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1730273426] unbound[1:0] debug: servselect ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug:    rtt=243
+[1730273426] unbound[1:0] debug: selrtt 243
+[1730273426] unbound[1:0] info: sending query: nxns9.test. A IN
+[1730273426] unbound[1:0] debug: sending to target: <test.> 10.10.3.3#53
+[1730273426] unbound[1:0] debug: dnssec status: not expected
+[1730273426] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1730273426] unbound[1:0] debug: iterator[module 1] operate: extstate:module_state_initial event:module_event_pass
+[1730273426] unbound[1:0] info: iterator operate: query ns.nxns4.test. A IN
+[1730273426] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE
+[1730273426] unbound[1:0] info: resolving ns.nxns4.test. A IN
+[1730273426] unbound[1:0] debug: request has dependency depth of 1
+[1730273426] unbound[1:0] info: use stub test. NS IN
+[1730273426] unbound[1:0] debug: cache delegation returns delegpt
+[1730273426] unbound[1:0] info: DelegationPoint<test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+[1730273426] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 2)
+[1730273426] unbound[1:0] info: resolving (init part 2):  ns.nxns4.test. A IN
+[1730273426] unbound[1:0] info: use stub test. NS IN
+[1730273426] unbound[1:0] debug: iter_handle processing q with state INIT REQUEST STATE (stage 3)
+[1730273426] unbound[1:0] info: resolving (init part 3):  ns.nxns4.test. A IN
+[1730273426] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1730273426] unbound[1:0] info: processQueryTargets: ns.nxns4.test. A IN
+[1730273426] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 0
+[1730273426] unbound[1:0] info: DelegationPoint<test.>: 0 names (0 missing), 1 addrs (0 result, 1 avail) parentNS
+[1730273426] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug: removing 1 labels
+[1730273426] unbound[1:0] debug: attempt to get extra 2 targets
+[1730273426] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1730273426] unbound[1:0] debug: servselect ip4 10.10.3.3 port 53 (len 16)
+[1730273426] unbound[1:0] debug:    rtt=243
+[1730273426] unbound[1:0] debug: selrtt 243
+[1730273426] unbound[1:0] info: sending query: nxns4.test. A IN
+[1730273426] unbound[1:0] debug: sending to target: <test.> 10.10.3.3#53
+[1730273426] unbound[1:0] debug: dnssec status: not expected
+[1730273426] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1730273426] unbound[1:0] info: mesh_run: end 4 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1730273426] unbound[1:0] info: 0vRDCD mod1  ns.nxns4.test. A IN
+[1730273426] unbound[1:0] info: 1vRDCD mod1  ns.nxns5.test. A IN
+[1730273426] unbound[1:0] info: 2vRDCD mod1  ns.nxns9.test. A IN
+[1730273426] unbound[1:0] info: 3RDdc mod1 rep www.4stra.test. A IN
+[1730273426] unbound[1:0] debug: cache memory msg=66364 rrset=66972 infra=8526 val=66384
+[1730273426] unbound[1:0] debug: svcd callbacks end
+[1730273426] unbound[1:0] debug: close of port 42743
+[1730273426] unbound[1:0] debug: close fd 7
+[1730273426] unbound[1:0] debug: serviced send timer
+[1730273426] unbound[1:0] debug: EDNS lookup known=1 vs=0
+[1730273426] unbound[1:0] debug: serviced query UDP timeout=243 msec
+[1730273426] unbound[1:0] debug: inserted new pending reply id=e49b
+[1730273426] unbound[1:0] debug: opened UDP if=0 port=64056
+[1730273426] unbound[1:0] debug: comm point start listening 7 (-1 msec)
+[1730273426] unbound[1:0] debug: serviced send timer
+[1730273426] unbound[1:0] debug: EDNS lookup known=1 vs=0
+[1730273426] unbound[1:0] debug: serviced query UDP timeout=243 msec
+[1730273426] unbound[1:0] debug: inserted new pending reply id=31d5
+[1730273426] unbound[1:0] debug: opened UDP if=0 port=35091
+[1730273426] unbound[1:0] debug: comm point start listening 8 (-1 msec)
+[1730273426] unbound[1:0] debug: serviced send timer
+[1730273426] unbound[1:0] debug: EDNS lookup known=1 vs=0
+[1730273426] unbound[1:0] debug: serviced query UDP timeout=243 msec
+[1730273426] unbound[1:0] debug: inserted new pending reply id=b219
+[1730273426] unbound[1:0] debug: opened UDP if=0 port=15025
+[1730273426] unbound[1:0] debug: comm point start listening 9 (-1 msec)
+[1730273427] unbound[1:0] debug: answer cb
+[1730273427] unbound[1:0] debug: Incoming reply id = e49b
+[1730273427] unbound[1:0] debug: Incoming reply addr = ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: lookup size is 3 entries
+[1730273427] unbound[1:0] debug: received udp reply.
+[1730273427] unbound[1:0] debug: udp message[54:0] E49B84000001000100000000056E786E733504746573740000010001056E786E7335047465737400000100010001518000040A0A0303
+[1730273427] unbound[1:0] debug: outnet handle udp reply
+[1730273427] unbound[1:0] debug: measured roundtrip at 21 msec
+[1730273427] unbound[1:0] debug: svcd callbacks start
+[1730273427] unbound[1:0] debug: worker svcd callback for qstate 0x556b2b5c1bc0
+[1730273427] unbound[1:0] debug: mesh_run: start
+[1730273427] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1730273427] unbound[1:0] info: iterator operate: query ns.nxns5.test. A IN
+[1730273427] unbound[1:0] debug: process_response: new external response event
+[1730273427] unbound[1:0] info: scrub for test. NS IN
+[1730273427] unbound[1:0] info: response for ns.nxns5.test. A IN
+[1730273427] unbound[1:0] info: reply from <test.> 10.10.3.3#53
+[1730273427] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+;; flags: qr aa ; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0 
+;; QUESTION SECTION:
+nxns5.test.INA
+
+;; ANSWER SECTION:
+nxns5.test.86400INA10.10.3.3
+
+;; AUTHORITY SECTION:
+
+;; ADDITIONAL SECTION:
+;; MSG SIZE  rcvd: 44
+
+[1730273427] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1730273427] unbound[1:0] info: query response was ANSWER
+[1730273427] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1730273427] unbound[1:0] info: processQueryTargets: ns.nxns5.test. A IN
+[1730273427] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 1
+[1730273427] unbound[1:0] info: DelegationPoint<test.>: 0 names (0 missing), 1 addrs (1 result, 0 avail) parentNS
+[1730273427] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: attempt to get extra 2 targets
+[1730273427] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1730273427] unbound[1:0] debug: servselect ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug:    rtt=205
+[1730273427] unbound[1:0] debug: selrtt 205
+[1730273427] unbound[1:0] info: sending query: ns.nxns5.test. A IN
+[1730273427] unbound[1:0] debug: sending to target: <test.> 10.10.3.3#53
+[1730273427] unbound[1:0] debug: dnssec status: not expected
+[1730273427] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1730273427] unbound[1:0] info: mesh_run: end 4 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1730273427] unbound[1:0] info: 0vRDCD mod1  ns.nxns4.test. A IN
+[1730273427] unbound[1:0] info: 1vRDCD mod1  ns.nxns5.test. A IN
+[1730273427] unbound[1:0] info: 2vRDCD mod1  ns.nxns9.test. A IN
+[1730273427] unbound[1:0] info: 3RDdc mod1 rep www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: cache memory msg=66624 rrset=67214 infra=8526 val=66384
+[1730273427] unbound[1:0] debug: svcd callbacks end
+[1730273427] unbound[1:0] debug: close of port 64056
+[1730273427] unbound[1:0] debug: close fd 7
+[1730273427] unbound[1:0] debug: serviced send timer
+[1730273427] unbound[1:0] debug: EDNS lookup known=1 vs=0
+[1730273427] unbound[1:0] debug: serviced query UDP timeout=205 msec
+[1730273427] unbound[1:0] debug: inserted new pending reply id=a284
+[1730273427] unbound[1:0] debug: opened UDP if=0 port=23895
+[1730273427] unbound[1:0] debug: comm point start listening 7 (-1 msec)
+[1730273427] unbound[1:0] debug: answer cb
+[1730273427] unbound[1:0] debug: Incoming reply id = 31d5
+[1730273427] unbound[1:0] debug: Incoming reply addr = ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: lookup size is 3 entries
+[1730273427] unbound[1:0] debug: received udp reply.
+[1730273427] unbound[1:0] debug: udp message[54:0] 31D584000001000100000000056E786E733904746573740000010001056E786E7339047465737400000100010001518000040A0A0303
+[1730273427] unbound[1:0] debug: outnet handle udp reply
+[1730273427] unbound[1:0] debug: measured roundtrip at 21 msec
+[1730273427] unbound[1:0] debug: svcd callbacks start
+[1730273427] unbound[1:0] debug: worker svcd callback for qstate 0x556b2b5c9be0
+[1730273427] unbound[1:0] debug: mesh_run: start
+[1730273427] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1730273427] unbound[1:0] info: iterator operate: query ns.nxns9.test. A IN
+[1730273427] unbound[1:0] debug: process_response: new external response event
+[1730273427] unbound[1:0] info: scrub for test. NS IN
+[1730273427] unbound[1:0] info: response for ns.nxns9.test. A IN
+[1730273427] unbound[1:0] info: reply from <test.> 10.10.3.3#53
+[1730273427] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+;; flags: qr aa ; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0 
+;; QUESTION SECTION:
+nxns9.test.INA
+
+;; ANSWER SECTION:
+nxns9.test.86400INA10.10.3.3
+
+;; AUTHORITY SECTION:
+
+;; ADDITIONAL SECTION:
+;; MSG SIZE  rcvd: 44
+
+[1730273427] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1730273427] unbound[1:0] info: query response was ANSWER
+[1730273427] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1730273427] unbound[1:0] info: processQueryTargets: ns.nxns9.test. A IN
+[1730273427] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 1
+[1730273427] unbound[1:0] info: DelegationPoint<test.>: 0 names (0 missing), 1 addrs (1 result, 0 avail) parentNS
+[1730273427] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: attempt to get extra 2 targets
+[1730273427] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1730273427] unbound[1:0] debug: servselect ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug:    rtt=175
+[1730273427] unbound[1:0] debug: selrtt 175
+[1730273427] unbound[1:0] info: sending query: ns.nxns9.test. A IN
+[1730273427] unbound[1:0] debug: sending to target: <test.> 10.10.3.3#53
+[1730273427] unbound[1:0] debug: dnssec status: not expected
+[1730273427] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1730273427] unbound[1:0] info: mesh_run: end 4 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1730273427] unbound[1:0] info: 0vRDCD mod1  ns.nxns4.test. A IN
+[1730273427] unbound[1:0] info: 1vRDCD mod1  ns.nxns5.test. A IN
+[1730273427] unbound[1:0] info: 2vRDCD mod1  ns.nxns9.test. A IN
+[1730273427] unbound[1:0] info: 3RDdc mod1 rep www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: cache memory msg=66884 rrset=67456 infra=8526 val=66384
+[1730273427] unbound[1:0] debug: svcd callbacks end
+[1730273427] unbound[1:0] debug: close of port 35091
+[1730273427] unbound[1:0] debug: close fd 8
+[1730273427] unbound[1:0] debug: serviced send timer
+[1730273427] unbound[1:0] debug: EDNS lookup known=1 vs=0
+[1730273427] unbound[1:0] debug: serviced query UDP timeout=175 msec
+[1730273427] unbound[1:0] debug: inserted new pending reply id=bda3
+[1730273427] unbound[1:0] debug: opened UDP if=0 port=14569
+[1730273427] unbound[1:0] debug: comm point start listening 8 (-1 msec)
+[1730273427] unbound[1:0] debug: answer cb
+[1730273427] unbound[1:0] debug: Incoming reply id = b219
+[1730273427] unbound[1:0] debug: Incoming reply addr = ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: lookup size is 3 entries
+[1730273427] unbound[1:0] debug: received udp reply.
+[1730273427] unbound[1:0] debug: udp message[54:0] B21984000001000100000000056E786E733404746573740000010001056E786E7334047465737400000100010001518000040A0A0303
+[1730273427] unbound[1:0] debug: outnet handle udp reply
+[1730273427] unbound[1:0] debug: measured roundtrip at 21 msec
+[1730273427] unbound[1:0] debug: svcd callbacks start
+[1730273427] unbound[1:0] debug: worker svcd callback for qstate 0x556b2b5bdbb0
+[1730273427] unbound[1:0] debug: mesh_run: start
+[1730273427] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1730273427] unbound[1:0] info: iterator operate: query ns.nxns4.test. A IN
+[1730273427] unbound[1:0] debug: process_response: new external response event
+[1730273427] unbound[1:0] info: scrub for test. NS IN
+[1730273427] unbound[1:0] info: response for ns.nxns4.test. A IN
+[1730273427] unbound[1:0] info: reply from <test.> 10.10.3.3#53
+[1730273427] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+;; flags: qr aa ; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0 
+;; QUESTION SECTION:
+nxns4.test.INA
+
+;; ANSWER SECTION:
+nxns4.test.86400INA10.10.3.3
+
+;; AUTHORITY SECTION:
+
+;; ADDITIONAL SECTION:
+;; MSG SIZE  rcvd: 44
+
+[1730273427] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1730273427] unbound[1:0] info: query response was ANSWER
+[1730273427] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1730273427] unbound[1:0] info: processQueryTargets: ns.nxns4.test. A IN
+[1730273427] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 0 sentcount 1
+[1730273427] unbound[1:0] info: DelegationPoint<test.>: 0 names (0 missing), 1 addrs (1 result, 0 avail) parentNS
+[1730273427] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: attempt to get extra 2 targets
+[1730273427] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1730273427] unbound[1:0] debug: servselect ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug:    rtt=148
+[1730273427] unbound[1:0] debug: selrtt 148
+[1730273427] unbound[1:0] info: sending query: ns.nxns4.test. A IN
+[1730273427] unbound[1:0] debug: sending to target: <test.> 10.10.3.3#53
+[1730273427] unbound[1:0] debug: dnssec status: not expected
+[1730273427] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1730273427] unbound[1:0] info: mesh_run: end 4 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1730273427] unbound[1:0] info: 0vRDCD mod1  ns.nxns4.test. A IN
+[1730273427] unbound[1:0] info: 1vRDCD mod1  ns.nxns5.test. A IN
+[1730273427] unbound[1:0] info: 2vRDCD mod1  ns.nxns9.test. A IN
+[1730273427] unbound[1:0] info: 3RDdc mod1 rep www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: cache memory msg=67144 rrset=67698 infra=8526 val=66384
+[1730273427] unbound[1:0] debug: svcd callbacks end
+[1730273427] unbound[1:0] debug: close of port 15025
+[1730273427] unbound[1:0] debug: close fd 9
+[1730273427] unbound[1:0] debug: serviced send timer
+[1730273427] unbound[1:0] debug: EDNS lookup known=1 vs=0
+[1730273427] unbound[1:0] debug: serviced query UDP timeout=148 msec
+[1730273427] unbound[1:0] debug: inserted new pending reply id=5797
+[1730273427] unbound[1:0] debug: opened UDP if=0 port=48691
+[1730273427] unbound[1:0] debug: comm point start listening 9 (-1 msec)
+[1730273427] unbound[1:0] debug: answer cb
+[1730273427] unbound[1:0] debug: Incoming reply id = a284
+[1730273427] unbound[1:0] debug: Incoming reply addr = ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: lookup size is 3 entries
+[1730273427] unbound[1:0] debug: received udp reply.
+[1730273427] unbound[1:0] debug: udp message[60:0] A28484000001000100000000026E73056E786E733504746573740000010001026E73056E786E7335047465737400000100010001518000040A0A0303
+[1730273427] unbound[1:0] debug: outnet handle udp reply
+[1730273427] unbound[1:0] debug: measured roundtrip at 19 msec
+[1730273427] unbound[1:0] debug: svcd callbacks start
+[1730273427] unbound[1:0] debug: worker svcd callback for qstate 0x556b2b5c1bc0
+[1730273427] unbound[1:0] debug: mesh_run: start
+[1730273427] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1730273427] unbound[1:0] info: iterator operate: query ns.nxns5.test. A IN
+[1730273427] unbound[1:0] debug: process_response: new external response event
+[1730273427] unbound[1:0] info: scrub for test. NS IN
+[1730273427] unbound[1:0] info: response for ns.nxns5.test. A IN
+[1730273427] unbound[1:0] info: reply from <test.> 10.10.3.3#53
+[1730273427] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+;; flags: qr aa ; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0 
+;; QUESTION SECTION:
+ns.nxns5.test.INA
+
+;; ANSWER SECTION:
+ns.nxns5.test.86400INA10.10.3.3
+
+;; AUTHORITY SECTION:
+
+;; ADDITIONAL SECTION:
+;; MSG SIZE  rcvd: 47
+
+[1730273427] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1730273427] unbound[1:0] info: query response was ANSWER
+[1730273427] unbound[1:0] debug: iter_handle processing q with state FINISHED RESPONSE STATE
+[1730273427] unbound[1:0] info: finishing processing for ns.nxns5.test. A IN
+[1730273427] unbound[1:0] debug: mesh_run: iterator module exit state is module_finished
+[1730273427] unbound[1:0] debug: validator[module 0] operate: extstate:module_state_initial event:module_event_moddone
+[1730273427] unbound[1:0] info: validator operate: query ns.nxns5.test. A IN
+[1730273427] unbound[1:0] debug: validator: nextmodule returned
+[1730273427] unbound[1:0] debug: not validating response, is valrec(validation recursion lookup)
+[1730273427] unbound[1:0] debug: mesh_run: validator module exit state is module_finished
+[1730273427] unbound[1:0] info: processTargetResponse ns.nxns5.test. A IN
+[1730273427] unbound[1:0] info: processTargetResponse super www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: added target response
+[1730273427] unbound[1:0] info: DelegationPoint<www.4stra.test.>: 10 names (7 missing), 1 addrs (0 result, 1 avail) parentNS
+[1730273427] unbound[1:0] info:   ns.nxns9.test. *
+[1730273427] unbound[1:0] info:   ns.nxns8.test. 
+[1730273427] unbound[1:0] info:   ns.nxns7.test. 
+[1730273427] unbound[1:0] info:   ns.nxns6.test. 
+[1730273427] unbound[1:0] info:   ns.nxns5.test. * A
+[1730273427] unbound[1:0] info:   ns.nxns4.test. *
+[1730273427] unbound[1:0] info:   ns.nxns3.test. 
+[1730273427] unbound[1:0] info:   ns.nxns2.test. 
+[1730273427] unbound[1:0] info:   ns.nxns1.test. 
+[1730273427] unbound[1:0] info:   ns.nxns0.test. 
+[1730273427] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_subquery event:module_event_pass
+[1730273427] unbound[1:0] info: iterator operate: query www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1730273427] unbound[1:0] info: processQueryTargets: www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: processQueryTargets: targetqueries 2, currentqueries 0 sentcount 0
+[1730273427] unbound[1:0] info: DelegationPoint<www.4stra.test.>: 10 names (7 missing), 1 addrs (0 result, 1 avail) parentNS
+[1730273427] unbound[1:0] info:   ns.nxns9.test. *
+[1730273427] unbound[1:0] info:   ns.nxns8.test. 
+[1730273427] unbound[1:0] info:   ns.nxns7.test. 
+[1730273427] unbound[1:0] info:   ns.nxns6.test. 
+[1730273427] unbound[1:0] info:   ns.nxns5.test. * A
+[1730273427] unbound[1:0] info:   ns.nxns4.test. *
+[1730273427] unbound[1:0] info:   ns.nxns3.test. 
+[1730273427] unbound[1:0] info:   ns.nxns2.test. 
+[1730273427] unbound[1:0] info:   ns.nxns1.test. 
+[1730273427] unbound[1:0] info:   ns.nxns0.test. 
+[1730273427] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: rpz: iterator module callback: have_rpz=0
+[1730273427] unbound[1:0] debug: selrtt 376
+[1730273427] unbound[1:0] info: sending query: www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: sending to target: <www.4stra.test.> 10.10.3.3#53
+[1730273427] unbound[1:0] debug: dnssec status: not expected
+[1730273427] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1730273427] unbound[1:0] info: mesh_run: end 3 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1730273427] unbound[1:0] info: 0vRDCD mod1  ns.nxns4.test. A IN
+[1730273427] unbound[1:0] info: 1vRDCD mod1  ns.nxns9.test. A IN
+[1730273427] unbound[1:0] info: 2RDdc mod1 rep www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: cache memory msg=67407 rrset=67943 infra=8526 val=66384
+[1730273427] unbound[1:0] debug: svcd callbacks end
+[1730273427] unbound[1:0] debug: close of port 23895
+[1730273427] unbound[1:0] debug: close fd 7
+[1730273427] unbound[1:0] debug: serviced send timer
+[1730273427] unbound[1:0] debug: EDNS lookup known=0 vs=0
+[1730273427] unbound[1:0] debug: serviced query UDP timeout=376 msec
+[1730273427] unbound[1:0] debug: inserted new pending reply id=3e79
+[1730273427] unbound[1:0] debug: opened UDP if=0 port=31290
+[1730273427] unbound[1:0] debug: comm point start listening 7 (-1 msec)
+[1730273427] unbound[1:0] debug: answer cb
+[1730273427] unbound[1:0] debug: Incoming reply id = bda3
+[1730273427] unbound[1:0] debug: Incoming reply addr = ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: lookup size is 3 entries
+[1730273427] unbound[1:0] debug: received udp reply.
+[1730273427] unbound[1:0] debug: udp message[60:0] BDA384000001000100000000026E73056E786E733904746573740000010001026E73056E786E7339047465737400000100010001518000040A0A0303
+[1730273427] unbound[1:0] debug: outnet handle udp reply
+[1730273427] unbound[1:0] debug: measured roundtrip at 20 msec
+[1730273427] unbound[1:0] debug: svcd callbacks start
+[1730273427] unbound[1:0] debug: worker svcd callback for qstate 0x556b2b5c9be0
+[1730273427] unbound[1:0] debug: mesh_run: start
+[1730273427] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1730273427] unbound[1:0] info: iterator operate: query ns.nxns9.test. A IN
+[1730273427] unbound[1:0] debug: process_response: new external response event
+[1730273427] unbound[1:0] info: scrub for test. NS IN
+[1730273427] unbound[1:0] info: response for ns.nxns9.test. A IN
+[1730273427] unbound[1:0] info: reply from <test.> 10.10.3.3#53
+[1730273427] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+;; flags: qr aa ; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0 
+;; QUESTION SECTION:
+ns.nxns9.test.INA
+
+;; ANSWER SECTION:
+ns.nxns9.test.86400INA10.10.3.3
+
+;; AUTHORITY SECTION:
+
+;; ADDITIONAL SECTION:
+;; MSG SIZE  rcvd: 47
+
+[1730273427] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1730273427] unbound[1:0] info: query response was ANSWER
+[1730273427] unbound[1:0] debug: iter_handle processing q with state FINISHED RESPONSE STATE
+[1730273427] unbound[1:0] info: finishing processing for ns.nxns9.test. A IN
+[1730273427] unbound[1:0] debug: mesh_run: iterator module exit state is module_finished
+[1730273427] unbound[1:0] debug: validator[module 0] operate: extstate:module_state_initial event:module_event_moddone
+[1730273427] unbound[1:0] info: validator operate: query ns.nxns9.test. A IN
+[1730273427] unbound[1:0] debug: validator: nextmodule returned
+[1730273427] unbound[1:0] debug: not validating response, is valrec(validation recursion lookup)
+[1730273427] unbound[1:0] debug: mesh_run: validator module exit state is module_finished
+[1730273427] unbound[1:0] info: processTargetResponse ns.nxns9.test. A IN
+[1730273427] unbound[1:0] info: processTargetResponse super www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: added target response
+[1730273427] unbound[1:0] info: DelegationPoint<www.4stra.test.>: 10 names (7 missing), 1 addrs (1 result, 0 avail) parentNS
+[1730273427] unbound[1:0] info:   ns.nxns9.test. * A
+[1730273427] unbound[1:0] info:   ns.nxns8.test. 
+[1730273427] unbound[1:0] info:   ns.nxns7.test. 
+[1730273427] unbound[1:0] info:   ns.nxns6.test. 
+[1730273427] unbound[1:0] info:   ns.nxns5.test. * A
+[1730273427] unbound[1:0] info:   ns.nxns4.test. *
+[1730273427] unbound[1:0] info:   ns.nxns3.test. 
+[1730273427] unbound[1:0] info:   ns.nxns2.test. 
+[1730273427] unbound[1:0] info:   ns.nxns1.test. 
+[1730273427] unbound[1:0] info:   ns.nxns0.test. 
+[1730273427] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_pass
+[1730273427] unbound[1:0] info: iterator operate: query www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1730273427] unbound[1:0] info: processQueryTargets: www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: processQueryTargets: targetqueries 1, currentqueries 1 sentcount 1
+[1730273427] unbound[1:0] info: DelegationPoint<www.4stra.test.>: 10 names (7 missing), 1 addrs (1 result, 0 avail) parentNS
+[1730273427] unbound[1:0] info:   ns.nxns9.test. * A
+[1730273427] unbound[1:0] info:   ns.nxns8.test. 
+[1730273427] unbound[1:0] info:   ns.nxns7.test. 
+[1730273427] unbound[1:0] info:   ns.nxns6.test. 
+[1730273427] unbound[1:0] info:   ns.nxns5.test. * A
+[1730273427] unbound[1:0] info:   ns.nxns4.test. *
+[1730273427] unbound[1:0] info:   ns.nxns3.test. 
+[1730273427] unbound[1:0] info:   ns.nxns2.test. 
+[1730273427] unbound[1:0] info:   ns.nxns1.test. 
+[1730273427] unbound[1:0] info:   ns.nxns0.test. 
+[1730273427] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: woke up, but wait for outstanding query
+[1730273427] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1730273427] unbound[1:0] info: mesh_run: end 2 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1730273427] unbound[1:0] info: 0vRDCD mod1  ns.nxns4.test. A IN
+[1730273427] unbound[1:0] info: 1RDdc mod1 rep www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: cache memory msg=67670 rrset=68188 infra=8838 val=66384
+[1730273427] unbound[1:0] debug: svcd callbacks end
+[1730273427] unbound[1:0] debug: close of port 14569
+[1730273427] unbound[1:0] debug: close fd 8
+[1730273427] unbound[1:0] debug: answer cb
+[1730273427] unbound[1:0] debug: Incoming reply id = 5797
+[1730273427] unbound[1:0] debug: Incoming reply addr = ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: lookup size is 2 entries
+[1730273427] unbound[1:0] debug: received udp reply.
+[1730273427] unbound[1:0] debug: udp message[60:0] 579784000001000100000000026E73056E786E733404746573740000010001026E73056E786E7334047465737400000100010001518000040A0A0303
+[1730273427] unbound[1:0] debug: outnet handle udp reply
+[1730273427] unbound[1:0] debug: measured roundtrip at 19 msec
+[1730273427] unbound[1:0] debug: svcd callbacks start
+[1730273427] unbound[1:0] debug: worker svcd callback for qstate 0x556b2b5bdbb0
+[1730273427] unbound[1:0] debug: mesh_run: start
+[1730273427] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1730273427] unbound[1:0] info: iterator operate: query ns.nxns4.test. A IN
+[1730273427] unbound[1:0] debug: process_response: new external response event
+[1730273427] unbound[1:0] info: scrub for test. NS IN
+[1730273427] unbound[1:0] info: response for ns.nxns4.test. A IN
+[1730273427] unbound[1:0] info: reply from <test.> 10.10.3.3#53
+[1730273427] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+;; flags: qr aa ; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0 
+;; QUESTION SECTION:
+ns.nxns4.test.INA
+
+;; ANSWER SECTION:
+ns.nxns4.test.86400INA10.10.3.3
+
+;; AUTHORITY SECTION:
+
+;; ADDITIONAL SECTION:
+;; MSG SIZE  rcvd: 47
+
+[1730273427] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1730273427] unbound[1:0] info: query response was ANSWER
+[1730273427] unbound[1:0] debug: iter_handle processing q with state FINISHED RESPONSE STATE
+[1730273427] unbound[1:0] info: finishing processing for ns.nxns4.test. A IN
+[1730273427] unbound[1:0] debug: mesh_run: iterator module exit state is module_finished
+[1730273427] unbound[1:0] debug: validator[module 0] operate: extstate:module_state_initial event:module_event_moddone
+[1730273427] unbound[1:0] info: validator operate: query ns.nxns4.test. A IN
+[1730273427] unbound[1:0] debug: validator: nextmodule returned
+[1730273427] unbound[1:0] debug: not validating response, is valrec(validation recursion lookup)
+[1730273427] unbound[1:0] debug: mesh_run: validator module exit state is module_finished
+[1730273427] unbound[1:0] info: processTargetResponse ns.nxns4.test. A IN
+[1730273427] unbound[1:0] info: processTargetResponse super www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: added target response
+[1730273427] unbound[1:0] info: DelegationPoint<www.4stra.test.>: 10 names (7 missing), 1 addrs (1 result, 0 avail) parentNS
+[1730273427] unbound[1:0] info:   ns.nxns9.test. * A
+[1730273427] unbound[1:0] info:   ns.nxns8.test. 
+[1730273427] unbound[1:0] info:   ns.nxns7.test. 
+[1730273427] unbound[1:0] info:   ns.nxns6.test. 
+[1730273427] unbound[1:0] info:   ns.nxns5.test. * A
+[1730273427] unbound[1:0] info:   ns.nxns4.test. * A
+[1730273427] unbound[1:0] info:   ns.nxns3.test. 
+[1730273427] unbound[1:0] info:   ns.nxns2.test. 
+[1730273427] unbound[1:0] info:   ns.nxns1.test. 
+[1730273427] unbound[1:0] info:   ns.nxns0.test. 
+[1730273427] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_pass
+[1730273427] unbound[1:0] info: iterator operate: query www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: iter_handle processing q with state QUERY TARGETS STATE
+[1730273427] unbound[1:0] info: processQueryTargets: www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: processQueryTargets: targetqueries 0, currentqueries 1 sentcount 1
+[1730273427] unbound[1:0] info: DelegationPoint<www.4stra.test.>: 10 names (7 missing), 1 addrs (1 result, 0 avail) parentNS
+[1730273427] unbound[1:0] info:   ns.nxns9.test. * A
+[1730273427] unbound[1:0] info:   ns.nxns8.test. 
+[1730273427] unbound[1:0] info:   ns.nxns7.test. 
+[1730273427] unbound[1:0] info:   ns.nxns6.test. 
+[1730273427] unbound[1:0] info:   ns.nxns5.test. * A
+[1730273427] unbound[1:0] info:   ns.nxns4.test. * A
+[1730273427] unbound[1:0] info:   ns.nxns3.test. 
+[1730273427] unbound[1:0] info:   ns.nxns2.test. 
+[1730273427] unbound[1:0] info:   ns.nxns1.test. 
+[1730273427] unbound[1:0] info:   ns.nxns0.test. 
+[1730273427] unbound[1:0] debug:    ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: woke up, but wait for outstanding query
+[1730273427] unbound[1:0] debug: mesh_run: iterator module exit state is module_wait_reply
+[1730273427] unbound[1:0] info: mesh_run: end 1 recursion states (1 with reply, 0 detached), 1 waiting replies, 0 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1730273427] unbound[1:0] info: 0RDd mod1 rep www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: cache memory msg=67933 rrset=68433 infra=8838 val=66384
+[1730273427] unbound[1:0] debug: svcd callbacks end
+[1730273427] unbound[1:0] debug: close of port 48691
+[1730273427] unbound[1:0] debug: close fd 9
+[1730273427] unbound[1:0] debug: answer cb
+[1730273427] unbound[1:0] debug: Incoming reply id = 3e79
+[1730273427] unbound[1:0] debug: Incoming reply addr = ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: lookup size is 1 entries
+[1730273427] unbound[1:0] debug: received udp reply.
+[1730273427] unbound[1:0] debug: udp message[484:0] 3E79840000010000000A00000377777705347374726104746573740000010001037777770534737472610474657374000002000100015180000F026E73056E786E7330047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7331047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7332047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7333047465737400037777770534737472610474657374000002000100015180000F026E73056E786E733404746573740003777777053473747261047465737400000200
+[1730273427] unbound[1:0] debug: udp message[484:256] 0100015180000F026E73056E786E7335047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7336047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7337047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7338047465737400037777770534737472610474657374000002000100015180000F026E73056E786E7339047465737400026E73066E786E73313004746573740000020001000151800010026E73066E786E733130047465737400
+[1730273427] unbound[1:0] debug: outnet handle udp reply
+[1730273427] unbound[1:0] debug: serviced query: EDNS works for ip4 10.10.3.3 port 53 (len 16)
+[1730273427] unbound[1:0] debug: measured roundtrip at 19 msec
+[1730273427] unbound[1:0] debug: svcd callbacks start
+[1730273427] unbound[1:0] debug: worker svcd callback for qstate 0x556b2b5cdbf0
+[1730273427] unbound[1:0] debug: mesh_run: start
+[1730273427] unbound[1:0] debug: iterator[module 1] operate: extstate:module_wait_reply event:module_event_reply
+[1730273427] unbound[1:0] info: iterator operate: query www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: process_response: new external response event
+[1730273427] unbound[1:0] info: scrub for www.4stra.test. NS IN
+[1730273427] unbound[1:0] info: response for www.4stra.test. A IN
+[1730273427] unbound[1:0] info: reply from <www.4stra.test.> 10.10.3.3#53
+[1730273427] unbound[1:0] info: incoming scrubbed packet: ;; ->>HEADER<<- opcode: QUERY, rcode: NOERROR, id: 0
+;; flags: qr aa ; QUERY: 1, ANSWER: 0, AUTHORITY: 10, ADDITIONAL: 0 
+;; QUESTION SECTION:
+www.4stra.test.INA
+
+;; ANSWER SECTION:
+
+;; AUTHORITY SECTION:
+www.4stra.test.86400INNSns.nxns7.test.
+www.4stra.test.86400INNSns.nxns8.test.
+www.4stra.test.86400INNSns.nxns9.test.
+www.4stra.test.86400INNSns.nxns0.test.
+www.4stra.test.86400INNSns.nxns1.test.
+www.4stra.test.86400INNSns.nxns2.test.
+www.4stra.test.86400INNSns.nxns3.test.
+www.4stra.test.86400INNSns.nxns4.test.
+www.4stra.test.86400INNSns.nxns5.test.
+www.4stra.test.86400INNSns.nxns6.test.
+
+;; ADDITIONAL SECTION:
+;; MSG SIZE  rcvd: 262
+
+[1730273427] unbound[1:0] debug: iter_handle processing q with state QUERY RESPONSE STATE
+[1730273427] unbound[1:0] info: query response was nodata ANSWER
+[1730273427] unbound[1:0] debug: iter_handle processing q with state FINISHED RESPONSE STATE
+[1730273427] unbound[1:0] info: finishing processing for www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: mesh_run: iterator module exit state is module_finished
+[1730273427] unbound[1:0] debug: validator[module 0] operate: extstate:module_wait_module event:module_event_moddone
+[1730273427] unbound[1:0] info: validator operate: query www.4stra.test. A IN
+[1730273427] unbound[1:0] debug: validator: nextmodule returned
+[1730273427] unbound[1:0] debug: val handle processing q with state VAL_INIT_STATE
+[1730273427] unbound[1:0] debug: validator classification nodata
+[1730273427] unbound[1:0] info: no signer, using www.4stra.test. TYPE0 CLASS0
+[1730273427] unbound[1:0] debug: val handle processing q with state VAL_FINISHED_STATE
+[1730273427] unbound[1:0] debug: mesh_run: validator module exit state is module_finished
+[1730273427] unbound[1:0] debug: query took 0.092508 sec
+[1730273427] unbound[1:0] info: mesh_run: end 0 recursion states (0 with reply, 0 detached), 0 waiting replies, 1 recursion replies sent, 0 replies dropped, 0 states jostled out
+[1730273427] unbound[1:0] info: average recursion processing time 0.092508 sec
+[1730273427] unbound[1:0] info: histogram of recursion processing times
+[1730273427] unbound[1:0] info: [25%]=0 median[50%]=0 [75%]=0
+[1730273427] unbound[1:0] info: lower(secs) upper(secs) recursions
+[1730273427] unbound[1:0] info:    0.065536    0.131072 1
+[1730273427] unbound[1:0] debug: cache memory msg=68197 rrset=68433 infra=8838 val=66384
+[1730273427] unbound[1:0] debug: svcd callbacks end
+[1730273427] unbound[1:0] debug: close of port 31290
+[1730273427] unbound[1:0] debug: close fd 7

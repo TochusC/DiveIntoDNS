@@ -82,13 +82,10 @@ def craft_dns_response(pkt, qname, qtype):
     # 查询DNSKEY记录
     elif qtype == 48:
         reply_pkt /= DNS(id=pkt[DNS].id, qr=1, aa=1, ad=1, qd=pkt[DNS].qd,
-                    ancount=4,
+                    ancount=3,
                     an=
                         DNSRRDNSKEY(rrname="keytrap.test.", ttl=GLOBAL_TTL, algorithm=14, flags=256, publickey=DNSKEY["ZSK"]) /
                         DNSRRDNSKEY(rrname="keytrap.test.", ttl=GLOBAL_TTL, algorithm=14, flags=257, publickey=DNSKEY['KSK']) /
-                        DNSRRRSIG(rrname="keytrap.test.", labels=2, ttl=GLOBAL_TTL, typecovered=48, originalttl=GLOBAL_TTL,
-                        expiration=EXPIRATION, inception=INCEPTION, keytag=6350, algorithm=14, 
-                        signersname="keytrap.test.", signature=RRSIG["ZSK"]) /
                         DNSRRRSIG(rrname="keytrap.test.", labels=2, ttl=GLOBAL_TTL, typecovered=48, originalttl=GLOBAL_TTL,
                          expiration=EXPIRATION, inception=INCEPTION, keytag=30130, algorithm=14, 
                          signersname="keytrap.test.", signature=RRSIG["KSK"]),

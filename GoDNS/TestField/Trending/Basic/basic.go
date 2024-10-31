@@ -136,7 +136,7 @@ func craftAdditionalsSection() map[string][]layers.DNSResourceRecord {
 		},
 		GenRRSIG([]layers.DNSResourceRecord{
 			{
-				Name:  []byte(fmt.Sprintf("ns%d.keytrap.test", i)),
+				Name:  []byte(fmt.Sprintf("ns1.keytrap.test")),
 				Type:  layers.DNSTypeA,
 				Class: layers.DNSClassIN,
 				TTL:   uint32(globalTTLC),

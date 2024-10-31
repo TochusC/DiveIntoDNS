@@ -8,7 +8,7 @@ import (
 	"encoding/binary"
 	"math/big"
 	"strings"
-	"time"ca
+	"time"
 
 	"github.com/tochusc/gopacket/layers"
 )

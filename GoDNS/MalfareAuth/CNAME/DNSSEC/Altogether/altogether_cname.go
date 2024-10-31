@@ -130,7 +130,7 @@ func craftAnswerSection() map[string][]layers.DNSResourceRecord {
 						signerNameC,
 						privateKeyC["ZSK"],
 					),
-				},
+				}...,
 			)
 		}
 		section = append(
@@ -158,7 +158,7 @@ func craftAnswerSection() map[string][]layers.DNSResourceRecord {
 					signerNameC,
 					privateKeyC["ZSK"],
 				),
-			},
+			}...,
 		)
 		answerSection[fmt.Sprintf("cname%d.keytrap.test", i)] = section
 	}
