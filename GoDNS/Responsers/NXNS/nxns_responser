@@ -1,3 +1,15 @@
+/**
+ * @Project :   ExploitDNSSEC
+ * @File    :   nxns_responser.go
+ * @Contact :	tochus@163.com
+ * @License :   (C)Copyright 2024
+ * @Description: A experimental GoDNS responser implementation example
+ *
+ * @Modify Time        @Author     @Version    @Description
+ * ----------------    --------    --------    -----------
+ * 31/10/24 21:02      t0chus      0.0         None
+ */
+
 package main
 
 import (
