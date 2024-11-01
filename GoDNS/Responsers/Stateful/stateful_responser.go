@@ -3,7 +3,7 @@
  * @File    :   stateful_responser.go
  * @Contact :	tochus@163.com
  * @License :   (C)Copyright 2024
- * @Description: A stateful GoDNS responser implementation example
+ * @Description: A stateful DNSSEC GoDNS responser implementation example
  *
  * @Modify Time        @Author     @Version    @Description
  * ----------------    --------    --------    -----------
