@@ -6,7 +6,7 @@ services:
       - ./resolver/test.key:/usr/local/etc/unbound/test.key
     networks:
       app_net:
-        ipv4_address: 10.10.0.3
+        ipv4_address: 10.10.4.3
 
   root:
     build: root
@@ -16,7 +16,7 @@ services:
       - ./root/datafile/test.zone.signed:/var/named/chroot/var/named/test.zone.signed
     networks:
       app_net:
-        ipv4_address: 10.10.0.4
+        ipv4_address: 10.10.4.4
 
   auth:
     build: auth
@@ -26,7 +26,7 @@ services:
       - ./auth/datafile/keytrap.test.zone.signed:/var/named/chroot/var/named/keytrap.test.zone.signed
     networks:
       app_net:
-        ipv4_address: 10.10.0.5
+        ipv4_address: 10.10.4.5
 
 
   nxns:
@@ -37,12 +37,12 @@ services:
       - ./nxns/datafile/nxns.test.zone.signed:/var/named/chroot/var/named/nxns.test.zone.signed
     networks:
       app_net:
-        ipv4_address: 10.10.0.6
+        ipv4_address: 10.10.4.6
 
 
 networks:
   app_net:
     ipam:
       config:
-        - subnet: 10.10.0.0/24
+        - subnet: 10.10.4.0/24
 

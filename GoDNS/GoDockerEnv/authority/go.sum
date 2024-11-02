@@ -1,5 +1,5 @@
-github.com/tochusc/godns v0.4.0-alpha.2 h1:jmkb/DMCOANMDBQtZkY+CNHMX6J5YPXm/AOxgX+c+zc=
-github.com/tochusc/godns v0.4.0-alpha.2/go.mod h1:r8l9aNYjYa7GvCXX4DNJ5O+gU9dA9LHIrEhQWboQU/M=
+github.com/tochusc/godns v0.4.1-alpha.2 h1:YG5kCUP6fxi0iohTe7SuJkLgpAEHMmHj1fEVht985z4=
+github.com/tochusc/godns v0.4.1-alpha.2/go.mod h1:r8l9aNYjYa7GvCXX4DNJ5O+gU9dA9LHIrEhQWboQU/M=
 github.com/tochusc/gopacket v1.4.0 h1:xFZxiu2/kqtyotl4jRDW5n373T2eVkAUr6IXcOxi9A4=
 github.com/tochusc/gopacket v1.4.0/go.mod h1:x1ZnTDaL+gx+HTSeI1xBWzDSn43NYo0Id0YeEV2dWA0=
 github.com/vishvananda/netlink v1.1.0/go.mod h1:cTgwzPIzzgDAYoQrMm0EdrjRUBkTqKYppBueQtXaqoE=
