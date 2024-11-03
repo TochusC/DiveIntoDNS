@@ -61,5 +61,5 @@ EXPOSE 53 953
 # -g: 在前台运行，并将日志输出到标准输出
 # -d: 指定日志级别为debug 99
 
-CMD [ "/var/named/chroot/sbin/named", "-t", "/var/named/chroot", "-c", "/etc/named.conf", "-g", "-d", "99" ]
+CMD [ "/var/named/chroot/sbin/named", "-t", "/var/named/chroot", "-c", "/etc/named.conf", "-g", "-d", "99", "-4" ]
 

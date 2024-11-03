@@ -11,7 +11,7 @@ services:
   authority:
     build: authority
     volumes:
-      - ./authority/dns_auth.go:/usr/local/GoDNS/dns_auth.go
+      - ./authority/auth.go:/usr/local/GoDNS/auth.go
       - ./authority/go.mod:/usr/local/GoDNS/go.mod
       - ./authority/go.sum:/usr/local/GoDNS/go.sum
     privileged: true

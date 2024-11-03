@@ -197,24 +197,39 @@ func (d NXNSResponser) Response(qInfo godns.QueryInfo) (godns.ResponseInfo, erro
 	qLabels := strings.Split(qName, ".")
 	qType := qInfo.DNS.Question[0].Type
 
-	if qType != dns.DNSRRTypeA {
+	if qType != dns.DNSRRTypeA && qType != dns.DNSRRTypeNS {
 		return rInfo, nil
 	}
-	// xxxx.test A/Referral
+
+	// xxxx.test NS/Referral
 	if len(qLabels) == 2 {
-		// nxns{i}.test A
+		// nxns{i}.test NS/A
 		if qLabels[0][:4] == "nxns" {
-			aRR := dns.DNSResourceRecord{
-				Name:  qName,
-				Type:  dns.DNSRRTypeA,
-				Class: dns.DNSClassIN,
-				TTL:   86400,
-				RDLen: 0,
-				RData: &dns.DNSRDATAA{Address: net.IPv4(10, 10, 3, 3)},
+			if qType == dns.DNSRRTypeNS {
+				aRR := dns.DNSResourceRecord{
+					Name:  qName,
+					Type:  dns.DNSRRTypeNS,
+					Class: dns.DNSClassIN,
+					TTL:   86400,
+					RDLen: 0,
+					RData: &dns.DNSRDATANS{NSDNAME: "ns." + qName},
+				}
+				signerName := dns.GetUpperDomainName(&qName)
+				sigRec := d.GenerateRRSIGRR(aRR, signerName)
+				rInfo.DNS.Answer = []dns.DNSResourceRecord{aRR, sigRec}
+			} else if qType == dns.DNSRRTypeA {
+				aRR := dns.DNSResourceRecord{
+					Name:  qName,
+					Type:  dns.DNSRRTypeA,
+					Class: dns.DNSClassIN,
+					TTL:   86400,
+					RDLen: 0,
+					RData: &dns.DNSRDATAA{Address: net.IPv4(10, 10, 3, 3)},
+				}
+				signerName := dns.GetUpperDomainName(&qName)
+				sigRec := d.GenerateRRSIGRR(aRR, signerName)
+				rInfo.DNS.Answer = []dns.DNSResourceRecord{aRR, sigRec}
 			}
-			signerName := dns.GetUpperDomainName(&qName)
-			sigRec := d.GenerateRRSIGRR(aRR, signerName)
-			rInfo.DNS.Answer = []dns.DNSResourceRecord{aRR, sigRec}
 			rInfo.DNS.Header.RCode = dns.DNSResponseCodeNoErr
 			godns.FixCount(&rInfo)
 			return rInfo, nil
