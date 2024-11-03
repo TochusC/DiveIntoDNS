@@ -14,14 +14,17 @@
  package main
 
  import (
+     "fmt"
      "net"
      "time"
  
      "github.com/tochusc/godns"
      "github.com/tochusc/godns/dns"
+     "github.com/tochusc/godns/dns/xperi"
  )
  
- type DNSSECMaterialMap map[string]godns.DNSSECMaterial
+ var TXTCountC = 15
+ var WrongSigCountC = 8
  
  // DNSSECResponser 是一个实现了 DNSSEC 的 Responser 实现。
  // 它默认会回复指向服务器的A记录，并自动为子区域生成对应的
@@ -41,7 +44,61 @@
  func (d DNSSECResponser) Response(qInfo godns.QueryInfo) (godns.ResponseInfo, error) {
      rInfo := godns.InitResp(qInfo)
      d.EnableDNSSEC(qInfo, &rInfo)
- 
+     
+     qName := qInfo.DNS.Question[0].Name
+     qSignerName := dns.GetUpperDomainName(&qName)
+     dnssecMat := d.GetDNSSECMat(qSignerName)
+
+     // Additonal Test
+     for i := 0; i < TXTCountC; i++ {
+        txt := dns.DNSResourceRecord{
+            Name:  fmt.Sprintf("txt%d.%s", i, qName),
+            Type:  dns.DNSRRTypeTXT,
+            Class: dns.DNSClassIN,
+            TTL:   86400,
+            RDLen: 0,
+            RData: &dns.DNSRDATATXT{TXT: "Test"},
+        }
+        rInfo.DNS.Additional = append(rInfo.DNS.Additional, txt)
+        for j := 0; j < WrongSigCountC; j++ {
+            sig := xperi.GenRandomRRSIG(
+                []dns.DNSResourceRecord{txt},
+                dns.DNSSECAlgorithmECDSAP384SHA384,
+                uint32(time.Now().UTC().Unix()+86400-3600),
+                uint32(time.Now().UTC().Unix()-3600),
+                uint16(dnssecMat.ZSKTag),
+                qSignerName,
+            )
+            sigRec := dns.DNSResourceRecord{
+                Name:  fmt.Sprintf("txt%d.%s", i, qName),
+                Type:  dns.DNSRRTypeRRSIG,
+                Class: dns.DNSClassIN,
+                TTL:   86400,
+                RDLen: uint16(sig.Size()),
+                RData: &sig,
+            }
+            rInfo.DNS.Additional = append(rInfo.DNS.Additional, sigRec)
+        }
+        sig := xperi.GenerateRRSIG(
+            []dns.DNSResourceRecord{txt},
+            dns.DNSSECAlgorithmECDSAP384SHA384,
+            uint32(time.Now().UTC().Unix()+86400-3600),
+            uint32(time.Now().UTC().Unix()-3600),
+            uint16(dnssecMat.ZSKTag),
+            qSignerName,
+            dnssecMat.PrivateZSK,
+        )
+        sigRec := dns.DNSResourceRecord{
+            Name:  fmt.Sprintf("txt%d.%s", i, qName),
+            Type:  dns.DNSRRTypeRRSIG,
+            Class: dns.DNSClassIN,
+            TTL:   86400,
+            RDLen: uint16(sig.Size()),
+            RData: &sig,
+        }
+        rInfo.DNS.Additional = append(rInfo.DNS.Additional, sigRec)
+    }
+    
      // 在这里可以随意修改为其他逻辑：
      // 这里的实现是返回指向服务器的 A 记录
      qType := qInfo.DNS.Question[0].Type
@@ -49,7 +106,7 @@
          godns.FixCount(&rInfo)
          return rInfo, nil
      }
-     qName := qInfo.DNS.Question[0].Name
+     
      rec := dns.DNSResourceRecord{
          Name:  qName,
          Type:  dns.DNSRRTypeA,
@@ -58,9 +115,7 @@
          RDLen: 0,
          RData: &dns.DNSRDATAA{Address: d.ServerConf.IP},
      }
-     qSignerName := dns.GetUpperDomainName(&qName)
-     dnssecMat := d.GetDNSSECMat(qSignerName)
-     sig := dns.GenerateRRSIG(
+     sig := xperi.GenerateRRSIG(
          []dns.DNSResourceRecord{rec},
          dns.DNSSECAlgorithmECDSAP384SHA384,
          uint32(time.Now().UTC().Unix()+86400-3600),
@@ -108,7 +163,7 @@
      } else if qType == dns.DNSRRTypeDS {
          // 如果查询类型为 DS，则生成 DS 记录
          dnssecMat := d.GetDNSSECMat(qName)
-         ds := dns.GenerateDS(
+         ds := xperi.GenerateDS(
              qName,
              *dnssecMat.DNSKEYRespSec[1].RData.(*dns.DNSRDATADNSKEY),
              d.DNSSECConf.DType,
@@ -125,7 +180,7 @@
          // 生成 ZSK 签名
          upperName := dns.GetUpperDomainName(&qName)
          dnssecMat = d.GetDNSSECMat(upperName)
-         sig := dns.GenerateRRSIG(
+         sig := xperi.GenerateRRSIG(
              []dns.DNSResourceRecord{rec},
              d.DNSSECConf.DAlgo,
              uint32(time.Now().UTC().Unix()+86400-3600),
@@ -151,7 +206,7 @@
  
  func main() {
      // 设置 DNS 服务器配置
-     var conf = godns.DNSServerConfig{
+     var sConf = godns.DNSServerConfig{
          IP:            net.IPv4(10, 10, 3, 3),
          Port:          53,
          NetworkDevice: "eth0",
@@ -167,87 +222,33 @@
      // 生成 KSK 和 ZSK
      // 使用ParseKeyBase64解析预先生成的公钥，
      // 该公钥应确保能够被解析器通过 信任锚点（Trust Anchor）建立的 信任链（Chain of Trust） 所验证。
-     pubKskBytes := dns.ParseKeyBase64("MzJsFTtAo0j8qGpDIhEMnK4ImTyYwMwDPU5gt/FaXd6TOw6AvZDAj2hlhZvaxMXV6xCw1MU5iPv5ZQrb3NDLUU+TW07imJ5GD9YKi0Qiiypo+zhtL4aGaOG+870yHwuY")
-     privKskBytes := dns.ParseKeyBase64("ppaXHmb7u1jOxEzrLzuGKzbjmSLIK4gEhQOvws+cpBQyJbCwIM1Nrk4j5k94CP9e")
- 
-     pubKskRDATA := dns.DNSRDATADNSKEY{
-         Flags:     dns.DNSKEYFlagSecureEntryPoint,
-         Protocol:  dns.DNSKEYProtocolValue,
-         Algorithm: dConf.DAlgo,
-         PublicKey: pubKskBytes,
-     }
-     // pubKskRDATA, privKskBytes := dns.GenerateDNSKEY(dns.DNSSECAlgorithmECDSAP384SHA384, dns.DNSKEYFlagSecureEntryPoint)
- 
-     pubZskRDATA, privZskBytes := dns.GenerateDNSKEY(dns.DNSSECAlgorithmECDSAP384SHA384, dns.DNSKEYFlagZoneKey)
-     pubZskRR := dns.DNSResourceRecord{
-         Name:  "test.",
-         Type:  dns.DNSRRTypeDNSKEY,
-         Class: dns.DNSClassIN,
-         TTL:   86400,
-         RDLen: uint16(pubZskRDATA.Size()),
-         RData: &pubZskRDATA,
-     }
-     pubKskRR := dns.DNSResourceRecord{
-         Name:  "test.",
-         Type:  dns.DNSRRTypeDNSKEY,
-         Class: dns.DNSClassIN,
-         TTL:   86400,
-         RDLen: uint16(pubKskRDATA.Size()),
-         RData: &pubKskRDATA,
-     }
- 
-     // 生成密钥集签名
-     keySetSig := dns.GenerateRRSIG(
-         []dns.DNSResourceRecord{
-             pubZskRR,
-             pubKskRR,
-         },
-         dConf.DAlgo,
-         uint32(time.Now().UTC().Unix()+86400-3600),
-         uint32(time.Now().UTC().Unix()-3600),
-         uint16(dns.CalculateKeyTag(pubKskRDATA)),
+     pubKskBytes := xperi.ParseKeyBase64("MzJsFTtAo0j8qGpDIhEMnK4ImTyYwMwDPU5gt/FaXd6TOw6AvZDAj2hlhZvaxMXV6xCw1MU5iPv5ZQrb3NDLUU+TW07imJ5GD9YKi0Qiiypo+zhtL4aGaOG+870yHwuY")
+     privKskBytes := xperi.ParseKeyBase64("ppaXHmb7u1jOxEzrLzuGKzbjmSLIK4gEhQOvws+cpBQyJbCwIM1Nrk4j5k94CP9e")
+     trustAnchor := godns.InitTrustAnchor(
          "test.",
+         dConf,
+         pubKskBytes,
          privKskBytes,
      )
-     sigRec := dns.DNSResourceRecord{
-         Name:  "test.",
-         Type:  dns.DNSRRTypeRRSIG,
-         Class: dns.DNSClassIN,
-         TTL:   86400,
-         RDLen: uint16(keySetSig.Size()),
-         RData: &keySetSig,
-     }
-     // 生成 DNSSEC 材料
-     anSec := []dns.DNSResourceRecord{
-         pubZskRR,
-         pubKskRR,
-         sigRec,
-     }
  
      // 创建一个 DNS 服务器
      server := godns.GoDNSSever{
-         ServerConfig: conf,
+         ServerConfig: sConf,
          Sniffer: []*godns.Sniffer{
              godns.NewSniffer(godns.SnifferConfig{
-                 Device:   conf.NetworkDevice,
-                 Port:     conf.Port,
+                 Device:   sConf.NetworkDevice,
+                 Port:     sConf.Port,
                  PktMax:   65535,
                  Protocol: godns.ProtocolUDP,
              }),
          },
-         Handler: godns.NewHandler(conf,
+         Handler: godns.NewHandler(sConf,
              &DNSSECResponser{
-                 ServerConf: conf,
+                 ServerConf: sConf,
                  DNSSECConf: dConf,
                  DNSSECMap: map[string]godns.DNSSECMaterial{
                      // 信任锚点
-                     "test": godns.DNSSECMaterial{
-                         KSKTag:        int(dns.CalculateKeyTag(pubKskRDATA)),
-                         ZSKTag:        int(dns.CalculateKeyTag(pubZskRDATA)),
-                         PrivateKSK:    privKskBytes,
-                         PrivateZSK:    privZskBytes,
-                         DNSKEYRespSec: anSec,
-                     },
+                     "test": trustAnchor,
                  },
              },
          ),
@@ -257,8 +258,8 @@
      server.Start()
  }
  func (d DNSSECResponser) CreateDNSSECMat(zoneName string) godns.DNSSECMaterial {
-     pubKskRDATA, privKskBytes := dns.GenerateDNSKEY(dns.DNSSECAlgorithmECDSAP384SHA384, dns.DNSKEYFlagSecureEntryPoint)
-     pubZskRDATA, privZskBytes := dns.GenerateDNSKEY(dns.DNSSECAlgorithmECDSAP384SHA384, dns.DNSKEYFlagZoneKey)
+     pubKskRDATA, privKskBytes := xperi.GenerateDNSKEY(dns.DNSSECAlgorithmECDSAP384SHA384, dns.DNSKEYFlagSecureEntryPoint)
+     pubZskRDATA, privZskBytes := xperi.GenerateDNSKEY(dns.DNSSECAlgorithmECDSAP384SHA384, dns.DNSKEYFlagZoneKey)
      pubZskRR := dns.DNSResourceRecord{
          Name:  zoneName,
          Type:  dns.DNSRRTypeDNSKEY,
@@ -277,7 +278,7 @@
      }
  
      // 生成密钥集签名
-     keySetSig := dns.GenerateRRSIG(
+     keySetSig := xperi.GenerateRRSIG(
          []dns.DNSResourceRecord{
              pubZskRR,
              pubKskRR,
@@ -285,7 +286,7 @@
          dns.DNSSECAlgorithmECDSAP384SHA384,
          uint32(time.Now().UTC().Unix()+86400-3600),
          uint32(time.Now().UTC().Unix()-3600),
-         uint16(dns.CalculateKeyTag(pubKskRDATA)),
+         uint16(xperi.CalculateKeyTag(pubKskRDATA)),
          zoneName,
          privKskBytes,
      )
@@ -304,10 +305,11 @@
          sigRec,
      }
      return godns.DNSSECMaterial{
-         KSKTag:        int(dns.CalculateKeyTag(pubKskRDATA)),
-         ZSKTag:        int(dns.CalculateKeyTag(pubZskRDATA)),
+         KSKTag:        int(xperi.CalculateKeyTag(pubKskRDATA)),
+         ZSKTag:        int(xperi.CalculateKeyTag(pubZskRDATA)),
          PrivateKSK:    privKskBytes,
          PrivateZSK:    privZskBytes,
          DNSKEYRespSec: anSec,
      }
  }
+ 

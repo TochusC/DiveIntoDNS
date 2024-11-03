@@ -14,6 +14,7 @@
 package main
 
 import (
+	"fmt"
 	"net"
 	"time"
 
@@ -21,6 +22,9 @@ import (
 	"github.com/tochusc/godns/dns"
 	"github.com/tochusc/godns/dns/xperi"
 )
+
+var TXTCountC = 2
+var WrongSigCountC = 8
 
 // DNSSECResponser 是一个实现了 DNSSEC 的 Responser 实现。
 // 它默认会回复指向服务器的A记录，并自动为子区域生成对应的
@@ -79,6 +83,56 @@ func (d DNSSECResponser) Response(qInfo godns.QueryInfo) (godns.ResponseInfo, er
 
 	rInfo.DNS.Answer = append(rInfo.DNS.Answer, rec, sigRec)
 	rInfo.DNS.Header.RCode = dns.DNSResponseCodeNoErr
+
+	// Additonal Test
+	for i := 0; i < TXTCountC; i++ {
+		txt := dns.DNSResourceRecord{
+			Name:  fmt.Sprintf("txt%d.%s", i, qName),
+			Type:  dns.DNSRRTypeTXT,
+			Class: dns.DNSClassIN,
+			TTL:   86400,
+			RDLen: 0,
+			RData: &dns.DNSRDATATXT{TXT: "Test"},
+		}
+		rInfo.DNS.Additional = append(rInfo.DNS.Additional, txt)
+		for j := 0; j < WrongSigCountC; j++ {
+			sig := xperi.GenRandomRRSIG(
+				[]dns.DNSResourceRecord{txt},
+				dns.DNSSECAlgorithmECDSAP384SHA384,
+				uint32(time.Now().UTC().Unix()+86400-3600),
+				uint32(time.Now().UTC().Unix()-3600),
+				uint16(dnssecMat.ZSKTag),
+				qSignerName,
+			)
+			sigRec := dns.DNSResourceRecord{
+				Name:  fmt.Sprintf("txt%d.%s", i, qName),
+				Type:  dns.DNSRRTypeRRSIG,
+				Class: dns.DNSClassIN,
+				TTL:   86400,
+				RDLen: uint16(sig.Size()),
+				RData: &sig,
+			}
+			rInfo.DNS.Additional = append(rInfo.DNS.Additional, sigRec)
+		}
+		sig := xperi.GenerateRRSIG(
+			[]dns.DNSResourceRecord{txt},
+			dns.DNSSECAlgorithmECDSAP384SHA384,
+			uint32(time.Now().UTC().Unix()+86400-3600),
+			uint32(time.Now().UTC().Unix()-3600),
+			uint16(dnssecMat.ZSKTag),
+			qSignerName,
+			dnssecMat.PrivateZSK,
+		)
+		sigRec := dns.DNSResourceRecord{
+			Name:  fmt.Sprintf("txt%d.%s", i, qName),
+			Type:  dns.DNSRRTypeRRSIG,
+			Class: dns.DNSClassIN,
+			TTL:   86400,
+			RDLen: uint16(sig.Size()),
+			RData: &sig,
+		}
+		rInfo.DNS.Additional = append(rInfo.DNS.Additional, sigRec)
+	}
 
 	godns.FixCount(&rInfo)
 	return rInfo, nil

@@ -18,6 +18,7 @@ import (
 
 	"github.com/tochusc/godns"
 	"github.com/tochusc/godns/dns"
+	"github.com/tochusc/godns/dns/xperi"
 )
 
 // 一个可能的 Responser 实现
@@ -123,7 +124,7 @@ func (d StatefulSecResponser) EnableDNSSEC(qInfo godns.QueryInfo, rInfo *godns.R
 		rInfo.DNS.Header.RCode = dns.DNSResponseCodeNoErr
 	} else if qType == dns.DNSRRTypeDS {
 		// 如果查询类型为 DS，则生成 DS 记录并返回
-		ds := dns.GenerateDS(
+		ds := xperi.GenerateDS(
 			qName,
 			*d.DNSSECMap[qName].DNSKEYRespSec[1].RData.(*dns.DNSRDATADNSKEY),
 			d.DNSSECConf.DType,
@@ -139,7 +140,7 @@ func (d StatefulSecResponser) EnableDNSSEC(qInfo godns.QueryInfo, rInfo *godns.R
 			RData: &ds,
 		}
 		dnssecMat := d.DNSSECMap[qName]
-		sig := dns.GenerateRRSIG(
+		sig := xperi.GenerateRRSIG(
 			[]dns.DNSResourceRecord{rec},
 			d.DNSSECConf.DAlgo,
 			uint32(time.Now().UTC().Unix()+86400-3600),
@@ -163,8 +164,8 @@ func (d StatefulSecResponser) EnableDNSSEC(qInfo godns.QueryInfo, rInfo *godns.R
 }
 
 func (d StatefulSecResponser) CreateDNSSECMat(zoneName string) godns.DNSSECMaterial {
-	pubKskRDATA, privKskBytes := dns.GenerateDNSKEY(dns.DNSSECAlgorithmECDSAP384SHA384, dns.DNSKEYFlagSecureEntryPoint)
-	pubZskRDATA, privZskBytes := dns.GenerateDNSKEY(dns.DNSSECAlgorithmECDSAP384SHA384, dns.DNSKEYFlagZoneKey)
+	pubKskRDATA, privKskBytes := xperi.GenerateDNSKEY(dns.DNSSECAlgorithmECDSAP384SHA384, dns.DNSKEYFlagSecureEntryPoint)
+	pubZskRDATA, privZskBytes := xperi.GenerateDNSKEY(dns.DNSSECAlgorithmECDSAP384SHA384, dns.DNSKEYFlagZoneKey)
 	pubZskRR := dns.DNSResourceRecord{
 		Name:  zoneName,
 		Type:  dns.DNSRRTypeDNSKEY,
@@ -183,7 +184,7 @@ func (d StatefulSecResponser) CreateDNSSECMat(zoneName string) godns.DNSSECMater
 	}
 
 	// 生成密钥集签名
-	keySetSig := dns.GenerateRRSIG(
+	keySetSig := xperi.GenerateRRSIG(
 		[]dns.DNSResourceRecord{
 			pubZskRR,
 			pubKskRR,
@@ -191,7 +192,7 @@ func (d StatefulSecResponser) CreateDNSSECMat(zoneName string) godns.DNSSECMater
 		dns.DNSSECAlgorithmECDSAP384SHA384,
 		uint32(time.Now().UTC().Unix()+86400-3600),
 		uint32(time.Now().UTC().Unix()-3600),
-		uint16(dns.CalculateKeyTag(pubKskRDATA)),
+		uint16(xperi.CalculateKeyTag(pubKskRDATA)),
 		zoneName,
 		privKskBytes,
 	)
@@ -210,8 +211,8 @@ func (d StatefulSecResponser) CreateDNSSECMat(zoneName string) godns.DNSSECMater
 		sigRec,
 	}
 	return godns.DNSSECMaterial{
-		KSKTag:        int(dns.CalculateKeyTag(pubKskRDATA)),
-		ZSKTag:        int(dns.CalculateKeyTag(pubZskRDATA)),
+		KSKTag:        int(xperi.CalculateKeyTag(pubKskRDATA)),
+		ZSKTag:        int(xperi.CalculateKeyTag(pubZskRDATA)),
 		PrivateKSK:    privKskBytes,
 		PrivateZSK:    privZskBytes,
 		DNSKEYRespSec: anSec,
