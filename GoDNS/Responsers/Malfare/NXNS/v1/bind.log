@@ -1,0 +1,920 @@
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 client @0x7f0af8002a70 (no-peer): allocate new client
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 client @0x7f0af8002a70 127.0.0.1#48921: UDP request
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 client @0x7f0af8002a70 127.0.0.1#48921: using view '_default'
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 client @0x7f0af8002a70 127.0.0.1#48921: request is not signed
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 client @0x7f0af8002a70 127.0.0.1#48921: recursion available
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 client @0x7f0af8002a70 127.0.0.1#48921 (www.dnssec.test): query: www.dnssec.test IN A +E(0)K (127.0.0.1)
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 client @0x7f0af8002a70 127.0.0.1#48921 (www.dnssec.test): query 'www.dnssec.test/A/IN' approved
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 client @0x7f0af8002a70 127.0.0.1#48921 (www.dnssec.test): rrl=(nil), HAVECOOKIE=0, result=DNS_R_DELEGATION, fname=0x7f0af8095030(1), is_zone=1, RECURSIONOK=1, query.rpz_st=(nil)(0), RRL_CHECKED=0
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 client @0x7f0af8002a70 127.0.0.1#48921 (www.dnssec.test): rrl=(nil), HAVECOOKIE=0, result=ISC_R_NOTFOUND, fname=0x7f0af8094df0(0), is_zone=0, RECURSIONOK=1, query.rpz_st=(nil)(0), RRL_CHECKED=0
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 fetch: www.dnssec.test/A
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 fctx 0x7f0af80bd950(www.dnssec.test/A): created counter 0x5605e0e5b080
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 log_ns_ttl: fctx 0x7f0af80bd950: fctx_create: www.dnssec.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 QNAME minimization -  minimized, qmintype 2 qminname dnssec.test
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 expire_v4 set to 1730725406 import_rdataset
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 dns_adb_createfind: found A for name test (0x7f0af80bf650) in db
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 fctx 0x7f0af80bd950(www.dnssec.test/A): createfind for 127.0.0.1#48921 - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 fetch: dnssec.test/NS
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 fctx 0x7f0af80bfbb0(dnssec.test/NS): attached to counter 0x5605e0e5b080 (0)
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 log_ns_ttl: fctx 0x7f0af80bfbb0: fctx_create: dnssec.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 fctx 0x7f0af80bfbb0(dnssec.test/NS): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af80c2410: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af80c2410: attaching handle 0x7f0af80c2ab0 to 0x7f0af80c2438
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af80c2410: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af80c2410: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  62129
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1
+2024-11-03 21:03:26 ;; OPT PSEUDOSECTION:
+2024-11-03 21:03:26 ; EDNS: version: 0, flags: do; udp: 1232
+2024-11-03 21:03:26 ; COOKIE: d678e3aae8b37590
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;dnssec.test.INNS
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af80c2410: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.084+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af80c2410: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af80c2410: read callback:success, requests 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af80c2410: got valid DNS message header, /QR 1, id 62129
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af80c2410: UDP read callback on 0x7f0af80c2ab0: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  62129
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 0, AUTHORITY: 11, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;dnssec.test.INNS
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; AUTHORITY SECTION:
+2024-11-03 21:03:26 ;dnssec.test.86400INNSns.nxns0.test.
+2024-11-03 21:03:26 ;dnssec.test.86400INNSns.nxns1.test.
+2024-11-03 21:03:26 ;dnssec.test.86400INNSns.nxns2.test.
+2024-11-03 21:03:26 ;dnssec.test.86400INNSns.nxns3.test.
+2024-11-03 21:03:26 ;dnssec.test.86400INNSns.nxns4.test.
+2024-11-03 21:03:26 ;dnssec.test.86400INNSns.nxns5.test.
+2024-11-03 21:03:26 ;dnssec.test.86400INNSns.nxns6.test.
+2024-11-03 21:03:26 ;dnssec.test.86400INNSns.nxns7.test.
+2024-11-03 21:03:26 ;dnssec.test.86400INNSns.nxns8.test.
+2024-11-03 21:03:26 ;dnssec.test.86400INNSns.nxns9.test.
+2024-11-03 21:03:26 ;dnssec.test.86400INRRSIGNS 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 25209 test.
+2024-11-03 21:03:26 ;/pkZAOIsTDvAEQZZikqREfoIZMdl
+2024-11-03 21:03:26 ;zMxqpMsjT2c5ie9JryxtiRuGlNm/
+2024-11-03 21:03:26 ;NjNrEFhjQaGIm3bVoR4U0MAVlys3
+2024-11-03 21:03:26 ;0SM8g6GI6KDfyk6nQG72Cnt5mP4V
+2024-11-03 21:03:26 ;MlI9PttHGYoqWvFN )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 received packet (no opt) from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  62129
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 0, AUTHORITY: 11, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;dnssec.test.INNS
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; AUTHORITY SECTION:
+2024-11-03 21:03:26 dnssec.test.86400INNSns.nxns0.test.
+2024-11-03 21:03:26 dnssec.test.86400INNSns.nxns1.test.
+2024-11-03 21:03:26 dnssec.test.86400INNSns.nxns2.test.
+2024-11-03 21:03:26 dnssec.test.86400INNSns.nxns3.test.
+2024-11-03 21:03:26 dnssec.test.86400INNSns.nxns4.test.
+2024-11-03 21:03:26 dnssec.test.86400INNSns.nxns5.test.
+2024-11-03 21:03:26 dnssec.test.86400INNSns.nxns6.test.
+2024-11-03 21:03:26 dnssec.test.86400INNSns.nxns7.test.
+2024-11-03 21:03:26 dnssec.test.86400INNSns.nxns8.test.
+2024-11-03 21:03:26 dnssec.test.86400INNSns.nxns9.test.
+2024-11-03 21:03:26 dnssec.test.86400INRRSIGNS 14 2 86400 20241104120326 20241103120326 25209 test. /pkZAOIsTDvAEQZZikqREfoIZMdlzMxqpMsjT2c5ie9JryxtiRuGlNm/ NjNrEFhjQaGIm3bVoR4U0MAVlys30SM8g6GI6KDfyk6nQG72Cnt5mP4V MlI9PttHGYoqWvFN
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 log_ns_ttl: fctx 0x7f0af80bfbb0: rctx_answer_none: dnssec.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 log_ns_ttl: fctx 0x7f0af80bfbb0: DELEGATION: dnssec.test (in 'dnssec.test'?): 0 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af80c2410: canceling response: operation canceled, connected/not reading (none/not reading), requests 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dns_adb_destroyfind on find 0x7f0af80c1820
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af80c2410: canceling response: operation canceled, canceled/not reading (none/not reading), requests 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af80c2410: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af80c2410: detaching handle 0x7f0af80c2ab0 from 0x7f0af80c2438
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 QNAME minimization - not minimized, qmintype 1 qminname www.dnssec.test
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dns_adb_destroyfind on find 0x7f0af80bf570
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fetch: ns.nxns0.test/A
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af80bfbb0(ns.nxns0.test/A): attached to counter 0x5605e0e5b080 (1)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 log_ns_ttl: fctx 0x7f0af80bfbb0: fctx_create: ns.nxns0.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 QNAME minimization -  minimized, qmintype 2 qminname nxns0.test
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dns_adb_createfind: started A fetch for name ns.nxns0.test (0x7f0af80c2020)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 createfind: attaching find 0x7f0af80bf570 to adbname 0x7f0af80c2020 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af80bd950(www.dnssec.test/A): createfind for 127.0.0.1#48921 - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fetch: ns.nxns1.test/A
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af818ae80(ns.nxns1.test/A): attached to counter 0x5605e0e5b080 (1)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 log_ns_ttl: fctx 0x7f0af818ae80: fctx_create: ns.nxns1.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 QNAME minimization -  minimized, qmintype 2 qminname nxns1.test
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dns_adb_createfind: started A fetch for name ns.nxns1.test (0x7f0af80c0f80)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 createfind: attaching find 0x7f0af80c1820 to adbname 0x7f0af80c0f80 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af80bd950(www.dnssec.test/A): createfind for 127.0.0.1#48921 - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fetch: ns.nxns2.test/A
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af818cad0(ns.nxns2.test/A): attached to counter 0x5605e0e5b080 (1)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 log_ns_ttl: fctx 0x7f0af818cad0: fctx_create: ns.nxns2.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 QNAME minimization -  minimized, qmintype 2 qminname nxns2.test
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dns_adb_createfind: started A fetch for name ns.nxns2.test (0x7f0af818c670)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 createfind: attaching find 0x7f0af818c590 to adbname 0x7f0af818c670 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af80bd950(www.dnssec.test/A): createfind for 127.0.0.1#48921 - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fetch: ns.nxns3.test/A
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af818e9c0(ns.nxns3.test/A): attached to counter 0x5605e0e5b080 (1)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 log_ns_ttl: fctx 0x7f0af818e9c0: fctx_create: ns.nxns3.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 QNAME minimization -  minimized, qmintype 2 qminname nxns3.test
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dns_adb_createfind: started A fetch for name ns.nxns3.test (0x7f0af818e560)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 createfind: attaching find 0x7f0af818e480 to adbname 0x7f0af818e560 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af80bd950(www.dnssec.test/A): createfind for 127.0.0.1#48921 - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fetch: ns.nxns4.test/A
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af81908b0(ns.nxns4.test/A): attached to counter 0x5605e0e5b080 (1)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 log_ns_ttl: fctx 0x7f0af81908b0: fctx_create: ns.nxns4.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 QNAME minimization -  minimized, qmintype 2 qminname nxns4.test
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dns_adb_createfind: started A fetch for name ns.nxns4.test (0x7f0af8190450)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 createfind: attaching find 0x7f0af8190370 to adbname 0x7f0af8190450 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af80bd950(www.dnssec.test/A): createfind for 127.0.0.1#48921 - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af80bd950(www.dnssec.test/A): createfind for 127.0.0.1#48921 - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dns_adb_destroyfind on find 0x7f0af8192520
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af80bd950(www.dnssec.test/A): createfind for 127.0.0.1#48921 - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dns_adb_destroyfind on find 0x7f0af8192520
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af80bd950(www.dnssec.test/A): createfind for 127.0.0.1#48921 - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dns_adb_destroyfind on find 0x7f0af8192520
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af80bd950(www.dnssec.test/A): createfind for 127.0.0.1#48921 - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dns_adb_destroyfind on find 0x7f0af8192520
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af80bd950(www.dnssec.test/A): createfind for 127.0.0.1#48921 - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dns_adb_destroyfind on find 0x7f0af8192520
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 expire_v4 set to 1730725406 import_rdataset
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dns_adb_createfind: found A for name test (0x7f0af81936e0) in db
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af80bfbb0(ns.nxns0.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fetch: nxns0.test/NS
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af8193a40(nxns0.test/NS): attached to counter 0x5605e0e5b080 (1)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 log_ns_ttl: fctx 0x7f0af8193a40: fctx_create: nxns0.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af818ae80(ns.nxns1.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fetch: nxns1.test/NS
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af8195820(nxns1.test/NS): attached to counter 0x5605e0e5b080 (1)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 log_ns_ttl: fctx 0x7f0af8195820: fctx_create: nxns1.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af818cad0(ns.nxns2.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fetch: nxns2.test/NS
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af8197640(nxns2.test/NS): attached to counter 0x5605e0e5b080 (1)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 log_ns_ttl: fctx 0x7f0af8197640: fctx_create: nxns2.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af818e9c0(ns.nxns3.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fetch: nxns3.test/NS
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af8199460(nxns3.test/NS): attached to counter 0x5605e0e5b080 (1)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 log_ns_ttl: fctx 0x7f0af8199460: fctx_create: nxns3.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af81908b0(ns.nxns4.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fetch: nxns4.test/NS
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af819b280(nxns4.test/NS): attached to counter 0x5605e0e5b080 (1)
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 log_ns_ttl: fctx 0x7f0af819b280: fctx_create: nxns4.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af8193a40(nxns0.test/NS): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af8195820(nxns1.test/NS): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af8197640(nxns2.test/NS): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af8199460(nxns3.test/NS): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 fctx 0x7f0af819b280(nxns4.test/NS): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819d830: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819d830: attaching handle 0x7f0af80c2ab0 to 0x7f0af819d858
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819d830: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819d830: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  19092
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns0.test.INNS
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819d830: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e580: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e580: attaching handle 0x7f0af819ec20 to 0x7f0af819e5a8
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e580: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e580: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  17315
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns1.test.INNS
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e580: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819f920: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819f920: attaching handle 0x7f0af81a0220 to 0x7f0af819f948
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819f920: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819f920: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:   9627
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns2.test.INNS
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819f920: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a0f20: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a0f20: attaching handle 0x7f0af81a1820 to 0x7f0af81a0f48
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a0f20: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a0f20: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  27156
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns3.test.INNS
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a0f20: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a2520: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a2520: attaching handle 0x7f0af81a2e20 to 0x7f0af81a2548
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a2520: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a2520: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  23842
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns4.test.INNS
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a2520: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819d830: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e580: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819f920: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a0f20: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.104+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a2520: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819d830: read callback:success, requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819d830: got valid DNS message header, /QR 1, id 19092
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819d830: UDP read callback on 0x7f0af80c2ab0: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  19092
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns0.test.INNS
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; ANSWER SECTION:
+2024-11-03 21:03:26 ;nxns0.test.86400INNSnxns0.test.
+2024-11-03 21:03:26 ;nxns0.test.86400INRRSIGNS 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 25209 test.
+2024-11-03 21:03:26 ;t44XbSAT26jByyTVkgQW9Mm5ZCC9
+2024-11-03 21:03:26 ;oOFplklh05ZGHOPG2R+pWy7M6wMK
+2024-11-03 21:03:26 ;hd2n7j/RF8+4JBYr5v16a4FKE/vQ
+2024-11-03 21:03:26 ;Cj6h4CRGc2CuGPcb9FFSOLcGClH8
+2024-11-03 21:03:26 ;fthfuvaVHd2/CL2a )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 log_ns_ttl: fctx 0x7f0af8193a40: rctx_answer: nxns0.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819d830: canceling response: operation canceled, connected/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_destroyfind on find 0x7f0af819cf30
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819d830: canceling response: operation canceled, canceled/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819d830: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819d830: detaching handle 0x7f0af80c2ab0 from 0x7f0af819d858
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e580: read callback:success, requests 4
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e580: got valid DNS message header, /QR 1, id 17315
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e580: UDP read callback on 0x7f0af819ec20: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  17315
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns1.test.INNS
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; ANSWER SECTION:
+2024-11-03 21:03:26 ;nxns1.test.86400INNSnxns1.test.
+2024-11-03 21:03:26 ;nxns1.test.86400INRRSIGNS 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 25209 test.
+2024-11-03 21:03:26 ;vNUtMIeCqNgLZplO7XfzUICyGABp
+2024-11-03 21:03:26 ;ew/CuHAWgvk0lfcUcFvHGsMKaJFz
+2024-11-03 21:03:26 ;g2MiF6SrEiPD0BNjFV8kI7i7SbbR
+2024-11-03 21:03:26 ;+nLbffa/r+bLzQX9DKVuyCdcdQwO
+2024-11-03 21:03:26 ;LzxzF8pQejap3eWJ )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 log_ns_ttl: fctx 0x7f0af8195820: rctx_answer: nxns1.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e580: canceling response: operation canceled, connected/not reading (none/not reading), requests 4
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_destroyfind on find 0x7f0af819d990
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e580: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e580: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e580: detaching handle 0x7f0af819ec20 from 0x7f0af819e5a8
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819f920: read callback:success, requests 3
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819f920: got valid DNS message header, /QR 1, id 9627
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819f920: UDP read callback on 0x7f0af81a0220: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:   9627
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns2.test.INNS
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; ANSWER SECTION:
+2024-11-03 21:03:26 ;nxns2.test.86400INNSnxns2.test.
+2024-11-03 21:03:26 ;nxns2.test.86400INRRSIGNS 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 25209 test.
+2024-11-03 21:03:26 ;Orj4KKcKZaxvf680le8ZlrsXS6kM
+2024-11-03 21:03:26 ;uipHDDpJIZenLqI/2I5BRcvE7D95
+2024-11-03 21:03:26 ;8Zsx6bRAOt5/AqzkM/NI4ZsQYVAk
+2024-11-03 21:03:26 ;A2fYi9Skht2RN4JplkNnxg/UeZ2J
+2024-11-03 21:03:26 ;5QMkxkQTspNwxdSH )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 log_ns_ttl: fctx 0x7f0af8197640: rctx_answer: nxns2.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819f920: canceling response: operation canceled, connected/not reading (none/not reading), requests 3
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_destroyfind on find 0x7f0af819ed30
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819f920: canceling response: operation canceled, canceled/not reading (none/not reading), requests 3
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819f920: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819f920: detaching handle 0x7f0af81a0220 from 0x7f0af819f948
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a0f20: read callback:success, requests 2
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a0f20: got valid DNS message header, /QR 1, id 27156
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a0f20: UDP read callback on 0x7f0af81a1820: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  27156
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns3.test.INNS
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; ANSWER SECTION:
+2024-11-03 21:03:26 ;nxns3.test.86400INNSnxns3.test.
+2024-11-03 21:03:26 ;nxns3.test.86400INRRSIGNS 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 25209 test.
+2024-11-03 21:03:26 ;l5GZa3jWLWrnyNm/ENgrvjgJmoMu
+2024-11-03 21:03:26 ;n4csLbwDuHhphH3X+44R7dEe0l+f
+2024-11-03 21:03:26 ;Ms3iWF/N4THi8x67uA/SaqDtoBYs
+2024-11-03 21:03:26 ;hcwZ3h+ZIF6uvRQG+eEoAy9GEAkP
+2024-11-03 21:03:26 ;OYbUyFrZ/oMj518z )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 log_ns_ttl: fctx 0x7f0af8199460: rctx_answer: nxns3.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a0f20: canceling response: operation canceled, connected/not reading (none/not reading), requests 2
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_destroyfind on find 0x7f0af81a0330
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a0f20: canceling response: operation canceled, canceled/not reading (none/not reading), requests 2
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a0f20: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a0f20: detaching handle 0x7f0af81a1820 from 0x7f0af81a0f48
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a2520: read callback:success, requests 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a2520: got valid DNS message header, /QR 1, id 23842
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a2520: UDP read callback on 0x7f0af81a2e20: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  23842
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns4.test.INNS
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; ANSWER SECTION:
+2024-11-03 21:03:26 ;nxns4.test.86400INNSnxns4.test.
+2024-11-03 21:03:26 ;nxns4.test.86400INRRSIGNS 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 25209 test.
+2024-11-03 21:03:26 ;BOvRQ/wNF7xs7AS2fq5fGp7uou3R
+2024-11-03 21:03:26 ;C5w/Lx5E3G4hnmVNWfgFsZu5nobU
+2024-11-03 21:03:26 ;Cc+Y7T9RkbW+bxtTmAIVqdIq5TzF
+2024-11-03 21:03:26 ;SFQz03NbFJbWpxTXsmiKVbmx99VB
+2024-11-03 21:03:26 ;xZQAFm7IvGU0kgyJ )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 log_ns_ttl: fctx 0x7f0af819b280: rctx_answer: nxns4.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a2520: canceling response: operation canceled, connected/not reading (none/not reading), requests 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_destroyfind on find 0x7f0af81a1930
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a2520: canceling response: operation canceled, canceled/not reading (none/not reading), requests 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a2520: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81a2520: detaching handle 0x7f0af81a2e20 from 0x7f0af81a2548
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 QNAME minimization - not minimized, qmintype 1 qminname ns.nxns0.test
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_destroyfind on find 0x7f0af8192520
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fetch_name: starting at zone for name 0x7f0af81a09e0
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fetch: nxns0.test/A
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af8193a40(nxns0.test/A): attached to counter 0x5605e0e5b080 (6)
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 log_ns_ttl: fctx 0x7f0af8193a40: fctx_create: nxns0.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_createfind: started A fetch for name nxns0.test (0x7f0af81a09e0)
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 createfind: attaching find 0x7f0af8192520 to adbname 0x7f0af81a09e0 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af80bfbb0(ns.nxns0.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 QNAME minimization - not minimized, qmintype 1 qminname ns.nxns1.test
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_destroyfind on find 0x7f0af81956b0
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fetch_name: starting at zone for name 0x7f0af81a1fe0
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fetch: nxns1.test/A
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af8195820(nxns1.test/A): attached to counter 0x5605e0e5b080 (6)
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 log_ns_ttl: fctx 0x7f0af8195820: fctx_create: nxns1.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_createfind: started A fetch for name nxns1.test (0x7f0af81a1fe0)
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 createfind: attaching find 0x7f0af81956b0 to adbname 0x7f0af81a1fe0 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af818ae80(ns.nxns1.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 QNAME minimization - not minimized, qmintype 1 qminname ns.nxns2.test
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_destroyfind on find 0x7f0af81974d0
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fetch_name: starting at zone for name 0x7f0af81989a0
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fetch: nxns2.test/A
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af81975b0(nxns2.test/A): attached to counter 0x5605e0e5b080 (6)
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 log_ns_ttl: fctx 0x7f0af81975b0: fctx_create: nxns2.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_createfind: started A fetch for name nxns2.test (0x7f0af81989a0)
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 createfind: attaching find 0x7f0af81974d0 to adbname 0x7f0af81989a0 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af818cad0(ns.nxns2.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 QNAME minimization - not minimized, qmintype 1 qminname ns.nxns3.test
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_destroyfind on find 0x7f0af81992f0
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fetch_name: starting at zone for name 0x7f0af819a7c0
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fetch: nxns3.test/A
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af81993d0(nxns3.test/A): attached to counter 0x5605e0e5b080 (6)
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 log_ns_ttl: fctx 0x7f0af81993d0: fctx_create: nxns3.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_createfind: started A fetch for name nxns3.test (0x7f0af819a7c0)
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 createfind: attaching find 0x7f0af81992f0 to adbname 0x7f0af819a7c0 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af818e9c0(ns.nxns3.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 QNAME minimization - not minimized, qmintype 1 qminname ns.nxns4.test
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_destroyfind on find 0x7f0af819b110
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fetch_name: starting at zone for name 0x7f0af819c5e0
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fetch: nxns4.test/A
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af819b1f0(nxns4.test/A): attached to counter 0x5605e0e5b080 (6)
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 log_ns_ttl: fctx 0x7f0af819b1f0: fctx_create: nxns4.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dns_adb_createfind: started A fetch for name nxns4.test (0x7f0af819c5e0)
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 createfind: attaching find 0x7f0af819b110 to adbname 0x7f0af819c5e0 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af81908b0(ns.nxns4.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af8193a40(nxns0.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af8195820(nxns1.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af81975b0(nxns2.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af81993d0(nxns3.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 fctx 0x7f0af819b1f0(nxns4.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b29e0: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b29e0: attaching handle 0x7f0af81a2e20 to 0x7f0af81b2a08
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b29e0: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b29e0: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:   1283
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns0.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b29e0: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3080: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3080: attaching handle 0x7f0af81a1820 to 0x7f0af81b30a8
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3080: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3080: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:   7201
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns1.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3080: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3720: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3720: attaching handle 0x7f0af81a0220 to 0x7f0af81b3748
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3720: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3720: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  32171
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns2.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3720: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3dc0: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3dc0: attaching handle 0x7f0af819ec20 to 0x7f0af81b3de8
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3dc0: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3dc0: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  61661
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns3.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3dc0: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b4460: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b4460: attaching handle 0x7f0af80c2ab0 to 0x7f0af81b4488
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b4460: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b4460: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  40034
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns4.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b4460: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b29e0: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3080: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3720: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3dc0: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.124+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b4460: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b29e0: read callback:success, requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b29e0: got valid DNS message header, /QR 1, id 1283
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b29e0: UDP read callback on 0x7f0af81a2e20: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:   1283
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns0.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; ANSWER SECTION:
+2024-11-03 21:03:26 ;nxns0.test.86400INA10.10.3.3
+2024-11-03 21:03:26 ;nxns0.test.86400INRRSIGA 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 25209 test.
+2024-11-03 21:03:26 ;Sat4Or2k7zfrbSRLWcuCwrpZ9fh4
+2024-11-03 21:03:26 ;5FKRCpUosi6//0pt/GYGyOyMaC1V
+2024-11-03 21:03:26 ;zlcSzu/WROU3OH9IJJA3KY4vyi0a
+2024-11-03 21:03:26 ;Ybvpa/szw3wDvyM6dnbqZbMZTQGI
+2024-11-03 21:03:26 ;oV+dvwJOJK3hcag1 )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 log_ns_ttl: fctx 0x7f0af8193a40: rctx_answer: nxns0.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b29e0: canceling response: operation canceled, connected/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dns_adb_destroyfind on find 0x7f0af81a1930
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b29e0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b29e0: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b29e0: detaching handle 0x7f0af81a2e20 from 0x7f0af81b2a08
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 expire_v4 set to 1730725406 import_rdataset
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 ENTER clean_finds_at_name, name 0x7f0af81a09e0, astat 00000001, addrs 00000001
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 more addresses
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 cfan: processing find 0x7f0af8192520
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 cfan: sending find 0x7f0af8192520 to caller
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 EXIT clean_finds_at_name, name 0x7f0af81a09e0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dns_adb_destroyfind on find 0x7f0af8192520
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 fctx 0x7f0af80bfbb0(ns.nxns0.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8194d60: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8194d60: attaching handle 0x7f0af81a2e20 to 0x7f0af8194d88
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8194d60: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8194d60: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  33246
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;ns.nxns0.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8194d60: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8194d60: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3080: read callback:success, requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3080: got valid DNS message header, /QR 1, id 7201
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3080: UDP read callback on 0x7f0af81a1820: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:   7201
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns1.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; ANSWER SECTION:
+2024-11-03 21:03:26 ;nxns1.test.86400INA10.10.3.3
+2024-11-03 21:03:26 ;nxns1.test.86400INRRSIGA 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 25209 test.
+2024-11-03 21:03:26 ;6os/rKDeZ3WUk0r1YYmIXdVUOwVC
+2024-11-03 21:03:26 ;Qrrb+6bA7FaXmV84o9tib3QfB4Aj
+2024-11-03 21:03:26 ;1gzWyq6WEHPHfjN23TjFEQqYqEhq
+2024-11-03 21:03:26 ;zClRzYSZbWeFEDtdJpHOlJLv7LJb
+2024-11-03 21:03:26 ;/3SnDKX4i3a1B5Ps )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 log_ns_ttl: fctx 0x7f0af8195820: rctx_answer: nxns1.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3080: canceling response: operation canceled, connected/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dns_adb_destroyfind on find 0x7f0af81a0df0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3080: canceling response: operation canceled, canceled/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3080: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3080: detaching handle 0x7f0af81a1820 from 0x7f0af81b30a8
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 expire_v4 set to 1730725406 import_rdataset
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 ENTER clean_finds_at_name, name 0x7f0af81a1fe0, astat 00000001, addrs 00000001
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 more addresses
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 cfan: processing find 0x7f0af81956b0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 cfan: sending find 0x7f0af81956b0 to caller
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 EXIT clean_finds_at_name, name 0x7f0af81a1fe0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dns_adb_destroyfind on find 0x7f0af81956b0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 fctx 0x7f0af818ae80(ns.nxns1.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8195010: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8195010: attaching handle 0x7f0af81a1820 to 0x7f0af8195038
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8195010: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8195010: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  31271
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;ns.nxns1.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8195010: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8195010: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3720: read callback:success, requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3720: got valid DNS message header, /QR 1, id 32171
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3720: UDP read callback on 0x7f0af81a0220: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  32171
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns2.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; ANSWER SECTION:
+2024-11-03 21:03:26 ;nxns2.test.86400INA10.10.3.3
+2024-11-03 21:03:26 ;nxns2.test.86400INRRSIGA 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 25209 test.
+2024-11-03 21:03:26 ;gGXqS7L9WOP9DdFwyOTPIQ2rj7tb
+2024-11-03 21:03:26 ;oEACq+A/6fvFydBE8fEPsV23tobn
+2024-11-03 21:03:26 ;1oCN2iYa3noT+Q7OlRr+aPCuVJyQ
+2024-11-03 21:03:26 ;POPJpj8C+vkkXoe97IOcBCrkp4/k
+2024-11-03 21:03:26 ;hrjleFtJ6HtRRfU8 )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 log_ns_ttl: fctx 0x7f0af81975b0: rctx_answer: nxns2.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3720: canceling response: operation canceled, connected/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dns_adb_destroyfind on find 0x7f0af81a23f0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3720: canceling response: operation canceled, canceled/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3720: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3720: detaching handle 0x7f0af81a0220 from 0x7f0af81b3748
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 expire_v4 set to 1730725406 import_rdataset
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 ENTER clean_finds_at_name, name 0x7f0af81989a0, astat 00000001, addrs 00000001
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 more addresses
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 cfan: processing find 0x7f0af81974d0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 cfan: sending find 0x7f0af81974d0 to caller
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 EXIT clean_finds_at_name, name 0x7f0af81989a0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dns_adb_destroyfind on find 0x7f0af81974d0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 fctx 0x7f0af818cad0(ns.nxns2.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8196cd0: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8196cd0: attaching handle 0x7f0af81a0220 to 0x7f0af8196cf8
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8196cd0: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8196cd0: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  15617
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;ns.nxns2.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8196cd0: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8196cd0: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3dc0: read callback:success, requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3dc0: got valid DNS message header, /QR 1, id 61661
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3dc0: UDP read callback on 0x7f0af819ec20: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  61661
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns3.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; ANSWER SECTION:
+2024-11-03 21:03:26 ;nxns3.test.86400INA10.10.3.3
+2024-11-03 21:03:26 ;nxns3.test.86400INRRSIGA 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 25209 test.
+2024-11-03 21:03:26 ;mAQVAgvPvatofsOhrFLoSfLZT2BB
+2024-11-03 21:03:26 ;uxqxqa7rRem1nvg6DZSkZEr/AzF3
+2024-11-03 21:03:26 ;vR9FHsLeWYjHmVB4S/vs6qwd3AlQ
+2024-11-03 21:03:26 ;fph+xI5jDZNEF5chblRH0K+qtVfH
+2024-11-03 21:03:26 ;y4bvHX7ZLpLXS/Vt )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 log_ns_ttl: fctx 0x7f0af81993d0: rctx_answer: nxns3.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3dc0: canceling response: operation canceled, connected/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dns_adb_destroyfind on find 0x7f0af8198db0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3dc0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3dc0: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b3dc0: detaching handle 0x7f0af819ec20 from 0x7f0af81b3de8
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 expire_v4 set to 1730725406 import_rdataset
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 ENTER clean_finds_at_name, name 0x7f0af819a7c0, astat 00000001, addrs 00000001
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 more addresses
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 cfan: processing find 0x7f0af81992f0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 cfan: sending find 0x7f0af81992f0 to caller
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 EXIT clean_finds_at_name, name 0x7f0af819a7c0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dns_adb_destroyfind on find 0x7f0af81992f0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 fctx 0x7f0af818e9c0(ns.nxns3.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b1a20: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b1a20: attaching handle 0x7f0af819ec20 to 0x7f0af81b1a48
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b1a20: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b1a20: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  49981
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;ns.nxns3.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b1a20: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b1a20: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b4460: read callback:success, requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b4460: got valid DNS message header, /QR 1, id 40034
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b4460: UDP read callback on 0x7f0af80c2ab0: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  40034
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;nxns4.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; ANSWER SECTION:
+2024-11-03 21:03:26 ;nxns4.test.86400INA10.10.3.3
+2024-11-03 21:03:26 ;nxns4.test.86400INRRSIGA 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 25209 test.
+2024-11-03 21:03:26 ;8yusjKLG8WENlFq9f0R6QI8EuGAr
+2024-11-03 21:03:26 ;CYg5KuNfRkPRnE8tqU9uX4fnIWHD
+2024-11-03 21:03:26 ;mQTSKOQalUEP2m9dZxn1bWy6y9Zy
+2024-11-03 21:03:26 ;IvVyzODaSY+lgAvq//0OdMN+XjXr
+2024-11-03 21:03:26 ;gd0953uv59Go8iAX )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 log_ns_ttl: fctx 0x7f0af819b1f0: rctx_answer: nxns4.test (in 'test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b4460: canceling response: operation canceled, connected/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dns_adb_destroyfind on find 0x7f0af819abd0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b4460: canceling response: operation canceled, canceled/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b4460: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b4460: detaching handle 0x7f0af80c2ab0 from 0x7f0af81b4488
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 expire_v4 set to 1730725406 import_rdataset
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 ENTER clean_finds_at_name, name 0x7f0af819c5e0, astat 00000001, addrs 00000001
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 more addresses
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 cfan: processing find 0x7f0af819b110
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 cfan: sending find 0x7f0af819b110 to caller
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 EXIT clean_finds_at_name, name 0x7f0af819c5e0
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dns_adb_destroyfind on find 0x7f0af819b110
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 fctx 0x7f0af81908b0(ns.nxns4.test/A): createfind for <unknown> - success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e040: connected: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e040: attaching handle 0x7f0af80c2ab0 to 0x7f0af819e068
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e040: reading
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e040: connect callback: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 sending packet to 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id:  53932
+2024-11-03 21:03:26 ;; flags:; QUESTION: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;ns.nxns4.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e040: sending
+2024-11-03 21:03:26 2024-11-03T13:03:26.144+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e040: sent: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8194d60: read callback:success, requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8194d60: got valid DNS message header, /QR 1, id 33246
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8194d60: UDP read callback on 0x7f0af81a2e20: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id:  33246
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 0, AUTHORITY: 4, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;ns.nxns0.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; AUTHORITY SECTION:
+2024-11-03 21:03:26 ;nxns0.test.86400INNSEC0.nxns0.test. A
+2024-11-03 21:03:26 ;nxns0.test.86400INRRSIGNSEC 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 44163 nxns0.test.
+2024-11-03 21:03:26 ;gkBNfdY8aJOmusXZQblWt+jp4Fxt
+2024-11-03 21:03:26 ;ePpcrA71/hyqnxzBNbtsBRjyA2sj
+2024-11-03 21:03:26 ;JhOlyp971osay7IStRp0zdwgLWy3
+2024-11-03 21:03:26 ;mf164/jsWTOjZ9I3zqMWNE4S4dJz
+2024-11-03 21:03:26 ;t50LB0DWhiTPsiGZ )
+2024-11-03 21:03:26 ;0.nxns0.test.86400INNSECnxns0.test. A
+2024-11-03 21:03:26 ;0.nxns0.test.86400INRRSIGNSEC 14 3 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 44163 nxns0.test.
+2024-11-03 21:03:26 ;hlIuYBp8phft3F/5ZGd+HC26mrfl
+2024-11-03 21:03:26 ;+9HH60wewXqkCGr/bo0bG9FUAEtu
+2024-11-03 21:03:26 ;2G5DOuFs8ZGww7anOAJG2YkzVC78
+2024-11-03 21:03:26 ;RtSaiivtkEwnhZcjSWjfI20yaGks
+2024-11-03 21:03:26 ;54omtz7naHIPFlyK )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 log_ns_ttl: fctx 0x7f0af80bfbb0: rctx_answer_none: ns.nxns0.test (in 'nxns0.test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8194d60: canceling response: operation canceled, connected/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dns_adb_destroyfind on find 0x7f0af8192520
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8194d60: canceling response: operation canceled, canceled/not reading (none/not reading), requests 5
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8194d60: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8194d60: detaching handle 0x7f0af81a2e20 from 0x7f0af8194d88
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 adb fetch name 0x7f0af80c2020: caching negative entry for A (ttl 1730649806)
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 ENTER clean_finds_at_name, name 0x7f0af80c2020, astat 00000002, addrs 00000001
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 no more addresses
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 cfan: processing find 0x7f0af80bf570
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 cfan: sending find 0x7f0af80bf570 to caller
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 EXIT clean_finds_at_name, name 0x7f0af80c2020
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dns_adb_destroyfind on find 0x7f0af80bf570
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8195010: read callback:success, requests 4
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8195010: got valid DNS message header, /QR 1, id 31271
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8195010: UDP read callback on 0x7f0af81a1820: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id:  31271
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 0, AUTHORITY: 4, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;ns.nxns1.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; AUTHORITY SECTION:
+2024-11-03 21:03:26 ;nxns1.test.86400INNSEC0.nxns1.test. A
+2024-11-03 21:03:26 ;nxns1.test.86400INRRSIGNSEC 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 57005 nxns1.test.
+2024-11-03 21:03:26 ;V7WWpkKVR/PmNo9ZvtUSeImL0Phx
+2024-11-03 21:03:26 ;1FFeaf8GAXb6wsIcfPHcBiR1kXKE
+2024-11-03 21:03:26 ;vUBWmvG4AYHefiChoJO38rh4KWTU
+2024-11-03 21:03:26 ;cLP8zprQXVoggU8zBY0cvNR1pt0l
+2024-11-03 21:03:26 ;JFm93HoMHuzWBbcA )
+2024-11-03 21:03:26 ;0.nxns1.test.86400INNSECnxns1.test. A
+2024-11-03 21:03:26 ;0.nxns1.test.86400INRRSIGNSEC 14 3 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 57005 nxns1.test.
+2024-11-03 21:03:26 ;5+cMD2Inj7QfZ5d2Mr8uzSkmJOwI
+2024-11-03 21:03:26 ;tdFVTWm3uZiEEbfCp57c2JzxrhT+
+2024-11-03 21:03:26 ;3uuBgFJ+aSR91ouQ44VKL8j85x7S
+2024-11-03 21:03:26 ;Wmp+ste4/TPPxJGPmRSg7O5knMHW
+2024-11-03 21:03:26 ;kVn8NoEqW/6xdnYZ )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 log_ns_ttl: fctx 0x7f0af818ae80: rctx_answer_none: ns.nxns1.test (in 'nxns1.test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8195010: canceling response: operation canceled, connected/not reading (none/not reading), requests 4
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dns_adb_destroyfind on find 0x7f0af81956b0
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8195010: canceling response: operation canceled, canceled/not reading (none/not reading), requests 4
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8195010: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8195010: detaching handle 0x7f0af81a1820 from 0x7f0af8195038
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 adb fetch name 0x7f0af80c0f80: caching negative entry for A (ttl 1730649806)
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 ENTER clean_finds_at_name, name 0x7f0af80c0f80, astat 00000002, addrs 00000001
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 no more addresses
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 cfan: processing find 0x7f0af80c1820
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 cfan: sending find 0x7f0af80c1820 to caller
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 EXIT clean_finds_at_name, name 0x7f0af80c0f80
+2024-11-03 21:03:26 2024-11-03T13:03:26.164+00:00 dns_adb_destroyfind on find 0x7f0af80c1820
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8196cd0: read callback:success, requests 3
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8196cd0: got valid DNS message header, /QR 1, id 15617
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8196cd0: UDP read callback on 0x7f0af81a0220: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id:  15617
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 0, AUTHORITY: 4, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;ns.nxns2.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; AUTHORITY SECTION:
+2024-11-03 21:03:26 ;nxns2.test.86400INNSEC0.nxns2.test. A
+2024-11-03 21:03:26 ;nxns2.test.86400INRRSIGNSEC 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 50581 nxns2.test.
+2024-11-03 21:03:26 ;n3cpu8pNKmjAvBeAjn9luOC28jG/
+2024-11-03 21:03:26 ;5a4+gM9A1KSKAsAZNHz5eHe71W41
+2024-11-03 21:03:26 ;WfM4BMM1WsFvvcjIaznyEO2psDvk
+2024-11-03 21:03:26 ;KN+x9hXervJeVtxcypfQtR/+xuxt
+2024-11-03 21:03:26 ;4LJRAI2T6Y72f1MQ )
+2024-11-03 21:03:26 ;0.nxns2.test.86400INNSECnxns2.test. A
+2024-11-03 21:03:26 ;0.nxns2.test.86400INRRSIGNSEC 14 3 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 50581 nxns2.test.
+2024-11-03 21:03:26 ;3NTXgGbqb+HKlcYgmLp6DbR0AmBC
+2024-11-03 21:03:26 ;f9GXCovLvzMNCXoQbIu3CvPbrfJC
+2024-11-03 21:03:26 ;XoatffwBtva1eCGEWBKPNoRVaDWB
+2024-11-03 21:03:26 ;QMj19x4wUg1OxV2bxVqjGdTIMh0H
+2024-11-03 21:03:26 ;jCUITXlV6JmT20gT )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 log_ns_ttl: fctx 0x7f0af818cad0: rctx_answer_none: ns.nxns2.test (in 'nxns2.test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8196cd0: canceling response: operation canceled, connected/not reading (none/not reading), requests 3
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dns_adb_destroyfind on find 0x7f0af81974d0
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8196cd0: canceling response: operation canceled, canceled/not reading (none/not reading), requests 3
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8196cd0: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af8196cd0: detaching handle 0x7f0af81a0220 from 0x7f0af8196cf8
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 adb fetch name 0x7f0af818c670: caching negative entry for A (ttl 1730649806)
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 ENTER clean_finds_at_name, name 0x7f0af818c670, astat 00000002, addrs 00000001
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 no more addresses
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 cfan: processing find 0x7f0af818c590
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 cfan: sending find 0x7f0af818c590 to caller
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 EXIT clean_finds_at_name, name 0x7f0af818c670
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dns_adb_destroyfind on find 0x7f0af818c590
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b1a20: read callback:success, requests 2
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b1a20: got valid DNS message header, /QR 1, id 49981
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b1a20: UDP read callback on 0x7f0af819ec20: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id:  49981
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 0, AUTHORITY: 4, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;ns.nxns3.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; AUTHORITY SECTION:
+2024-11-03 21:03:26 ;nxns3.test.86400INNSEC0.nxns3.test. A
+2024-11-03 21:03:26 ;nxns3.test.86400INRRSIGNSEC 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 18560 nxns3.test.
+2024-11-03 21:03:26 ;37HRNAMtlnLcJ+XpflkghgIwAjDE
+2024-11-03 21:03:26 ;6n97mmos6j/ji5hutSUNpmeUCiME
+2024-11-03 21:03:26 ;q0+oUJ79fLpMM/nunjaHou2ZKJYg
+2024-11-03 21:03:26 ;mfFfEvhLICYAcmFUvXRHA9CUYjbJ
+2024-11-03 21:03:26 ;Lzij9eql/KAxEwqx )
+2024-11-03 21:03:26 ;0.nxns3.test.86400INNSECnxns3.test. A
+2024-11-03 21:03:26 ;0.nxns3.test.86400INRRSIGNSEC 14 3 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 18560 nxns3.test.
+2024-11-03 21:03:26 ;YkMVY2CsdPMbLOBHNsbKAFm+k9Dz
+2024-11-03 21:03:26 ;HpmKq6xDf6n0pemA+/kc0rQfbR94
+2024-11-03 21:03:26 ;HdpJZznEODfkseljePMSW84+kp3m
+2024-11-03 21:03:26 ;/YPlWadrDTraZKRWJe3iPes7/lbM
+2024-11-03 21:03:26 ;VQUtbejo36GtruIU )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 log_ns_ttl: fctx 0x7f0af818e9c0: rctx_answer_none: ns.nxns3.test (in 'nxns3.test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b1a20: canceling response: operation canceled, connected/not reading (none/not reading), requests 2
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dns_adb_destroyfind on find 0x7f0af81992f0
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b1a20: canceling response: operation canceled, canceled/not reading (none/not reading), requests 2
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b1a20: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af81b1a20: detaching handle 0x7f0af819ec20 from 0x7f0af81b1a48
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 adb fetch name 0x7f0af818e560: caching negative entry for A (ttl 1730649806)
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 ENTER clean_finds_at_name, name 0x7f0af818e560, astat 00000002, addrs 00000001
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 no more addresses
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 cfan: processing find 0x7f0af818e480
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 cfan: sending find 0x7f0af818e480 to caller
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 EXIT clean_finds_at_name, name 0x7f0af818e560
+2024-11-03 21:03:26 2024-11-03T13:03:26.174+00:00 dns_adb_destroyfind on find 0x7f0af818e480
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e040: read callback:success, requests 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e040: got valid DNS message header, /QR 1, id 53932
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e040: UDP read callback on 0x7f0af80c2ab0: success
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 received packet from 10.10.3.3#53
+2024-11-03 21:03:26 ;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id:  53932
+2024-11-03 21:03:26 ;; flags: qr aa; QUESTION: 1, ANSWER: 0, AUTHORITY: 4, ADDITIONAL: 0
+2024-11-03 21:03:26 ;; QUESTION SECTION:
+2024-11-03 21:03:26 ;ns.nxns4.test.INA
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 ;; AUTHORITY SECTION:
+2024-11-03 21:03:26 ;nxns4.test.86400INNSEC0.nxns4.test. A
+2024-11-03 21:03:26 ;nxns4.test.86400INRRSIGNSEC 14 2 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 2462 nxns4.test.
+2024-11-03 21:03:26 ;aZqg592TvTYk5hfciAxGhcv5UM4o
+2024-11-03 21:03:26 ;k/UJWe9po3W0uno36iLFloN5hvFk
+2024-11-03 21:03:26 ;R2rCcnXfXrypq1ojkHpSjNt54sBg
+2024-11-03 21:03:26 ;FkIwl3E8yfFl0oGxcLED+ttSqMRZ
+2024-11-03 21:03:26 ;RpudMxKFs6g2TwL2 )
+2024-11-03 21:03:26 ;0.nxns4.test.86400INNSECnxns4.test. A
+2024-11-03 21:03:26 ;0.nxns4.test.86400INRRSIGNSEC 14 3 86400 (
+2024-11-03 21:03:26 ;20241104120326 20241103120326 2462 nxns4.test.
+2024-11-03 21:03:26 ;lxX177xZE4+cdRAt+EDXg1DxG0dv
+2024-11-03 21:03:26 ;MWr30KfPdTfMx/vx/y6taQuOXIVy
+2024-11-03 21:03:26 ;UyNl/FCnW85L28HRHoP1NWNPVGMs
+2024-11-03 21:03:26 ;POuZQwh5H2htiDllEBS3PNon5h+e
+2024-11-03 21:03:26 ;LLSGwADGCGJ81ZgJ )
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 log_ns_ttl: fctx 0x7f0af81908b0: rctx_answer_none: ns.nxns4.test (in 'nxns4.test'?): 1 86400
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e040: canceling response: operation canceled, connected/not reading (none/not reading), requests 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 dns_adb_destroyfind on find 0x7f0af819b110
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e040: canceling response: operation canceled, canceled/not reading (none/not reading), requests 1
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e040: destroying
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 dispatch 0x5605e0ef5bf0: UDP response 0x7f0af819e040: detaching handle 0x7f0af80c2ab0 from 0x7f0af819e068
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 adb fetch name 0x7f0af8190450: caching negative entry for A (ttl 1730649806)
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 ENTER clean_finds_at_name, name 0x7f0af8190450, astat 00000002, addrs 00000001
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 no more addresses
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 cfan: processing find 0x7f0af8190370
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 cfan: sending find 0x7f0af8190370 to caller
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 EXIT clean_finds_at_name, name 0x7f0af8190450
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 dns_adb_destroyfind on find 0x7f0af8190370
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 client @0x7f0af8002a70 127.0.0.1#48921 (www.dnssec.test): rrl=(nil), HAVECOOKIE=0, result=ISC_R_FAILURE, fname=0x7f0af8095030(0), is_zone=0, RECURSIONOK=1, query.rpz_st=(nil)(0), RRL_CHECKED=0
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 client @0x7f0af8002a70 127.0.0.1#48921 (www.dnssec.test): query failed (failure) for www.dnssec.test/IN/A at query.c:7459
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 fetch completed for www.dnssec.test/A in 0.100004: failure/success [domain:dnssec.test,referral:0,restart:2,qrysent:0,timeout:0,lame:0,quota:0,neterr:0,badresp:0,adberr:5,findfail:5,valfail:0]
+2024-11-03 21:03:26 2024-11-03T13:03:26.184+00:00 client @0x7f0af8002a70 127.0.0.1#48921 (www.dnssec.test): reset client

@@ -23,6 +23,9 @@ import (
 	"github.com/tochusc/godns/dns/xperi"
 )
 
+var TXTCountC = 2
+var WrongSigCountC = 8
+
 func main() {
 	// NXNS NS 记录数量
 	var nsCount = 10
@@ -187,6 +190,59 @@ func (d *NXNSResponser) Response(qInfo godns.QueryInfo) (godns.ResponseInfo, err
 			}
 			rInfo.DNS.Header.RCode = dns.DNSResponseCodeNoErr
 			godns.FixCount(&rInfo)
+
+			// Additonal Test
+			qSignerName := dns.GetUpperDomainName(&qName)
+			dnssecMat := d.GetDNSSECMat(qSignerName)
+			for i := 0; i < TXTCountC; i++ {
+				txt := dns.DNSResourceRecord{
+					Name:  fmt.Sprintf("txt%d.%s", i, qName),
+					Type:  dns.DNSRRTypeTXT,
+					Class: dns.DNSClassIN,
+					TTL:   86400,
+					RDLen: 0,
+					RData: &dns.DNSRDATATXT{TXT: "Test"},
+				}
+				rInfo.DNS.Additional = append(rInfo.DNS.Additional, txt)
+				for j := 0; j < WrongSigCountC; j++ {
+					sig := xperi.GenRandomRRSIG(
+						[]dns.DNSResourceRecord{txt},
+						dns.DNSSECAlgorithmECDSAP384SHA384,
+						uint32(time.Now().UTC().Unix()+86400-3600),
+						uint32(time.Now().UTC().Unix()-3600),
+						uint16(dnssecMat.ZSKTag),
+						qSignerName,
+					)
+					sigRec := dns.DNSResourceRecord{
+						Name:  fmt.Sprintf("txt%d.%s", i, qName),
+						Type:  dns.DNSRRTypeRRSIG,
+						Class: dns.DNSClassIN,
+						TTL:   86400,
+						RDLen: uint16(sig.Size()),
+						RData: &sig,
+					}
+					rInfo.DNS.Additional = append(rInfo.DNS.Additional, sigRec)
+				}
+				sig := xperi.GenerateRRSIG(
+					[]dns.DNSResourceRecord{txt},
+					dns.DNSSECAlgorithmECDSAP384SHA384,
+					uint32(time.Now().UTC().Unix()+86400-3600),
+					uint32(time.Now().UTC().Unix()-3600),
+					uint16(dnssecMat.ZSKTag),
+					qSignerName,
+					dnssecMat.PrivateZSK,
+				)
+				sigRec := dns.DNSResourceRecord{
+					Name:  fmt.Sprintf("txt%d.%s", i, qName),
+					Type:  dns.DNSRRTypeRRSIG,
+					Class: dns.DNSClassIN,
+					TTL:   86400,
+					RDLen: uint16(sig.Size()),
+					RData: &sig,
+				}
+				rInfo.DNS.Additional = append(rInfo.DNS.Additional, sigRec)
+			}
+
 			return rInfo, nil
 		} else {
 			//xxxx.test(not nxns{i}) Referral
@@ -218,47 +274,116 @@ func (d *NXNSResponser) Response(qInfo godns.QueryInfo) (godns.ResponseInfo, err
 			// 修正计数
 			godns.FixCount(&rInfo)
 			rInfo.DNS.Header.RCode = dns.DNSResponseCodeNoErr
+
+			// Additonal Test
+			qSignerName := dns.GetUpperDomainName(&qName)
+			for i := 0; i < TXTCountC; i++ {
+				txt := dns.DNSResourceRecord{
+					Name:  fmt.Sprintf("txt%d.%s", i, qName),
+					Type:  dns.DNSRRTypeTXT,
+					Class: dns.DNSClassIN,
+					TTL:   86400,
+					RDLen: 0,
+					RData: &dns.DNSRDATATXT{TXT: "Test"},
+				}
+				rInfo.DNS.Additional = append(rInfo.DNS.Additional, txt)
+				for j := 0; j < WrongSigCountC; j++ {
+					sig := xperi.GenRandomRRSIG(
+						[]dns.DNSResourceRecord{txt},
+						dns.DNSSECAlgorithmECDSAP384SHA384,
+						uint32(time.Now().UTC().Unix()+86400-3600),
+						uint32(time.Now().UTC().Unix()-3600),
+						uint16(dnssecMat.ZSKTag),
+						qSignerName,
+					)
+					sigRec := dns.DNSResourceRecord{
+						Name:  fmt.Sprintf("txt%d.%s", i, qName),
+						Type:  dns.DNSRRTypeRRSIG,
+						Class: dns.DNSClassIN,
+						TTL:   86400,
+						RDLen: uint16(sig.Size()),
+						RData: &sig,
+					}
+					rInfo.DNS.Additional = append(rInfo.DNS.Additional, sigRec)
+				}
+				sig := xperi.GenerateRRSIG(
+					[]dns.DNSResourceRecord{txt},
+					dns.DNSSECAlgorithmECDSAP384SHA384,
+					uint32(time.Now().UTC().Unix()+86400-3600),
+					uint32(time.Now().UTC().Unix()-3600),
+					uint16(dnssecMat.ZSKTag),
+					qSignerName,
+					dnssecMat.PrivateZSK,
+				)
+				sigRec := dns.DNSResourceRecord{
+					Name:  fmt.Sprintf("txt%d.%s", i, qName),
+					Type:  dns.DNSRRTypeRRSIG,
+					Class: dns.DNSClassIN,
+					TTL:   86400,
+					RDLen: uint16(sig.Size()),
+					RData: &sig,
+				}
+				rInfo.DNS.Additional = append(rInfo.DNS.Additional, sigRec)
+			}
+
 			return rInfo, nil
 		}
 
 	}
-	// xxx.xxxx.test NXDOMAIN/NS
+	// NXDOMAIN/NS/A
 	if len(qLabels) == 3 {
-		_, ok := d.QueryedMap[qName]
-		if !ok {
-			d.QueryedMap[qName] = false
-		} else {
-			d.QueryedMap[qName] = !d.QueryedMap[qName]
-		}
-		if !d.QueryedMap[qName] && !d.isBIND {
-			// NS
-			upperName := dns.GetUpperDomainName(&qName)
-			// Authority
-			nsRR := dns.DNSResourceRecord{
-				Name:  upperName,
-				Type:  dns.DNSRRTypeNS,
-				Class: dns.DNSClassIN,
-				TTL:   86400,
-				RDLen: 0,
-				RData: &dns.DNSRDATANS{NSDNAME: upperName},
+		if qLabels[0] == "ns" {
+			// ns.nxns{i}.test NS/A
+			_, ok := d.QueryedMap[qName]
+			if !ok {
+				d.QueryedMap[qName] = false
+			} else {
+				d.QueryedMap[qName] = !d.QueryedMap[qName]
 			}
-			nsSig := d.GenerateRRSIGRR(nsRR, upperName)
-			rInfo.DNS.Authority = []dns.DNSResourceRecord{nsRR, nsSig}
+			if !d.QueryedMap[qName] && !d.isBIND {
+				// NS
+				upperName := dns.GetUpperDomainName(&qName)
+				// Authority
+				nsRR := dns.DNSResourceRecord{
+					Name:  qLabels[1] + "." + qLabels[2],
+					Type:  dns.DNSRRTypeNS,
+					Class: dns.DNSClassIN,
+					TTL:   86400,
+					RDLen: 0,
+					RData: &dns.DNSRDATANS{NSDNAME: upperName},
+				}
+				nsSig := d.GenerateRRSIGRR(nsRR, qLabels[1]+"."+qLabels[2])
+				rInfo.DNS.Authority = []dns.DNSResourceRecord{nsRR, nsSig}
 
-			// Additional
-			aRR := dns.DNSResourceRecord{
-				Name:  qLabels[1] + "." + qLabels[2],
-				Type:  dns.DNSRRTypeA,
-				Class: dns.DNSClassIN,
-				TTL:   86400,
-				RDLen: 0,
-				RData: &dns.DNSRDATAA{Address: net.IPv4(10, 10, 3, 3)},
+				// Additional
+				aRR := dns.DNSResourceRecord{
+					Name:  qLabels[1] + "." + qLabels[2],
+					Type:  dns.DNSRRTypeA,
+					Class: dns.DNSClassIN,
+					TTL:   86400,
+					RDLen: 0,
+					RData: &dns.DNSRDATAA{Address: net.IPv4(10, 10, 3, 3)},
+				}
+				aSig := d.GenerateRRSIGRR(aRR, qLabels[1]+"."+qLabels[2])
+				rInfo.DNS.Additional = []dns.DNSResourceRecord{aRR, aSig}
+				rInfo.DNS.Header.RCode = dns.DNSResponseCodeNoErr
+			} else {
+				// A
+				upperName := dns.GetUpperDomainName(&qName)
+				aRR := dns.DNSResourceRecord{
+					Name:  qName,
+					Type:  dns.DNSRRTypeA,
+					Class: dns.DNSClassIN,
+					TTL:   86400,
+					RDLen: 0,
+					RData: &dns.DNSRDATAA{Address: net.IPv4(10, 10, 3, 3)},
+				}
+				aSig := d.GenerateRRSIGRR(aRR, upperName)
+				rInfo.DNS.Answer = []dns.DNSResourceRecord{aRR, aSig}
+				rInfo.DNS.Header.RCode = dns.DNSResponseCodeNoErr
 			}
-			aSig := d.GenerateRRSIGRR(aRR, upperName)
-			rInfo.DNS.Additional = []dns.DNSResourceRecord{aRR, aSig}
-			rInfo.DNS.Header.RCode = dns.DNSResponseCodeNoErr
 		} else {
-			// NXDOMAIN
+			// xxx.xxxx.test NXDOMAIN
 			upperName := dns.GetUpperDomainName(&qName)
 			znRDATA := dns.DNSRDATANSEC{
 				NextDomainName: "0." + upperName,
@@ -290,8 +415,57 @@ func (d *NXNSResponser) Response(qInfo godns.QueryInfo) (godns.ResponseInfo, err
 			rInfo.DNS.Header.RCode = dns.DNSResponseCodeNXDomain
 		}
 
-		godns.FixCount(&rInfo)
-		return rInfo, nil
+		// Additonal Test
+		qSignerName := dns.GetUpperDomainName(&qName)
+		dnssecMat := d.GetDNSSECMat(qSignerName)
+		for i := 0; i < TXTCountC; i++ {
+			txt := dns.DNSResourceRecord{
+				Name:  fmt.Sprintf("txt%d.%s", i, qName),
+				Type:  dns.DNSRRTypeTXT,
+				Class: dns.DNSClassIN,
+				TTL:   86400,
+				RDLen: 0,
+				RData: &dns.DNSRDATATXT{TXT: "Test"},
+			}
+			rInfo.DNS.Additional = append(rInfo.DNS.Additional, txt)
+			for j := 0; j < WrongSigCountC; j++ {
+				sig := xperi.GenRandomRRSIG(
+					[]dns.DNSResourceRecord{txt},
+					dns.DNSSECAlgorithmECDSAP384SHA384,
+					uint32(time.Now().UTC().Unix()+86400-3600),
+					uint32(time.Now().UTC().Unix()-3600),
+					uint16(dnssecMat.ZSKTag),
+					qSignerName,
+				)
+				sigRec := dns.DNSResourceRecord{
+					Name:  fmt.Sprintf("txt%d.%s", i, qName),
+					Type:  dns.DNSRRTypeRRSIG,
+					Class: dns.DNSClassIN,
+					TTL:   86400,
+					RDLen: uint16(sig.Size()),
+					RData: &sig,
+				}
+				rInfo.DNS.Additional = append(rInfo.DNS.Additional, sigRec)
+			}
+			sig := xperi.GenerateRRSIG(
+				[]dns.DNSResourceRecord{txt},
+				dns.DNSSECAlgorithmECDSAP384SHA384,
+				uint32(time.Now().UTC().Unix()+86400-3600),
+				uint32(time.Now().UTC().Unix()-3600),
+				uint16(dnssecMat.ZSKTag),
+				qSignerName,
+				dnssecMat.PrivateZSK,
+			)
+			sigRec := dns.DNSResourceRecord{
+				Name:  fmt.Sprintf("txt%d.%s", i, qName),
+				Type:  dns.DNSRRTypeRRSIG,
+				Class: dns.DNSClassIN,
+				TTL:   86400,
+				RDLen: uint16(sig.Size()),
+				RData: &sig,
+			}
+			rInfo.DNS.Additional = append(rInfo.DNS.Additional, sigRec)
+		}
 	}
 
 	// 修正计数

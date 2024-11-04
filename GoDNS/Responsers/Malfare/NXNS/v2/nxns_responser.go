@@ -222,43 +222,60 @@ func (d *NXNSResponser) Response(qInfo godns.QueryInfo) (godns.ResponseInfo, err
 		}
 
 	}
-	// xxx.xxxx.test NXDOMAIN/NS
+	// NXDOMAIN/NS/A
 	if len(qLabels) == 3 {
-		_, ok := d.QueryedMap[qName]
-		if !ok {
-			d.QueryedMap[qName] = false
-		} else {
-			d.QueryedMap[qName] = !d.QueryedMap[qName]
-		}
-		if !d.QueryedMap[qName] && !d.isBIND {
-			// NS
-			upperName := dns.GetUpperDomainName(&qName)
-			// Authority
-			nsRR := dns.DNSResourceRecord{
-				Name:  upperName,
-				Type:  dns.DNSRRTypeNS,
-				Class: dns.DNSClassIN,
-				TTL:   86400,
-				RDLen: 0,
-				RData: &dns.DNSRDATANS{NSDNAME: upperName},
+		if qLabels[0] == "ns" {
+			// ns.nxns{i}.test NS/A
+			_, ok := d.QueryedMap[qName]
+			if !ok {
+				d.QueryedMap[qName] = false
+			} else {
+				d.QueryedMap[qName] = !d.QueryedMap[qName]
 			}
-			nsSig := d.GenerateRRSIGRR(nsRR, upperName)
-			rInfo.DNS.Authority = []dns.DNSResourceRecord{nsRR, nsSig}
+			if !d.QueryedMap[qName] && !d.isBIND {
+				// NS
+				upperName := dns.GetUpperDomainName(&qName)
+				// Authority
+				nsRR := dns.DNSResourceRecord{
+					Name:  qLabels[1] + "." + qLabels[2],
+					Type:  dns.DNSRRTypeNS,
+					Class: dns.DNSClassIN,
+					TTL:   86400,
+					RDLen: 0,
+					RData: &dns.DNSRDATANS{NSDNAME: upperName},
+				}
+				nsSig := d.GenerateRRSIGRR(nsRR, qLabels[1]+"."+qLabels[2])
+				rInfo.DNS.Authority = []dns.DNSResourceRecord{nsRR, nsSig}
 
-			// Additional
-			aRR := dns.DNSResourceRecord{
-				Name:  qLabels[1] + "." + qLabels[2],
-				Type:  dns.DNSRRTypeA,
-				Class: dns.DNSClassIN,
-				TTL:   86400,
-				RDLen: 0,
-				RData: &dns.DNSRDATAA{Address: net.IPv4(10, 10, 3, 3)},
+				// Additional
+				aRR := dns.DNSResourceRecord{
+					Name:  qLabels[1] + "." + qLabels[2],
+					Type:  dns.DNSRRTypeA,
+					Class: dns.DNSClassIN,
+					TTL:   86400,
+					RDLen: 0,
+					RData: &dns.DNSRDATAA{Address: net.IPv4(10, 10, 3, 3)},
+				}
+				aSig := d.GenerateRRSIGRR(aRR, qLabels[1]+"."+qLabels[2])
+				rInfo.DNS.Additional = []dns.DNSResourceRecord{aRR, aSig}
+				rInfo.DNS.Header.RCode = dns.DNSResponseCodeNoErr
+			} else {
+				// A
+				upperName := dns.GetUpperDomainName(&qName)
+				aRR := dns.DNSResourceRecord{
+					Name:  qName,
+					Type:  dns.DNSRRTypeA,
+					Class: dns.DNSClassIN,
+					TTL:   86400,
+					RDLen: 0,
+					RData: &dns.DNSRDATAA{Address: net.IPv4(10, 10, 3, 3)},
+				}
+				aSig := d.GenerateRRSIGRR(aRR, upperName)
+				rInfo.DNS.Answer = []dns.DNSResourceRecord{aRR, aSig}
+				rInfo.DNS.Header.RCode = dns.DNSResponseCodeNoErr
 			}
-			aSig := d.GenerateRRSIGRR(aRR, upperName)
-			rInfo.DNS.Additional = []dns.DNSResourceRecord{aRR, aSig}
-			rInfo.DNS.Header.RCode = dns.DNSResponseCodeNoErr
 		} else {
-			// NXDOMAIN
+			// xxx.xxxx.test NXDOMAIN
 			upperName := dns.GetUpperDomainName(&qName)
 			znRDATA := dns.DNSRDATANSEC{
 				NextDomainName: "0." + upperName,
@@ -289,9 +306,6 @@ func (d *NXNSResponser) Response(qInfo godns.QueryInfo) (godns.ResponseInfo, err
 			rInfo.DNS.Authority = []dns.DNSResourceRecord{znRR, znSig, nRR, nSig}
 			rInfo.DNS.Header.RCode = dns.DNSResponseCodeNXDomain
 		}
-
-		godns.FixCount(&rInfo)
-		return rInfo, nil
 	}
 
 	// 修正计数
