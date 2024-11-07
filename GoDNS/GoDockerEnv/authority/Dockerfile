@@ -1,14 +1,14 @@
 FROM debian:latest
 
+
 ENV GO_VERSION 1.23.2
 
 LABEL maintainer=t0chus
 
 # 安装依赖
-RUN apt-get update
-RUN apt-get -y upgrade
-RUN apt-get -y install libpcap0.8 libpcap-dev iptables wget gcc 
-
+RUN apt-get -y update \
+    && apt-get -y upgrade \
+    && apt-get -y install libpcap0.8 libpcap-dev iptables wget gcc dnsutils
 
 # 安装GO语言
 RUN wget https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz && \
@@ -19,8 +19,9 @@ ENV PATH="/usr/local/go/bin:$PATH"
 ENV GOPATH="/usr/local/go_workspace"
 ENV CGO_ENABLED=1
 
-# 开放端口53
-EXPOSE 53
+# 开放DNS服务器默认端口
+EXPOSE 53/udp
+EXPOSE 53/tcp
 
 # 设置工作目录
 WORKDIR /usr/local/GoDNS

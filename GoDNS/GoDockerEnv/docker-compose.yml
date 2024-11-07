@@ -3,7 +3,7 @@ services:
     build: client
     command: tail -f /dev/null
     volumes:
-      - ./client/dns_client.py:/usr/local/ScapyClient/dns_client.py
+      - ./client/client.py:/usr/local/ScapyClient/client.py
     networks:
       go_dns_net:
         ipv4_address: 10.10.3.2
@@ -12,8 +12,6 @@ services:
     build: authority
     volumes:
       - ./authority/auth.go:/usr/local/GoDNS/auth.go
-      - ./authority/go.mod:/usr/local/GoDNS/go.mod
-      - ./authority/go.sum:/usr/local/GoDNS/go.sum
     privileged: true
     networks:
       go_dns_net:
@@ -22,7 +20,7 @@ services:
   unbound:
     build: unbound
     volumes:
-      - ./unbound/keytrap.test.key:/usr/local/etc/unbound/keytrap.test.key
+      - ./anchor/test.key:/usr/local/etc/unbound/test.key
       - ./unbound/unbound.conf:/usr/local/etc/unbound/unbound.conf
     networks:
       go_dns_net:
@@ -37,7 +35,24 @@ services:
     networks:
       go_dns_net:
         ipv4_address: 10.10.3.5
-        
+
+  knot:
+    build: knot
+    volumes:
+      - ./knot/kresd.conf:/etc/knot/kresd.conf
+    networks:
+      go_dns_net:
+        ipv4_address: 10.10.3.6
+    
+  powerdns:
+    build: powerdns
+    volumes:
+      - ./anchor/test.key:/etc/pdns/test.key
+      - ./powerdns/recursor.conf:/etc/pdns/recursor.conf
+    networks:
+      go_dns_net:
+        ipv4_address: 10.10.3.7
+
 networks:
   go_dns_net:
     ipam:

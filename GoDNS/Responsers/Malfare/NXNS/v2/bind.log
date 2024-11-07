@@ -1954,3 +1954,6 @@
 2024-11-03 21:05:47 2024-11-03T13:05:47.361+00:00 client @0x7f0d18002570 127.0.0.1#52976 (www.dnssec.test): rrl=(nil), HAVECOOKIE=0, result=DNS_R_NCACHENXDOMAIN, fname=0x7f0d18094bb0(1), is_zone=0, RECURSIONOK=1, query.rpz_st=(nil)(0), RRL_CHECKED=0
 2024-11-03 21:05:47 2024-11-03T13:05:47.361+00:00 fetch completed for www.dnssec.test/A in 0.160008: success/success [domain:dnssec.test,referral:0,restart:3,qrysent:1,timeout:0,lame:0,quota:0,neterr:0,badresp:0,adberr:9,findfail:0,valfail:0]
 2024-11-03 21:05:47 2024-11-03T13:05:47.361+00:00 client @0x7f0d18002570 127.0.0.1#52976 (www.dnssec.test): reset client
+
+
+test. 

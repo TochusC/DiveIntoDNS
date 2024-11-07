@@ -13,7 +13,7 @@ RUN mkdir -p /etc/pdns
 # 复制PowerDNS配置文件到容器中
 COPY pdns.conf /etc/pdns/pdns.conf
 
-# 暴露PowerDNS默认端口
+# 开放PowerDNS默认端口
 EXPOSE 53/udp
 EXPOSE 53/tcp
 

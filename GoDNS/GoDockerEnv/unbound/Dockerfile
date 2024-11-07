@@ -1,21 +1,29 @@
+# Debian镜像
 FROM debian:latest
 
-# Install packages
-RUN apt-get update && apt-get install -y build-essential libexpat1-dev libssl-dev wget vim bash dnsutils
+ENV UNBOUND_VERSION 1.22.0
 
-# Download and extract the Unbound source code
-RUN wget https://nlnetlabs.nl/downloads/unbound/unbound-1.21.0.tar.gz \
-    && tar -xzvf unbound-1.21.0.tar.gz \
-    && rm unbound-1.21.0.tar.gz
+# 设置维护者信息
+LABEL maintainer="tochusc"
 
-# Build and install Unbound from the source code
-RUN cd unbound-1.21.0 \
+
+# 更新包列表并安装构建Unbound所需的依赖
+RUN apt-get -y update \
+    && apt-get -y upgrade \
+    && apt-get install -y build-essential libexpat1-dev libssl-dev wget dnsutils
+
+# 下载Unbound源代码
+RUN wget https://nlnetlabs.nl/downloads/unbound/unbound-${UNBOUND_VERSION}.tar.gz \
+    && tar xvf unbound-${UNBOUND_VERSION}.tar.gz \
+    && rm unbound-${UNBOUND_VERSION}.tar.gz
+
+# 编译并安装Unbound
+RUN cd unbound-${UNBOUND_VERSION} \
     && ./configure \
     && make \
     && make install
 
-# Create unbound user and group
 RUN groupadd -r unbound && useradd -r -g unbound unbound
 
-# Run Unbound in the foreground
+# 启动Unbound
 CMD ["unbound", "-d"]
