@@ -3,6 +3,7 @@ package main
 import (
 	"net"
 	"strings"
+	"time"
 
 	"github.com/tochusc/godns"
 	"github.com/tochusc/godns/dns"
@@ -70,8 +71,60 @@ func main() {
 	// 该公钥应确保能够被解析器通过 信任锚（Trust Anchor）建立的 信任链（Chain of Trust） 所验证。
 	kBytes := xperi.ParseKeyBase64("MzJsFTtAo0j8qGpDIhEMnK4ImTyYwMwDPU5gt/FaXd6TOw6AvZDAj2hlhZvaxMXV6xCw1MU5iPv5ZQrb3NDLUU+TW07imJ5GD9YKi0Qiiypo+zhtL4aGaOG+870yHwuY")
 	pkBytes := xperi.ParseKeyBase64("ppaXHmb7u1jOxEzrLzuGKzbjmSLIK4gEhQOvws+cpBQyJbCwIM1Nrk4j5k94CP9e")
+	kRDATA := dns.DNSRDATADNSKEY{
+		Flags:     dns.DNSKEYFlagSecureEntryPoint,
+		Protocol:  dns.DNSKEYProtocolValue,
+		Algorithm: dConf.DAlgo,
+		PublicKey: kBytes,
+	}
 
-	tAnchor := godns.InitTrustAnchor("test", dConf, kBytes, pkBytes)
+	zRDATA, zBytes := xperi.GenerateRDATADNSKEY(
+		dConf.DAlgo,
+		dns.DNSKEYFlagZoneKey,
+	)
+
+	kTag := xperi.CalculateKeyTag(kRDATA)
+	zTag := xperi.CalculateKeyTag(zRDATA)
+
+	kRR := dns.DNSResourceRecord{
+		Name:  "test",
+		Type:  dns.DNSRRTypeDNSKEY,
+		Class: dns.DNSClassIN,
+		TTL:   86400,
+		RDLen: uint16(kRDATA.Size()),
+		RData: &kRDATA,
+	}
+
+	zRR := dns.DNSResourceRecord{
+		Name:  "test",
+		Type:  dns.DNSRRTypeDNSKEY,
+		Class: dns.DNSClassIN,
+		TTL:   86400,
+		RDLen: uint16(zRDATA.Size()),
+		RData: &zRDATA,
+	}
+
+	kSig := xperi.GenerateRRRRSIG(
+		[]dns.DNSResourceRecord{zRR, kRR},
+		dConf.DAlgo,
+		uint32(time.Now().UTC().Unix()+86400-3600),
+		uint32(time.Now().UTC().Unix()-3600),
+		kTag,
+		"test",
+		pkBytes,
+	)
+
+	tMat := godns.DNSSECMaterial{
+		KSKTag:     int(kTag),
+		ZSKTag:     int(zTag),
+		PrivateKSK: kBytes,
+		PrivateZSK: zBytes,
+		DNSKEYRespSec: []dns.DNSResourceRecord{
+			kRR,
+			zRR,
+			kSig,
+		},
+	}
 
 	server := godns.GoDNSServer{
 		ServerConfig: sConf,
@@ -81,9 +134,14 @@ func main() {
 				MTU:  sConf.MTU,
 			},
 		},
-		Responer: &DullResponser{
+		Responer: &Responser{
 			ServerConf: sConf,
+			DNSSECManager: godns.DNSSECManager{
+				DNSSECConf: dConf,
+				DNSSECMap:  map[string]godns.DNSSECMaterial{"test": tMat},
+			},
 		},
 	}
+
 	server.Start()
 }
