@@ -25,12 +25,11 @@ func (r *Responser) Response(connInfo godns.ConnectionInfo) (dns.DNSMessage, err
 	resp := godns.InitNXDOMAIN(qry)
 
 	qType := qry.Question[0].Type
+	// 将可能启用0x20混淆的查询名称转换为小写
+	qName := strings.ToLower(qry.Question[0].Name)
 
-	// 如果查询类型为 A，则回复 A 记录
-	if qType == dns.DNSRRTypeA {
-		// 将可能启用0x20混淆的查询名称转换为小写
-		qName := strings.ToLower(qry.Question[0].Name)
-
+	switch qType {
+	case dns.DNSRRTypeA:
 		// 生成 A 记录
 		rr := dns.DNSResourceRecord{
 			Name:  qName,
@@ -39,6 +38,17 @@ func (r *Responser) Response(connInfo godns.ConnectionInfo) (dns.DNSMessage, err
 			TTL:   86400,
 			RDLen: 0,
 			RData: &dns.DNSRDATAA{Address: r.ServerConf.IP},
+		}
+		resp.Answer = append(resp.Answer, rr)
+	case dns.DNSRRTypeNS:
+		// 生成 NS 记录
+		rr := dns.DNSResourceRecord{
+			Name:  qName,
+			Type:  dns.DNSRRTypeNS,
+			Class: dns.DNSClassIN,
+			TTL:   86400,
+			RDLen: 0,
+			RData: &dns.DNSRDATANS{NSDNAME: qName},
 		}
 		resp.Answer = append(resp.Answer, rr)
 	}
@@ -61,7 +71,7 @@ func main() {
 
 	// 设置DNSSEC配置
 	var dConf = godns.DNSSECConfig{
-		DAlgo: dns.DNSSECAlgorithmECDSAP384SHA384,
+		DAlgo: dns.DNSSECAlgorithmRSASHA512,
 		DType: dns.DNSSECDigestTypeSHA1,
 	}
 
